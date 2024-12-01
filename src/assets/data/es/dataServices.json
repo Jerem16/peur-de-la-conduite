@@ -1,0 +1,106 @@
+{
+    "services": [
+        {
+            "id": "S1",
+            "h2": "Servicios",
+            "title": "Desarrollador Web",
+            "description": "Desarrollo de sitios web responsivos.",
+            "modalDescription": "Diseño y desarrollo de sitios web responsivos.",
+            "details": [
+                "Crea sitios web que se adapten a todos los dispositivos, ofreciendo una experiencia de usuario fluida y coherente.",
+                "Ahorra en desarrollo web. El diseño responsivo te permite adaptar un solo sitio a todos los dispositivos.",
+                "Amplía tu audiencia mientras refuerzas tu presencia en línea con una compatibilidad en diferentes plataformas.",
+                "Mejora el SEO: los motores de búsqueda favorecen los sitios responsivos optimizados."
+            ],
+            "link": {
+                "title": "Obtener más información",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S2",
+            "title": "Integrador Web",
+            "description": "Sitios web dinámicos, interactivos y amigables.",
+            "modalDescription": "Creación de sitios web dinámicos, interactivos y amigables.",
+
+            "details": [
+                "Diseña interfaces de usuario elegantes e intuitivas para una experiencia óptima del usuario.",
+                "Integra datos en tiempo real utilizando API de vanguardia.",
+                "Aprovecha las últimas tecnologías front-end para sitios innovadores.",
+                "¿Listo para explorar más?"
+            ],
+            "link": {
+                "title": "Discutir tus proyectos",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S3",
+            "title": "Diseño Web/UX",
+            "description": "Haz realidad tus sueños. ¡Transforma tus ideas en realidad!",
+            "modalDescription": "¿Tienes sueños? ¡Hazlos realidad!",
+
+            "details": [
+                "Convierte tus creaciones gráficas en sitios web interactivos.",
+                "Nuestro servicio de integración de maquetas Figma y PSD en HTML/CSS está a tu disposición.",
+                "Damos vida a tus diseños gráficos creando sitios web interactivos y totalmente responsivos.",
+                "¿Tienes ideas por realizar?"
+            ],
+            "link": {
+                "title": "Contáctanos",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S4",
+            "title": "Code/Crafters",
+            "description": "Una gama completa de servicios para tu sitio web.",
+            "modalDescription": "Ofrecemos una gama completa de servicios para garantizar el rendimiento y la relevancia de tu sitio web.",
+            "details": [
+                "Mantenimiento: Nos aseguramos de que tu sitio permanezca estable y funcional, realizando verificaciones regulares, correcciones y actualizaciones esenciales.",
+                "Actualizaciones: Las tecnologías evolucionan rápidamente. Nos encargamos de actualizar tu sitio con las últimas características y mejoras para mantenerlo competitivo.",
+                "Pruebas de Integración: Asegurar la compatibilidad de tu sitio web en diversos navegadores y plataformas es fundamental. Nuestras pruebas garantizan una experiencia de usuario óptima.",
+                "Integración de Datos: Enriquecemos tu sitio web integrando datos en tiempo real, API y funciones interactivas para involucrar a tus visitantes."
+            ],
+            "link": {
+                "title": "Obtener más información",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S5",
+            "title": "SEO",
+            "description": "Una gama de servicios que maximiza la visibilidad de tu sitio web.",
+            "modalDescription": "Una gama de servicios que maximiza la visibilidad de tu sitio web.",
+
+            "details": [
+                "Porque entendemos la importancia del SEO para el crecimiento de tu negocio en línea.",
+                "Ofrecemos una gama completa de servicios para garantizar el rendimiento técnico de tu sitio, mejorando su clasificación en los motores de búsqueda.",
+                "Vigilancia competitiva: Para mantenerse en la cima, seguimos de cerca los últimos cambios en los algoritmos de búsqueda para mantener constantemente actualizado tu sitio.",
+                "Análisis de Palabras Clave: Nuestro equipo realiza una investigación exhaustiva de palabras clave para apuntar a los términos más relevantes para tu sector.",
+                "Contenido de Calidad: Creamos contenido rico en palabras clave y de alta calidad para atraer y retener a tu público objetivo."
+            ],
+            "link": {
+                "title": "Mejorar tu presencia en línea",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S6",
+            "title": "Freelance/Consultoría",
+            "description": "Socio para una Consultoría en Línea Exitosa",
+            "modalDescription": "Socio para una Consultoría en Línea Exitosa",
+            "details": [
+                "La consultoría en línea es más importante que nunca, nos comprometemos a ofrecer soluciones de consultoría en línea de calidad.",
+                "Experiencia personalizada: Resolvemos tus problemas, alcanzamos tus objetivos, todo en línea para mayor comodidad.",
+                "Flexibilidad: Tu tiempo es valioso. Una solución flexible que se adapta a tu horario.",
+                "Prueba Gratuita: Prueba nuestro servicio de consultoría en línea de forma gratuita y descubre cómo podemos ayudarte a avanzar."
+            ],
+            "link": {
+                "title": "Guiarnos hacia el éxito",
+                "url": "#contact"
+            }
+        }
+    ],
+    "title": "Servicios"
+}

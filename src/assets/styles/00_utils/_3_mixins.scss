@@ -1,0 +1,68 @@
+@mixin drop-shadow($rgba) {
+    -webkit-filter: drop-shadow($rgba);
+    filter: drop-shadow($rgba);
+}
+/*
+    @include drop-shadow(2px 3px rgba(0, 0, 0, 0.25));
+*/
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+/*** Animation::after ***/
+@mixin after_Before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+@mixin width_size {
+    width: 100%;
+    max-width: 1440px;
+    min-width: 320px;
+}
+
+@mixin bannerCard {
+    width: 100%;
+    height: 202px;
+    border-radius: 20px;
+}
+@mixin bannerID {
+    width: 100%;
+    height: 222px;
+    border-radius: 10px;
+}
+@mixin collapseTags {
+    border-radius: 10px;
+    background-color: $color-primary;
+    background-color: lightness-shift($color-primary);
+    color: white;
+}
+
+@mixin row_R {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    gap: 3.607084289931125%;
+}
+@mixin flex_100 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+@mixin transform($transform) {
+    transform: $transform;
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    -ms-transform: $transform;
+    -o-transform: $transform;
+}
+// @include transform(scale(1.2));
+@mixin transition($properties, $duration, $timing-function) {
+    transition: $properties $duration $timing-function;
+}
+// @include transition(all, 0.3s, ease);

@@ -1,0 +1,42 @@
+{
+    "contact": {
+        "section-title": "Contact Me",
+        "contact-title": "Have You Any Questions ?",
+        "contact-sub-title": "I am at your service",
+        "contactInfo": [
+            {
+                "title": "Call Us On"
+            },
+            {
+                "title": "Office"
+            },
+            {
+                "title": "Email"
+            },
+            {
+                "title": "Web-Site"
+            }
+        ],
+        "send-email-title": "Send me an email",
+        "send-email-sub-title": "I am very responsive to messages",
+        "successMessage": {
+            "title": "Message sent !",
+            "description": "Thank you for your message.",
+            "description2": "We will endeavor to respond to you as soon as possible."
+        },
+        "formFields": {
+            "lastName": "Enter your name *",
+            "email": "Enter your email *",
+            "subject": "Subject *",
+            "message": "Message *"
+        },
+        "formErrors": {
+            "required": "This field is required *",
+            "invalidEmail": "Invalid email address *"
+        },
+        "buttonText": {
+            "isSending": "In progress",
+            "send": "Send Message"
+        }
+    }
+}

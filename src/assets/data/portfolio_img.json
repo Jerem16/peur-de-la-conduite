@@ -1,0 +1,52 @@
+[
+    {
+        "id": "bEd7",
+        "title": "Argent Bank",
+        "imagePath": "argentBankModel.webp",
+        "imagePath1": "argentBankModel-1k.webp",
+        "imagePath2": "argentBankModel-2k.webp",
+        "imagePath3": "argentBankModel-4k.webp",
+        "logoPath": "argentBankLogo.svg"
+    },
+    {
+        "id": "bEd3",
+        "title": "Nina",
+        "imagePath": "nina.webp",
+        "imagePath1": "nina-1k.webp",
+        "imagePath2": "nina-2k.webp",
+        "imagePath3": "nina-4k.webp"
+    },
+    {
+        "id": "aEd6",
+        "title": "Booki",
+        "imagePath": "booki.webp",
+        "imagePath1": "booki-1k.webp",
+        "imagePath2": "booki-2k.webp",
+        "imagePath3": "booki-4k.webp"
+    },
+    {
+        "id": "aEd7",
+        "title": "OhMyFood",
+        "imagePath": "ohmyfood.webp",
+        "imagePath1": "ohmyfood-1k.webp",
+        "imagePath2": "ohmyfood-2k.webp",
+        "imagePath3": "ohmyfood-4k.webp"
+    },
+
+    {
+        "id": "bEd2",
+        "title": "Kasa",
+        "imagePath": "kasa.webp",
+        "imagePath1": "kasa-1k.webp",
+        "imagePath2": "kasa-2k.webp",
+        "imagePath3": "kasa-4k.webp"
+    },
+    {
+        "id": "aEd8",
+        "title": "Print-It",
+        "imagePath": "print.webp",
+        "imagePath1": "print-1k.webp",
+        "imagePath2": "print-2k.webp",
+        "imagePath3": "print-4k.webp"
+    }
+]

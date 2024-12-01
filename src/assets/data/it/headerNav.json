@@ -1,0 +1,22 @@
+{
+    "language": "Lingua",
+    "navLinks": [
+        {
+            "text": "Chi siamo"
+        },
+        {
+            "text": "Servizi"
+        },
+        {
+            "text": "Portafoglio"
+        },
+        {
+            "text": "Contatto"
+        }
+    ],
+    "startLinks": [
+        {
+            "text": "Homepage"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "home": {
+        "welcome": "Hola, mi nombre es ",
+        "name": "‘‘Jérémy Lemaignent’’",
+        "presentation": "Soy un ",
+        "titleDescription": "Apasionado desarrollador con más de 2 años’’.",
+        "description": "Me especializo en desarrollo y diseño de sitios web.",
+        "additionalDescription": "Combinando rendimiento y diseño gráfico.",
+        "quote": "Mis habilidades abarcan desde el diseño de sitios web hasta la programación Front-End.",
+        "imageSrc": "profile2.png",
+        "hireButtonText": "Contrátame",
+        "typedStrings": [
+            "",
+            "Integrador Web",
+            "Diseñador Web",
+            "Desarrollador Web"
+        ]
+    }
+}

@@ -1,0 +1,38 @@
+@import "./00_utils/1_variables";
+@import "./00_utils/2_functions";
+@import "./00_utils/3_mixins";
+@import "./00_utils/4_fonts";
+
+@import "./01_base/01_base";
+@import "./01_base/02_pages";
+@import "./01_base/03_navToggler";
+@import "./01_base/04_darkMode";
+
+@import "./02_components/00_header/header.scss";
+// @import "./02_components/001_header-languageSelector.scss";
+// @import "./02_components/002_header-themeSelector.scss";
+// @import "./02_components/010_home.scss";
+// @import "./02_components/020_about";
+// @import "./02_components/030_services";
+// @import "./02_components/040_portfolio";
+// @import "./02_components/050_contact";
+// @import "./02_components/00_modal";
+
+@import "./03_pages/page.scss";
+// @import "./03_responsive/02_1440px-1080px";
+// // @import "./03_responsive/03_tablet";
+// @import "./03_responsive/test";
+// @import "./03_responsive/04_mobile";
+
+// @import "./04_modal/00_modal";
+
+// @import "./05_no_critical/no_critical";
+
+// @import "./responsive/4k-1440p";
+// @import "./responsive/4k-1440p-no-critical";
+// @import "./responsive/1440p-1080p";
+// @import "./responsive/1440p-1080p-no-critical";
+// @import "./responsive/1080p-620p";
+// @import "./responsive/1080p-620p-no-critical";
+// @import "./responsive/620p-320p";
+// @import "./responsive/620p-320p-no-critical";

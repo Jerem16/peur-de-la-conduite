@@ -1,0 +1,370 @@
+{
+    "education": [
+        {
+            "sectionTitle": "Educación",
+            "sectionId": "Ed1",
+            "year": "1993 - 1995",
+            "title": "Topógrafo",
+            "entries": [
+                {
+                    "index": "index-aléatoire-1",
+                    "display": "none",
+                    "description": {
+                        "describe": "B.E.P. Construcción y Topografía.",
+                        "place": ["Liceo Auguste Perret, Le Havre"]
+                    }
+                }
+            ]
+        },
+        {
+            "sectionId": "Ed2",
+            "year": "2021 - 2022",
+            "title": "Autodidacta",
+            "entries": [
+                {
+                    "index": "index-aléatoire-2",
+                    "display": "none",
+                    "description": {
+                        "describe": "Adobe Photoshop, Illustrator, Dreamweaver...",
+                        "place": [
+                            "HTML y CSS (en Mozilla Developer Network - MDN)"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "sectionId": "Ed3",
+            "year": "2022 - 2023",
+            "title": "<Desarrollador Web/Integrador Web>",
+            "entries": [
+                {
+                    "index": "index-aléatoire-3",
+                    "display": "none",
+                    "description": {
+                        "describe": "Integrador Web",
+                        "place": ["E-learning: OpenClassrooms"]
+                    }
+                }
+            ]
+        }
+    ],
+    "experience": [
+        {
+            "sectionTitle": "Experiencia",
+            "classTitle": "experiencia",
+            "sectionId": "Exp1",
+            "year": "2021 - 2022",
+            "title": "Desarrollador Web",
+            "techTitle": "Tecnologías  ",
+            "entries": [
+                {
+                    "id": "aEd3",
+                    "size": 25,
+                    "index": "random-index-4",
+                    "jobTitle": "Micro-Service.online",
+                    "addClass": "timeline-text_add ",
+                    "technologies": {
+                        "HTML": true,
+                        "CSS": true,
+                        "jQuery": true,
+                        "JS": true
+                    },
+                    "description": {
+                        "paragraph": "Creación de un sitio web personal que ofrece servicios de diseño y mantenimiento de hardware informático.",
+                        "itemLi": []
+                    }
+                },
+                {
+                    "id": "aEd4",
+                    "index": "random-index-5",
+                    "jobTitle": "Curriculum Vitae",
+                    "addClass": "timeline-text_add ",
+                    "technologies": {
+                        "HTML": true,
+                        "CSS": true,
+                        "JS": true
+                    },
+                    "description": {
+                        "paragraph": "Creación de un Curriculum Vitae interactivo.",
+                        "itemLi": []
+                    }
+                }
+            ]
+        },
+        {
+            "sectionId": "Exp2",
+            "year": "2022 - 2023",
+            "title": "Desarrollador Web / Integrador Web",
+            "techTitle": "Tecnologías ",
+            "siteLink": "Enlace al sitio web",
+            "githubLink": "Enlace al repositorio",
+            "entries": [
+                {
+                    "size": 25,
+                    "id": "aEd5",
+                    "index": "random-index-6",
+                    "jobTitle": "Riding Cities",
+                    "addClass": "timeline-text_add ",
+                    "technologies": {
+                        "HTML": true,
+                        "CSS": true
+                    },
+                    "description": {
+                        "paragraph": "Completar la página de inicio del sitio Riding Cities (agencia Webonzaï).",
+                        "itemLi": []
+                    }
+                },
+                {
+                    "size": 25,
+                    "id": "aEd6",
+                    "index": "random-index-7",
+                    "jobTitle": "Booki",
+                    "addClass": "timeline-text_add ",
+                    "siteLink": "https://jerem16.github.io/Booki/index.html",
+                    "githubLink": "https://github.com/Jerem16/Jeremy_L_Projet_03",
+                    "technologies": {
+                        "HTML": true,
+                        "CSS": true
+                    },
+                    "description": {
+                        "paragraph": "Integración de la interfaz web para Booki.",
+                        "itemLi": [
+                            "Transformación de maquetas a código HTML/CSS.",
+                            "Creación de una interfaz web receptiva",
+                            "Optimización del rendimiento y compatibilidad con navegadores modernos."
+                        ]
+                    }
+                },
+                {
+                    "size": 25,
+                    "id": "aEd7",
+                    "index": "random-index-8",
+                    "jobTitle": "OhMyFood",
+                    "addClass": "timeline-text_add ",
+                    "siteLink": "https://jerem16.github.io/ohmyfood/loader.html",
+                    "githubLink": "https://github.com/Jerem16/Jeremy_L_Projet_04",
+                    "technologies": {
+                        "HTML": true,
+                        "CSS": true,
+                        "Sass": true
+                    },
+                    "description": {
+                        "paragraph": "Desarrollador Junior en OhMyFood - Creación de un sitio Mobile-First",
+                        "itemLi": [
+                            "Integración de maquetas en versiones móviles y de PC de escritorio.",
+                            "Desarrollo de un sitio web receptivo con animaciones.",
+                            "Colaboración estrecha con el diseñador UX y cumplimiento del brief creativo.",
+                            "Creación de una plataforma que lista los menús de restaurantes gourmet con un sistema de reserva y composición de menú personalizado."
+                        ]
+                    }
+                },
+                {
+                    "size": 25,
+                    "id": "aEd8",
+                    "index": "random-index-9",
+                    "jobTitle": "Print-It",
+                    "addClass": "timeline-text_add ",
+                    "siteLink": "https://jerem16.github.io/print_it/index.html",
+                    "githubLink": "https://github.com/Jerem16/Projet_05v2",
+                    "technologies": {
+                        "HTML": true,
+                        "CSS": true,
+                        "JS": true
+                    },
+                    "description": {
+                        "paragraph": "Desarrollador Front-End Freelance en Print-It - Proyecto Carrusel",
+                        "itemLi": [
+                            "Dinamización de un sitio web estático.",
+                            "Implementación de un carrusel.",
+                            "Contribución a la mejora de la experiencia del usuario."
+                        ]
+                    }
+                },
+                {
+                    "size": 25,
+                    "id": "aEd9",
+                    "index": "random-index-10",
+                    "jobTitle": "Portfolio - Sophie Bluel",
+                    "addClass": "timeline-text_add ",
+                    "technologies": {
+                        "HTML": true,
+                        "CSS": true,
+                        "JS": true
+                    },
+                    "description": {
+                        "paragraph": "Desarrollador Front-End en ArchiWebos - Integración de un sitio portfolio para una arquitecta de interiores",
+                        "itemLi": [
+                            "Diseño del sitio portfolio de la arquitecta de interiores, según una maqueta.",
+                            "Desarrollo de la página de presentación con integración de una galería de filtros.",
+                            "Creación de la página de inicio de sesión del administrador.",
+                            "Diseño de la modal para cargar medios."
+                        ]
+                    }
+                },
+                {
+                    "size": 25,
+                    "id": "bEd1",
+                    "index": "random-index-11",
+                    "jobTitle": "Menu Maker by Qwenta",
+                    "addClass": "timeline-text_add ",
+                    "technologies": {
+                        "Agile": true,
+                        "Scrum": true,
+                        "Notion": true,
+                        "Trello": true,
+                        "wakelet": true
+                    },
+                    "description": {
+                        "paragraph": "Jefe de Proyecto en Desarrollo Web en Webgencia - Proyecto “Menu Maker by Qwenta”",
+                        "itemLi": [
+                            "Misión de planificación y gestión de proyecto para el desarrollo de un “Menu Maker” para Qwenta.",
+                            "Colaboración con el Product Owner, preparación de una reunión de validación del proyecto con Qwenta.",
+                            "Principales tareas: investigación, especificaciones técnicas, planificación de proyecto."
+                        ]
+                    }
+                },
+                {
+                    "size": 25,
+                    "id": "bEd2",
+                    "index": "random-index-12",
+                    "jobTitle": "Kasa",
+                    "addClass": "timeline-text_add ",
+                    "siteLink": "https://jerem16.github.io/react_kasa_page/",
+                    "githubLink": "https://github.com/Jerem16/React_kasa",
+                    "technologies": {
+                        "HTML": true,
+                        "CSS": true,
+                        "React": true,
+                        "Sass": true,
+                        "JS": true
+                    },
+                    "description": {
+                        "paragraph": "Desarrollador Front-End Freelance para Kasa - Rediseño del sitio",
+                        "itemLi": [
+                            "Cambio de ASP.NET a una pila JavaScript (NodeJS/React).",
+                            "Desarrollo de la aplicación React según maquetas.",
+                            "Cumplimiento de las restricciones técnicas y funcionales.",
+                            "Uso de datos (archivo JSON).",
+                            "Desarrollo de componentes React.",
+                            "Creación de rutas con React Router.",
+                            "Cumplimiento de las directrices de codificación de Kasa."
+                        ]
+                    }
+                },
+                {
+                    "id": "bEd3",
+                    "size": 25,
+                    "index": "random-index-13",
+                    "jobTitle": "Nina Carducci",
+                    "addClass": "timeline-text_add ",
+                    "siteLink": "https://jerem16.github.io/nina_carducci/index.html",
+                    "githubLink": "https://github.com/Jerem16/Nina_Carducci",
+                    "technologies": {
+                        "SEO": true,
+                        "HTML": true,
+                        "CSS": true,
+                        "JS": true,
+                        "jQuery": true
+                    },
+                    "description": {
+                        "paragraph": "Optimización SEO para Nina Carducci - Fotógrafa",
+                        "itemLi": [
+                            "Identificación de problemas de rendimiento y SEO.",
+                            "Optimización global, imágenes y código, rendimiento y accesibilidad.",
+                            "Meta descripción (palabras clave auditadas).",
+                            "Meta etiquetas, redes sociales.",
+                            "SEO local (Schema.org), añadir información (dirección, número de teléfono, horarios, contacto, etc.).",
+                            "Informe de optimización de la auditoría de fragmentos enriquecidos de Google, extensión Wave."
+                        ]
+                    }
+                },
+                {
+                    "id": "bEd5",
+                    "size": 25,
+                    "index": "random-index-14",
+                    "jobTitle": "77events",
+                    "addClass": "timeline-text_add ",
+                    "technologies": {
+                        "React": true,
+                        "CSS": true,
+                        "JS": true,
+                        "Jest": true,
+                        "Eslint": true
+                    },
+                    "description": {
+                        "paragraph": "Optimización y depuración, finalización del sitio 77events",
+                        "itemLi": [
+                            "Diseño y realización de pruebas unitarias y de integración.",
+                            "Corrección de errores.",
+                            "Validación de pruebas, verificación del comportamiento de los componentes.",
+                            "Redacción del manual de recetas (agregando escenarios de prueba)."
+                        ]
+                    }
+                },
+                {
+                    "id": "bEd7",
+                    "index": "random-index-15",
+                    "jobTitle": "ArgentBank",
+                    "addClass": "timeline-text_add ",
+                    "siteLink": "https://jerem16.github.io/argent_bank/",
+                    "githubLink": "https://github.com/Jerem16/Front_ArgentBank-website",
+                    "technologies": {
+                        "React": true,
+                        "Redux": true,
+                        "SCSS": true,
+                        "JS": true,
+                        "MongoDB": true
+                    },
+                    "description": {
+                        "paragraph": "Desarrollo de la Aplicación Bancaria: ArgentBank",
+                        "itemLi": [
+                            "Creación de una aplicación web completa y receptiva con React.",
+                            "Uso de Redux para gestionar los estados de la aplicación.",
+                            "Creación de una API para implementar las funciones de autenticación, inicio de sesión, cierre de sesión y visualización del perfil del usuario.",
+                            "Aplicación de las buenas prácticas de Green Code, optimización de imágenes, creación de componentes reutilizables."
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "profile": {
+        "section": "Acerca de mí",
+        "presentation": "Mi nombre es Jérémy, soy ",
+        "jobTitle": "Desarrollador Web",
+        "description": "Desarrollador e integrador web apasionado por el diseño web y la creación de sitios web. Mi experiencia abarca desde el diseño gráfico hasta la programación en el front-end. Creo sitios web interactivos, optimizados para el rendimiento y el SEO. Siempre al tanto de las últimas tendencias tecnológicas, mi objetivo es ofrecer soluciones web de alta calidad.",
+        "personalInfo": {
+            "Cumpleaños": "27 junio 1977",
+            "Edad": 46,
+            "Website": "jeremy.lemaignent.com",
+            "Email": "web.my.dev@gmail.com",
+            "Título": "Integrador Web",
+            "Phone": "+33 6 35 02 06 41",
+            "Ciudad": "Le Havre",
+            "Freelance": "Disponible"
+        },
+        "buttons": {
+            "btnName1": "Descargar mi CV",
+            "btnName2": "Contactarme"
+        },
+        "skills": [
+            {
+                "name": "HTML",
+                "percent": 94
+            },
+            {
+                "name": "CSS",
+                "percent": 92
+            },
+            {
+                "name": "JS",
+                "percent": 84
+            },
+            {
+                "name": "React",
+                "percent": 76
+            }
+        ]
+    }
+}

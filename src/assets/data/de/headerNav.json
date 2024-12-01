@@ -1,0 +1,22 @@
+{
+    "language": "Sprache",
+    "navLinks": [
+        {
+            "text": "Um"
+        },
+        {
+            "text": "Dienst"
+        },
+        {
+            "text": "Portfolio"
+        },
+        {
+            "text": "Kontakt"
+        }
+    ],
+    "startLinks": [
+        {
+            "text": "Startseite"
+        }
+    ]
+}

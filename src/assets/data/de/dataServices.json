@@ -1,0 +1,105 @@
+{
+    "services": [
+        {
+            "id": "S1",
+            "h2": "Dienstleistungen",
+            "title": "Web/Entwickler",
+            "description": "Entwicklung von responsiven Websites.",
+            "modalDescription": "Konzeption und Entwicklung von responsiven Websites.",
+            "details": [
+                "Erstellen Sie Websites, die sich an alle Bildschirme anpassen und gleichzeitig eine reibungslose und konsistente Benutzererfahrung bieten.",
+                "Sparen Sie bei der Webentwicklung! Responsive Design ermöglicht es, eine Website an alle Geräte anzupassen.",
+                "Erweitern Sie Ihr Publikum und stärken Sie Ihre Online-Präsenz durch die Kompatibilität mit verschiedenen Geräten.",
+                "Verbessertes SEO: Suchmaschinen bevorzugen optimierte reaktionsfähige Websites."
+            ],
+            "link": {
+                "title": "Erfahren Sie mehr",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S2",
+            "title": "Web/Integrator",
+            "description": "Dynamische, interaktive und benutzerfreundliche Websites.",
+            "modalDescription": "Erstellung von dynamischen, interaktiven und benutzerfreundlichen Websites.",
+            "details": [
+                "Entwerfen Sie elegante und benutzerfreundliche Benutzeroberflächen für ein optimales Benutzererlebnis.",
+                "Integrieren Sie Echtzeitdaten mithilfe fortschrittlicher APIs.",
+                "Nutzen Sie die neuesten Front-End-Technologien für innovative Websites.",
+                "Bereit, mehr zu erkunden?"
+            ],
+            "link": {
+                "title": "Über Ihre Projekte sprechen",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S3",
+            "title": "Web/UX/Design",
+            "description": "Verwirklichen Sie Ihre Träume! Machen Sie sie zur Realität!",
+            "modalDescription": "Haben Sie Träume? Lassen Sie sie Wirklichkeit werden!",
+            "details": [
+                "Verwandeln Sie Ihre Grafikdesigns in interaktive Websites.",
+                "Unser Service zur Integration von Figma- und PSD-Entwürfen in HTML/CSS steht Ihnen zur Verfügung!",
+                "Wir hauchen Ihren grafischen Ideen Leben ein, indem wir vollständig responsive, interaktive Websites erstellen.",
+                "Haben Sie Ideen, die umgesetzt werden müssen?"
+            ],
+            "link": {
+                "title": "Kontaktieren Sie uns",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S4",
+            "title": "Code/Crafters",
+            "description": "Ein umfassendes Dienstleistungsangebot für Ihre Website.",
+            "modalDescription": "Möchten Sie Ihre Online-Präsenz optimieren?",
+            "modalDescription2": "Wir bieten Ihnen ein umfassendes Dienstleistungsangebot, um die Leistung und Relevanz Ihrer Website zu gewährleisten.",
+            "details": [
+                "Wartung: Wir stellen sicher, dass Ihre Website stabil und funktionsfähig bleibt, indem wir regelmäßige Überprüfungen, Fehlerbehebungen und wichtige Aktualisierungen durchführen.",
+                "Aktualisierungen: Die Technologien entwickeln sich schnell. Wir kümmern uns um die Aktualisierung Ihrer Website mit den neuesten Funktionen und Verbesserungen, um wettbewerbsfähig zu bleiben.",
+                "Integrationstests: Die Gewährleistung der Kompatibilität Ihrer Website auf verschiedenen Browsern und Plattformen ist entscheidend. Unsere Tests garantieren ein optimales Benutzererlebnis.",
+                "Datenintegration: Wir erweitern Ihre Website durch die Integration von Echtzeitdaten, APIs und interaktiven Funktionen, um Ihre Besucher zu binden."
+            ],
+            "link": {
+                "title": "Erfahren Sie mehr",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S5",
+            "title": "SEO",
+            "description": "Das Serviceangebot zur Maximierung der Sichtbarkeit Ihrer Website.",
+            "modalDescription": "Das Serviceangebot zur Maximierung der Sichtbarkeit Ihrer Website.",
+            "details": [
+                "Weil wir die Bedeutung von SEO für das Wachstum Ihres Online-Geschäfts verstehen.",
+                "Ein umfassendes Dienstleistungsangebot, um die Leistung und Relevanz Ihrer Website zu gewährleisten.",
+                "SEO-Optimierung: Die Optimierung der technischen Leistung der Website verbessert ihr Ranking in Suchmaschinen.",
+                "Konkurrenzanalyse: Um an der Spitze zu bleiben, verfolgen wir die neuesten Änderungen in den Suchalgorithmus, um Ihre Website ständig zu aktualisieren.",
+                "Keyword-Analyse: Unser Team führt eine gründliche Keyword-Recherche durch, um die relevantesten Begriffe für Ihre Branche zu ermitteln.",
+                "Qualitätsinhalt: Wir erstellen hochwertigen, keywordreichen Inhalt, um Ihre Zielgruppe anzuziehen und zu binden."
+            ],
+            "link": {
+                "title": "Verbessern Sie Ihre Online-Präsenz",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S6",
+            "title": "Freelance/Beratung",
+            "description": "Ihr Partner für erfolgreiche Online-Beratung",
+            "modalDescription": "Ihr Partner für erfolgreiche Online-Beratung",
+            "details": [
+                "Online-Beratung ist heute wichtiger denn je, und wir verpflichten uns, qualitativ hochwertige Online-Beratungslösungen anzubieten.",
+                "Individuelle Expertise: Wir lösen Ihre Probleme, erreichen Ihre Ziele, alles online für maximale Bequemlichkeit.",
+                "Flexibilität: Ihre Zeit ist kostbar. Eine flexible Lösung, die sich Ihrem Zeitplan anpasst.",
+                "Kostenlose Testversion: Testen Sie unseren Online-Beratungsservice kostenlos und erfahren Sie, wie wir Ihnen bei Ihrem Fortschritt helfen können."
+            ],
+            "link": {
+                "title": "Führen Sie uns zum Erfolg",
+                "url": "#contact"
+            }
+        }
+    ],
+    "title": "Dienst"
+}

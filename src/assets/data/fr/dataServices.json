@@ -1,0 +1,104 @@
+{
+    "services": [
+        {
+            "id": "S1",
+            "h2": "Services",
+            "title": "Web/Developer",
+            "description": "Développement de sites web responsives.",
+            "modalDescription": "Conception et développement de sites web responsives.",
+            "details": [
+                "Créez des sites web qui s'adaptent à tous les écrans, tout en offrant une expérience utilisateur fluide et cohérente.",
+                "Économisez sur le développement web ! Le Responsive Design vous permet d'adapter un seul site à tous les appareils.",
+                "Élargissez votre public tout en renforçant votre présence en ligne via une comptabilité sur différents supports.",
+                "SEO amélioré : les moteurs de recherche favorisent les sites adaptatifs optimisés."
+            ],
+            "link": {
+                "title": "En savoir plus",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S2",
+            "title": "Web/Integrator",
+            "description": "Des sites web, Dynamiques, Interactifs et Conviviaux.",
+            "modalDescription": "Création de sites web, dynamiques, interactifs et conviviaux.",
+            "details": [
+                "Concevez des interfaces utilisateur élégantes et intuitives pour une expérience utilisateur optimale.",
+                "Intégrez des données en temps réel en utilisant des API de pointe.",
+                "Exploitez les dernières technologies front-end pour des sites à la pointe de l'innovation.",
+                "Prêt à explorer davantage ?"
+            ],
+            "link": {
+                "title": "Discuter de vos projets",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S3",
+            "title": "Web/UX/Design",
+            "description": "Réalisez vos rêves ! Transformez-les en réalité !",
+            "modalDescription": "Vous avez des rêves ? Faites-en une réalité !",
+            "details": [
+                "Transformez vos créations graphiques en sites web interactifs.",
+                "Notre service d'intégration de maquettes Figma et PSD en HTML/CSS est à votre disposition !",
+                "Nous donnons vie à vos conceptions graphiques en créant des sites web interactifs, entièrement responsifs.",
+                "Avez-vous des idées à concrétiser ?"
+            ],
+            "link": {
+                "title": "Contactez-nous",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S4",
+            "title": "Code/Crafters",
+            "description": "Une gamme de services complète pour votre site.",
+            "modalDescription": "Nous vous proposont une gamme complète de services, pour garantir la performance et la pertinence de votre site web.",
+            "details": [
+                "Maintenance : nous veillons à ce que votre site reste stable et fonctionnel, en effectuant des vérifications régulières, des correctifs et des mises à jour essentielles.",
+                "Mises à Jour : les technologies évoluent rapidement. Nous nous chargeons de mettre à jour votre site avec les dernières fonctionnalités et améliorations pour rester compétitif.",
+                "Tests d'Intégration : assurer la compatibilité de votre site web sur divers navigateurs et plateformes est primordial. Nos tests garantissent une expérience utilisateur optimale.",
+                "Intégration de Données : nous enrichissons votre site web en intégrant des données en temps réel, des API et des fonctionnalités interactives pour engager vos visiteurs."
+            ],
+            "link": {
+                "title": "En savoir plus",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S5",
+            "title": "SEO",
+            "description": "La gamme de services, qui maximise la visibilité de votre site web.",
+            "modalDescription": "La gamme de services, qui maximise la visibilité de votre site web.",
+            "details": [
+                "Parce que nous comprenons l'importance du SEO pour la croissance de votre entreprise en ligne.",
+                "Une gamme complète de services pour garantir la performance et la pertinence de votre site.",
+                "Optimisation SEO : l'optimisation des performances techniques du site, améliore son classement dans les moteurs de recherche.",
+                "Veille concurrentielle : pour rester en tête, nous surveillons les derniers changements dans les algorithmes de recherche afin de mettre constamment votre site à jour.",
+                "Analyse de Mots-Clés : notre équipe effectue une recherche approfondie de mots-clés pour cibler les termes les plus pertinents pour votre secteur.",
+                "Contenu de Qualité : nous créons du contenu riche en mots-clés et de grande qualité afin d'attirer et retenir votre public cible."
+            ],
+            "link": {
+                "title": "Améliorer votre présence en ligne",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S6",
+            "title": "Freelance/Consulting",
+            "description": "Partenaire pour une Consultation en Ligne Réussie",
+            "modalDescription": "Partenaire pour une Consultation en Ligne Réussie",
+            "details": [
+                "La consultation en ligne est aujourd'hui plus importante que jamais, nous nous engageons à offrir des solutions de consultation en ligne de qualité.",
+                "Expertise Personnalisée : résoudre vos problèmes, atteindre vos objectifs, le tout en ligne, pour plus de commodité.",
+                "Flexibilité : votre temps est précieux. Une solution flexible qui s'adapte à votre emploi du temps.",
+                "Essai Gratuit : essayez notre service de consultation en ligne gratuitement et découvrez comment nous pouvons vous aider à progresser."
+            ],
+            "link": {
+                "title": "Nous guider vers le succès",
+                "url": "#contact"
+            }
+        }
+    ],
+    "title": "Services"
+}

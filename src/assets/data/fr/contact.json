@@ -1,0 +1,42 @@
+{
+    "contact": {
+        "section-title": "Me Contacter",
+        "contact-title": "Vous avez des questions ?",
+        "contact-sub-title": "Je suis à votre service",
+        "contactInfo": [
+            {
+                "title": "Appelez-nous"
+            },
+            {
+                "title": "Bureau"
+            },
+            {
+                "title": "Email"
+            },
+            {
+                "title": "Site Web"
+            }
+        ],
+        "send-email-title": "Envoyez-moi un email",
+        "send-email-sub-title": "Je réponds rapidement aux messages",
+        "successMessage": {
+            "title": "Message envoyé !",
+            "description": "Merci pour votre message.",
+            "description2": "Nous nous efforcerons de vous répondre dans les plus brefs délais."
+        },
+        "formFields": {
+            "lastName": "Entrez votre nom *",
+            "email": "Entrez votre email *",
+            "subject": "Sujet *",
+            "message": "Message *"
+        },
+        "formErrors": {
+            "required": "Ce champ est obligatoire *",
+            "invalidEmail": "Adresse email invalide *"
+        },
+        "buttonText": {
+            "isSending": "En cours",
+            "send": "Envoyer le message"
+        }
+    }
+}

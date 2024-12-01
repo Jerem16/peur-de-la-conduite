@@ -1,0 +1,22 @@
+{
+    "home": {
+        "welcome": "Bonjour, je m'appelle ",
+        "name": "‘‘Jérémy Lemaignent’’",
+        "presentation": "Je suis ",
+        "titleDescription": "Développeur passionné, depuis 2 ans’’",
+        "description": "Je suis spécialisé dans le développement et la conception de sites Web.",
+        "additionalDescription": "Alliant performance et design graphique.",
+        "quote": "Mes compétences s'étendent de la conception de sites à la programmation orientée Front-End.",
+        "question": "",
+        "answer": "Rejoignez-moi.",
+        "imageSrc": "test.png",
+        "hireButtonText": "Me contacter",
+        "typedStrings": [
+            "",
+            "Web Designer",
+            "Intégrateur Web",
+            "Web Développeur",
+            "Designer Graphique"
+        ]
+    }
+}

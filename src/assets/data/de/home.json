@@ -1,0 +1,14 @@
+{
+    "home": {
+        "welcome": "Hallo, mein Name ist ",
+        "name": "‘‘Jérémy Lemaignent’’",
+        "presentation": "Ich bin ein ",
+        "titleDescription": "Begeisterter Entwickler seit über 2 Jahren’’.",
+        "description": "Ich habe mich auf die Entwicklung und Gestaltung von Websites spezialisiert.",
+        "additionalDescription": "Kombination von Leistung und Grafikdesign.",
+        "quote": "Meine Fähigkeiten reichen von der Website-Gestaltung bis zur Front-End-Programmierung.",
+        "imageSrc": "profile2.png",
+        "hireButtonText": "Einstellen",
+        "typedStrings": ["", "Web-Integrator", "Webdesigner", "Webentwickler"]
+    }
+}

@@ -1,0 +1,108 @@
+{
+    "services": [
+        {
+            "id": "S1",
+            "h2": "Services",
+            "title": "Web/Developer",
+            "description": "Responsive website development.",
+            "modalDescription": "Design and development of responsive websites.",
+            "details": [
+                "Create websites that adapt to all screens while providing a smooth and consistent user experience.",
+                "Save on web development! Responsive Design allows you to adapt a single site to all devices.",
+                "Expand your audience while strengthening your online presence through compatibility on different devices.",
+                "Improved SEO: Search engines favor optimized responsive sites."
+            ],
+            "link": {
+                "title": "Learn More",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S2",
+            "title": "Web/Integrator",
+            "description": "Dynamic and Interactive, websites.",
+            "modalDescription": "Creating dynamic, interactive, and user-friendly websites.",
+
+            "details": [
+                "Design elegant and intuitive user interfaces for an optimal user experience.",
+                "Integrate real-time data using cutting-edge APIs.",
+                "Leverage the latest front-end technologies for innovative websites.",
+                "Ready to explore further?"
+            ],
+            "link": {
+                "title": "Discuss Your Projects",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S3",
+            "title": "Web/UX/Design",
+            "description": "Bring your dreams come true ! Turn them into reality !",
+            "modalDescription": "Bring your dreams to life! Transform them into reality!",
+
+            "details": [
+                "Turn your graphic designs into interactive websites.",
+                "Our Figma and PSD to HTML/CSS mockup integration service is at your disposal!",
+                "We breathe life into your graphic designs by creating fully responsive, interactive websites.",
+                "Have ideas to materialize?"
+            ],
+            "link": {
+                "title": "Contact Us",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S4",
+            "title": "Code/Crafters",
+            "description": "A complete range of services for your website.",
+            "modalDescription": "Looking to optimize your online presence? We offer a complete range of services to ensure the performance and relevance of your website.",
+
+            "details": [
+                "Maintenance: We ensure your website remains stable and functional by conducting regular checks, fixes, and essential updates.",
+                "Updates: Technologies evolve rapidly. We take care of updating your site with the latest features and enhancements to stay competitive.",
+                "Integration Testing: Ensuring your website's compatibility across various browsers and platforms is crucial. Our tests ensure an optimal user experience.",
+                "Data Integration: We enrich your website by integrating real-time data, APIs, and interactive features to engage your visitors."
+            ],
+            "link": {
+                "title": "Learn More",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S5",
+            "title": "SEO",
+            "description": "The service range that maximizes the visibility of your site.",
+            "modalDescription": "The service range that maximizes the visibility of your website.",
+
+            "details": [
+                "Because we understand the importance of SEO for the growth of your online business.",
+                "A complete range of services to ensure the performance and relevance of your website.",
+                "SEO Optimization: Improving the technical performance of the site enhances its ranking in search engines.",
+                "Competitive Monitoring: To stay ahead, we monitor the latest changes in search algorithms to constantly update your site.",
+                "Keyword Analysis: Our team conducts in-depth keyword research to target the most relevant terms for your industry.",
+                "Quality Content: We create keyword-rich, high-quality content to attract and retain your target audience."
+            ],
+            "link": {
+                "title": "Enhance Your Online Presence",
+                "url": "#contact"
+            }
+        },
+        {
+            "id": "S6",
+            "title": "Freelance/Consulting",
+            "description": "Your partner for successful online consultation.",
+            "modalDescription": "Your partner for successful online consultation.",
+            "details": [
+                "Online consultation is more important than ever, and we are committed to offering quality online consultation solutions.",
+                "Personalized Expertise: Solve your problems, achieve your goals, all online, for added convenience.",
+                "Flexibility: Your time is precious. A flexible solution that fits your schedule.",
+                "Free Trial: Try our online consultation service for free and discover how we can help you progress."
+            ],
+            "link": {
+                "title": "Guide Us to Success",
+                "url": "#contact"
+            }
+        }
+    ],
+    "title": "Services"
+}

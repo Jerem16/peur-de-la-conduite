@@ -1,0 +1,14 @@
+{
+    "home": {
+        "welcome": "Hello, my name is ",
+        "name": "‘‘Jérémy Lemaignent’’",
+        "presentation": "I am a ",
+        "titleDescription": "Passionate developer for over 2 years’’.",
+        "description": "I specialize in website development and design.",
+        "additionalDescription": "Combining performance and graphic design.",
+        "quote": "My skills range from website design to Front-End programming.",
+        "imageSrc": "profile2.png",
+        "hireButtonText": "Hire Me",
+        "typedStrings": ["", "Web Integrator", "Web Designer", "Web Developer"]
+    }
+}
