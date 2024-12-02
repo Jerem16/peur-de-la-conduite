@@ -1,14 +1,15 @@
-@import "./00_utils/1_variables";
-@import "./00_utils/2_functions";
-@import "./00_utils/3_mixins";
-@import "./00_utils/4_fonts";
+/* Utils */
+@import "./00_utils/variables";
+@import "./00_utils/_functions";
+@import "./00_utils/_mixins";
+@import "./00_utils/_fonts";
 
-@import "./01_base/01_base";
-@import "./01_base/02_pages";
-@import "./01_base/03_navToggler";
-@import "./01_base/04_darkMode";
+@import "./01_base/general";
+@import "./01_base/navToggler";
 
-@import "./02_components/00_header/header.scss";
+@import "../../components/header/header.scss";
+// @import "./02_components/00_header/header.scss";
+// @import "../../components/header/header.scss";
 // @import "./02_components/001_header-languageSelector.scss";
 // @import "./02_components/002_header-themeSelector.scss";
 // @import "./02_components/010_home.scss";
@@ -18,7 +19,7 @@
 // @import "./02_components/050_contact";
 // @import "./02_components/00_modal";
 
-@import "./03_pages/page.scss";
+@import "../../../app/page.scss";
 // @import "./03_responsive/02_1440px-1080px";
 // // @import "./03_responsive/03_tablet";
 // @import "./03_responsive/test";

@@ -3,7 +3,7 @@
 export default function Page() {
     return (
         <>
-            <section className="s" id="s1">
+            <section className="section" id="s1">
                 <div className="fixed-menu"></div>
                 <h2>Page 2 : Section 1</h2>
                 <div className="s1">
@@ -16,7 +16,7 @@ export default function Page() {
                     </p>
                 </div>
             </section>
-            <section className="s" id="s2">
+            <section className="section" id="s2">
                 <div className="fixed-menu"></div>
                 <h2>Page 2 : Section 2</h2>
                 <div className="s2">
@@ -29,7 +29,7 @@ export default function Page() {
                     </p>
                 </div>
             </section>
-            <section className="s" id="s3">
+            <section className="section" id="s3">
                 <div className="fixed-menu"></div>
                 <h2>Page 2 : Section 3</h2>
                 <div className="s3">

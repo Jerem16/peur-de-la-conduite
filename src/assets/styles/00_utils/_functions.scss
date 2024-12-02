@@ -1,0 +1,16 @@
+@use "sass:color";
+@use "sass:math";
+
+// Fonction pour ajuster la luminosité d'une couleur
+@function lightness-shift($color) {
+    @if (lightness($color) < 25%) {
+        @return color.adjust($color, $lightness: 10%);
+    } @else {
+        @return color.adjust($color, $lightness: -10%);
+    }
+}
+
+// Mélange de deux couleurs avec un poids spécifique
+@function blend-colors($color1, $color2, $weight) {
+    @return mix($color1, $color2, $weight);
+}

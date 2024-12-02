@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "@/src/assets/styles/main.scss";
-import Header from "@/src/components/header/Header";
+import Header from "@comp/header/Header";
+import "../src/assets/styles/main.scss";
+// import Header from "@/src/components/header/Header";
 
-const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
-    variable: "--font-geist-sans",
+const RobotoFlex = localFont({
+    src: "/fonts/RobotoFlex.woff2",
+    variable: "--RobotoFlex",
     weight: "100 900",
 });
-const geistMono = localFont({
-    src: "./fonts/GeistMonoVF.woff",
-    variable: "--font-geist-mono",
+
+const Montserrat = localFont({
+    src: "./fonts/Montserrat.woff2",
+    variable: "--montserrat",
+    weight: "100 900",
+});
+
+const Nunito = localFont({
+    src: "./fonts/Nunito.woff2",
+    variable: "--nunito",
     weight: "100 900",
 });
 
@@ -26,9 +34,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="fr-FR">
-            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            <body
+                className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`}
+            >
                 <Header />
-                {children}
+                <main>{children}</main>
             </body>
         </html>
     );

@@ -40,7 +40,7 @@ const Header = () => {
     return (
         <header className="header">
             <h1>
-                <Link href="/">My Header</Link>
+                <Link href="/">Logo</Link>
             </h1>
             <Nav
                 handleAnchorClick={(e, pagePath, targetId) =>
