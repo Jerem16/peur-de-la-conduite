@@ -1,26 +1,26 @@
 header {
-    background-color: #f8f9fa;
-    padding: 1rem 1.5rem 1rem 1rem;
+    padding: 1rem 2rem 1.5rem 2rem;
     margin: 0 auto;
     position: fixed;
     display: inline-flex;
+    gap: 2rem;
     flex-flow: row;
-    justify-content: space-between;
-    align-items: baseline;
+    box-sizing: content-box;
     width: 100vw;
-    // height: 90px;
-    background: transparent;
-    // border: 1px solid #000;
-
-    h1 {
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        color: #343a40;
-    }
+    height: 50px;
 
     nav {
         display: flex;
         justify-content: space-around;
+        gap: 1rem;
+        padding: 15px 24px;
+        box-sizing: content-box;
+        width: 607px;
+        height: 20px;
+        // border: 1px solid #000;
+        border-radius: 25px;
+        @include menuShadow(rgba(0, 0, 0, 0.25));
+        background: $white;
 
         div {
             position: relative;
@@ -31,13 +31,13 @@ header {
 
             > a {
                 display: inline-block;
-                margin: 0 0.5rem;
-                padding: 0.5rem 1rem;
+                // margin: 0 0.5rem;
+                // padding: 0.5rem 1rem;
                 text-decoration: none;
-                border: 1px solid #6c757d;
+                // border: 1px solid #6c757d;
                 border-radius: 0.25rem;
                 color: #343a40;
-                width: 180px;
+                // width: 180px;
                 @include navLink;
 
                 &:hover {
@@ -47,7 +47,7 @@ header {
             }
 
             .submenu {
-                margin: 0 0.5rem;
+                // margin: 0 0.5rem;
                 display: none;
                 position: absolute;
                 top: 100%;
@@ -71,6 +71,69 @@ header {
                     }
                 }
             }
+        }
+    }
+}
+.logo {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 0;
+    z-index: 1;
+    @include menuShadow(rgba(0, 0, 0, 0.25));
+    border-radius: 50%;
+    background: $white;
+    border: 1px solid $secondary-blue;
+    cursor: pointer;
+    .mouth,
+    .eyes {
+        transform: rotate(0deg);
+        transform-origin: center;
+        transition: transform 0.5s ease-in-out;
+    }
+    .logo-fp {
+        fill: $white;
+        @include dropShadow(rgba(0, 0, 0, 0.35));
+    }
+    &:hover {
+        @include dropShadow(rgba(0, 0, 0, 0.25));
+        .logo-bg {
+            @include dropShadow(rgba(0, 0, 0, 0.05));
+            border-radius: 50%;
+        }
+        .logo-circle {
+            display: none;
+        }
+        .eyes {
+            animation: eyeAnimation 0.5s 0.25s;
+            transform: rotate(1deg);
+            transform-origin: center;
+        }
+        .mouth {
+            transform: rotate(-7deg);
+            transform-origin: center;
+            transition: transform 0.5s ease-in-out;
+        }
+        .logo-fp {
+            display: none;
+        }
+    }
+    @keyframes eyeAnimation {
+        0% {
+            d: path(
+                "M64.2 47.8c.2 4.4 6.8 3.5 9.3 3.2 4.9-.9 4.7-8.4-.2-8s-9.1 1.4-9.1 4.8z"
+            );
+        }
+        50% {
+            d: path(
+                "M64.2 47.8c.2 1.4 6.8 1.5 9.3 1.2 4.9-.3 4.7-1.4-.2-1s-9.1 1.4-9.1 0.8z"
+            );
+        }
+        100% {
+            d: path(
+                "M64.2 47.8c.2 4.4 6.8 3.5 9.3 3.2 4.9-.9 4.7-8.4-.2-8s-9.1 1.4-9.1 4.8z"
+            );
         }
     }
 }

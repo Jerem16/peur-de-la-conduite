@@ -1,8 +1,8 @@
-@mixin menu-shadow($rgba) {
-    box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.25);
+@mixin menuShadow($rgba) {
+    box-shadow: 10px 10px 50px 10px $rgba; //rgba(0, 0, 0, 0.25));
 }
-@mixin general-shadow($rgba) {
-    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+@mixin dropShadow($rgba) {
+    filter: drop-shadow(4px 4px 4px $rgba);
 }
 /*
     @include drop-shadow(2px 3px rgba(0, 0, 0, 0.25));

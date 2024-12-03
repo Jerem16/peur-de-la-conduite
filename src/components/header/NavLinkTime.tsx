@@ -18,22 +18,45 @@ interface NavProps {
 const Nav: React.FC<NavProps> = ({ handleAnchorClick }) => {
     const menuItems: MenuItem[] = [
         {
-            title: "Page 1",
-            path: "/page1",
-            subItems: ["s1", "s2", "s3"],
+            title: "Accueil",
+            icon: "Accueil",
+            path: "/",
+            subItems: ["Slider", "À propos", "Services", "Contact"],
         },
         {
-            title: "Page 2",
-            path: "/page2",
-            subItems: ["s1", "s2", "s3"],
+            title: "Services",
+            icon: "Services",
+            path: "/page-services",
+            subItems: ["Sans Permis", "Avec Permis"],
+        },
+        {
+            title: "Blog",
+            icon: "Blog",
+            path: "/page-blog",
+            subItems: [],
+        },
+        {
+            title: "Tarifs",
+            icon: "Tarifs",
+            path: "/page-tarifs",
+            subItems: [],
+        },
+        {
+            title: "Contact",
+            icon: "Contact",
+            path: "/#Contact",
+            subItems: [],
         },
     ];
 
     return (
         <nav>
             {menuItems.map((menuItem) => (
-                <div key={menuItem.path}>
-                    <Link href={menuItem.path}>{menuItem.title}</Link>
+                <div key={menuItem.path} className="main-nav">
+                    <span>
+                        {/* < {menuItem.icon}/> */}
+                        <Link href={menuItem.path}>{menuItem.title}</Link>
+                    </span>
                     <div className="submenu">
                         {menuItem.subItems.map((subItem) => (
                             <a
@@ -43,7 +66,7 @@ const Nav: React.FC<NavProps> = ({ handleAnchorClick }) => {
                                     handleAnchorClick(e, menuItem.path, subItem)
                                 }
                             >
-                                {`${menuItem.title} ${subItem.toUpperCase()}`}
+                                {` ${subItem}`}
                             </a>
                         ))}
                     </div>

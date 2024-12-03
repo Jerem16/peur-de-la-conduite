@@ -3,9 +3,9 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Nav from "./NavLinkTime"; // Assurez-vous que NavLink est correctement configuré
-import { scrollTime, handleAnchorClick } from "@/src/utils/scrollUtils"; // Importer la fonction de défilement
-
+import Nav from "./NavLinkTime";
+import { scrollTime, handleAnchorClick } from "@/src/utils/scrollUtils";
+import Logo from "../svg_Icon/Logo";
 const Header = () => {
     const pathname = usePathname();
     // const router = useRouter();
@@ -39,9 +39,13 @@ const Header = () => {
 
     return (
         <header className="header">
-            <h1>
-                <Link href="/">Logo</Link>
-            </h1>
+            <Link
+                href="/"
+                aria-label="Retour à la page d'accueil : Peur de la conduite"
+            >
+                <Logo />
+            </Link>
+
             <Nav
                 handleAnchorClick={(e, pagePath, targetId) =>
                     handleAnchorClick(

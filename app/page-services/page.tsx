@@ -5,7 +5,7 @@ export default function Page() {
         <>
             <section className="section" id="s1">
                 <div className="fixed-menu"></div>
-                <h2>Page 1 : Section 1</h2>
+                <h2>Nos Services</h2>
                 <div className="s1">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
