@@ -1,15 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Nav from "./NavLinkTime";
 import Logo from "../svg_Icon/Logo";
 
 import { useNavigation } from "../../utils/context/NavigationContext";
 
 const Header = () => {
+    const pathname = usePathname();
     const { currentRoute, updateRoute } = useNavigation();
-    const { currentId, updateID } = useNavigation();
     const handlePage = (path) => {
         if (!currentRoute) {
             console.error("currentRoute is undefined");
@@ -33,12 +34,45 @@ const Header = () => {
             updateRoute(targetPath);
             if (targetHash === undefined) {
                 console.log("same Route & Hash is undefined");
+                handleGoAnchorClick(`scroll-start`);
             } else if (targetHash != currentHash) {
                 console.log("Change Hash");
+                handleGoAnchorClick(`${targetHash}`);
                 updateRoute(`${targetPath}#${targetHash}`);
             }
         }
     };
+    const handleGoAnchorClick = (targetId: string) => {
+        const element = document.getElementById(targetId);
+        if (!element) return;
+
+        const start = window.scrollY;
+        const end = element.getBoundingClientRect().top + window.scrollY;
+        const duration = 750;
+        const startTime = performance.now();
+
+        const scroll = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeInOutCubic =
+                progress < 0.5
+                    ? 4 * progress * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 4) / 2;
+            window.scrollTo(0, start + (end - start) * easeInOutCubic);
+
+            if (progress < 1) {
+                window.requestAnimationFrame(scroll);
+            }
+        };
+
+        window.requestAnimationFrame(scroll);
+    };
+    useEffect(() => {
+        if (window.location.hash) {
+            window.scrollTo({ top: 0 });
+            handleGoAnchorClick(window.location.hash.substring(1));
+        }
+    }, [pathname]);
 
     return (
         <header className="header">
