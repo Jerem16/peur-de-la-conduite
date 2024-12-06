@@ -1,15 +1,21 @@
 // _general.scss] ******/
 
 body {
-    font-family: var(--RobotoFlex);
+    font-family: var(--montserrat);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
-        svg {
-            image-rendering: auto;  /* Standard anti-aliasing */
-        }
     }
+    svg {
+        image-rendering: auto;
+    }
+    // overflow: hidden;
 }
 p {
     max-width: 720px;

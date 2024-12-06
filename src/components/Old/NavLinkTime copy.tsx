@@ -4,40 +4,31 @@ import React from "react";
 import Link from "next/link";
 import Tarifs from "../svg_Icon/Tarifs";
 
-interface SubItem {
-    title: string;
-    AncorId: string;
-}
-
 interface MenuItem {
     title: string;
     path: string;
-    subItems: SubItem[];
+    subItems: string[];
 }
 
-interface NavProps {}
+interface NavProps {
+    handlePathClick: (targetId: string) => void;
+}
 
-const Nav = () => {
+const Nav: React.FC<NavProps> = ({ handlePathClick }) => {
     const menuItems: MenuItem[] = [
         {
             title: "Accueil",
             path: "/",
-            subItems: [
-                { title: "Slider", AncorId: "#slider" },
-                { title: "À propos", AncorId: "#about" },
-                { title: "Services", AncorId: "#services" },
-                { title: "Contact", AncorId: "#contact" },
-            ],
+            subItems: ["Slider", "À propos", "Services", "Contact"],
         },
         {
             title: "Services",
             path: "/page-services",
-            subItems: [
-                { title: "Sans Permis", AncorId: `#sans-permis` },
-                { title: "Avec Permis", AncorId: "#avec-permis" },
-            ],
+            subItems: ["Sans Permis", "Avec Permis"],
         },
-        { title: "Contact", path: "/#contact", subItems: [] },
+        { title: "Blog", path: "/page-blog", subItems: [] },
+        { title: "Tarifs", path: "/page-tarifs", subItems: [] },
+        { title: "Contact", path: "/#Contact", subItems: [] },
     ];
 
     return (
@@ -54,13 +45,17 @@ const Nav = () => {
                         {menuItem.subItems.length > 0 && (
                             <div className="submenu">
                                 {menuItem.subItems.map((subItem) => (
-                                    <Link
-                                        key={subItem.AncorId}
-                                        href={`${menuItem.path}${subItem.AncorId}`}
+                                    <a
+                                        key={subItem}
+                                        href={`${menuItem.path}#${subItem}`}
                                         className="nav-link"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            handlePathClick(subItem);
+                                        }}
                                     >
-                                        {subItem.title}
-                                    </Link>
+                                        {subItem}
+                                    </a>
                                 ))}
                             </div>
                         )}

@@ -16,9 +16,9 @@ export default function Page() {
                     </p>
                 </div>
             </section>
-            <section className="section" id="s2">
+            <section className="section" id="sans-permis">
                 <div className="fixed-menu"></div>
-                <h2>Page 1 : Section 2</h2>
+                <h2>Sans permis</h2>
                 <div className="s2">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -29,9 +29,9 @@ export default function Page() {
                     </p>
                 </div>
             </section>
-            <section className="section" id="s3">
+            <section className="section" id="avec-permis">
                 <div className="fixed-menu"></div>
-                <h2>Page 1 : Section 3</h2>
+                <h2>Avec permis</h2>
                 <div className="s3">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.

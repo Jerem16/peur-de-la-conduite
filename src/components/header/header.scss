@@ -6,68 +6,75 @@ header {
     gap: 2rem;
     flex-flow: row;
     box-sizing: content-box;
-    width: 100vw;
+    width: calc(100% - 4rem);
     height: 50px;
-
+    .active {
+        background: #000;
+    }
     nav {
         display: flex;
         justify-content: space-around;
-        gap: 1rem;
-        padding: 15px 24px;
-        box-sizing: content-box;
-        width: 607px;
-        height: 20px;
-        // border: 1px solid #000;
-        border-radius: 25px;
-        @include menuShadow(rgba(0, 0, 0, 0.25));
-        background: $white;
 
-        div {
-            position: relative;
-
-            &:hover .submenu {
-                display: block;
-            }
-
-            > a {
-                display: inline-block;
-                // margin: 0 0.5rem;
-                // padding: 0.5rem 1rem;
-                text-decoration: none;
-                // border: 1px solid #6c757d;
-                border-radius: 0.25rem;
-                color: #343a40;
-                // width: 180px;
-                @include navLink;
-
-                &:hover {
-                    background-color: #6c757d;
-                    color: #fff;
-                }
-            }
-
-            .submenu {
-                // margin: 0 0.5rem;
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                // background-color: #ffffff;
-                border: 1px solid #dee2e6;
-                box-sizing: border-box;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                z-index: 10;
-
-                a {
+        .main-nav {
+            display: inline-flex;
+            padding: 15px 24px;
+            gap: 32px;
+            width: 607px;
+            border-radius: 25px;
+            background: $white;
+            @include menuShadow(rgba(0, 0, 0, 0.25));
+            div.group_link-submenu {
+                position: relative;
+                &:hover .submenu {
                     display: block;
-                    margin: 0;
-                    padding: 0.5rem 1rem;
-                    color: #343a40;
-                    background-color: #ffffff;
-
+                }
+                span.head-link {
+                    height: 20px;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    .nav-icon {
+                        width: 18px;
+                        height: 18px;
+                        display: block;
+                        .icon-color {
+                            fill: $primary-black;
+                        }
+                    }
+                    .nav-link {
+                        text-decoration: none;
+                        @include navLink;
+                    }
                     &:hover {
-                        background-color: #6c757d;
-                        color: #fff;
+                        .icon-color,
+                        .nav-link {
+                            fill: $secondary-blue;
+                            color: $secondary-blue;
+                        }
+                    }
+                }
+
+                .submenu {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    border: 1px solid #dee2e6;
+                    box-sizing: border-box;
+                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                    z-index: 10;
+
+                    a {
+                        display: block;
+                        margin: 0;
+                        padding: 0.5rem 1rem;
+                        color: #343a40;
+                        background-color: #ffffff;
+
+                        &:hover {
+                            background-color: #6c757d;
+                            color: #fff;
+                        }
                     }
                 }
             }
@@ -95,6 +102,10 @@ header {
     .logo-fp {
         fill: $white;
         @include dropShadow(rgba(0, 0, 0, 0.35));
+    }
+    .logo-circle,
+    .logo-bg {
+        filter: blur(0.1px);
     }
     &:hover {
         @include dropShadow(rgba(0, 0, 0, 0.25));

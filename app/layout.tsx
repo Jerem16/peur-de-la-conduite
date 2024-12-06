@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Header from "@comp/header/Header";
+// import HeaderProps from "./headerProps";
 import "../src/assets/styles/main.scss";
-// import Header from "@/src/components/header/Header";
+import HeaderProps from "./headerProps";
 
 const RobotoFlex = localFont({
     src: "/fonts/RobotoFlex.woff2",
@@ -36,8 +36,9 @@ export default function RootLayout({
         <html lang="fr-FR">
             <body
                 className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`}
+                id="scroll-start"
             >
-                <Header />
+                <HeaderProps />
                 <main>{children}</main>
             </body>
         </html>
