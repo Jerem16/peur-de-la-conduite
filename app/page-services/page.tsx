@@ -1,5 +1,4 @@
-// import "../../src/styles/page.scss";
-import "@style/main.scss";
+
 export default function Page() {
     return (
         <>
