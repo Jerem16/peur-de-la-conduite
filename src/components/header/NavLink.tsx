@@ -2,7 +2,19 @@
 
 import React from "react";
 import Tarifs from "../svg_Icon/Tarifs";
-import { MenuItem } from "./Header"; // Réutilisation des types
+
+interface MenuItem {
+    id: string;
+    title: string;
+    class: string;
+    path: string;
+    subItems: {
+        id: string;
+        title: string;
+        AnchorId: string;
+        class: string;
+    }[];
+}
 
 interface NavProps {
     menuItems: MenuItem[];
@@ -16,10 +28,10 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                 {menuItems.map((menuItem) => (
                     <div key={menuItem.path} className="group_link-submenu">
                         <a
-                            className="head-link"
-                            href={menuItem.path} // Rend l'élément sémantiquement correct pour la navigation
+                            className={`head-link${menuItem.class}`}
+                            href={menuItem.path}
                             onClick={(e) => {
-                                e.preventDefault(); // Empêche la navigation par défaut si nécessaire
+                                e.preventDefault();
                                 onNavigationClick(menuItem.path);
                             }}
                         >
@@ -30,15 +42,15 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                             <div className="submenu">
                                 {menuItem.subItems.map((subItem) => (
                                     <a
-                                        key={subItem.AncorId}
-                                        href={`${menuItem.path}${subItem.AncorId}`}
+                                        key={subItem.AnchorId}
+                                        href={`${menuItem.path}${subItem.AnchorId}`}
+                                        className={`nav-link${subItem.class}`}
                                         onClick={(e) => {
-                                            e.preventDefault(); // Empêche le comportement par défaut si nécessaire
+                                            e.preventDefault();
                                             onNavigationClick(
-                                                `${menuItem.path}${subItem.AncorId}`
+                                                `${menuItem.path}${subItem.AnchorId}`
                                             );
                                         }}
-                                        className="nav-link"
                                     >
                                         {subItem.title}
                                     </a>

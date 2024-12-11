@@ -8,9 +8,7 @@ header {
     box-sizing: content-box;
     width: calc(100% - 4rem);
     height: 50px;
-    .active {
-        background: #000;
-    }
+
     nav {
         display: flex;
         justify-content: space-around;
@@ -52,6 +50,13 @@ header {
                             color: $secondary-blue;
                         }
                     }
+                    &.active {
+                        .icon-color,
+                        .nav-link {
+                            fill: $secondary-blue;
+                            color: $secondary-blue;
+                        }
+                    }
                 }
 
                 .submenu {
@@ -70,10 +75,11 @@ header {
                         padding: 0.5rem 1rem;
                         color: #343a40;
                         background-color: #ffffff;
+                        @include navLink;
 
                         &:hover {
-                            background-color: #6c757d;
-                            color: #fff;
+                            fill: $secondary-blue;
+                            color: $secondary-blue;
                         }
                     }
                 }

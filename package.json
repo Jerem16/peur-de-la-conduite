@@ -2,6 +2,7 @@
     "name": "peur-de-la-conduite",
     "version": "0.1.0",
     "private": true,
+    "homepage": "http://main.de6j0hr10im2i.amplifyapp.com/accueil",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -15,6 +16,7 @@
         "react-dom": "^18.0.0",
         "next": "15.0.3",
         "sass": "1.60.0",
+        "dotenv": "^16.4.5",
         "aws-amplify": "^6.9.0"
     },
     "devDependencies": {
