@@ -103,20 +103,23 @@ const Header: React.FC = () => {
 
     const updateMenuClasses = (items: MenuItem[]): MenuItem[] => {
         return items.map((item) => {
+            // Vérifiez si l'élément correspond à la route actuelle ou à une ancre sur la route actuelle
             const isActive =
                 item.path === "/"
-                    ? currentRoute === item.path
+                    ? currentRoute === "/" || currentRoute.startsWith("/#")
                     : currentRoute.startsWith(item.path);
+
+            // Vérifiez si un sous-élément est actif
+            const activeSubItem = item.subItems.find((sub) =>
+                currentRoute.endsWith(sub.AnchorId)
+            );
 
             return {
                 ...item,
                 class: isActive ? " active" : "",
                 subItems: item.subItems.map((sub) => ({
                     ...sub,
-                    class:
-                        isActive && currentRoute.endsWith(sub.AnchorId)
-                            ? " active"
-                            : "",
+                    class: activeSubItem?.id === sub.id ? " active" : "",
                 })),
             };
         });
@@ -128,8 +131,8 @@ const Header: React.FC = () => {
         if (window.location.hash) {
             window.scrollTo({ top: 0 });
             handleScrollClick(window.location.hash.substring(1));
-            console.log("Current Route:", currentRoute);
         }
+        console.log("Current Route:", currentRoute);
     }, [pathname]);
 
     return (
