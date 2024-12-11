@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             id: "menu-home",
             title: "Accueil",
             class: "",
-            path: "/accueil",
+            path: "/",
             subItems: [
                 {
                     id: "menu-slider",
@@ -103,7 +103,11 @@ const Header: React.FC = () => {
 
     const updateMenuClasses = (items: MenuItem[]): MenuItem[] => {
         return items.map((item) => {
-            const isActive = currentRoute.startsWith(item.path);
+            const isActive =
+                item.path === "/"
+                    ? currentRoute === item.path
+                    : currentRoute.startsWith(item.path);
+
             return {
                 ...item,
                 class: isActive ? " active" : "",
@@ -124,6 +128,7 @@ const Header: React.FC = () => {
         if (window.location.hash) {
             window.scrollTo({ top: 0 });
             handleScrollClick(window.location.hash.substring(1));
+            console.log("Current Route:", currentRoute);
         }
     }, [pathname]);
 

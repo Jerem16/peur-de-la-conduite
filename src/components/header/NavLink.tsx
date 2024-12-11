@@ -29,9 +29,9 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                     <div key={menuItem.path} className="group_link-submenu">
                         <a
                             className={`head-link${menuItem.class}`}
-                            href={menuItem.path}
+                            href={menuItem.path} // Rend l'élément sémantiquement correct pour la navigation
                             onClick={(e) => {
-                                e.preventDefault();
+                                e.preventDefault(); // Empêche la navigation par défaut si nécessaire
                                 onNavigationClick(menuItem.path);
                             }}
                         >
@@ -40,21 +40,23 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                         </a>
                         {menuItem.subItems.length > 0 && (
                             <div className="submenu">
-                                {menuItem.subItems.map((subItem) => (
-                                    <a
-                                        key={subItem.AnchorId}
-                                        href={`${menuItem.path}${subItem.AnchorId}`}
-                                        className={`nav-link${subItem.class}`}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            onNavigationClick(
-                                                `${menuItem.path}${subItem.AnchorId}`
-                                            );
-                                        }}
-                                    >
-                                        {subItem.title}
-                                    </a>
-                                ))}
+                                <div className="submenu_group">
+                                    {menuItem.subItems.map((subItem) => (
+                                        <a
+                                            key={subItem.AnchorId}
+                                            href={`${menuItem.path}${subItem.AnchorId}`}
+                                            className={`nav-link${subItem.class}`}
+                                            onClick={(e) => {
+                                                e.preventDefault(); // Empêche le comportement par défaut si nécessaire
+                                                onNavigationClick(
+                                                    `${menuItem.path}${subItem.AnchorId}`
+                                                );
+                                            }}
+                                        >
+                                            {subItem.title}
+                                        </a>
+                                    ))}
+                                </div>
                             </div>
                         )}
                     </div>
