@@ -104,8 +104,6 @@ const Header = () => {
         },
     ];
 
-<<<<<<< HEAD
-=======
     const updateMenuClasses = (items: MenuItem[]): MenuItem[] => {
         return items.map((item) => {
             // Vérifiez si l'élément correspond à la route actuelle ou à une ancre sur la route actuelle
@@ -132,7 +130,6 @@ const Header = () => {
 
     const updatedMenuItems = updateMenuClasses(menuItems);
 
->>>>>>> 7fe56f72a25fd49488275aaf82f26b2005f1e52a
     useEffect(() => {
         if (window.location.hash) {
             window.scrollTo({ top: 0 });
@@ -149,7 +146,7 @@ const Header = () => {
                 <Logo />
             </Link>
             <Nav
-                menuItems={menuItems}
+                menuItems={updatedMenuItems}
                 onNavigationClick={handleNavigationClick}
             />
         </header>
