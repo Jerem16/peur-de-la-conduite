@@ -13,6 +13,10 @@
 # testing
 /coverage
 
+# local backup
+/save
+
+
 # next.js
 /.next/
 /out/

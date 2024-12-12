@@ -1,4 +1,4 @@
-
+// import "../../src/styles/page.scss";
 
 export default function Page() {
     return (

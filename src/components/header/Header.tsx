@@ -3,9 +3,9 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Logo from "../svg_Icon/Logo";
 import Nav from "./NavLink";
-import { handleScrollClick } from "../../utils/scrollUtils";
+import Logo from "../svg_Icon/Logo";
+import { handleScrollClick, handleNavClick } from "../../utils/scrollUtils";
 import { useNavigation } from "../../utils/context/NavigationContext";
 
 interface MenuItem {
@@ -21,16 +21,19 @@ interface MenuItem {
     }[];
 }
 
-const Header: React.FC = () => {
+const Header = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute } = useNavigation();
+    const handleNavigationClick = (path: string) => {
+        handleNavClick(path, currentRoute, updateRoute, handleScrollClick);
+    };
 
     const menuItems: MenuItem[] = [
         {
             id: "menu-home",
             title: "Accueil",
             class: "",
-            path: "/accueil",
+            path: "/",
             subItems: [
                 {
                     id: "menu-slider",
@@ -101,32 +104,12 @@ const Header: React.FC = () => {
         },
     ];
 
-    const updateMenuClasses = (items: MenuItem[]): MenuItem[] => {
-        return items.map((item) => {
-            const isActive = currentRoute.startsWith(item.path);
-            return {
-                ...item,
-                class: isActive ? " active" : "",
-                subItems: item.subItems.map((sub) => ({
-                    ...sub,
-                    class:
-                        isActive && currentRoute.endsWith(sub.AnchorId)
-                            ? " active"
-                            : "",
-                })),
-            };
-        });
-    };
-
-    const updatedMenuItems = updateMenuClasses(menuItems);
-
     useEffect(() => {
         if (window.location.hash) {
             window.scrollTo({ top: 0 });
             handleScrollClick(window.location.hash.substring(1));
         }
     }, [pathname]);
-
     return (
         <header className="header">
             <Link
@@ -136,8 +119,8 @@ const Header: React.FC = () => {
                 <Logo />
             </Link>
             <Nav
-                menuItems={updatedMenuItems}
-                onNavigationClick={(path: string) => updateRoute(path)}
+                menuItems={menuItems}
+                onNavigationClick={handleNavigationClick}
             />
         </header>
     );
