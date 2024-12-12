@@ -9,7 +9,6 @@ const Logo = () => {
                 viewBox="0 0 90 90"
                 aria-hidden="true"
             >
-                <title>Page d'accueil</title>
                 <linearGradient
                     id="A"
                     gradientUnits="userSpaceOnUse"

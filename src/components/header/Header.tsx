@@ -135,8 +135,8 @@ const Header = () => {
             window.scrollTo({ top: 0 });
             handleScrollClick(window.location.hash.substring(1));
         }
-        console.log("Current Route:", currentRoute);
     }, [pathname]);
+    
     return (
         <header className="header">
             <Link
