@@ -106,11 +106,20 @@ const Header = () => {
 
     const updateMenuClasses = (items: MenuItem[]): MenuItem[] => {
         return items.map((item) => {
-            // Vérifiez si l'élément correspond à la route actuelle ou à une ancre sur la route actuelle
-            const isActive =
-                item.path === "/"
-                    ? currentRoute === "/" || currentRoute.startsWith("/#")
-                    : currentRoute.startsWith(item.path);
+            // Initialisez la variable pour la classe active
+            let isActive = false;
+
+            if (item.path === "/") {
+                // "Accueil" est actif uniquement si on est strictement sur "/"
+                // et que ce n'est pas "/#contact"
+                isActive =
+                    currentRoute === "/" ||
+                    (currentRoute.startsWith("/#") &&
+                        currentRoute !== "/#contact");
+            } else {
+                // Vérifiez si le chemin de l'élément correspond à la route actuelle
+                isActive = currentRoute.startsWith(item.path);
+            }
 
             // Vérifiez si un sous-élément est actif
             const activeSubItem = item.subItems.find((sub) =>
@@ -136,7 +145,7 @@ const Header = () => {
             handleScrollClick(window.location.hash.substring(1));
         }
     }, [pathname]);
-    
+
     return (
         <header className="header">
             <Link

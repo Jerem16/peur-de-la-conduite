@@ -8,110 +8,91 @@ header {
     box-sizing: content-box;
     width: calc(100% - 4rem);
     height: 50px;
-
-    nav {
-        display: flex;
-        justify-content: space-around;
-
-        .main-nav {
-            display: inline-flex;
-            padding: 15px 24px;
-            gap: 32px;
-            width: 610px;
-            border-radius: 25px;
-            background: $white;
-            @include menuShadow(rgba(0, 0, 0, 0.25));
-            div.group_link-submenu {
-                position: relative;
-                &:hover .submenu {
-                    display: block;
-                }
-                .head-link {
-                    height: 20px;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 10px;
-                    text-decoration: none;
-                    .nav-icon {
-                        width: 18px;
-                        height: 18px;
-                        display: block;
-                        .icon-color {
-                            fill: $primary-black;
-                        }
-                    }
-                    .nav-link {
-                        @include navLink;
-                    }
-                    &:hover {
-                        .icon-color,
-                        .nav-link {
-                            fill: $secondary-blue;
-                            color: $secondary-blue;
-                        }
-                    }
-                    &.active {
-                        .icon-color,
-                        .nav-link {
-                            fill: $secondary-blue;
-                            color: $secondary-blue;
-                        }
-                    }
-                }
-
-                .submenu {
-                    display: none;
-                    position: absolute;
-                    top: 100%;
-                    height: auto;
-                    margin-left: -1.5rem;
-                    width: calc(100% + 3.5rem);
-                    padding-top: 1.5rem;
-                    // background: red;
-
-                    box-sizing: border-box;
-                    // box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                    z-index: 10;
-                    // border: 1px solid #000;
-                    &_group {
-                        // position: absolute;
-                        background-color: #ffffff;
-                        border-radius: 1.5rem;
-                        padding: 1.5rem;
-                        display: flex;
-                        flex-flow: column;
-                        gap: 1rem;
-                        // top: 1.5rem;
-
-                        a {
-                            display: block;
-                            margin: 0;
-                            // text-align: right;
-                            // padding: 0.5rem 0.5rem 0.5rem 1rem;
-                            color: #343a40;
-                            // background-color: green;
-                            // border: 1px solid #000;
-                            // height: 20px;
-                            // display: inline-flex;
-                            align-items: center;
-                            gap: 10px;
-                            text-decoration: none;
-                            @include navLink;
-                            &.active {
-                                fill: $secondary-blue;
-                                color: $secondary-blue;
-                            }
-                            &:hover {
-                                fill: $secondary-blue;
-                                color: $secondary-blue;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+.main-nav {
+    display: inline-flex;
+    padding: 15px 24px;
+    gap: 32px;
+    width: 610px;
+    border-radius: 25px;
+    background: $white;
+    @include menuShadow(rgba(0, 0, 0, 0.25));
+}
+.main-nav .group_link-submenu {
+    position: relative;
+}
+.main-nav .group_link-submenu:hover .submenu {
+    display: block;
+}
+.head-link {
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.nav-link {
+    @include navLink;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    height: auto;
+    margin-left: -1.5rem;
+    width: calc(100% + 3.5rem);
+    padding-top: 1.5rem;
+    box-sizing: border-box;
+    z-index: 10;
+}
+.submenu_group {
+    background-color: $white;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    @include menuShadow(rgba(0, 0, 0, 0.25));
+}
+.submenu_group a {
+    display: block;
+    margin: 0;
+    align-items: center;
+    gap: 10px;
+}
+.main-nav:hover .group_link-submenu .head-link.active .icon-color,
+.main-nav:hover .group_link-submenu .head-link.active .nav-link,
+.icon-color,
+.submenu_group:hover a.active,
+.nav-link {
+    fill: $primary-black;
+    color: $primary-black;
+    transition: fill 0.35s ease, color 0.35s ease;
+}
+.submenu_group:hover .nav-link.active:hover,
+.main-nav:hover .group_link-submenu .head-link.active:hover .icon-color,
+.main-nav:hover .group_link-submenu .head-link.active:hover .nav-link,
+.head-link:hover .icon-color,
+.head-link:hover .nav-link,
+.submenu_group a:hover,
+.head-link.active .icon-color,
+.head-link.active .nav-link,
+.submenu_group a.active {
+    fill: $primary-blue;
+    color: $primary-blue;
+    transition: fill 0.35s ease, color 0.35s ease;
+}
+
 .logo {
     margin: 0;
     width: 50px;
