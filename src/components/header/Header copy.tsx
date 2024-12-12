@@ -3,9 +3,9 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Nav from "./NavLink";
 import Logo from "../svg_Icon/Logo";
-import { handleScrollClick, handleNavClick } from "../../utils/scrollUtils";
+import Nav from "./NavLink";
+import { handleScrollClick } from "../../utils/scrollUtils";
 import { useNavigation } from "../../utils/context/NavigationContext";
 
 interface MenuItem {
@@ -21,12 +21,9 @@ interface MenuItem {
     }[];
 }
 
-const Header = () => {
+const Header: React.FC = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute } = useNavigation();
-    const handleNavigationClick = (path: string) => {
-        handleNavClick(path, currentRoute, updateRoute, handleScrollClick);
-    };
 
     const menuItems: MenuItem[] = [
         {
@@ -104,8 +101,6 @@ const Header = () => {
         },
     ];
 
-<<<<<<< HEAD
-=======
     const updateMenuClasses = (items: MenuItem[]): MenuItem[] => {
         return items.map((item) => {
             // Vérifiez si l'élément correspond à la route actuelle ou à une ancre sur la route actuelle
@@ -132,7 +127,6 @@ const Header = () => {
 
     const updatedMenuItems = updateMenuClasses(menuItems);
 
->>>>>>> 7fe56f72a25fd49488275aaf82f26b2005f1e52a
     useEffect(() => {
         if (window.location.hash) {
             window.scrollTo({ top: 0 });
@@ -140,6 +134,7 @@ const Header = () => {
         }
         console.log("Current Route:", currentRoute);
     }, [pathname]);
+
     return (
         <header className="header">
             <Link
@@ -149,8 +144,8 @@ const Header = () => {
                 <Logo />
             </Link>
             <Nav
-                menuItems={menuItems}
-                onNavigationClick={handleNavigationClick}
+                menuItems={updatedMenuItems}
+                onNavigationClick={(path: string) => updateRoute(path)}
             />
         </header>
     );
