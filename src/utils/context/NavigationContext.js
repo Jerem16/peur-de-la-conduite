@@ -1,19 +1,27 @@
+"use client";
+
 import {
     createContext,
     useContext,
     useState,
     useMemo,
     useCallback,
+    useEffect,
 } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 let NavigationContext = createContext();
 
 export const NavigationProvider = ({ children }) => {
     const router = useRouter();
-    const [currentRoute, setCurrentRoute] = useState(router.asPath || "/");
+    const pathname = usePathname();
+    const [currentRoute, setCurrentRoute] = useState(pathname || "/");
 
-    // 🚀 Stabilisation de la fonction `updateRoute` avec `useCallback`
+    // Mettre à jour `currentRoute` quand `pathname` change
+    useEffect(() => {
+        setCurrentRoute(pathname || "/");
+    }, [pathname]);
+
     const updateRoute = useCallback(
         (path) => {
             setCurrentRoute(path);
@@ -22,7 +30,6 @@ export const NavigationProvider = ({ children }) => {
         [router]
     );
 
-    // 🎯 Utilisation de `useMemo` avec `updateRoute` comme dépendance
     const contextValue = useMemo(
         () => ({
             currentRoute,
@@ -41,7 +48,9 @@ export const NavigationProvider = ({ children }) => {
 export const useNavigation = () => {
     const context = useContext(NavigationContext);
     if (!context) {
-        throw Error("useNavigation must be used within a NavigationProvider");
+        throw new Error(
+            "useNavigation must be used within a NavigationProvider"
+        );
     }
     return context;
 };

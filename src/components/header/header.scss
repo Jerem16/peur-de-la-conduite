@@ -8,6 +8,12 @@ header {
     box-sizing: content-box;
     width: calc(100% - 4rem);
     height: 50px;
+    background: linear-gradient(
+        180deg,
+        rgba(245, 245, 245, 1) 0%,
+        rgba(245, 245, 245, 0) 95%,
+        rgba(245, 245, 245, 0) 100%
+    );
 }
 nav {
     display: flex;
@@ -25,7 +31,8 @@ nav {
 .main-nav .group_link-submenu {
     position: relative;
 }
-.main-nav .group_link-submenu:hover .submenu {
+.main-nav .group_link-submenu:hover .submenu,
+.main-nav .group_link-submenu:focus .submenu {
     display: block;
 }
 .head-link {
@@ -70,8 +77,7 @@ nav {
     align-items: center;
     gap: 10px;
 }
-.main-nav:hover .group_link-submenu .head-link.active .icon-color,
-.main-nav:hover .group_link-submenu .head-link.active .nav-link,
+
 .icon-color,
 .submenu_group:hover a.active,
 .nav-link {
@@ -79,11 +85,32 @@ nav {
     color: $primary-black;
     transition: fill 0.35s ease, color 0.35s ease;
 }
+
+.main-nav:hover .group_link-submenu .head-link:hover .icon-color,
+.main-nav:hover .group_link-submenu .head-link:hover .nav-link,
+.nav-link:hover {
+    fill: rgb(209, 73, 5);
+    color: rgb(209, 73, 5);
+    // filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    transition: fill 0.35s ease, color 0.35s ease;
+}
+.main-nav:hover .group_link-submenu .head-link:hover {
+    // background: linear-gradient(
+    //     to bottom,
+    //     #fff 0%,
+    //     rgba(21, 21, 21, 0.3) 50%,
+    //     #fff 100%
+    // );
+    // background: rgba(255, 142, 66, 0.3);
+    transition: all 0.7s ease;
+}
+// .main-nav:hover .group_link-submenu .head-link.hovered .icon-color,
+.main-nav:hover .group_link-submenu .head-link.active:hover,
 .submenu_group:hover .nav-link.active:hover,
 .main-nav:hover .group_link-submenu .head-link.active:hover .icon-color,
 .main-nav:hover .group_link-submenu .head-link.active:hover .nav-link,
-.head-link:hover .icon-color,
-.head-link:hover .nav-link,
+// .head-link:hover .icon-color,
+// .head-link:hover .nav-link,
 .submenu_group a:hover,
 .head-link.active .icon-color,
 .head-link.active .nav-link,
@@ -91,8 +118,8 @@ nav {
     fill: $primary-blue;
     color: $primary-blue;
     transition: fill 0.35s ease, color 0.35s ease;
+    background: none;
 }
-
 .logo {
     margin: 0;
     width: 50px;
