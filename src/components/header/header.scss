@@ -79,7 +79,7 @@ nav {
 }
 
 .icon-color,
-.submenu_group:hover a.active,
+// .submenu_group:hover a.active,
 .nav-link {
     fill: $primary-black;
     color: $primary-black;
@@ -88,20 +88,13 @@ nav {
 
 .main-nav:hover .group_link-submenu .head-link:hover .icon-color,
 .main-nav:hover .group_link-submenu .head-link:hover .nav-link,
-.nav-link:hover {
+.nav-link:hover,
+.submenu_group .nav-link:hover {
     fill: rgb(209, 73, 5);
     color: rgb(209, 73, 5);
-    // filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
     transition: fill 0.35s ease, color 0.35s ease;
 }
 .main-nav:hover .group_link-submenu .head-link:hover {
-    // background: linear-gradient(
-    //     to bottom,
-    //     #fff 0%,
-    //     rgba(21, 21, 21, 0.3) 50%,
-    //     #fff 100%
-    // );
-    // background: rgba(255, 142, 66, 0.3);
     transition: all 0.7s ease;
 }
 // .main-nav:hover .group_link-submenu .head-link.hovered .icon-color,

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MenuItem, menuItems, sections } from "./data";
+import { MenuItem } from "./data";
 import Tarifs from "../svg_Icon/Tarifs";
 import Logo from "../svg_Icon/Logo";
 
