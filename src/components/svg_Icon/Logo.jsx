@@ -4,13 +4,11 @@ const Logo = () => {
     return (
         <div className="logo">
             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 90 90"
                 aria-hidden="true"
             >
                 <linearGradient
-                    id="A"
+                    id="Alogo"
                     gradientUnits="userSpaceOnUse"
                     x1="25"
                     y1="0"
@@ -25,7 +23,7 @@ const Logo = () => {
                     cx="45"
                     cy="45"
                     r="45"
-                    fill="url(#A)"
+                    fill="url(#Alogo)"
                 />
                 <linearGradient
                     id="A"

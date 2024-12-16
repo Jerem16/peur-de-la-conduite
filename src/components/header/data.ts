@@ -3,6 +3,7 @@ export interface MenuItem {
     title: string;
     class: string;
     path: string;
+    svg: string;
     subItems: {
         id: string;
         title: string;
@@ -18,6 +19,7 @@ export const menuItems: MenuItem[] = [
         title: "Accueil",
         class: "",
         path: "/",
+        svg: "Tarifs",
         subItems: [
             {
                 id: "menu-slider",
@@ -50,6 +52,7 @@ export const menuItems: MenuItem[] = [
         title: "Services",
         class: "",
         path: "/page-services",
+        svg: "Tarifs",
         subItems: [
             {
                 id: "menu-without-license",
@@ -70,6 +73,7 @@ export const menuItems: MenuItem[] = [
         title: "Blog",
         class: "",
         path: "/page-blog",
+        svg: "Tarifs",
         subItems: [],
     },
     {
@@ -77,6 +81,7 @@ export const menuItems: MenuItem[] = [
         title: "Tarifs",
         class: "",
         path: "/page-tarifs",
+        svg: "Tarifs",
         subItems: [],
     },
     {
@@ -84,6 +89,7 @@ export const menuItems: MenuItem[] = [
         title: "Contact",
         class: "",
         path: "/#contact",
+        svg: "Tarifs",
         subItems: [],
     },
 ];
