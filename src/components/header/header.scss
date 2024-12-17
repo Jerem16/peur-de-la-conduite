@@ -31,10 +31,6 @@ nav {
 .main-nav .group_link-submenu {
     position: relative;
 }
-.main-nav .group_link-submenu:hover .submenu,
-.main-nav .group_link-submenu:focus .submenu {
-    display: block;
-}
 .head-link {
     height: 20px;
     display: inline-flex;
@@ -50,17 +46,25 @@ nav {
 .nav-link {
     @include navLink;
 }
-
 .submenu {
     display: none;
     position: absolute;
     top: 100%;
     height: auto;
-    margin-left: -1.5rem;
+    margin-left: -1rem;
     width: calc(100% + 3.5rem);
     padding-top: 1.5rem;
     box-sizing: border-box;
     z-index: 10;
+    transition: all 0.35s ease;
+    opacity: 0;
+}
+
+.main-nav .group_link-submenu:hover .submenu,
+.main-nav .group_link-submenu:focus .submenu,
+.submenu.open {
+    display: block;
+    opacity: 1;
 }
 .submenu_group {
     background-color: $white;
@@ -79,31 +83,33 @@ nav {
 }
 
 .icon-color,
-// .submenu_group:hover a.active,
 .nav-link {
     fill: $primary-black;
     color: $primary-black;
     transition: fill 0.35s ease, color 0.35s ease;
 }
-
+.group_link-submenu:hover .submenu.open,
+.group_link-submenu:hover .head-link .nav-link,
+.group_link-submenu:hover .head-link .icon-color,
 .main-nav:hover .group_link-submenu .head-link:hover .icon-color,
 .main-nav:hover .group_link-submenu .head-link:hover .nav-link,
 .nav-link:hover,
+.group_link-submenu:hover,
 .submenu_group .nav-link:hover {
-    fill: rgb(209, 73, 5);
-    color: rgb(209, 73, 5);
+    fill: $primary-orange;
+    color: $primary-orange;
     transition: fill 0.35s ease, color 0.35s ease;
+    z-index: 20;
 }
 .main-nav:hover .group_link-submenu .head-link:hover {
     transition: all 0.7s ease;
 }
-// .main-nav:hover .group_link-submenu .head-link.hovered .icon-color,
+.group_link-submenu:hover .head-link.active .nav-link,
+.group_link-submenu:hover .head-link.active .icon-color,
 .main-nav:hover .group_link-submenu .head-link.active:hover,
 .submenu_group:hover .nav-link.active:hover,
 .main-nav:hover .group_link-submenu .head-link.active:hover .icon-color,
 .main-nav:hover .group_link-submenu .head-link.active:hover .nav-link,
-// .head-link:hover .icon-color,
-// .head-link:hover .nav-link,
 .submenu_group a:hover,
 .head-link.active .icon-color,
 .head-link.active .nav-link,

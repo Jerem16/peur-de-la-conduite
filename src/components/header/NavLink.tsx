@@ -4,24 +4,29 @@ import React, { useState } from "react";
 import { MenuItem } from "./data";
 import Tarifs from "../svg_Icon/Tarifs";
 import Logo from "../svg_Icon/Logo";
+import { useMenuBehavior } from "../../utils/updateMenuUtils";
 
 interface NavProps {
     menuItems: MenuItem[];
     onNavigationClick: (path: string) => void;
 }
+
 const svgComponents = {
     Tarifs,
     Logo,
 };
 
 const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
-    const [openMenu, setOpenMenu] = useState<string | null>(null);
+    const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+    const { navRef } = useMenuBehavior();
 
-    const handleMouseEnter = (id: string) => setOpenMenu(id);
-    const handleMouseLeave = () => setOpenMenu(null);
+    const handleMenuClick = (menuItemId: string) => {
+        // Ouvre le sous-menu sélectionné et ferme les autres
+        setOpenSubMenu((prev) => (prev === menuItemId ? null : menuItemId));
+    };
 
     return (
-        <nav>
+        <nav ref={navRef}>
             <div className="main-nav">
                 {menuItems.map((menuItem) => {
                     const SvgIcon = svgComponents[menuItem.svg];
@@ -29,10 +34,7 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                     return (
                         <div
                             key={menuItem.id}
-                            className="group_link-submenu"
-                            onMouseEnter={() => handleMouseEnter(menuItem.id)}
-                            onMouseLeave={handleMouseLeave}
-                            tabIndex={0}
+                            className={`group_link-submenu ${menuItem.id}`}
                         >
                             <a
                                 className={`head-link ${menuItem.class}`}
@@ -40,28 +42,28 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     onNavigationClick(menuItem.path);
+                                    handleMenuClick(menuItem.id);
                                 }}
+                                tabIndex={0}
                             >
                                 {SvgIcon && <SvgIcon />}
                                 <span className="nav-link">
                                     {menuItem.title}
                                 </span>
                             </a>
+
                             {menuItem.subItems && menuItem.subItems.length > 0 && (
                                 <div
                                     className={`submenu ${
-                                        openMenu === menuItem.id ? "open" : ""
+                                        openSubMenu === menuItem.id
+                                            ? "open"
+                                            : ""
                                     }`}
-                                    tabIndex={-1}
                                 >
-                                    <div
-                                        className="submenu_group"
-                                        tabIndex={-1}
-                                    >
+                                    <div className="submenu_group">
                                         {menuItem.subItems.map((subItem) => (
                                             <a
-                                                tabIndex={-1}
-                                                key={subItem.id} // Clé unique pour chaque subItem
+                                                key={subItem.id}
                                                 href={`${menuItem.path}${subItem.AnchorId}`}
                                                 className={`nav-link ${subItem.class}`}
                                                 onClick={(e) => {
@@ -69,6 +71,7 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                                                     onNavigationClick(
                                                         `${menuItem.path}${subItem.AnchorId}`
                                                     );
+                                                    setOpenSubMenu(null); // Ferme le sous-menu
                                                 }}
                                             >
                                                 {subItem.title}

@@ -88,7 +88,7 @@ export const menuItems: MenuItem[] = [
         id: "menu-contact",
         title: "Contact",
         class: "",
-        path: "/#contact",
+        path: "/page-contact",
         svg: "Tarifs",
         subItems: [],
     },
@@ -99,6 +99,7 @@ export const sections = [
     { id: "about" },
     { id: "services" },
     { id: "contact" },
+    { id: "s1" },
     { id: "sans-permis" },
     { id: "avec-permis" },
 ];

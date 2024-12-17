@@ -2,43 +2,17 @@
 
 import { useEffect } from "react";
 import { useScrollContext } from "./context/ScrollContext";
+import { resetActiveMenuClasses } from "./updateMenuUtils";
 
-// export const useScrollAnchors = (sections: { id: string }[]) => {
-//     useEffect(() => {
-//         const handleScroll = () => {
-//             const scrollPosition = window.scrollY;
-//             let currentSectionId = "";
-
-//             sections.forEach(({ id }) => {
-//                 const section = document.getElementById(id);
-//                 if (section) {
-//                     const sectionTop = section.offsetTop;
-//                     const sectionHeight = section.offsetHeight;
-
-//                     if (
-//                         scrollPosition >= sectionTop - 100 &&
-//                         scrollPosition < sectionTop + sectionHeight
-//                     ) {
-//                         currentSectionId = id;
-//                     }
-//                 }
-//             });
-
-//             if (currentSectionId) {
-//                 const newUrl = `#${currentSectionId}`;
-//                 if (window.location.hash !== newUrl) {
-//                     window.history.replaceState(null, "", newUrl);
-//                 }
-//             }
-//         };
-
-//         window.addEventListener("scroll", handleScroll);
-
-//         return () => {
-//             window.removeEventListener("scroll", handleScroll);
-//         };
-//     }, [sections]);
-// };
+export const useInitialScroll = (pathname: string) => {
+    useEffect(() => {
+        if (window.location.hash) {
+            window.scrollTo({ top: 0 });
+            handleScrollClick(window.location.hash.substring(1));
+        }
+        resetActiveMenuClasses();
+    }, [pathname]);
+};
 
 export const useScrollAnchors = (sections: { id: string }[]) => {
     const { setActiveSection } = useScrollContext();

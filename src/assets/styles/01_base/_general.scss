@@ -16,7 +16,7 @@ body {
     svg {
         image-rendering: auto;
     }
-    // overflow: hidden;
+    overflow-x: hidden;
 }
 p {
     max-width: 720px;
