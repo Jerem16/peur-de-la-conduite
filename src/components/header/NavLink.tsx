@@ -21,7 +21,6 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
     const { navRef } = useMenuBehavior();
 
     const handleMenuClick = (menuItemId: string) => {
-        // Ouvre le sous-menu sélectionné et ferme les autres
         setOpenSubMenu((prev) => (prev === menuItemId ? null : menuItemId));
     };
 

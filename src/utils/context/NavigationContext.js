@@ -22,20 +22,6 @@ export const NavigationProvider = ({ children }) => {
         setCurrentRoute(pathname || "/");
     }, [pathname]);
 
-    // Forcer la mise à jour pour les ancres
-    const handleAnchorClick = useCallback((event) => {
-        const href = event.target.getAttribute("href");
-        if (href && href.startsWith("/#")) {
-            setCurrentRoute(href);
-        }
-    }, []);
-
-    useEffect(() => {
-        // Ajouter un écouteur pour les ancres
-        document.addEventListener("click", handleAnchorClick);
-        return () => document.removeEventListener("click", handleAnchorClick);
-    }, [handleAnchorClick]);
-
     const updateRoute = useCallback(
         (path) => {
             setCurrentRoute(path);

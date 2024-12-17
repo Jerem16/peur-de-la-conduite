@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { useScrollContext } from "./context/ScrollContext";
-import { resetActiveMenuClasses } from "./updateMenuUtils";
 
 export const useInitialScroll = (pathname: string) => {
     useEffect(() => {
@@ -10,7 +9,6 @@ export const useInitialScroll = (pathname: string) => {
             window.scrollTo({ top: 0 });
             handleScrollClick(window.location.hash.substring(1));
         }
-        resetActiveMenuClasses();
     }, [pathname]);
 };
 

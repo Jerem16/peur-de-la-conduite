@@ -6,11 +6,9 @@ export const isMainItemActive = (
     currentRoute: string
 ): boolean => {
     if (itemPath === "/") {
-        return (
-            currentRoute === "/" ||
-            (currentRoute.startsWith("/#") && currentRoute !== "/#contact")
-        );
+        return currentRoute === "/" || currentRoute.startsWith("/#");
     }
+
     return currentRoute.startsWith(itemPath);
 };
 export const updateMenuClasses = (
@@ -24,34 +22,14 @@ export const updateMenuClasses = (
             (sub) => sub.AnchorId === `#${activeSection}`
         );
 
-        const updatedSubItems = item.subItems.map((sub) => ({
-            ...sub,
-            class: activeSubItem?.id === sub.id ? "active" : "",
-        }));
-
         return {
             ...item,
             class: isActive ? "active" : "",
-            subItems: updatedSubItems,
+            subItems: item.subItems.map((sub) => ({
+                ...sub,
+                class: activeSubItem?.id === sub.id ? "active" : "",
+            })),
         };
-    });
-};
-
-export const resetActiveMenuClasses = () => {
-    const activeLinks = document.querySelectorAll(".nav-link.active");
-
-    activeLinks.forEach((link) => {
-        if (link instanceof HTMLElement) {
-            link.classList.remove("active");
-        }
-    });
-
-    const submenus = document.querySelectorAll(".submenu.open");
-
-    submenus.forEach((submenu) => {
-        if (submenu instanceof HTMLElement) {
-            submenu.style.display = "";
-        }
     });
 };
 
