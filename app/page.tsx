@@ -41,7 +41,9 @@ export default function Home() {
                     </p>
                 </div>
             </section>
-            <Contact />
+            <section className="section" id="contact">
+                <Contact />
+            </section>
         </>
     );
 }

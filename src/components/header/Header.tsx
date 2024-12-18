@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Nav from "./NavLink";
+import Nav from "./Nav";
 import Logo from "../svg_Icon/Logo";
 import { useScrollContext } from "../../utils/context/ScrollContext";
 import { useNavigation } from "../../utils/context/NavigationContext";

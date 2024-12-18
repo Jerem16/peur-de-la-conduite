@@ -2,7 +2,7 @@ import React from "react";
 
 const Contact = () => {
     return (
-        <section className="section" id="contact">
+        <>
             <div className="fixed-menu"></div>
             <h2>Me Contacter</h2>
             <div className="s2">
@@ -13,7 +13,7 @@ const Contact = () => {
                     voluptate soluta deleniti voluptatum consequatur.
                 </p>
             </div>
-        </section>
+        </>
     );
 };
 

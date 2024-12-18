@@ -1,5 +1,9 @@
 import Contact from "../../src/components/contact/Contact";
 
 export default function Page() {
-    return <Contact />;
+    return (
+        <section className="section">
+            <Contact />
+        </section>
+    );
 }

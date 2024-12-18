@@ -25,7 +25,8 @@ nav {
 }
 .main-nav {
     display: inline-flex;
-    padding: 15px 24px;
+    // padding: 15px 28px 15px 1.5rem;
+    padding: 15px 1.5rem;
     gap: 32px;
     width: 610px;
     border-radius: 25px;
@@ -112,7 +113,6 @@ nav {
     bottom: 0; // Ligne en bas
     right: 0;
     transform-origin: right;
-    
 }
 
 .submenu_group a:hover {
@@ -143,7 +143,7 @@ nav {
 .submenu_group .nav-link:hover {
     fill: $primary-orange;
     color: $primary-orange;
-    transition: fill 0.35s ease, color 0.35s ease;
+    @include smoothTransition(fill, color);
     z-index: 20;
 }
 .main-nav:hover .group_link-submenu .head-link:hover {
@@ -161,7 +161,7 @@ nav {
 .submenu_group a.active {
     fill: $primary-blue;
     color: $primary-blue;
-    transition: fill 0.35s ease, color 0.35s ease;
+    @include smoothTransition(fill, color);
     background: none;
 }
 .logo {

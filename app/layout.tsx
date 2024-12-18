@@ -35,7 +35,7 @@ export default function RootLayout({
         <html lang="fr-FR">
             <body
                 className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`}
-                id="scroll-start"
+                id="top"
             >
                 <HeaderProps />
                 <main>{children}</main>
