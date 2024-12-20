@@ -38,14 +38,6 @@ const NavLink: React.FC<MenuItemComponentProps> = ({
                 {SvgIcon && <SvgIcon />}
                 <span className="nav-link">{menuItem.title}</span>
             </a>
-
-            {menuItem.subItems?.length > 0 && (
-                <SubMenu
-                    menuItem={menuItem}
-                    isOpen={isOpen}
-                    onSubItemClick={onNavigationClick}
-                />
-            )}
         </div>
     );
 };

@@ -29,6 +29,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
                 {menuItem.subItems.map((subItem) => (
                     <a
                         key={subItem.id}
+                        aria-label={`Section ${subItem.title}`}
                         href={`${menuItem.path}${subItem.AnchorId}`}
                         className={`nav-link ${subItem.class}`}
                         onClick={(e) => {

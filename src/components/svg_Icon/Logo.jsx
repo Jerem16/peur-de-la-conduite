@@ -5,7 +5,7 @@ const Logo = () => {
         <div className="logo">
             <svg
                 viewBox="0 0 90 90"
-                aria-hidden="true"
+                aria-label="Logo et lien vers la page d'accueil"
             >
                 <linearGradient
                     id="Alogo"

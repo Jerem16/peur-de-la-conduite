@@ -6,7 +6,12 @@ import { useMenuBehavior } from "../../utils/updateMenuUtils";
 import NavLink from "./NavLink";
 
 interface NavProps {
-    menuItems: MenuItem[];
+    menuItems: {
+        mainLink?: MenuItem[];
+        reservation?: MenuItem[];
+        search?: MenuItem[];
+        connection?: MenuItem[];
+    };
     onNavigationClick: (path: string) => void;
 }
 
@@ -19,17 +24,52 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
     };
 
     return (
-        <nav ref={navRef} className="main-nav">
-            {menuItems.map((menuItem) => (
-                <NavLink
-                    key={menuItem.id}
-                    menuItem={menuItem}
-                    onNavigationClick={onNavigationClick}
-                    isOpen={openSubMenu === menuItem.id}
-                    handleMenuClick={handleMenuClick}
-                />
-            ))}
-        </nav>
+        <>
+            <nav ref={navRef} className="main-nav">
+                {menuItems.mainLink?.map((menuItem) => (
+                    <NavLink
+                        key={menuItem.id}
+                        menuItem={menuItem}
+                        onNavigationClick={onNavigationClick}
+                        isOpen={openSubMenu === menuItem.id}
+                        handleMenuClick={handleMenuClick}
+                    />
+                ))}
+            </nav>
+            <nav ref={navRef} className="main-nav solo">
+                {menuItems.reservation?.map((menuItem) => (
+                    <NavLink
+                        key={menuItem.id}
+                        menuItem={menuItem}
+                        onNavigationClick={onNavigationClick}
+                        isOpen={false}
+                        handleMenuClick={() => {}}
+                    />
+                ))}
+            </nav>
+            <nav ref={navRef} className="main-nav solo research">
+                {menuItems.search?.map((menuItem) => (
+                    <NavLink
+                        key={menuItem.id}
+                        menuItem={menuItem}
+                        onNavigationClick={onNavigationClick}
+                        isOpen={false}
+                        handleMenuClick={() => {}}
+                    />
+                ))}
+            </nav>
+            <nav ref={navRef} className="main-nav solo connect">
+                {menuItems.connection?.map((menuItem) => (
+                    <NavLink
+                        key={menuItem.id}
+                        menuItem={menuItem}
+                        onNavigationClick={onNavigationClick}
+                        isOpen={false}
+                        handleMenuClick={() => {}}
+                    />
+                ))}
+            </nav>
+        </>
     );
 };
 

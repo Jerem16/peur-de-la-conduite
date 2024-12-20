@@ -23,16 +23,65 @@ nav {
     display: flex;
     justify-content: space-around;
 }
-.main-nav {
+.main-nav,
+.solo {
     display: inline-flex;
-    // padding: 15px 28px 15px 1.5rem;
-    padding: 15px 1.5rem;
+    padding: 15px 1.625rem 15px 1.5rem;
     gap: 32px;
-    width: 610px;
+    width: auto;
     border-radius: 25px;
     background: $white;
     @include menuShadow(rgba(0, 0, 0, 0.25));
+    transition: background 0.3s ease, color 0.3s ease;
 }
+.solo {
+    background: $primary-blue;
+    color: $white;
+    .nav-link,
+    .icon-color {
+        fill: $white;
+        color: #fff;
+        text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.35);
+        filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.25));
+        transition: fill 0.3s ease, color 0.3s ease;
+    }
+    &:hover,
+    &:focus {
+        background: $primary-orange;
+        transform: scale(1.05);
+        @include menuShadow(rgba(0, 0, 0, 0.2));
+        .nav-link,
+        .icon-color {
+            fill: $white !important;
+            color: #fff !important;
+        }
+    }
+    .head-link.active .icon-color,
+    .head-link.active .nav-link {
+        fill: $white !important;
+        color: $white !important;
+    }
+    .head-link.active .nav-icon {
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
+    }
+}
+
+.solo,
+.head-link {
+    display: inline-block; // Assurez-vous que l'élément reste en ligne
+    text-align: center; // Centrer le texte
+    text-decoration: none; // Supprimer les soulignements pour les liens
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.solo:hover,
+.solo:focus {
+
+}
+.research {
+    
+}
+
 .main-nav .group_link-submenu {
     position: relative;
 }
@@ -77,7 +126,6 @@ nav {
     padding: 1rem;
     display: flex;
     flex-flow: column;
-    // gap: 0.5rem;
     @include menuShadow(rgba(0, 0, 0, 0.25));
 }
 .submenu_group a {
@@ -143,7 +191,7 @@ nav {
 .submenu_group .nav-link:hover {
     fill: $primary-orange;
     color: $primary-orange;
-    @include smoothTransition(fill, color);
+    @include smoothTransition(fill, color, transform);
     z-index: 20;
 }
 .main-nav:hover .group_link-submenu .head-link:hover {
@@ -157,11 +205,12 @@ nav {
 .main-nav:hover .group_link-submenu .head-link.active:hover .nav-link,
 .submenu_group a:hover,
 .head-link.active .icon-color,
+.head-link.active .nav-icon,
 .head-link.active .nav-link,
 .submenu_group a.active {
     fill: $primary-blue;
     color: $primary-blue;
-    @include smoothTransition(fill, color);
+    @include smoothTransition(fill, color, transform);
     background: none;
 }
 .logo {

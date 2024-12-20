@@ -1,25 +1,23 @@
-export interface SubMenuItem {
-    id: string;
-    title: string;
-    AnchorId?: string;
-    class: string;
-}
-
 export interface MenuItem {
     id: string;
     title: string;
     class: string;
     path: string;
     svg: string;
-    subItems: SubMenuItem[];
+    subItems?: {
+        id: string;
+        title: string;
+        AnchorId: string;
+        class: string;
+    }[];
     AnchorId?: string;
 }
-
 export interface MenuLinks {
     mainLink: MenuItem[];
-    otherLinks?: MenuItem[];
+    reservation?: MenuItem[];
+    search?: MenuItem[];
+    connection?: MenuItem[];
 }
-
 export const menuItems: MenuLinks = {
     mainLink: [
         {
@@ -82,7 +80,6 @@ export const menuItems: MenuLinks = {
             class: "",
             path: "/page-blog",
             svg: "Tarifs",
-            subItems: [],
         },
         {
             id: "menu-prices",
@@ -90,7 +87,6 @@ export const menuItems: MenuLinks = {
             class: "",
             path: "/page-tarifs",
             svg: "Tarifs",
-            subItems: [],
         },
         {
             id: "menu-contact",
@@ -98,17 +94,33 @@ export const menuItems: MenuLinks = {
             class: "",
             path: "/page-contact",
             svg: "Tarifs",
-            subItems: [],
         },
     ],
-    otherLinks: [
+    reservation: [
         {
-            id: "menu-footer",
-            title: "Mentions légales",
-            class: "footer-link",
-            path: "/footer-legal",
-            svg: "Legal",
-            subItems: [],
+            id: "reservation",
+            title: "Réservation",
+            class: "",
+            path: "/page-reservation",
+            svg: "Tarifs",
+        },
+    ],
+    search: [
+        {
+            id: "search",
+            title: "Rechercher",
+            class: "",
+            path: "/page-reservation",
+            svg: "Tarifs",
+        },
+    ],
+    connection: [
+        {
+            id: "connection",
+            title: "Se connecter",
+            class: "",
+            path: "/page-reservation",
+            svg: "Tarifs",
         },
     ],
 };

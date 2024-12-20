@@ -20,20 +20,23 @@ const Header = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute } = useNavigation();
     const { activeSection } = useScrollContext();
+    useScrollAnchors(sections);
 
     // Hook personnalisé pour gérer l'initialisation du scroll
     useInitialScroll(pathname);
 
     // Active les ancres de section pour le scroll
-    useScrollAnchors(sections);
 
     const handleNavigationClick = (path: string) => {
         handleNavClick(path, currentRoute, updateRoute, handleScrollClick);
     };
 
     // Met à jour les classes des éléments de menu
-    const updatedMenuItems: MenuItem[] = updateMenuClasses(
-        menuItems,
+    const updatedMenuItems = updateMenuClasses(
+        menuItems.mainLink,
+        menuItems.reservation,
+        menuItems.search,
+        menuItems.connection,
         activeSection,
         currentRoute
     );

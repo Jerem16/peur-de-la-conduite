@@ -11,27 +11,116 @@ export const isMainItemActive = (
 
     return currentRoute.startsWith(itemPath);
 };
-export const updateMenuClasses = (
-    items: MenuItem[],
+// export const updateMenuClasses = (
+//     mainLink: MenuItem[] | undefined,
+//     reservation: MenuItem[] | undefined,
+//     search: MenuItem[] | undefined,
+//     connection: MenuItem[] | undefined,
+//     activeSection: string,
+//     currentRoute: string
+// ) => ({
+//     // Mise à jour des éléments principaux (mainLink)
+//     mainLink: mainLink?.map((item) => {
+//         const isActive = isMainItemActive(item.path, currentRoute); // Vérifie si l'élément principal est actif
+//         const activeSubItem = item.subItems.find(
+//             (sub) => sub.AnchorId === `#${activeSection}` // Cherche le sous-élément actif
+//         );
+
+//         return {
+//             ...item,
+//             class: isActive ? "active" : "", // Ajoute la classe active si l'élément principal est actif
+//             subItems: item.subItems.map((sub) => ({
+//                 ...sub,
+//                 class: activeSubItem?.id === sub.id ? "active" : "", // Ajoute la classe active sur le sous-élément actif
+//             })),
+//         };
+//     }),
+
+//     connection: connection?.map((item) => {
+//         const isActive = isMainItemActive(item.path, currentRoute); // Vérifie si l'élément principal est actif
+//         const activeSubItem = item.subItems.find(
+//             (sub) => sub.AnchorId === `#${activeSection}` // Cherche le sous-élément actif
+//         );
+
+//         return {
+//             ...item,
+//             class: isActive ? "active" : "", // Ajoute la classe active si l'élément principal est actif
+//             subItems: item.subItems.map((sub) => ({
+//                 ...sub,
+//                 class: activeSubItem?.id === sub.id ? "active" : "", // Ajoute la classe active sur le sous-élément actif
+//             })),
+//         };
+//     }),
+
+//     // Mise à jour des éléments de réservation (reservation)
+//     reservation: reservation?.map((item) => {
+//         const isActive = isMainItemActive(item.path, currentRoute); // Vérifie si l'élément principal de réservation est actif
+//         const activeSubItem = item.subItems.find(
+//             (sub) => sub.AnchorId === `#${activeSection}` // Cherche le sous-élément actif pour la réservation
+//         );
+
+//         return {
+//             ...item,
+//             class: isActive ? "active" : "", // Ajoute la classe active pour la réservation
+//         };
+//     }),
+
+//     search: search?.map((item) => {
+//         const isActive = isMainItemActive(item.path, currentRoute); // Vérifie si l'élément principal de réservation est actif
+//         const activeSubItem = item.subItems.find(
+//             (sub) => sub.AnchorId === `#${activeSection}` // Cherche le sous-élément actif pour la réservation
+//         );
+
+//         return {
+//             ...item,
+//             class: isActive ? "active" : "", // Ajoute la classe active pour la réservation
+//         };
+//     }),
+// });
+
+export const updateMenuItems = (
+    items: MenuItem[] | undefined,
     activeSection: string,
     currentRoute: string
-): MenuItem[] => {
-    return items.map((item) => {
+): MenuItem[] | undefined =>
+    items?.map((item) => {
         const isActive = isMainItemActive(item.path, currentRoute);
-        const activeSubItem = item.subItems.find(
-            (sub) => sub.AnchorId === `#${activeSection}`
-        );
+
+        // Si subItems existe et est un tableau
+        if (item.subItems && Array.isArray(item.subItems)) {
+            const activeSubItem = item.subItems.find(
+                (sub) => sub.AnchorId === `#${activeSection}`
+            );
+
+            return {
+                ...item,
+                class: isActive ? "active" : "",
+                subItems: item.subItems.map((sub) => ({
+                    ...sub,
+                    class: activeSubItem?.id === sub.id ? "active" : "",
+                })),
+            };
+        }
 
         return {
             ...item,
             class: isActive ? "active" : "",
-            subItems: item.subItems.map((sub) => ({
-                ...sub,
-                class: activeSubItem?.id === sub.id ? "active" : "",
-            })),
         };
     });
-};
+
+export const updateMenuClasses = (
+    mainLink?: MenuItem[],
+    reservation?: MenuItem[],
+    search?: MenuItem[],
+    connection?: MenuItem[],
+    activeSection = "",
+    currentRoute = ""
+) => ({
+    mainLink: updateMenuItems(mainLink, activeSection, currentRoute),
+    reservation: updateMenuItems(reservation, activeSection, currentRoute),
+    search: updateMenuItems(search, activeSection, currentRoute),
+    connection: updateMenuItems(connection, activeSection, currentRoute),
+});
 
 export const resetActiveMenuClasses = () => {
     const activeLinks = document.querySelectorAll(".nav-link.active");
@@ -75,15 +164,15 @@ export const useMenuBehavior = () => {
 
         // Réinitialiser les styles d'affichage des sous-menus
         const resetDisplayStyles = () => {
-            const submenuServices = menuServices?.querySelector<HTMLElement>(
-                ".submenu.open"
-            );
-            if (submenuServices) submenuServices.style.display = "";
-
-            const submenuHome = menuHome?.querySelector<HTMLElement>(
-                ".submenu.open"
-            );
-            if (submenuHome) submenuHome.style.display = "";
+            [menuServices, menuHome].forEach((menu) => {
+                const openSubmenu = menu?.querySelector<HTMLElement>(
+                    ".submenu.open"
+                );
+                if (openSubmenu) {
+                    openSubmenu.style.display = "";
+                    openSubmenu.classList.remove("open"); // Suppression de la classe `open`
+                }
+            });
         };
 
         // Masquer les sous-menus frères lors du survol
@@ -121,5 +210,5 @@ export const useMenuBehavior = () => {
         };
     }, []);
 
-    return { navRef };
+    return { navRef, openSubMenu, setOpenSubMenu };
 };
