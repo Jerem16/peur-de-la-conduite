@@ -1,0 +1,15 @@
+src/
+├── data/                      # Données statiques, contenus et utilitaires
+│   ├── interfaces/            # Interfaces TypeScript pour les données et contenus
+│   │   ├── menu.ts            # Interfaces pour les menus
+│   │   ├── content.ts         # Interfaces pour les contenus des sections
+│   │
+│   ├── utils/                 # Fonctions utilitaires
+│   │   ├── attachContent.ts   # Fonction pour attacher dynamiquement le contenu au menu
+│   │
+│   ├── menuItems.ts           # Données du menu (mainLink, reservation, etc.)
+│   ├── sections.ts            # Liste des sections avec leurs IDs
+│   ├── content/               # Contenus spécifiques des sections
+│       ├── slider.ts          # Contenu pour la section "slider"
+│       ├── about.ts           # Contenu pour la section "about"
+│       ├── index.ts           # Index qui associe les sections et leurs contenus

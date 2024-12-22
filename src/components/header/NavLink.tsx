@@ -1,9 +1,8 @@
-// MenuItemComponent.tsx
-
+// NavLink.tsx
 "use client";
 
 import React from "react";
-import { MenuItem } from "./data";
+import { MenuItem } from "../../assets/data/menuItems";
 import SubMenu from "./SubMenu";
 import { svgComponents } from "./svgComponents";
 

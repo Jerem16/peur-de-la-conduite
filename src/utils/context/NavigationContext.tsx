@@ -1,6 +1,4 @@
-"use client";
-
-import {
+import React, {
     createContext,
     useContext,
     useState,
@@ -10,20 +8,33 @@ import {
 } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
-let NavigationContext = createContext();
+interface NavigationContextType {
+    currentRoute: string;
+    updateRoute: (path: string) => void;
+    openSubMenu: string | null;
+    setOpenSubMenu: (subMenuId: string | null) => void;
+    resetDisplayStyles: () => void;
+}
+
+const NavigationContext = createContext<NavigationContextType | null>(null);
 
 export const NavigationProvider = ({ children }) => {
     const router = useRouter();
     const pathname = usePathname();
     const [currentRoute, setCurrentRoute] = useState(pathname || "/");
+    const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
-    // Mettre à jour `currentRoute` quand `pathname` change
+    // Fonction pour réinitialiser l'affichage des sous-menus
+    const resetDisplayStyles = useCallback(() => {
+        setOpenSubMenu(null); // Ferme tous les sous-menus
+    }, []);
+
     useEffect(() => {
         setCurrentRoute(pathname || "/");
     }, [pathname]);
 
     const updateRoute = useCallback(
-        (path) => {
+        (path: string) => {
             setCurrentRoute(path);
             router.push(path);
         },
@@ -34,8 +45,11 @@ export const NavigationProvider = ({ children }) => {
         () => ({
             currentRoute,
             updateRoute,
+            openSubMenu,
+            setOpenSubMenu,
+            resetDisplayStyles, // Ajout de la fonction pour réinitialiser
         }),
-        [currentRoute, updateRoute]
+        [currentRoute, updateRoute, openSubMenu, resetDisplayStyles]
     );
 
     return (

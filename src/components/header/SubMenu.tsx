@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { MenuItem } from "./data";
+import React from "react";
+import { MenuItem } from "../../assets/data/menuItems";
 
 interface SubMenuProps {
     menuItem: MenuItem;
@@ -14,11 +14,8 @@ const SubMenu: React.FC<SubMenuProps> = ({
     isOpen,
     onSubItemClick,
 }) => {
-    const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
-
     const handleSubItemClick = (path: string) => {
         onSubItemClick(path);
-        setOpenSubMenu(null);
     };
 
     if (!menuItem.subItems || menuItem.subItems.length === 0) return null;

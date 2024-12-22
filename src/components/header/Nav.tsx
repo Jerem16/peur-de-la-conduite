@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { MenuItem } from "./data";
+import React from "react";
+import { MenuItem } from "../../assets/data/menuItems";
 import { useMenuBehavior } from "../../utils/updateMenuUtils";
 import NavLink from "./NavLink";
+import { useNavigation } from "../../utils/context/NavigationContext";
 
 interface NavProps {
     menuItems: {
@@ -16,24 +17,27 @@ interface NavProps {
 }
 
 const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
-    const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+    const { openSubMenu, setOpenSubMenu } = useNavigation();
     const { navRef } = useMenuBehavior();
 
     const handleMenuClick = (menuItemId: string) => {
-        setOpenSubMenu((prev) => (prev === menuItemId ? null : menuItemId));
+        setOpenSubMenu(openSubMenu === menuItemId ? null : menuItemId);
     };
 
     return (
         <>
             <nav ref={navRef} className="main-nav">
                 {menuItems.mainLink?.map((menuItem) => (
-                    <NavLink
-                        key={menuItem.id}
-                        menuItem={menuItem}
-                        onNavigationClick={onNavigationClick}
-                        isOpen={openSubMenu === menuItem.id}
-                        handleMenuClick={handleMenuClick}
-                    />
+                    <div key={menuItem.id}>
+                        <NavLink
+                            menuItem={menuItem}
+                            onNavigationClick={onNavigationClick}
+                            isOpen={openSubMenu === menuItem.id}
+                            handleMenuClick={handleMenuClick}
+                        />
+                        {/* Si le menu a du contenu à afficher */}
+                        {menuItem.content && <div>{menuItem.content}</div>}
+                    </div>
                 ))}
             </nav>
             <nav ref={navRef} className="main-nav solo">

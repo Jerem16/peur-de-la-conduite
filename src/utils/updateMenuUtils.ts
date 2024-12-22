@@ -1,5 +1,6 @@
-import { MenuItem } from "../components/header/data";
-import { useState, useEffect, useRef } from "react";
+import { MenuItem } from "../assets/data/menuItems";
+import { useEffect, useRef } from "react";
+import { useNavigation } from "./context/NavigationContext";
 
 export const isMainItemActive = (
     itemPath: string,
@@ -11,72 +12,6 @@ export const isMainItemActive = (
 
     return currentRoute.startsWith(itemPath);
 };
-// export const updateMenuClasses = (
-//     mainLink: MenuItem[] | undefined,
-//     reservation: MenuItem[] | undefined,
-//     search: MenuItem[] | undefined,
-//     connection: MenuItem[] | undefined,
-//     activeSection: string,
-//     currentRoute: string
-// ) => ({
-//     // Mise à jour des éléments principaux (mainLink)
-//     mainLink: mainLink?.map((item) => {
-//         const isActive = isMainItemActive(item.path, currentRoute); // Vérifie si l'élément principal est actif
-//         const activeSubItem = item.subItems.find(
-//             (sub) => sub.AnchorId === `#${activeSection}` // Cherche le sous-élément actif
-//         );
-
-//         return {
-//             ...item,
-//             class: isActive ? "active" : "", // Ajoute la classe active si l'élément principal est actif
-//             subItems: item.subItems.map((sub) => ({
-//                 ...sub,
-//                 class: activeSubItem?.id === sub.id ? "active" : "", // Ajoute la classe active sur le sous-élément actif
-//             })),
-//         };
-//     }),
-
-//     connection: connection?.map((item) => {
-//         const isActive = isMainItemActive(item.path, currentRoute); // Vérifie si l'élément principal est actif
-//         const activeSubItem = item.subItems.find(
-//             (sub) => sub.AnchorId === `#${activeSection}` // Cherche le sous-élément actif
-//         );
-
-//         return {
-//             ...item,
-//             class: isActive ? "active" : "", // Ajoute la classe active si l'élément principal est actif
-//             subItems: item.subItems.map((sub) => ({
-//                 ...sub,
-//                 class: activeSubItem?.id === sub.id ? "active" : "", // Ajoute la classe active sur le sous-élément actif
-//             })),
-//         };
-//     }),
-
-//     // Mise à jour des éléments de réservation (reservation)
-//     reservation: reservation?.map((item) => {
-//         const isActive = isMainItemActive(item.path, currentRoute); // Vérifie si l'élément principal de réservation est actif
-//         const activeSubItem = item.subItems.find(
-//             (sub) => sub.AnchorId === `#${activeSection}` // Cherche le sous-élément actif pour la réservation
-//         );
-
-//         return {
-//             ...item,
-//             class: isActive ? "active" : "", // Ajoute la classe active pour la réservation
-//         };
-//     }),
-
-//     search: search?.map((item) => {
-//         const isActive = isMainItemActive(item.path, currentRoute); // Vérifie si l'élément principal de réservation est actif
-//         const activeSubItem = item.subItems.find(
-//             (sub) => sub.AnchorId === `#${activeSection}` // Cherche le sous-élément actif pour la réservation
-//         );
-
-//         return {
-//             ...item,
-//             class: isActive ? "active" : "", // Ajoute la classe active pour la réservation
-//         };
-//     }),
-// });
 
 export const updateMenuItems = (
     items: MenuItem[] | undefined,
@@ -142,15 +77,14 @@ export const resetActiveMenuClasses = () => {
 
 export const useMenuBehavior = () => {
     const navRef = useRef<HTMLElement | null>(null);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+
+    const { openSubMenu, setOpenSubMenu } = useNavigation();
 
     useEffect(() => {
         // Fonction pour gérer le clic à l'extérieur du menu
         const handleClickOutside = (e: MouseEvent) => {
             if (navRef.current && !navRef.current.contains(e.target as Node)) {
                 setOpenSubMenu(null);
-                resetDisplayStyles();
             }
         };
 
@@ -169,8 +103,7 @@ export const useMenuBehavior = () => {
                     ".submenu.open"
                 );
                 if (openSubmenu) {
-                    openSubmenu.style.display = "";
-                    openSubmenu.classList.remove("open"); // Suppression de la classe `open`
+                    setOpenSubMenu(null);
                 }
             });
         };
@@ -184,7 +117,7 @@ export const useMenuBehavior = () => {
                 const submenuSiblings = siblingMenuElement.querySelector<
                     HTMLElement
                 >(".submenu.open");
-                if (submenuSiblings) submenuSiblings.style.display = "none";
+                if (submenuSiblings) setOpenSubMenu(null);
             });
 
             menuElement.addEventListener("click", resetDisplayStyles);
@@ -208,7 +141,7 @@ export const useMenuBehavior = () => {
             menuServices?.removeEventListener("mouseover", resetDisplayStyles);
             menuServices?.removeEventListener("click", resetDisplayStyles);
         };
-    }, []);
+    }, [setOpenSubMenu]);
 
     return { navRef, openSubMenu, setOpenSubMenu };
 };

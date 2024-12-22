@@ -1,23 +1,6 @@
-export interface MenuItem {
-    id: string;
-    title: string;
-    class: string;
-    path: string;
-    svg: string;
-    subItems?: {
-        id: string;
-        title: string;
-        AnchorId: string;
-        class: string;
-    }[];
-    AnchorId?: string;
-}
-export interface MenuLinks {
-    mainLink: MenuItem[];
-    reservation?: MenuItem[];
-    search?: MenuItem[];
-    connection?: MenuItem[];
-}
+import { MenuLinks } from "./interfaces/menu";
+import { contentIndex } from "./content/index";
+
 export const menuItems: MenuLinks = {
     mainLink: [
         {
@@ -32,12 +15,14 @@ export const menuItems: MenuLinks = {
                     title: "Slider",
                     AnchorId: "#slider",
                     class: "",
+                    content: contentIndex["#slider"], // Associe le contenu
                 },
                 {
                     id: "menu-about",
                     title: "À propos",
                     AnchorId: "#about",
                     class: "",
+                    content: contentIndex["#about"], // Associe le contenu
                 },
                 {
                     id: "menu-services",
@@ -125,13 +110,20 @@ export const menuItems: MenuLinks = {
     ],
 };
 
+export type { MenuItem } from "./interfaces/menu"; 
 
-export const sections = [
-    { id: "slider" },
-    { id: "about" },
-    { id: "services" },
-    { id: "contact" },
-    { id: "s1" },
-    { id: "sans-permis" },
-    { id: "avec-permis" },
-];
+/*
+src/
+├── interfaces/
+│   ├── menu.ts         # Définition des interfaces pour le menu
+│   ├── content.ts      # Définition des interfaces pour les contenus
+├── data/
+│   ├── menuItems.ts    # Données liées au menu
+│   ├── sections.ts     # Liste des sections
+│   ├── content/
+│       ├── slider.ts   # Contenu pour la section slider
+│       ├── about.ts    # Contenu pour la section about
+│       ├── index.ts    # Index pour associer les sections et leurs contenus
+├── utils/
+│   ├── attachContent.ts # Fonction utilitaire pour attacher les con
+*/

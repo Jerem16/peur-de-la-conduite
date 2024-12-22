@@ -1,4 +1,4 @@
-import { MenuItem } from "../components/header/data";
+import { MenuItem } from "../assets/data/menuItems";
 
 export const getSectionIds = (menuItems: MenuItem[]): string[] => {
     const sectionIds: string[] = [];

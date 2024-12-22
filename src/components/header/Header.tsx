@@ -7,7 +7,8 @@ import Nav from "./Nav";
 import Logo from "../svg_Icon/Logo";
 import { useScrollContext } from "../../utils/context/ScrollContext";
 import { useNavigation } from "../../utils/context/NavigationContext";
-import { MenuItem, menuItems, sections } from "./data";
+import { MenuItem, menuItems } from "../../assets/data/menuItems";
+import { sections } from "../../assets/data/sections";
 import { updateMenuClasses } from "../../utils/updateMenuUtils";
 import {
     handleNavClick,
@@ -15,8 +16,21 @@ import {
     useScrollAnchors,
     useInitialScroll,
 } from "../../utils/scrollUtils";
-
-const Header = () => {
+interface NavProps {
+    menuItems: {
+        mainLink?: MenuItem[];
+        reservation?: MenuItem[];
+        search?: MenuItem[];
+        connection?: MenuItem[];
+    };
+    onNavigationClick: (
+        path: string,
+        currentRoute: string | undefined,
+        updateRoute: (route: string) => void,
+        handleScrollClick: (hash: string) => void
+    ) => void;
+}
+const Header: React.FC<NavProps> = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute } = useNavigation();
     const { activeSection } = useScrollContext();
