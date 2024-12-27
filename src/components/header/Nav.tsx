@@ -4,6 +4,7 @@ import React from "react";
 import { MenuItem } from "../../assets/data/menuItems";
 import { useMenuBehavior } from "../../utils/updateMenuUtils";
 import NavLink from "./NavLink";
+import NavInput from "./NavInput";
 import { useNavigation } from "../../utils/context/NavigationContext";
 
 interface NavProps {
@@ -35,8 +36,6 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                             isOpen={openSubMenu === menuItem.id}
                             handleMenuClick={handleMenuClick}
                         />
-                        {/* Si le menu a du contenu à afficher */}
-                        {menuItem.content && <div>{menuItem.content}</div>}
                     </div>
                 ))}
             </nav>
@@ -51,9 +50,9 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                     />
                 ))}
             </nav>
-            <nav ref={navRef} className="main-nav solo research">
+            <nav ref={navRef} className="main-nav research">
                 {menuItems.search?.map((menuItem) => (
-                    <NavLink
+                    <NavInput
                         key={menuItem.id}
                         menuItem={menuItem}
                         onNavigationClick={onNavigationClick}
@@ -62,7 +61,7 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                     />
                 ))}
             </nav>
-            <nav ref={navRef} className="main-nav solo connect">
+            <nav ref={navRef} className="main-nav connect">
                 {menuItems.connection?.map((menuItem) => (
                     <NavLink
                         key={menuItem.id}

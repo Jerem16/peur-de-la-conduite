@@ -95,7 +95,7 @@ export const menuItems: MenuLinks = {
             id: "search",
             title: "Rechercher ...",
             class: "",
-            path: "/page-reservation",
+            path: "/page-search",
             svg: "Tarifs",
         },
     ],

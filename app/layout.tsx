@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../src/assets/styles/main.scss";
 import HeaderProps from "./headerProps";
+import { SearchProvider } from "../src/utils/context/SearchContext"; // Import du contexte
 
 const RobotoFlex = localFont({
     src: "/fonts/RobotoFlex.woff2",
@@ -37,8 +38,10 @@ export default function RootLayout({
                 className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`}
                 id="top"
             >
-                <HeaderProps />
-                <main>{children}</main>
+                <SearchProvider> 
+                    <HeaderProps />
+                    <main>{children}</main>
+                </SearchProvider>
             </body>
         </html>
     );

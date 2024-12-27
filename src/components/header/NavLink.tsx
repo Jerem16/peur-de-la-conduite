@@ -6,14 +6,14 @@ import { MenuItem } from "../../assets/data/menuItems";
 import SubMenu from "./SubMenu";
 import { svgComponents } from "./svgComponents";
 
-interface MenuItemComponentProps {
+interface NavLinkProps {
     menuItem: MenuItem;
     onNavigationClick: (path: string) => void;
     isOpen: boolean;
     handleMenuClick: (menuItemId: string) => void;
 }
 
-const NavLink: React.FC<MenuItemComponentProps> = ({
+const NavLink: React.FC<NavLinkProps> = ({
     menuItem,
     onNavigationClick,
     isOpen,

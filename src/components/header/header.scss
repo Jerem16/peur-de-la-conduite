@@ -2,6 +2,22 @@
     transition: $props 0.35s ease;
 }
 
+button.nav-icon {
+    display: flex;
+    // align-items: center;
+    // justify-content: center;
+    cursor: pointer;
+    .close-search {
+        // width: 18px;
+        // height: 18px;
+        .bg-color {
+            fill: $primary-black;
+        }
+        .icon-color {
+            stroke: $white;
+        }
+    }
+}
 header {
     padding: 1rem 2rem 1.5rem 2rem;
     margin: 0 auto;
@@ -24,7 +40,9 @@ nav {
     justify-content: space-around;
 }
 .main-nav,
-.solo {
+.solo,
+.research,
+.connect {
     display: inline-flex;
     padding: 15px 1.625rem 15px 1.5rem;
     gap: 32px;
@@ -65,8 +83,50 @@ nav {
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
     }
 }
-
+.research,
+.connect {
+    width: auto;
+    .nav-link,
+    .icon-color {
+        transition: fill 0.3s ease, color 0.3s ease;
+    }
+    &:hover,
+    &:focus {
+        transform: scale(1.05);
+        @include menuShadow(rgba(0, 0, 0, 0.2));
+        .nav-link,
+        .icon-color {
+            fill: $primary-black !important;
+            color: $primary-black !important;
+        }
+    }
+    .head-link.active .icon-color,
+    .head-link.active .nav-link {
+        fill: $primary-black !important;
+        color: $primary-black !important;
+    }
+    .head-link.active .nav-icon {
+        // filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
+    }
+}
+.connect {
+    .nav-link {
+        width: 114px;
+    }
+    &:hover,
+    &:focus {
+        transform: scale(1.05);
+        @include menuShadow(rgba(0, 0, 0, 0.2));
+        .nav-link,
+        .icon-color {
+            fill: $primary-blue !important;
+            color: $primary-blue !important;
+        }
+    }
+}
 .solo,
+.research,
+.connect,
 .head-link {
     display: inline-block; // Assurez-vous que l'élément reste en ligne
     text-align: center; // Centrer le texte
@@ -76,10 +136,8 @@ nav {
 
 .solo:hover,
 .solo:focus {
-
 }
 .research {
-    
 }
 
 .main-nav .group_link-submenu {
@@ -128,7 +186,7 @@ nav {
     flex-flow: column;
     @include menuShadow(rgba(0, 0, 0, 0.25));
 }
-.submenu_group a {
+.submenu_group .nav-link {
     position: relative; // Nécessaire pour positionner les pseudo-éléments
     display: block;
     margin: 0;
@@ -140,8 +198,8 @@ nav {
     transition: color 0.3s ease;
 }
 
-.submenu_group a::before,
-.submenu_group a::after {
+.submenu_group .nav-link::before,
+.submenu_group .nav-link::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -151,27 +209,27 @@ nav {
     transition: transform 0.3s ease;
 }
 
-.submenu_group a::before {
+.submenu_group .nav-link::before {
     top: 0; // Ligne en haut
     left: 0;
     transform-origin: left;
 }
 
-.submenu_group a::after {
+.submenu_group .nav-link::after {
     bottom: 0; // Ligne en bas
     right: 0;
     transform-origin: right;
 }
 
-.submenu_group a:hover {
+.submenu_group .nav-link:hover {
     color: $white !important; // Change la couleur du texte
     background: $primary-blue !important; // Arrière-plan animé
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
     @include smoothTransition(background, box-shadow);
 }
 
-.submenu_group a:hover::before,
-.submenu_group a:hover::after {
+.submenu_group .nav-link:hover::before,
+.submenu_group .nav-link:hover::after {
     transform: scaleX(1); // Animation pour dévoiler les lignes
 }
 
@@ -203,11 +261,11 @@ nav {
 .submenu_group:hover .nav-link.active:hover,
 .main-nav:hover .group_link-submenu .head-link.active:hover .icon-color,
 .main-nav:hover .group_link-submenu .head-link.active:hover .nav-link,
-.submenu_group a:hover,
+.submenu_group .nav-link:hover,
 .head-link.active .icon-color,
 .head-link.active .nav-icon,
 .head-link.active .nav-link,
-.submenu_group a.active {
+.submenu_group .nav-link.active {
     fill: $primary-blue;
     color: $primary-blue;
     @include smoothTransition(fill, color, transform);
