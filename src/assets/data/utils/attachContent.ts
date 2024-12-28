@@ -15,6 +15,5 @@ export function attachContentToMenu(
             content: contentIndex[subItem.AnchorId] || null,
         })),
     }));
-    console.log(updatedMenu, "updatedMenu");
     return updatedMenu;
 }

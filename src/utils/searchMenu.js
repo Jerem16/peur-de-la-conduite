@@ -1,7 +1,3 @@
-import { initializeMenuWithContent } from "./initializeMenu";
-
-// import { initializeMenuWithContent } from "./initializeMenu";
-
 export default function searchQuery(jsonData, query) {
     const results = [];
     const seenResults = new Set(); // Pour stocker les résultats uniques
@@ -44,10 +40,10 @@ export default function searchQuery(jsonData, query) {
                     if (!seenResults.has(resultKey)) {
                         results.push({ path: currentPath, text: value });
                         seenResults.add(resultKey); // Stockez la clé dans le Set
-                        console.log("Match found:", {
-                            path: currentPath,
-                            text: value,
-                        });
+                        // console.log("Match found:", {
+                        //     path: currentPath,
+                        //     text: value,
+                        // });
                     }
                 } else if (Array.isArray(value)) {
                     // Rechercher dans les tableaux
@@ -65,10 +61,10 @@ export default function searchQuery(jsonData, query) {
                                     text: arrayItem,
                                 });
                                 seenResults.add(resultKey);
-                                console.log("Match found:", {
-                                    path: currentPath,
-                                    text: arrayItem,
-                                });
+                                // console.log("Match found:", {
+                                //     path: currentPath,
+                                //     text: arrayItem,
+                                // });
                             }
                         } else if (typeof arrayItem === "object") {
                             // Recherche dans les objets imbriqués
@@ -110,7 +106,3 @@ export default function searchQuery(jsonData, query) {
 
     return results;
 }
-
-const jsonData = initializeMenuWithContent();
-const query = "rés";
-console.log(searchQuery(jsonData, query), "searchQuery");

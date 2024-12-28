@@ -46,7 +46,8 @@ export default function Page() {
                 {badKeyWord ? (
                     <>
                         {resultsCount} résultat{resultsCount > 1 ? "s" : ""}{" "}
-                        trouvé{resultsCount > 1 ? "s" : ""} pour "{badKeyWord}"
+                        trouvé{resultsCount > 1 ? "s" : ""} pour &quot;
+                        {badKeyWord}&quot;
                     </>
                 ) : (
                     <>
@@ -65,7 +66,7 @@ export default function Page() {
                 ) : (
                     <p>
                         {badKeyWord
-                            ? `Aucun résultat trouvé pour "${badKeyWord}".`
+                            ? `Aucun résultat trouvé pour &quot;${badKeyWord}&quot;.`
                             : ``}
                     </p>
                 )}

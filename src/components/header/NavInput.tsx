@@ -38,11 +38,12 @@ const NavInput: React.FC<NavInputProps> = ({
     const { setResults, menuData } = useSearch(); // Utilisation de menuData du contexte
     const SvgIcon = svgComponents[menuItem.svg];
     const [query, setQuery] = useState("");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [filteredItems, setFilteredItems] = useState<SearchItem[]>([]);
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [isSubResultOpen, setSubResultOpen] = useState(false);
-    const [noResultsFound, setNoResultsFound] = useState(false); // État pour savoir s'il y a des résultats
-
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [noResultsFound, setNoResultsFound] = useState(false);
     const handleSearch = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
             const query = e.target.value.trim();
