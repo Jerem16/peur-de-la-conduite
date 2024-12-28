@@ -128,9 +128,6 @@ nav {
 .research,
 .connect,
 .head-link {
-    display: inline-block; // Assurez-vous que l'élément reste en ligne
-    text-align: center; // Centrer le texte
-    text-decoration: none; // Supprimer les soulignements pour les liens
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -164,6 +161,7 @@ nav {
     top: 100%;
     height: auto;
     margin-left: -1rem;
+    margin-left: -1.5rem;
     width: calc(100% + 3.5rem);
     padding-top: 1.5rem;
     box-sizing: border-box;

@@ -1,4 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+// NavInput.tsx
+/*
+import React, { useCallback, useEffect } from "react";
 import SubResult from "./SubResult";
 import { useSearch } from "../../utils/context/SearchContext";
 import { MenuItem } from "../../assets/data/menuItems";
@@ -17,7 +19,6 @@ interface SearchItem {
 interface NavInputProps {
     menuItem: MenuItem;
     placeholder?: string;
-    onNavigationClick: (path: string) => void;
 }
 
 const normalizeWord = (word: string) =>
@@ -62,13 +63,10 @@ const NavInput: React.FC<NavInputProps> = ({
     const { setResults, menuData, query, setQuery } = useSearch(); // Utilisation du query et setQuery du contexte
     const SvgIcon = svgComponents[menuItem.svg];
     const router = useRouter();
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [filteredItems, setFilteredItems] = useState<SearchItem[]>([]);
-    const [suggestions, setSuggestions] = useState<string[]>([]);
-    const [isSubResultOpen, setSubResultOpen] = useState(false);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [noResultsFound, setNoResultsFound] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false); // Etat pour suivre la soumission
+    const [filteredItems, setFilteredItems] = React.useState<SearchItem[]>([]);
+    const [suggestions, setSuggestions] = React.useState<string[]>([]);
+    const [isSubResultOpen, setSubResultOpen] = React.useState(false);
+    const [noResultsFound, setNoResultsFound] = React.useState(false);
 
     const handleSearch = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,13 +94,11 @@ const NavInput: React.FC<NavInputProps> = ({
                 setNoResultsFound(filteredMenu.length === 0);
             }
         },
-        [menuData, setQuery]
+        [menuData, setQuery] // Assurez-vous que setQuery est inclus dans les dépendances
     );
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsSubmitted(true); // Marquer comme soumis
-        setSubResultOpen(false); // Fermer SubResult lors de la soumission
 
         if (query.trim() && menuData) {
             const resultsForQuery = searchQuery(menuData, query.trim());
@@ -126,7 +122,7 @@ const NavInput: React.FC<NavInputProps> = ({
             setQuery(suggestion);
             setResults(resultsForSuggestion);
             setFilteredItems(resultsForSuggestion);
-            setSubResultOpen(false); // Fermer SubResult lorsque la suggestion est sélectionnée
+            setSubResultOpen(false);
             setNoResultsFound(resultsForSuggestion.length === 0);
 
             if (resultsForSuggestion.length === 0) {
@@ -144,10 +140,9 @@ const NavInput: React.FC<NavInputProps> = ({
         setQuery(""); // Réinitialiser la query dans le contexte
         setFilteredItems([]);
         setSuggestions([]);
-        setSubResultOpen(false); // Fermer SubResult lors de la réinitialisation
+        setSubResultOpen(false);
         setResults([]);
         setNoResultsFound(false);
-        setIsSubmitted(false); // Réinitialiser l'état de soumission
         updateUrl({});
     };
 
@@ -155,9 +150,10 @@ const NavInput: React.FC<NavInputProps> = ({
         if (query === "") {
             setFilteredItems([]);
             setSuggestions([]);
-            setSubResultOpen(false); // Fermer SubResult lorsque query est vide
+            setSubResultOpen(false);
             setNoResultsFound(false);
         }
+        console.log(filteredItems, "filteredItems", query, "query");
     }, [query]);
 
     return (
@@ -167,8 +163,7 @@ const NavInput: React.FC<NavInputProps> = ({
                 className={`head-link ${menuItem.class}`}
                 onSubmit={handleSubmit}
             >
-                {/* N'afficher le bouton de réinitialisation que si une recherche a été soumise */}
-                {isSubmitted ? (
+                {query ? (
                     <button
                         type="button"
                         className="nav-icon"
@@ -178,21 +173,7 @@ const NavInput: React.FC<NavInputProps> = ({
                         <SearchClose />
                     </button>
                 ) : (
-                    <button
-                        type="button"
-                        className="nav-icon"
-                        onClick={(e) => {
-                            e.preventDefault(); // Empêcher le comportement par défaut du bouton (si nécessaire)
-                            handleSubmit(
-                                (e as unknown) as React.FormEvent<
-                                    HTMLFormElement
-                                >
-                            ); // Appeler handleSubmit avec un événement de type approprié
-                        }}
-                        aria-label="Valider la recherche"
-                    >
-                        {SvgIcon && <SvgIcon />}
-                    </button>
+                    SvgIcon && <SvgIcon />
                 )}
                 <input
                     id="search-input"
@@ -200,7 +181,6 @@ const NavInput: React.FC<NavInputProps> = ({
                     value={query}
                     placeholder={placeholder}
                     onChange={handleSearch}
-                    // Gérer 'Enter' pour lancer la recherche
                     className="nav-link"
                 />
             </form>
@@ -217,3 +197,6 @@ const NavInput: React.FC<NavInputProps> = ({
 };
 
 export default NavInput;
+
+
+*/

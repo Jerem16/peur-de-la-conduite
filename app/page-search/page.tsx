@@ -5,29 +5,43 @@ import { useSearch } from "../../src/utils/context/SearchContext";
 import searchQuery from "../../src/utils/searchMenu";
 
 export default function Page() {
-    const { results, setResults, menuData } = useSearch(); // Récupération via le contexte
-    const [query, setQuery] = useState<string>("");
-    const [badKeyWord, setBadKeyWord] = useState<string | null>(null); // État pour gérer le badKeyWord
+    const { results, setResults, menuData } = useSearch();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [queryState, setQueryState] = useState<string>("");
+    const [badKeyWord, setBadKeyWord] = useState<string | null>(null);
+    const [isClient, setIsClient] = useState(false);
+
+    // Définir la variable validQuery ici pour l'utiliser plus bas
+    const [validQuery, setValidQuery] = useState<string>("");
 
     useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isClient) return;
+
         const urlParams = new URLSearchParams(window.location.search);
         const queryFromUrl = urlParams.get("query");
         const badKeyWordFromUrl = urlParams.get("badKeyWord");
 
+        const validQuery = queryFromUrl || badKeyWordFromUrl || "";
+        setValidQuery(validQuery); // Mettez à jour validQuery ici
+
         if (queryFromUrl) {
-            setQuery(queryFromUrl); // Sauvegarder la query extraite de l'URL dans l'état local
+            setQueryState(queryFromUrl);
             if (menuData && results.length === 0) {
                 const searchResults = searchQuery(menuData, queryFromUrl);
-                setResults(searchResults); // Mise à jour du contexte avec les résultats
+                setResults(searchResults);
             }
         }
 
         if (badKeyWordFromUrl) {
-            setBadKeyWord(badKeyWordFromUrl); // Sauvegarder badKeyWord de l'URL
+            setBadKeyWord(badKeyWordFromUrl);
         }
-    }, [results, menuData, setResults]);
+    }, [isClient, results, menuData, setResults]);
 
-    const resultsCount = results.length; // Nombre de résultats trouvés
+    const resultsCount = results.length;
 
     const uniqueResults = results.filter(
         (result, index, self) =>
@@ -43,18 +57,8 @@ export default function Page() {
         <section className="section" id="s1">
             <div className="fixed-menu"></div>
             <h2>
-                {badKeyWord ? (
-                    <>
-                        {resultsCount} résultat{resultsCount > 1 ? "s" : ""}{" "}
-                        trouvé{resultsCount > 1 ? "s" : ""} pour &quot;
-                        {badKeyWord}&quot;
-                    </>
-                ) : (
-                    <>
-                        {resultsCount} résultat{resultsCount > 1 ? "s" : ""} de
-                        recherche pour : {query}
-                    </>
-                )}
+                {resultsCount} résultat{resultsCount > 1 ? "s" : ""} de
+                recherche pour : {validQuery}
             </h2>
             <div className="s1">
                 {uniqueResults.length > 0 ? (
@@ -64,11 +68,7 @@ export default function Page() {
                         </div>
                     ))
                 ) : (
-                    <p>
-                        {badKeyWord
-                            ? `Aucun résultat trouvé pour &quot;${badKeyWord}&quot;.`
-                            : ``}
-                    </p>
+                    <p>{badKeyWord ? `Aucun résultat à afficher.` : ""}</p>
                 )}
             </div>
         </section>

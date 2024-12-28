@@ -6,6 +6,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 npx create-next-app@latest
 ```
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 ## Getting Started
 
 First, run the development server:

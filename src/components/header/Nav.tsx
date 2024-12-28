@@ -56,8 +56,8 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
                         key={menuItem.id}
                         menuItem={menuItem}
                         onNavigationClick={onNavigationClick}
-                        isOpen={false}
-                        handleMenuClick={() => {}}
+                        // isOpen={false}
+                        // handleMenuClick={() => {}}
                     />
                 ))}
             </nav>
