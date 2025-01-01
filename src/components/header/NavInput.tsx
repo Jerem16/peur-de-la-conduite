@@ -135,6 +135,9 @@ const NavInput: React.FC<NavInputProps> = ({
 
             if (resultsForQuery.length === 0) {
                 updateUrl(router, { badKeyWord: query.trim() });
+                router.push(
+                    `/page-search?query=${encodeURIComponent(query.trim())}`
+                );
             } else {
                 updateUrl(router, { query: query.trim() });
                 router.push(
