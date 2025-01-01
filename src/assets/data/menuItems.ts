@@ -83,7 +83,7 @@ export const menuItems: MenuLinks = {
     ],
     reservation: [
         {
-            id: "reservation",
+            id: "reservationId",
             title: "Réservation",
             class: "",
             path: "/page-reservation",

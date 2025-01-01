@@ -9,32 +9,45 @@ interface NavLinkProps {
     menuItem: MenuItem;
     onNavigationClick: (path: string) => void;
     isOpen: boolean;
+    showNavLinks: boolean;
     handleMenuClick: (menuItemId: string) => void;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({
+const NavLinkShow: React.FC<NavLinkProps> = ({
     menuItem,
     onNavigationClick,
     isOpen,
     handleMenuClick,
+    showNavLinks,
 }) => {
     const SvgIcon = svgComponents[menuItem.svg];
 
     return (
-        <div className={`group_link-submenu ${menuItem.id}`}>
+        <>
             <a
+                role="menuitem"
                 aria-label={`Page ${menuItem.title}`}
                 className={`head-link ${menuItem.class}`}
                 href={menuItem.path}
                 onClick={(e) => {
                     e.preventDefault();
-                    onNavigationClick(menuItem.path);
-                    handleMenuClick(menuItem.id);
+                    if (showNavLinks) {
+                        onNavigationClick(menuItem.path);
+                        handleMenuClick(menuItem.id);
+                    }
+                }}
+                onKeyDown={() => {
+                    if (showNavLinks) {
+                        onNavigationClick(menuItem.path);
+                        handleMenuClick(menuItem.id);
+                    }
                 }}
                 tabIndex={0}
             >
                 {SvgIcon && <SvgIcon />}
-                <span className="nav-link">{menuItem.title}</span>
+                <span className={`nav-link ${!showNavLinks ? "hidden" : ""}`}>
+                    {menuItem.title}
+                </span>
             </a>
 
             {menuItem.subItems?.length > 0 && (
@@ -44,8 +57,8 @@ const NavLink: React.FC<NavLinkProps> = ({
                     onSubItemClick={onNavigationClick}
                 />
             )}
-        </div>
+        </>
     );
 };
 
-export default NavLink;
+export default NavLinkShow;

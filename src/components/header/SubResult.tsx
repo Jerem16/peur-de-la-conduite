@@ -13,7 +13,7 @@ const SubResult: React.FC<SubResultProps> = ({
     isOpen,
     onSuggestionClick,
 }) => {
-    if (!isOpen || suggestions.length === 0) return null;
+    if (!suggestions || suggestions.length === 0) return null;
 
     return (
         <div className={`submenu ${isOpen ? "open" : ""}`}>

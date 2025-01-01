@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, useEffect, useState } from "react";
 import SubResult from "./SubResult";
 import { useSearch } from "../../utils/context/SearchContext";
@@ -17,7 +19,8 @@ interface SearchItem {
 interface NavInputProps {
     menuItem: MenuItem;
     placeholder?: string;
-    onNavigationClick: (path: string) => void;
+    showNavLinks: boolean;
+    isOpen: boolean;
 }
 
 const normalizeWord = (word: string) =>
@@ -26,17 +29,25 @@ const normalizeWord = (word: string) =>
         .replace(/[.,;!?]/g, "")
         .trim();
 
-const updateUrl = (params: { query?: string; badKeyWord?: string }) => {
-    const url = new URL(window.location.href);
+const updateUrl = (
+    router: ReturnType<typeof useRouter>,
+    params: { query?: string; badKeyWord?: string }
+) => {
+    const currentUrl = new URL(window.location.href);
 
-    if (params.query) url.searchParams.set("query", params.query);
-    else url.searchParams.delete("query");
+    if (params.query) {
+        currentUrl.searchParams.set("query", params.query);
+    } else {
+        currentUrl.searchParams.delete("query");
+    }
 
-    if (params.badKeyWord)
-        url.searchParams.set("badKeyWord", params.badKeyWord);
-    else url.searchParams.delete("badKeyWord");
+    if (params.badKeyWord) {
+        currentUrl.searchParams.set("badKeyWord", params.badKeyWord);
+    } else {
+        currentUrl.searchParams.delete("badKeyWord");
+    }
 
-    window.history.replaceState(null, "", url.toString());
+    router.replace(currentUrl.toString(), { scroll: false });
 };
 
 const filterSuggestions = (items: SearchItem[], query: string): string[] => {
@@ -50,7 +61,7 @@ const filterSuggestions = (items: SearchItem[], query: string): string[] => {
                         .map(normalizeWord)
                         .find((word) => word.startsWith(normalizedQuery))
                 )
-                .filter(Boolean) // Filtre pour éliminer les valeurs indésirables
+                .filter(Boolean)
         )
     );
 };
@@ -58,22 +69,25 @@ const filterSuggestions = (items: SearchItem[], query: string): string[] => {
 const NavInput: React.FC<NavInputProps> = ({
     placeholder = "Rechercher...",
     menuItem,
+    isOpen,
+    showNavLinks,
 }) => {
-    const { setResults, menuData, query, setQuery } = useSearch(); // Utilisation du query et setQuery du contexte
+    const { setResults, menuData, query, setQuery } = useSearch();
     const SvgIcon = svgComponents[menuItem.svg];
     const router = useRouter();
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [filteredItems, setFilteredItems] = useState<SearchItem[]>([]);
-    const [suggestions, setSuggestions] = useState<string[]>([]);
-    const [isSubResultOpen, setSubResultOpen] = useState(false);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [noResultsFound, setNoResultsFound] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false); // Etat pour suivre la soumission
+    const [suggestions, setSuggestions] = useState<string[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [isSubResultOpen, setSubResultOpen] = useState<boolean>(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleSearch = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
             const newQuery = e.target.value.trim();
-            setQuery(newQuery); // Met à jour le query du contexte
+            setQuery(newQuery);
 
             if (newQuery.length < 3) {
                 setFilteredItems([]);
@@ -96,29 +110,40 @@ const NavInput: React.FC<NavInputProps> = ({
                 setNoResultsFound(filteredMenu.length === 0);
             }
         },
-        [menuData, setQuery]
+        [menuData, setQuery, setFilteredItems, setSuggestions, setSubResultOpen]
     );
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsSubmitted(true); // Marquer comme soumis
-        setSubResultOpen(false); // Fermer SubResult lors de la soumission
+    const handleSubmit = (
+        e?:
+            | React.FormEvent<HTMLFormElement>
+            | React.KeyboardEvent<HTMLInputElement>
+            | React.MouseEvent<HTMLButtonElement>
+    ) => {
+        if (e) e.preventDefault();
+
+        const inputValue = query.trim();
+
+        if (inputValue.length < 1) {
+            return;
+        }
+
+        setIsSubmitted(true);
 
         if (query.trim() && menuData) {
             const resultsForQuery = searchQuery(menuData, query.trim());
             setResults(resultsForQuery);
 
             if (resultsForQuery.length === 0) {
-                updateUrl({ badKeyWord: query.trim() });
+                updateUrl(router, { badKeyWord: query.trim() });
             } else {
-                updateUrl({ query: query.trim() });
+                updateUrl(router, { query: query.trim() });
                 router.push(
                     `/page-search?query=${encodeURIComponent(query.trim())}`
                 );
             }
         }
+        setSubResultOpen(false);
     };
-
     const handleSuggestionClick = (suggestion: string) => {
         if (menuData) {
             const resultsForSuggestion = searchQuery(menuData, suggestion);
@@ -126,89 +151,96 @@ const NavInput: React.FC<NavInputProps> = ({
             setQuery(suggestion);
             setResults(resultsForSuggestion);
             setFilteredItems(resultsForSuggestion);
-            setSubResultOpen(false); // Fermer SubResult lorsque la suggestion est sélectionnée
+            setSubResultOpen(false);
+            setIsSubmitted(true);
             setNoResultsFound(resultsForSuggestion.length === 0);
 
             if (resultsForSuggestion.length === 0) {
-                updateUrl({ badKeyWord: suggestion });
+                updateUrl(router, { badKeyWord: suggestion });
             } else {
-                updateUrl({ query: suggestion });
+                updateUrl(router, { query: suggestion });
                 router.push(
                     `/page-search?query=${encodeURIComponent(suggestion)}`
                 );
             }
         }
     };
-
     const handleReset = () => {
-        setQuery(""); // Réinitialiser la query dans le contexte
+        setQuery("");
         setFilteredItems([]);
         setSuggestions([]);
-        setSubResultOpen(false); // Fermer SubResult lors de la réinitialisation
+        setSubResultOpen(false);
         setResults([]);
-        setNoResultsFound(false);
-        setIsSubmitted(false); // Réinitialiser l'état de soumission
-        updateUrl({});
+        setIsSubmitted(false);
+        updateUrl(router, {});
     };
 
     useEffect(() => {
-        if (query === "") {
+        const resetResults = () => {
             setFilteredItems([]);
             setSuggestions([]);
-            setSubResultOpen(false); // Fermer SubResult lorsque query est vide
-            setNoResultsFound(false);
-        }
+            setSubResultOpen(false);
+        };
+
+        if (!query) resetResults();
     }, [query]);
 
+    // Déplacer renderButton ici
+    const renderButton = () => {
+        if (!showNavLinks) return SvgIcon ? <SvgIcon /> : null;
+
+        const handleClick = isSubmitted ? handleReset : handleSubmit;
+
+        return (
+            <button
+                type={isSubmitted ? "button" : "submit"}
+                className="nav-icon"
+                onClick={(e) => handleClick(e)}
+                aria-label={
+                    isSubmitted
+                        ? "Réinitialiser la recherche"
+                        : "Valider la recherche"
+                }
+            >
+                {isSubmitted ? <SearchClose /> : SvgIcon && <SvgIcon />}
+            </button>
+        );
+    };
     return (
-        <div className={`group_link-submenu ${menuItem.id}`}>
+        <div
+            className="group_link-submenu"
+            role="menuitem"
+            aria-label={`Ouvrir ${menuItem.title}`}
+        >
             <form
                 aria-label={`Page ${menuItem.title}`}
                 className={`head-link ${menuItem.class}`}
                 onSubmit={handleSubmit}
             >
-                {/* N'afficher le bouton de réinitialisation que si une recherche a été soumise */}
-                {isSubmitted ? (
-                    <button
-                        type="button"
-                        className="nav-icon"
-                        onClick={handleReset}
-                        aria-label="Réinitialiser la recherche"
-                    >
-                        <SearchClose />
-                    </button>
-                ) : (
-                    <button
-                        type="button"
-                        className="nav-icon"
-                        onClick={(e) => {
-                            e.preventDefault(); // Empêcher le comportement par défaut du bouton (si nécessaire)
-                            handleSubmit(
-                                (e as unknown) as React.FormEvent<
-                                    HTMLFormElement
-                                >
-                            ); // Appeler handleSubmit avec un événement de type approprié
-                        }}
-                        aria-label="Valider la recherche"
-                    >
-                        {SvgIcon && <SvgIcon />}
-                    </button>
-                )}
+                {renderButton()}
+
                 <input
                     id="search-input"
                     type="text"
                     value={query}
                     placeholder={placeholder}
                     onChange={handleSearch}
-                    // Gérer 'Enter' pour lancer la recherche
-                    className="nav-link"
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            handleSubmit(
+                                (e as unknown) as React.FormEvent<
+                                    HTMLFormElement
+                                >
+                            );
+                        }
+                    }}
+                    className={`nav-link ${!showNavLinks ? "hidden" : ""}`}
                 />
             </form>
-
-            {isSubResultOpen && query && (
+            {showNavLinks && isSubResultOpen && query && (
                 <SubResult
                     suggestions={suggestions}
-                    isOpen={isSubResultOpen}
+                    isOpen={isOpen}
                     onSuggestionClick={handleSuggestionClick}
                 />
             )}

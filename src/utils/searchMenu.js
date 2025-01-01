@@ -40,10 +40,6 @@ export default function searchQuery(jsonData, query) {
                     if (!seenResults.has(resultKey)) {
                         results.push({ path: currentPath, text: value });
                         seenResults.add(resultKey); // Stockez la clé dans le Set
-                        // console.log("Match found:", {
-                        //     path: currentPath,
-                        //     text: value,
-                        // });
                     }
                 } else if (Array.isArray(value)) {
                     // Rechercher dans les tableaux
@@ -61,10 +57,6 @@ export default function searchQuery(jsonData, query) {
                                     text: arrayItem,
                                 });
                                 seenResults.add(resultKey);
-                                // console.log("Match found:", {
-                                //     path: currentPath,
-                                //     text: arrayItem,
-                                // });
                             }
                         } else if (typeof arrayItem === "object") {
                             // Recherche dans les objets imbriqués

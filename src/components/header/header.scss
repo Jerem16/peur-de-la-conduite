@@ -2,14 +2,10 @@
     transition: $props 0.35s ease;
 }
 
-button.nav-icon {
+.nav-icon {
     display: flex;
-    // align-items: center;
-    // justify-content: center;
     cursor: pointer;
     .close-search {
-        // width: 18px;
-        // height: 18px;
         .bg-color {
             fill: $primary-black;
         }
@@ -25,34 +21,52 @@ header {
     display: inline-flex;
     gap: 2rem;
     flex-flow: row;
-    box-sizing: content-box;
-    width: calc(100% - 4rem);
+    box-sizing: border-box;
     height: 50px;
+    width: 100%;
     background: linear-gradient(
         180deg,
         rgba(245, 245, 245, 1) 0%,
         rgba(245, 245, 245, 0) 95%,
         rgba(245, 245, 245, 0) 100%
     );
+    // width: 100vw;
+}
+.head-flex {
+    margin-top: 1.5rem;
+    display: flex; /* Changement de inline-flex à flex */
+    flex: 1; /* Permet au conteneur de prendre tout l'espace disponible */
+    align-items: center;
+    gap: 2rem;
+}
+
+.head-space {
+    flex-grow: 1; /* Prend tout l'espace disponible restant */
+    flex-shrink: 1; /* Rétrécit si nécessaire */
+    flex-basis: 0; /* Permet à l'espace de s'adapter automatiquement */
 }
 nav {
     display: flex;
     justify-content: space-around;
 }
 .main-nav,
-.solo,
+.reservation,
 .research,
 .connect {
     display: inline-flex;
-    padding: 15px 1.625rem 15px 1.5rem;
+    padding: 1rem 1.5rem;
+    // padding: 15px 16px 17px 16px;
     gap: 32px;
     width: auto;
-    border-radius: 25px;
+    border-radius: 27.5px;
     background: $white;
     @include menuShadow(rgba(0, 0, 0, 0.25));
     transition: background 0.3s ease, color 0.3s ease;
 }
-.solo {
+
+.reservation {
+    padding: 16px;
+    // border-radius: 50%;
     background: $primary-blue;
     color: $white;
     .nav-link,
@@ -85,6 +99,7 @@ nav {
 }
 .research,
 .connect {
+    padding: 16px;
     width: auto;
     .nav-link,
     .icon-color {
@@ -105,10 +120,11 @@ nav {
         fill: $primary-black !important;
         color: $primary-black !important;
     }
-    .head-link.active .nav-icon {
-        // filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
-    }
 }
+.research {
+    max-width: 223px;
+}
+
 .connect {
     .nav-link {
         width: 114px;
@@ -124,21 +140,27 @@ nav {
         }
     }
 }
-.solo,
+.reservation,
 .research,
 .connect,
-.head-link {
+.head-link,
+.nav-link {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.solo:hover,
-.solo:focus {
+.reservation:hover,
+.reservation:focus {
 }
 .research {
 }
 
 .main-nav .group_link-submenu {
     position: relative;
+    min-width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    // margin: auto;
 }
 .head-link {
     height: 20px;
@@ -146,22 +168,40 @@ nav {
     align-items: center;
     gap: 10px;
 }
+.show-button {
+    width: 18px;
+}
+#search-input {
+    max-height: 1.25rem;
+}
+.hidden {
+    display: none;
+}
 .nav-icon {
     width: 18px;
     height: 18px;
     display: block;
+    // padding: 2.5px;
+    // border: 1px solid #000;
 }
 
 .nav-link {
     @include navLink;
+}
+input.nav-link,
+option.nav-link {
+    text-transform: capitalize;
+}
+.group_link-submenu {
+    // text-transform: capitalize;
 }
 .submenu {
     display: none;
     position: absolute;
     top: 100%;
     height: auto;
-    margin-left: -1rem;
-    margin-left: -1.5rem;
+    margin-left: 0.5rem;
+    // margin-left: -1.5rem;
     width: calc(100% + 3.5rem);
     padding-top: 1.5rem;
     box-sizing: border-box;
@@ -268,6 +308,9 @@ nav {
     color: $primary-blue;
     @include smoothTransition(fill, color, transform);
     background: none;
+}
+.main-nav .group_link-submenu:last-of-type .nav-link:last-of-type {
+    margin-right: 0.25rem;
 }
 .logo {
     margin: 0;

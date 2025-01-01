@@ -13,16 +13,21 @@ interface NavigationContextType {
     updateRoute: (path: string) => void;
     openSubMenu: string | null;
     setOpenSubMenu: (subMenuId: string | null) => void;
+    showNavLinks: boolean;
+    setShowNavLinks: (show: boolean) => void;
     resetDisplayStyles: () => void;
 }
 
 const NavigationContext = createContext<NavigationContextType | null>(null);
 
-export const NavigationProvider = ({ children }) => {
+export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
+    children,
+}) => {
     const router = useRouter();
     const pathname = usePathname();
     const [currentRoute, setCurrentRoute] = useState(pathname || "/");
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+    const [showNavLinks, setShowNavLinks] = useState<boolean>(true);
 
     // Fonction pour réinitialiser l'affichage des sous-menus
     const resetDisplayStyles = useCallback(() => {
@@ -47,9 +52,17 @@ export const NavigationProvider = ({ children }) => {
             updateRoute,
             openSubMenu,
             setOpenSubMenu,
-            resetDisplayStyles, // Ajout de la fonction pour réinitialiser
+            resetDisplayStyles,
+            showNavLinks,
+            setShowNavLinks, // Pour modifier l'état
         }),
-        [currentRoute, updateRoute, openSubMenu, resetDisplayStyles]
+        [
+            currentRoute,
+            updateRoute,
+            openSubMenu,
+            resetDisplayStyles,
+            showNavLinks,
+        ]
     );
 
     return (
