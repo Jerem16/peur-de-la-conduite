@@ -51,7 +51,11 @@ const Nav: React.FC<NavProps> = ({
     };
     const handleMouseOrFocus = (menuId: string) => {
         showLink(menuId);
-        if (openMainButton === true) {
+        if (
+            tabletMain === true &&
+            openMainButton === true &&
+            openButton === false
+        ) {
             setOpenMainButton(false);
         }
     };
@@ -105,9 +109,17 @@ const Nav: React.FC<NavProps> = ({
                         isOpen={openSubMenu === menuItem.id}
                         handleMenuClick={handleMenuClick}
                         showNavLinks={openButton || openMenu === menuItem.id}
-                        openButton={openButton}
-                        onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
-                        onFocus={() => handleMouseOrFocus(menuItem.id)}
+                        openButton={true}
+                        onMouseEnter={() =>
+                            openMainButton && openButton
+                                ? null
+                                : handleMouseOrFocus(menuItem.id)
+                        }
+                        onFocus={() =>
+                            openMainButton && openButton
+                                ? null
+                                : handleMouseOrFocus(menuItem.id)
+                        }
                         onMenuToggle={(id) => showLink(id)}
                     />
                 ))}
@@ -120,8 +132,16 @@ const Nav: React.FC<NavProps> = ({
                         menuItem={menuItem}
                         isOpen={true}
                         showNavLinks={openButton || openMenu === menuItem.id}
-                        onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
-                        onFocus={() => handleMouseOrFocus(menuItem.id)}
+                        onMouseEnter={() =>
+                            openMainButton && openButton
+                                ? null
+                                : handleMouseOrFocus(menuItem.id)
+                        }
+                        onFocus={() =>
+                            openMainButton && openButton
+                                ? null
+                                : handleMouseOrFocus(menuItem.id)
+                        }
                         onMenuToggle={(id) => showLink(id)}
                     />
                 ))}
@@ -131,15 +151,23 @@ const Nav: React.FC<NavProps> = ({
                 {menuItems.connection?.map((menuItem) => (
                     <NavLinkShow
                         openMainButton={null}
-                        openButton={openButton}
+                        openButton={true}
                         key={menuItem.id}
                         menuItem={menuItem}
                         onNavigationClick={onNavigationClick}
                         isOpen={openSubMenu === menuItem.id}
                         handleMenuClick={handleMenuClick}
                         showNavLinks={openButton || openMenu === menuItem.id}
-                        onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
-                        onFocus={() => handleMouseOrFocus(menuItem.id)}
+                        onMouseEnter={() =>
+                            openMainButton && openButton
+                                ? null
+                                : handleMouseOrFocus(menuItem.id)
+                        }
+                        onFocus={() =>
+                            openMainButton && openButton
+                                ? null
+                                : handleMouseOrFocus(menuItem.id)
+                        }
                         onMenuToggle={(id) => showLink(id)}
                     />
                 ))}

@@ -39,6 +39,7 @@ const Header: React.FC<NavProps> = () => {
     const [openMainButton, setOpenMainButton] = useState(false);
     const [tabletMain, setTabletMain] = useState(false);
     const [openButton, setOpenButton] = useState(false);
+    
 
     // Wrapper pour adapter `handleNavClick`
     const handleNavigationClick = (path: string) => {
@@ -62,6 +63,11 @@ const Header: React.FC<NavProps> = () => {
             if (width < 1024) {
                 setTabletMain(false);
                 setOpenMainButton(false);
+                setOpenButton(false);
+            } else if (width < 1170) {
+                // Desktop (inférieur à 1440px)
+                setTabletMain(true);
+                setOpenMainButton(true);
                 setOpenButton(false);
             } else if (width < 1440) {
                 // Desktop (inférieur à 1440px)

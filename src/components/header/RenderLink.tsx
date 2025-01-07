@@ -9,17 +9,10 @@ import { getShowClass } from "./menuUtils";
 interface NavLinkShowProps {
     menuItem: MenuItem;
     onNavigationClick: (path: string) => void;
-    isOpen: boolean;
     showNavLinks: boolean;
     handleMenuClick: (menuItemId: string) => void;
-    onMenuToggle: (
-        menuItemId: string,
-        event?: React.MouseEvent | React.KeyboardEvent
-    ) => void;
     openButton: boolean;
     openMainButton: boolean;
-    onMouseEnter: () => void;
-    onFocus: () => void;
 }
 
 const RenderLink: React.FC<NavLinkShowProps> = ({

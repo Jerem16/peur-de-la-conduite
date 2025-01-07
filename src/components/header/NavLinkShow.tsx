@@ -54,15 +54,10 @@ const NavLinkShow: React.FC<NavLinkShowProps> = ({
             <RenderLink
                 menuItem={menuItem}
                 onNavigationClick={onNavigationClick}
-                isOpen={isOpen}
                 showNavLinks={showNavLinks}
                 handleMenuClick={handleMenuClick}
-                onMenuToggle={onMenuToggle}
                 openButton={openButton}
-                // tabletMain={true}
                 openMainButton={openMainButton}
-                onMouseEnter={onMouseEnter}
-                onFocus={onFocus}
             />
             {renderSubMenu()}
         </div>
@@ -84,14 +79,10 @@ const NavLinkShow: React.FC<NavLinkShowProps> = ({
             <RenderLink
                 menuItem={menuItem}
                 onNavigationClick={onNavigationClick}
-                isOpen={isOpen}
                 showNavLinks={showNavLinks}
                 handleMenuClick={handleMenuClick}
-                onMenuToggle={onMenuToggle}
                 openButton={openButton}
                 openMainButton={openMainButton}
-                onMouseEnter={onMouseEnter}
-                onFocus={onFocus}
             />
             {renderSubMenu()}
         </div>
