@@ -8,21 +8,22 @@ export const menuItems: MenuLinks = {
             title: "Accueil",
             class: "",
             path: "/",
-            svg: "Tarifs",
+            AnchorId: "#top",
+            svg: "Home",
             subItems: [
                 {
                     id: "menu-slider",
                     title: "Slider",
                     AnchorId: "#slider",
                     class: "",
-                    content: contentIndex["#slider"], // Associe le contenu
+                    content: contentIndex["#slider"], 
                 },
                 {
                     id: "menu-about",
                     title: "À propos",
                     AnchorId: "#about",
                     class: "",
-                    content: contentIndex["#about"], // Associe le contenu
+                    content: contentIndex["#about"], 
                 },
                 {
                     id: "menu-services",
@@ -43,7 +44,8 @@ export const menuItems: MenuLinks = {
             title: "Services",
             class: "",
             path: "/page-services",
-            svg: "Tarifs",
+            AnchorId: "#top",
+            svg: "Services",
             subItems: [
                 {
                     id: "menu-without-license",
@@ -64,7 +66,7 @@ export const menuItems: MenuLinks = {
             title: "Blog",
             class: "",
             path: "/page-blog",
-            svg: "Tarifs",
+            svg: "Blog",
         },
         {
             id: "menu-prices",
@@ -78,7 +80,7 @@ export const menuItems: MenuLinks = {
             title: "Contact",
             class: "",
             path: "/page-contact",
-            svg: "Tarifs",
+            svg: "Contact",
         },
     ],
     reservation: [
@@ -87,7 +89,7 @@ export const menuItems: MenuLinks = {
             title: "Réservation",
             class: "",
             path: "/page-reservation",
-            svg: "Tarifs",
+            svg: "Reservation",
         },
     ],
     search: [
@@ -96,7 +98,7 @@ export const menuItems: MenuLinks = {
             title: "Rechercher ...",
             class: "",
             path: "/page-search",
-            svg: "Tarifs",
+            svg: "Search",
         },
     ],
     connection: [
@@ -105,7 +107,7 @@ export const menuItems: MenuLinks = {
             title: "Se connecter",
             class: "",
             path: "/page-reservation",
-            svg: "Tarifs",
+            svg: "Connection",
         },
     ],
 };

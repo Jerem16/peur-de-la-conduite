@@ -3,6 +3,7 @@ import Contact from "../src/components/contact/Contact";
 export default function Home() {
     return (
         <>
+            {/* <title>Accueil | Peur de la conduite</title> */}
             <section className="section" id="slider">
                 <div className="fixed-menu"></div>
                 <h2>Main Page</h2>

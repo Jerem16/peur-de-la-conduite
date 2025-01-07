@@ -6,7 +6,7 @@ import Header from "../src/components/header/Header";
 import { menuItems } from "../src/assets/data/menuItems";
 import { handleNavClick } from "../src/utils/scrollUtils";
 
-const HeaderProps: React.FC = () => {
+const HeaderProps = () => {
     return (
         <NavigationProvider>
             <ScrollProvider>

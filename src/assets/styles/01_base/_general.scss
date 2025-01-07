@@ -6,6 +6,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
     * {
         margin: 0;
@@ -17,6 +19,7 @@ body {
         image-rendering: auto;
     }
     overflow-x: hidden;
+    // overflow-y: hidden;
 }
 p {
     max-width: 720px;
@@ -50,4 +53,67 @@ option {
 ul,
 ol {
     list-style: none;
+}
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    width: auto;
+}
+
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+        // width: 0;
+        // text-transform: lowercase;
+    }
+    66% {
+        // width: 50%;
+        opacity: 0;
+    }
+    90% {
+        // width: 100%;
+    }
+    100% {
+        opacity: 1;
+
+        // width: 100%;
+    }
+}
+@keyframes opacityWidthAnimationIn {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+    66% {
+        width: 50%;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    90% {
+        width: 100%;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes opacityWidthAnimationOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    10% {
+        width: 100%;
+    }
+    66% {
+        width: 50%;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+        width: 0%;
+    }
 }

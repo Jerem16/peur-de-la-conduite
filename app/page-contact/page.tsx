@@ -2,8 +2,11 @@ import Contact from "../../src/components/contact/Contact";
 
 export default function Page() {
     return (
-        <section className="section">
-            <Contact />
-        </section>
+        <>
+            {/* <title>Contact | Peur de la conduite</title> */}
+            <section className="section">
+                <Contact />
+            </section>
+        </>
     );
 }

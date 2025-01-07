@@ -54,7 +54,7 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
             setOpenSubMenu,
             resetDisplayStyles,
             showNavLinks,
-            setShowNavLinks, // Pour modifier l'état
+            setShowNavLinks,
         }),
         [
             currentRoute,

@@ -7,6 +7,13 @@
 /*
     @include drop-shadow(2px 3px rgba(0, 0, 0, 0.25));
 */
+
+@mixin starting-style {
+    transform: scaleX(0);
+    transform-origin: right;
+    opacity: 0;
+    color: transparent;
+}
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
     -moz-border-radius: $radius;

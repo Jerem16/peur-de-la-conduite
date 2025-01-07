@@ -19,6 +19,6 @@
             }
         ]
     },
-    "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "src/utils/context/NavigationContext.tsx"],
+    "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "src/utils/context/NavigationContext.tsx", "src/components/header/HiddenDelayComponent.tsx", "app/headerProps.jsx"],
     "exclude": ["node_modules"]
 }

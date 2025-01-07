@@ -1,6 +1,7 @@
 export default function Page() {
     return (
         <>
+            {/* <title>Tarifs | Peur de la conduite</title> */}
             <section className="section" id="s1">
                 <div className="fixed-menu"></div>
                 <h2>Nos Tarifs</h2>

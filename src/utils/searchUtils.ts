@@ -1,27 +1,41 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
+export const updateUrl = (
+    router: ReturnType<typeof useRouter>,
+    searchParams: URLSearchParams,
+    params: { query?: string; badKeyWord?: string }
+) => {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+
+    if (params.query) {
+        newSearchParams.set("query", params.query);
+    } else {
+        newSearchParams.delete("query");
+    }
+
+    if (params.badKeyWord) {
+        newSearchParams.set("badKeyWord", params.badKeyWord);
+    } else {
+        newSearchParams.delete("badKeyWord");
+    }
+
+    router.replace(`?${newSearchParams.toString()}`);
+};
 export interface SearchItem {
     id: string;
     title: string;
     path: string;
     text: string;
 }
+
 export const normalizeWord = (word: string) =>
     word
         .toLowerCase()
         .replace(/[.,;!?]/g, "")
         .trim();
 
-export const updateUrl = (params: { query?: string; badKeyWord?: string }) => {
-    const url = new URL(window.location.href);
-
-    if (params.query) url.searchParams.set("query", params.query);
-    else url.searchParams.delete("query");
-
-    if (params.badKeyWord)
-        url.searchParams.set("badKeyWord", params.badKeyWord);
-    else url.searchParams.delete("badKeyWord");
-
-    window.history.replaceState(null, "", url.toString());
-};
 export const filterSuggestions = (
     items: SearchItem[],
     query: string
@@ -36,7 +50,7 @@ export const filterSuggestions = (
                         .map(normalizeWord)
                         .find((word) => word.startsWith(normalizedQuery))
                 )
-                .filter(Boolean) // Filtre pour éliminer les valeurs indésirables
+                .filter(Boolean)
         )
     );
 };

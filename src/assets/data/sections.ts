@@ -1,4 +1,5 @@
 export const sections = [
+    { id: "top" },
     { id: "slider" },
     { id: "about" },
     { id: "services" },

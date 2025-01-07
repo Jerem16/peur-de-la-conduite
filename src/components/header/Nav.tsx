@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { MenuItem } from "../../assets/data/menuItems";
 import { useMenuBehavior } from "../../utils/updateMenuUtils";
-import NavLink from "./NavLink";
 import NavLinkShow from "./NavLinkShow";
-import NavInput from "./NavInput";
+import NavInput from "./navInput/NavInput";
 import { useNavigation } from "../../utils/context/NavigationContext";
 
 interface NavProps {
@@ -16,15 +15,19 @@ interface NavProps {
         connection?: MenuItem[];
     };
     onNavigationClick: (path: string) => void;
+    openButton: boolean;
+    openMainButton: boolean;
+    setOpenMainButton: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
-    const {
-        openSubMenu,
-        setOpenSubMenu,
-        showNavLinks,
-        setShowNavLinks,
-    } = useNavigation();
+const Nav: React.FC<NavProps> = ({
+    menuItems,
+    onNavigationClick,
+    openButton,
+    openMainButton,
+    setOpenMainButton,
+}) => {
+    const { openSubMenu, setOpenSubMenu, setShowNavLinks } = useNavigation();
     const { navRef } = useMenuBehavior();
 
     const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -33,116 +36,110 @@ const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
     const handleMenuClick = (menuItemId: string) => {
         setOpenSubMenu(openSubMenu === menuItemId ? null : menuItemId);
     };
-    const handleMenuClickShow = (menuItemId: string) => {
-        setOpenSubMenu(openSubMenu === menuItemId ? null : menuItemId);
-        setShowNavLinks(false);
-        setOpenMenu("main");
-    };
-    const handleKeyDown = (
-        e: React.KeyboardEvent<HTMLDivElement>,
-        menuItemId: string
-    ) => {
-        if (["Enter", " "].includes(e.key)) {
-            e.preventDefault();
-            showLink(menuItemId, e);
-        }
-    };
 
-    const showLink = (
-        menuId: string,
-        e: React.MouseEvent | React.KeyboardEvent
-    ) => {
-        e.preventDefault();
+    const showLink = (menuId: string) => {
         setShowNavLinks(true);
         setOpenMenu(menuId);
         if (lastClickedMenu === menuId && openMenu !== "main") {
             setShowNavLinks(false);
-            console.log("bloquer:", menuId, lastClickedMenu, showNavLinks);
             return;
         }
         setLastClickedMenu(menuId);
         setOpenMenu(openMenu === menuId ? null : menuId);
     };
-    useEffect(() => {
-        console.log(
-            "Nav showNavLinks state changed:",
-            showNavLinks,
-            lastClickedMenu
-        );
-    }, [showNavLinks, lastClickedMenu]);
+    const handleMouseOrFocus = (menuId: string) => {
+        showLink(menuId);
+        if (openMainButton === true) {
+            setOpenMainButton(false);
+        }
+    };
+    const handleMainMouseOrFocus = (menuId: string) => {
+        handleMouseOrFocus(menuId);
+        setOpenMainButton(true);
+    };
     return (
         <div className="head-flex">
-            <nav ref={navRef} className="main-nav">
+            <nav
+                ref={navRef}
+                className={`main-nav`}
+                onMouseEnter={() =>
+                    !openMainButton ? null : handleMainMouseOrFocus("")
+                }
+                onFocus={() =>
+                    !openMainButton ? null : handleMainMouseOrFocus("")
+                }
+            >
                 {menuItems.mainLink?.map((menuItem) => (
-                    <NavLink
+                    <NavLinkShow
+                        openMainButton={openMainButton}
+                        openButton={false}
                         key={menuItem.id}
                         menuItem={menuItem}
                         onNavigationClick={onNavigationClick}
                         isOpen={openSubMenu === menuItem.id}
-                        handleMenuClick={handleMenuClickShow}
+                        handleMenuClick={handleMenuClick}
+                        showNavLinks={
+                            openMainButton || openMenu === menuItem.id
+                        }
+                        onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
+                        onFocus={() => handleMouseOrFocus(menuItem.id)}
+                        onMenuToggle={(id) => showLink(id)}
                     />
                 ))}
             </nav>
 
-            <nav className="main-nav reservation">
+            {openButton ? null : <div className="head-space"></div>}
+            <nav
+                ref={navRef}
+                className={``}
+                // onMouseLeave={() => handleMouseLeave()}
+            >
                 {menuItems.reservation?.map((menuItem) => (
-                    <NavLink
+                    <NavLinkShow
+                        openMainButton={null}
                         key={menuItem.id}
                         menuItem={menuItem}
                         onNavigationClick={onNavigationClick}
-                        isOpen={false}
-                        handleMenuClick={() => {}}
+                        isOpen={openSubMenu === menuItem.id}
+                        handleMenuClick={handleMenuClick}
+                        showNavLinks={openButton || openMenu === menuItem.id}
+                        openButton={true}
+                        onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
+                        onFocus={() => handleMouseOrFocus(menuItem.id)}
+                        onMenuToggle={(id) => showLink(id)}
                     />
                 ))}
             </nav>
 
-            <div className="head-space"></div>
-
-            {/* Menu de recherche */}
-            <nav ref={navRef} className="main-nav research">
+            <nav ref={navRef} className={`research`} role="menubar">
                 {menuItems.search?.map((menuItem) => (
-                    <div
+                    <NavInput
                         key={menuItem.id}
-                        className={`group_link-submenu ${menuItem.id}`}
-                        role="menubar"
-                        aria-label={`ouvrir le menu ${menuItem.title}`}
-                        // aria-expanded={openSubMenu === menuItem.id}
-                        tabIndex={0}
-                        onClick={(e) => showLink(menuItem.id, e)}
-                        onKeyDown={(e) => handleKeyDown(e, menuItem.id)}
-                    >
-                        <NavInput
-                            key={menuItem.id}
-                            menuItem={menuItem}
-                            isOpen={true}
-                            showNavLinks={openMenu === menuItem.id}
-                            // onNavigationClick={() => {}}
-                        />
-                    </div>
+                        menuItem={menuItem}
+                        isOpen={true}
+                        showNavLinks={openButton || openMenu === menuItem.id}
+                        onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
+                        onFocus={() => handleMouseOrFocus(menuItem.id)}
+                        onMenuToggle={(id) => showLink(id)}
+                    />
                 ))}
             </nav>
 
-           
-            <nav ref={navRef} className="main-nav connect">
+            <nav ref={navRef} className={`connect`}>
                 {menuItems.connection?.map((menuItem) => (
-                    <div
+                    <NavLinkShow
+                        openMainButton={null}
+                        openButton={true}
                         key={menuItem.id}
-                        className={`group_link-submenu ${menuItem.id}`}
-                        role="menubar"
-                        aria-label={`ouvrir le menu ${menuItem.title}`}
-                        // aria-expanded={openSubMenu === menuItem.id}
-                        tabIndex={0}
-                        onClick={(e) => showLink(menuItem.id, e)}
-                        onKeyDown={(e) => handleKeyDown(e, menuItem.id)}
-                    >
-                        <NavLinkShow
-                            menuItem={menuItem}
-                            onNavigationClick={onNavigationClick}
-                            isOpen={openSubMenu === menuItem.id}
-                            handleMenuClick={handleMenuClick}
-                            showNavLinks={openMenu === menuItem.id}
-                        />
-                    </div>
+                        menuItem={menuItem}
+                        onNavigationClick={onNavigationClick}
+                        isOpen={openSubMenu === menuItem.id}
+                        handleMenuClick={handleMenuClick}
+                        showNavLinks={openButton || openMenu === menuItem.id}
+                        onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
+                        onFocus={() => handleMouseOrFocus(menuItem.id)}
+                        onMenuToggle={(id) => showLink(id)}
+                    />
                 ))}
             </nav>
         </div>

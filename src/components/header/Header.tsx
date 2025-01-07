@@ -16,36 +16,30 @@ import {
     useScrollAnchors,
     useInitialScroll,
 } from "../../utils/scrollUtils";
+
 interface NavProps {
-    menuItems: {
-        mainLink?: MenuItem[];
-        reservation?: MenuItem[];
-        search?: MenuItem[];
-        connection?: MenuItem[];
-    };
-    onNavigationClick: (
-        path: string,
-        currentRoute: string | undefined,
-        updateRoute: (route: string) => void,
-        handleScrollClick: (hash: string) => void
-    ) => void;
+    menuItems: MenuItem[];
+    onNavigationClick: (path: string) => void; // Correction ici pour une signature unifiée
+    openButton: boolean;
+    openMainButton: boolean;
+    setOpenMainButton: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 const Header: React.FC<NavProps> = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute } = useNavigation();
     const { activeSection } = useScrollContext();
+
     useScrollAnchors(sections);
-
-    // Hook personnalisé pour gérer l'initialisation du scroll
     useInitialScroll(pathname);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [openMainButton, setOpenMainButton] = React.useState(false);
 
-    // Active les ancres de section pour le scroll
-
+    // Wrapper pour adapter `handleNavClick`
     const handleNavigationClick = (path: string) => {
         handleNavClick(path, currentRoute, updateRoute, handleScrollClick);
     };
 
-    // Met à jour les classes des éléments de menu
     const updatedMenuItems = updateMenuClasses(
         menuItems.mainLink,
         menuItems.reservation,
@@ -56,18 +50,25 @@ const Header: React.FC<NavProps> = () => {
     );
 
     return (
-        <header className="header">
+        <div className="header">
             <Link
                 href="/"
                 aria-label="Retour à la page d'accueil : Peur de la conduite"
+                className="logo-link"
             >
                 <Logo />
             </Link>
             <Nav
                 menuItems={updatedMenuItems}
                 onNavigationClick={handleNavigationClick}
+                // openMainButton={openMainButton}
+                openMainButton={false}
+                // openMainButton={true}
+                setOpenMainButton={setOpenMainButton}
+                openButton={false}
+                // openButton={true}
             />
-        </header>
+        </div>
     );
 };
 

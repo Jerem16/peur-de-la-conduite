@@ -3,61 +3,97 @@
 import React from "react";
 import { MenuItem } from "../../assets/data/menuItems";
 import SubMenu from "./SubMenu";
-import { svgComponents } from "./svgComponents";
-
-interface NavLinkProps {
+import RenderLink from "./RenderLink";
+import { getShowGroupClass } from "./menuUtils";
+interface NavLinkShowProps {
     menuItem: MenuItem;
     onNavigationClick: (path: string) => void;
     isOpen: boolean;
     showNavLinks: boolean;
     handleMenuClick: (menuItemId: string) => void;
+    onMenuToggle: (
+        menuItemId: string,
+        event?: React.MouseEvent | React.KeyboardEvent
+    ) => void;
+    openButton: boolean;
+    openMainButton: boolean;
+    onMouseEnter: () => void;
+    onFocus: () => void;
 }
 
-const NavLinkShow: React.FC<NavLinkProps> = ({
+const NavLinkShow: React.FC<NavLinkShowProps> = ({
     menuItem,
     onNavigationClick,
     isOpen,
-    handleMenuClick,
     showNavLinks,
+    handleMenuClick,
+    onMenuToggle,
+    openButton,
+    openMainButton,
+    onMouseEnter,
+    onFocus,
 }) => {
-    const SvgIcon = svgComponents[menuItem.svg];
+    const mainNav = !openMainButton && showNavLinks && !openButton;
+    const renderSubMenu = () =>
+        menuItem.subItems?.length > 0 ? (
+            <SubMenu
+                menuItem={menuItem}
+                isOpen={isOpen}
+                onSubItemClick={onNavigationClick}
+            />
+        ) : null;
+    const handleInteraction = (
+        event: React.MouseEvent | React.KeyboardEvent
+    ) => {
+        event.preventDefault();
+        onMenuToggle(menuItem.id, event);
+    };
 
-    return (
-        <>
-            <a
-                role="menuitem"
-                aria-label={`Page ${menuItem.title}`}
-                className={`head-link ${menuItem.class}`}
-                href={menuItem.path}
-                onClick={(e) => {
-                    e.preventDefault();
-                    if (showNavLinks) {
-                        onNavigationClick(menuItem.path);
-                        handleMenuClick(menuItem.id);
-                    }
-                }}
-                onKeyDown={() => {
-                    if (showNavLinks) {
-                        onNavigationClick(menuItem.path);
-                        handleMenuClick(menuItem.id);
-                    }
-                }}
-                tabIndex={0}
-            >
-                {SvgIcon && <SvgIcon />}
-                <span className={`nav-link ${!showNavLinks ? "hidden" : ""}`}>
-                    {menuItem.title}
-                </span>
-            </a>
-
-            {menuItem.subItems?.length > 0 && (
-                <SubMenu
-                    menuItem={menuItem}
-                    isOpen={isOpen}
-                    onSubItemClick={onNavigationClick}
-                />
-            )}
-        </>
+    return openMainButton || mainNav ? (
+        <div className={`group_link-submenu MainNav ${menuItem.id} `}>
+            <RenderLink
+                menuItem={menuItem}
+                onNavigationClick={onNavigationClick}
+                isOpen={isOpen}
+                showNavLinks={showNavLinks}
+                handleMenuClick={handleMenuClick}
+                onMenuToggle={onMenuToggle}
+                openButton={openButton}
+                openMainButton={openMainButton}
+                onMouseEnter={onMouseEnter}
+                onFocus={onFocus}
+            />
+            {renderSubMenu()}
+        </div>
+    ) : (
+        <div
+            className={getShowGroupClass(menuItem.id, showNavLinks)}
+            role="menubar"
+            aria-label={`ouvrir le menu ${menuItem.title}`}
+            tabIndex={0}
+            onClick={handleInteraction}
+            onKeyDown={(e) => {
+                if (["Enter", " "].includes(e.key)) {
+                    handleInteraction(e);
+                }
+            }}
+            onMouseEnter={onMouseEnter}
+            onFocus={onFocus}
+        >
+            <RenderLink
+                menuItem={menuItem}
+                onNavigationClick={onNavigationClick}
+                isOpen={isOpen}
+                showNavLinks={showNavLinks}
+                handleMenuClick={handleMenuClick}
+                onMenuToggle={onMenuToggle}
+                openButton={openButton}
+                openMainButton={openMainButton}
+                onMouseEnter={onMouseEnter}
+                onFocus={onFocus}
+            />
+            {renderSubMenu()}
+        </div>
     );
 };
 
