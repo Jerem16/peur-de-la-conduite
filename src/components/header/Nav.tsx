@@ -17,6 +17,7 @@ interface NavProps {
     onNavigationClick: (path: string) => void;
     openButton: boolean;
     openMainButton: boolean;
+    tabletMain: boolean;
     setOpenMainButton: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -26,6 +27,7 @@ const Nav: React.FC<NavProps> = ({
     openButton,
     openMainButton,
     setOpenMainButton,
+    tabletMain,
 }) => {
     const { openSubMenu, setOpenSubMenu, setShowNavLinks } = useNavigation();
     const { navRef } = useMenuBehavior();
@@ -63,10 +65,10 @@ const Nav: React.FC<NavProps> = ({
                 ref={navRef}
                 className={`main-nav`}
                 onMouseEnter={() =>
-                    !openMainButton ? null : handleMainMouseOrFocus("")
+                    !tabletMain ? null : handleMainMouseOrFocus("")
                 }
                 onFocus={() =>
-                    !openMainButton ? null : handleMainMouseOrFocus("")
+                    !tabletMain ? null : handleMainMouseOrFocus("")
                 }
             >
                 {menuItems.mainLink?.map((menuItem) => (
@@ -103,7 +105,7 @@ const Nav: React.FC<NavProps> = ({
                         isOpen={openSubMenu === menuItem.id}
                         handleMenuClick={handleMenuClick}
                         showNavLinks={openButton || openMenu === menuItem.id}
-                        openButton={true}
+                        openButton={openButton}
                         onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
                         onFocus={() => handleMouseOrFocus(menuItem.id)}
                         onMenuToggle={(id) => showLink(id)}
@@ -129,7 +131,7 @@ const Nav: React.FC<NavProps> = ({
                 {menuItems.connection?.map((menuItem) => (
                     <NavLinkShow
                         openMainButton={null}
-                        openButton={true}
+                        openButton={openButton}
                         key={menuItem.id}
                         menuItem={menuItem}
                         onNavigationClick={onNavigationClick}

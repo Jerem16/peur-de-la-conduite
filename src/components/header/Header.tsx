@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Nav from "./Nav";
@@ -19,10 +19,12 @@ import {
 
 interface NavProps {
     menuItems: MenuItem[];
-    onNavigationClick: (path: string) => void; // Correction ici pour une signature unifiée
+    onNavigationClick: (path: string) => void;
     openButton: boolean;
     openMainButton: boolean;
+    tabletMain: boolean;
     setOpenMainButton: React.Dispatch<React.SetStateAction<boolean>>;
+    setTabletMain: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Header: React.FC<NavProps> = () => {
@@ -32,8 +34,11 @@ const Header: React.FC<NavProps> = () => {
 
     useScrollAnchors(sections);
     useInitialScroll(pathname);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [openMainButton, setOpenMainButton] = React.useState(false);
+
+    // États pour la gestion des différentes tailles d'écran
+    const [openMainButton, setOpenMainButton] = useState(false);
+    const [tabletMain, setTabletMain] = useState(false);
+    const [openButton, setOpenButton] = useState(false);
 
     // Wrapper pour adapter `handleNavClick`
     const handleNavigationClick = (path: string) => {
@@ -49,6 +54,38 @@ const Header: React.FC<NavProps> = () => {
         currentRoute
     );
 
+    // Gestion des changements de largeur d'écran
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+
+            if (width < 1024) {
+                setTabletMain(false);
+                setOpenMainButton(false);
+                setOpenButton(false);
+            } else if (width < 1440) {
+                // Desktop (inférieur à 1440px)
+                setTabletMain(true);
+                setOpenMainButton(true);
+                setOpenButton(false);
+            } else {
+                // Desktop (1440px et plus)
+                setTabletMain(true);
+                setOpenMainButton(true);
+                setOpenButton(true);
+            }
+        };
+
+        // Initialisation lors du montage
+        handleResize();
+
+        // Ajout d'un écouteur sur les changements de taille d'écran
+        window.addEventListener("resize", handleResize);
+
+        // Nettoyage lors du démontage
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div className="header">
             <Link
@@ -61,12 +98,11 @@ const Header: React.FC<NavProps> = () => {
             <Nav
                 menuItems={updatedMenuItems}
                 onNavigationClick={handleNavigationClick}
-                // openMainButton={openMainButton}
-                openMainButton={false}
-                // openMainButton={true}
+                tabletMain={tabletMain} // Gestion de la vue tablette
+                // setTabletMain={setTabletMain}
+                openMainButton={openMainButton} // Gestion de la vue Desktop
                 setOpenMainButton={setOpenMainButton}
-                openButton={false}
-                // openButton={true}
+                openButton={openButton} // Gestion de la vue Desktop large
             />
         </div>
     );

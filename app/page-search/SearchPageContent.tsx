@@ -10,7 +10,6 @@ export default function SearchPageContent() {
     const [badKeyWord, setBadKeyWord] = useState<string | null>(null);
     const [validQuery, setValidQuery] = useState<string>("");
     const searchParams = useSearchParams();
-
     useEffect(() => {
         const queryFromUrl = searchParams.get("query");
         const badKeyWordFromUrl = searchParams.get("badKeyWord");

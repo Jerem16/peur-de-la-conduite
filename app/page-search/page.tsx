@@ -5,11 +5,8 @@ import SearchPageContent from "./SearchPageContent"; // Déplacez votre composan
 
 export default function Page() {
     return (
-        <>
-            {/* <title>Recherches | Peur de la conduite</title> */}
-            <Suspense fallback={<p>Chargement des résultats...</p>}>
-                <SearchPageContent />
-            </Suspense>
-        </>
+        <Suspense fallback={<p>Chargement des résultats...</p>}>
+            <SearchPageContent />
+        </Suspense>
     );
 }

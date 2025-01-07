@@ -59,6 +59,7 @@ const NavLinkShow: React.FC<NavLinkShowProps> = ({
                 handleMenuClick={handleMenuClick}
                 onMenuToggle={onMenuToggle}
                 openButton={openButton}
+                // tabletMain={true}
                 openMainButton={openMainButton}
                 onMouseEnter={onMouseEnter}
                 onFocus={onFocus}

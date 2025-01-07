@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../src/assets/styles/main.scss";
+import { SearchProvider } from "../src/utils/context/SearchContext";
+import { Suspense } from "react";
 import HeaderProps from "./headerProps";
-import { SearchProvider } from "../src/utils/context/SearchContext"; 
-
 
 const RobotoFlex = localFont({
     src: "/fonts/RobotoFlex.woff2",
@@ -24,9 +24,10 @@ const Nunito = localFont({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://peur-de-la-conduite.lemaignent.com/"),
     title: "Peur de la conduite",
     description:
-        "Jérémy Lemaignent, Développeur front-end certifié, je crée des sites interactifs et réactifs transformant des idées en expériences web exceptionnelles avec HTML, CSS, JS et React JS. Envie de discuter de votre prochain projet web ? Contactez-moi dès aujourd'hui.",
+        "Jérémy Lemaignent, Développeur front-end certifié, je crée des sites interactifs et réactifs transformant des idées en expériences web exceptionnelles avec HTML, CSS, JS et React JS.",
     authors: [{ name: "Jérémy Lemaignent" }],
     robots: {
         index: true,
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Peur de la conduite",
         description:
-            "Jérémy Lemaignent, Développeur web front-end certifié, je crée des expériences web exceptionnelles avec HTML, CSS, JavaScript et React JS. Découvrez mes réalisations.",
+            "Jérémy Lemaignent, Développeur web front-end certifié, je crée des expériences web exceptionnelles avec HTML, CSS, JavaScript et React JS.",
         url: "https://jeremy.lemaignent.com/",
         siteName: "Jérémy Lemaignent",
         locale: "fr_FR",
@@ -58,19 +59,17 @@ export const metadata: Metadata = {
         icon: "img/favicon/logo.svg",
         shortcut: "img/favicon/favicon-16x16.png",
         apple: [
-          { url: "img/favicon/apple-touch-icon.png" },
-          {
-            url: "img/favicon/apple-touch-icon.png",
-            sizes: "180x180",
-            type: "image/png",
-          },
+            { url: "img/favicon/apple-touch-icon.png" },
+            {
+                url: "img/favicon/apple-touch-icon.png",
+                sizes: "180x180",
+                type: "image/png",
+            },
         ],
-      },
+    },
     alternates: {
         canonical: "https://jeremy.lemaignent.com/",
     },
-
-
 };
 
 export default function RootLayout({
@@ -80,21 +79,19 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="fr-FR">
-
             <body
                 className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`}
                 id="top"
             >
-                <SearchProvider> 
-                    <header >
-                        <div className="content-wrapper">
-                            <HeaderProps /> 
-                        </div>
-                    </header>
-                        <main>
-                            {children}
-                        </main>
-                   
+                <SearchProvider>
+                    <Suspense fallback={<div>Chargement du header...</div>}>
+                        <header>
+                            <div className="content-wrapper">
+                                <HeaderProps />
+                            </div>
+                        </header>
+                    </Suspense>
+                    <main>{children}</main>
                 </SearchProvider>
             </body>
         </html>
