@@ -23,6 +23,8 @@ interface NavProps {
     openButton: boolean;
     openMainButton: boolean;
     tabletMain: boolean;
+    bigMenu: boolean;
+    setBigMenu: React.Dispatch<React.SetStateAction<boolean>>;
     setOpenMainButton: React.Dispatch<React.SetStateAction<boolean>>;
     setTabletMain: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -39,7 +41,7 @@ const Header: React.FC<NavProps> = () => {
     const [openMainButton, setOpenMainButton] = useState(false);
     const [tabletMain, setTabletMain] = useState(false);
     const [openButton, setOpenButton] = useState(false);
-    
+    const [bigMenu, setBigMenu] = useState(false);
 
     // Wrapper pour adapter `handleNavClick`
     const handleNavigationClick = (path: string) => {
@@ -64,18 +66,19 @@ const Header: React.FC<NavProps> = () => {
                 setTabletMain(false);
                 setOpenMainButton(false);
                 setOpenButton(false);
+                setBigMenu(false);
             } else if (width < 1170) {
-                // Desktop (inférieur à 1440px)
+                setBigMenu(false);
                 setTabletMain(true);
                 setOpenMainButton(true);
                 setOpenButton(false);
             } else if (width < 1440) {
-                // Desktop (inférieur à 1440px)
                 setTabletMain(true);
                 setOpenMainButton(true);
                 setOpenButton(false);
+                setBigMenu(true);
             } else {
-                // Desktop (1440px et plus)
+                setTabletMain(true);
                 setTabletMain(true);
                 setOpenMainButton(true);
                 setOpenButton(true);
@@ -108,7 +111,8 @@ const Header: React.FC<NavProps> = () => {
                 // setTabletMain={setTabletMain}
                 openMainButton={openMainButton} // Gestion de la vue Desktop
                 setOpenMainButton={setOpenMainButton}
-                openButton={openButton} // Gestion de la vue Desktop large
+                openButton={openButton}
+                bigMenu={bigMenu} // Gestion de la vue Desktop large
             />
         </div>
     );

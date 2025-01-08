@@ -1,0 +1,131 @@
+@font-face {
+    font-family: RobotoFlex;
+    src: url(/_next/static/media/825f3527bcc2d755-s.p.woff2) format("woff2");
+    font-display: swap;
+    font-weight: 100 900;
+}
+@font-face {
+    font-family: RobotoFlex Fallback;
+    src: local("Arial");
+    ascent-override: 93.26%;
+    descent-override: 24.54%;
+    line-gap-override: 0%;
+    size-adjust: 99.48%;
+}
+.__className_6a3489 {
+    font-family: RobotoFlex, RobotoFlex Fallback;
+}
+.__variable_6a3489 {
+    --RobotoFlex: "RobotoFlex", "RobotoFlex Fallback";
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(/_next/static/media/41b4d136076de1ca-s.p.woff2) format("woff2");
+    font-display: swap;
+    font-weight: 100 900;
+}
+@font-face {
+    font-family: Montserrat Fallback;
+    src: local("Arial");
+    ascent-override: 87.85%;
+    descent-override: 22.78%;
+    line-gap-override: 0%;
+    size-adjust: 110.19%;
+}
+.__className_78f1c1 {
+    font-family: Montserrat, Montserrat Fallback;
+}
+.__variable_78f1c1 {
+    --montserrat: "Montserrat", "Montserrat Fallback";
+}
+@font-face {
+    font-family: Nunito;
+    src: url(/_next/static/media/95ccc3f79a33dd9d-s.p.woff2) format("woff2");
+    font-display: swap;
+    font-weight: 100 900;
+}
+@font-face {
+    font-family: Nunito Fallback;
+    src: local("Arial");
+    ascent-override: 101.1%;
+    descent-override: 35.3%;
+    line-gap-override: 0%;
+    size-adjust: 100%;
+}
+.__className_ef609d {
+    font-family: Nunito, Nunito Fallback;
+}
+.__variable_ef609d {
+    --nunito: "Nunito", "Nunito Fallback";
+}
+body {
+    font-family: var(--montserrat);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body * {
+    text-decoration: none;
+}
+body svg {
+    image-rendering: auto;
+}
+p {
+    max-width: 720px;
+    margin: 0 auto;
+    color: #1e1e1e;
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 2.0625rem;
+    line-height: 33px;
+}
+h2,
+p {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+}
+h2 {
+    color: #000;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.8px;
+}
+.section {
+    width: 100%;
+    height: 100vh;
+}
+.section .fixed-menu {
+    height: calc(60px + 2rem);
+    width: 100vw;
+}
+.section h2 {
+    height: 90px;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    background: #ff4500;
+    margin: 0;
+}
+.section .s1,
+.section .s2,
+.section .s3 {
+    padding: 2rem;
+    background: #e3c3c3;
+    height: calc(100vh - 180px);
+}
+.section .s2 {
+    background: #acd4ac;
+}

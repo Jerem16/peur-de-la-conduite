@@ -49,15 +49,17 @@ const NavLinkShow: React.FC<NavLinkShowProps> = ({
         onMenuToggle(menuItem.id, event);
     };
 
-    return openMainButton || mainNav ? (
-        <div className={`group_link-submenu MainNav ${menuItem.id} `}>
+    return openMainButton || mainNav || (openButton && showNavLinks) ? (
+        <div
+            className={`group_link-submenu BASE ${menuItem.id} ${
+                !openMainButton ? "nav-padding" : ""
+            }`}
+        >
             <RenderLink
                 menuItem={menuItem}
                 onNavigationClick={onNavigationClick}
                 showNavLinks={showNavLinks}
                 handleMenuClick={handleMenuClick}
-                openButton={openButton}
-                openMainButton={openMainButton}
             />
             {renderSubMenu()}
         </div>
@@ -81,8 +83,6 @@ const NavLinkShow: React.FC<NavLinkShowProps> = ({
                 onNavigationClick={onNavigationClick}
                 showNavLinks={showNavLinks}
                 handleMenuClick={handleMenuClick}
-                openButton={openButton}
-                openMainButton={openMainButton}
             />
             {renderSubMenu()}
         </div>

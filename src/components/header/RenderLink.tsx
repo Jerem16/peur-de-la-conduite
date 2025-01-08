@@ -1,6 +1,7 @@
-"use client";
+// "use client";
 
 import React from "react";
+
 import { MenuItem } from "../../assets/data/menuItems";
 import { svgComponents } from "./svgComponents";
 import HiddenDelayComponent from "./HiddenDelayComponent";
@@ -11,8 +12,6 @@ interface NavLinkShowProps {
     onNavigationClick: (path: string) => void;
     showNavLinks: boolean;
     handleMenuClick: (menuItemId: string) => void;
-    openButton: boolean;
-    openMainButton: boolean;
 }
 
 const RenderLink: React.FC<NavLinkShowProps> = ({
@@ -20,8 +19,6 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
     onNavigationClick,
     showNavLinks,
     handleMenuClick,
-    openButton,
-    openMainButton,
 }) => {
     const SvgIcon = svgComponents[menuItem.svg];
     const handleInteraction = (
@@ -31,9 +28,10 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
         onNavigationClick(menuItem.path);
         handleMenuClick(menuItem.id);
     };
+
     return (
         <a
-            role={openButton || !openMainButton ? "menuitem" : ""}
+            role={!showNavLinks ? "menuitem" : ""}
             aria-label={`Page ${menuItem.title}`}
             className={`head-link ${menuItem.class}`}
             href={menuItem.path}

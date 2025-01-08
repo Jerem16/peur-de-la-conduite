@@ -18,6 +18,7 @@ interface NavProps {
     openButton: boolean;
     openMainButton: boolean;
     tabletMain: boolean;
+    bigMenu: boolean;
     setOpenMainButton: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -28,6 +29,7 @@ const Nav: React.FC<NavProps> = ({
     openMainButton,
     setOpenMainButton,
     tabletMain,
+    bigMenu,
 }) => {
     const { openSubMenu, setOpenSubMenu, setShowNavLinks } = useNavigation();
     const { navRef } = useMenuBehavior();
@@ -51,11 +53,7 @@ const Nav: React.FC<NavProps> = ({
     };
     const handleMouseOrFocus = (menuId: string) => {
         showLink(menuId);
-        if (
-            tabletMain === true &&
-            openMainButton === true &&
-            openButton === false
-        ) {
+        if (bigMenu === false) {
             setOpenMainButton(false);
         }
     };
@@ -63,6 +61,31 @@ const Nav: React.FC<NavProps> = ({
         handleMouseOrFocus(menuId);
         setOpenMainButton(true);
     };
+
+    const shouldShowNavLinks = (menuId: string): boolean =>
+        openButton || openMenu === menuId;
+
+    const handleInteraction = (menuId: string): void => {
+        if (!(openMainButton && openButton)) {
+            handleMouseOrFocus(menuId);
+        }
+    };
+    const renderMenu = (menuItems: MenuItem[] | undefined) =>
+        menuItems?.map((menuItem) => (
+            <NavLinkShow
+                openMainButton={null}
+                key={menuItem.id}
+                menuItem={menuItem}
+                onNavigationClick={onNavigationClick}
+                isOpen={false}
+                handleMenuClick={handleMenuClick}
+                showNavLinks={shouldShowNavLinks(menuItem.id)}
+                openButton={true}
+                onMouseEnter={() => handleInteraction(menuItem.id)}
+                onFocus={() => handleInteraction(menuItem.id)}
+                onMenuToggle={(id) => showLink(id)}
+            />
+        ));
     return (
         <div className="head-flex">
             <nav
@@ -95,35 +118,8 @@ const Nav: React.FC<NavProps> = ({
             </nav>
 
             {openButton ? null : <div className="head-space"></div>}
-            <nav
-                ref={navRef}
-                className={``}
-                // onMouseLeave={() => handleMouseLeave()}
-            >
-                {menuItems.reservation?.map((menuItem) => (
-                    <NavLinkShow
-                        openMainButton={null}
-                        key={menuItem.id}
-                        menuItem={menuItem}
-                        onNavigationClick={onNavigationClick}
-                        isOpen={openSubMenu === menuItem.id}
-                        handleMenuClick={handleMenuClick}
-                        showNavLinks={openButton || openMenu === menuItem.id}
-                        openButton={true}
-                        onMouseEnter={() =>
-                            openMainButton && openButton
-                                ? null
-                                : handleMouseOrFocus(menuItem.id)
-                        }
-                        onFocus={() =>
-                            openMainButton && openButton
-                                ? null
-                                : handleMouseOrFocus(menuItem.id)
-                        }
-                        onMenuToggle={(id) => showLink(id)}
-                    />
-                ))}
-            </nav>
+
+            <nav ref={navRef}>{renderMenu(menuItems.reservation)}</nav>
 
             <nav ref={navRef} className={`research`} role="menubar">
                 {menuItems.search?.map((menuItem) => (
@@ -131,46 +127,16 @@ const Nav: React.FC<NavProps> = ({
                         key={menuItem.id}
                         menuItem={menuItem}
                         isOpen={true}
-                        showNavLinks={openButton || openMenu === menuItem.id}
-                        onMouseEnter={() =>
-                            openMainButton && openButton
-                                ? null
-                                : handleMouseOrFocus(menuItem.id)
-                        }
-                        onFocus={() =>
-                            openMainButton && openButton
-                                ? null
-                                : handleMouseOrFocus(menuItem.id)
-                        }
+                        showNavLinks={shouldShowNavLinks(menuItem.id)}
+                        onMouseEnter={() => handleInteraction(menuItem.id)}
+                        onFocus={() => handleInteraction(menuItem.id)}
                         onMenuToggle={(id) => showLink(id)}
                     />
                 ))}
             </nav>
 
             <nav ref={navRef} className={`connect`}>
-                {menuItems.connection?.map((menuItem) => (
-                    <NavLinkShow
-                        openMainButton={null}
-                        openButton={true}
-                        key={menuItem.id}
-                        menuItem={menuItem}
-                        onNavigationClick={onNavigationClick}
-                        isOpen={openSubMenu === menuItem.id}
-                        handleMenuClick={handleMenuClick}
-                        showNavLinks={openButton || openMenu === menuItem.id}
-                        onMouseEnter={() =>
-                            openMainButton && openButton
-                                ? null
-                                : handleMouseOrFocus(menuItem.id)
-                        }
-                        onFocus={() =>
-                            openMainButton && openButton
-                                ? null
-                                : handleMouseOrFocus(menuItem.id)
-                        }
-                        onMenuToggle={(id) => showLink(id)}
-                    />
-                ))}
+                {renderMenu(menuItems.connection)}
             </nav>
         </div>
     );
