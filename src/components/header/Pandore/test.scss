@@ -25,7 +25,6 @@ header {
     );
     width: 100vw;
     position: fixed;
-    top: -1px;
     z-index: 100;
 }
 .header {
@@ -61,9 +60,9 @@ header {
     flex-basis: 0;
     // gap: 100px;
 }
-nav {
-    animation: opacityAnimationDelay 0.9s ease-in-out forwards;
-}
+// nav {
+//     animation: opacityAnimationDelay 0.9s ease-in-out forwards;
+// }
 .main-nav,
 .reservationId,
 .search,
@@ -196,14 +195,55 @@ nav {
 .nav-link {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
+nav {
+    animation: opacityAnimationDelay 0.9s ease-in-out forwards;
 
-nav .group_link-submenu {
-    position: relative;
-    min-width: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+    .group_link-submenu {
+        position: relative;
+        min-width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+
+        .nav-link {
+            &.hidden {
+                opacity: 0;
+                width: 0px;
+                margin: 0 !important;
+                visibility: hidden;
+                max-height: 0;
+                transform: translateY(-10px);
+                transition: all 0.3s ease-in-out;
+                animation: opacityWidthAnimationIn 0.3s ease-in-out backwards;
+            }
+
+            &.show-link {
+                opacity: 1;
+                visibility: visible;
+                max-height: 52px;
+                transform: translateY(0);
+                transition: all 0.3s ease-in-out;
+                animation: opacityWidthAnimationIn 0.3s ease-in-out forwards;
+            }
+
+            &.display-none {
+                display: none;
+            }
+        }
+
+        &:last-of-type .nav-link:last-of-type {
+            margin-right: 0.25rem;
+        }
+    }
 }
+
+// nav .group_link-submenu {
+//     position: relative;
+//     min-width: 20px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: baseline;
+// }
 .head-link {
     min-height: 20px;
     min-width: 20px;
@@ -217,9 +257,9 @@ nav .group_link-submenu {
 .show-button {
     width: 18px;
 }
-#search-input {
-    max-height: 1.25rem;
-}
+// #search-input {
+//     max-height: 1.25rem;
+// }
 .hidden {
     opacity: 0;
     visibility: hidden;
@@ -252,36 +292,36 @@ input.show-link {
     @include navLink;
     margin-left: 10px;
 }
-nav .group_link-submenu:last-of-type .nav-link:last-of-type {
-    margin-right: 0.25rem;
-}
-.group_link-submenu .nav-link.hidden {
-    opacity: 0;
-    width: 0px;
-    margin: 0 !important;
-    visibility: hidden;
-    max-height: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease-in-out;
-}
+// nav .group_link-submenu:last-of-type .nav-link:last-of-type {
+//     margin-right: 0.25rem;
+// }
+// .group_link-submenu .nav-link.hidden {
+//     opacity: 0;
+//     width: 0px;
+//     margin: 0 !important;
+//     visibility: hidden;
+//     max-height: 0;
+//     transform: translateY(-10px);
+//     transition: all 0.3s ease-in-out;
+// }
 
-.group_link-submenu .nav-link.show-link {
-    opacity: 1;
-    visibility: visible;
-    max-height: 52px;
-    transform: translateY(0);
-    transition: all 0.3s ease-in-out;
-}
-.group_link-submenu .nav-link.hidden {
-    animation: opacityWidthAnimationIn 0.3s ease-in-out backwards;
-}
+// .group_link-submenu .nav-link.show-link {
+//     opacity: 1;
+//     visibility: visible;
+//     max-height: 52px;
+//     transform: translateY(0);
+//     transition: all 0.3s ease-in-out;
+// }
+// .group_link-submenu .nav-link.hidden {
+//     animation: opacityWidthAnimationIn 0.3s ease-in-out backwards;
+// }
 
-.group_link-submenu .nav-link.show-link {
-    animation: opacityWidthAnimationIn 0.3s ease-in-out forwards;
-}
-.nav-link.display-none {
-    display: none;
-}
+// .group_link-submenu .nav-link.show-link {
+//     animation: opacityWidthAnimationIn 0.3s ease-in-out forwards;
+// }
+// .nav-link.display-none {
+//     display: none;
+// }
 .nav-icon {
     display: flex;
     cursor: pointer;
@@ -438,7 +478,7 @@ nav .nav-padding .submenu:not(.open) {
     @include menuShadow(rgba(0, 0, 0, 0.5));
     border-radius: 50%;
     background: $white;
-
+    border: 1px solid $secondary-blue;
     cursor: pointer;
     .mouth,
     .eyes {
@@ -458,7 +498,7 @@ nav .nav-padding .submenu:not(.open) {
         @include dropShadow(rgba(0, 0, 0, 0.25));
         .logo-bg {
             @include dropShadow(rgba(0, 0, 0, 0.05));
-            border-radius: 50% !important;
+            border-radius: 50%;
         }
         .logo-circle {
             display: none;

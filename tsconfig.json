@@ -19,6 +19,6 @@
             }
         ]
     },
-    "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "src/utils/context/NavigationContext.tsx", "src/components/header/HiddenDelayComponent.tsx", "app/headerProps.jsx"],
+    "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "src/utils/context/NavigationContext.tsx", "src/components/header/HiddenDelayComponent.tsx", "app/headerProps.jsx", "src/components/svg_Icon/Arrow.jsx", "src/components/slider/Slider.tsx", "src/components/slider/SliderArrow.jsx"],
     "exclude": ["node_modules"]
 }

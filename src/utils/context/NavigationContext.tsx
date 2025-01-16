@@ -14,7 +14,7 @@ interface NavigationContextType {
     openSubMenu: string | null;
     setOpenSubMenu: (subMenuId: string | null) => void;
     showNavLinks: boolean;
-    setShowNavLinks: (show: boolean) => void;
+    setShowNavLinks: (showNavLinks: boolean) => void;
     resetDisplayStyles: () => void;
 }
 

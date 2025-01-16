@@ -8,11 +8,13 @@ export const useInitialScroll = (pathname: string) => {
     useEffect(() => {
         if (window.location.hash) {
             window.scrollTo({ top: 0 });
+            
             handleScrollClick(window.location.hash.substring(1));
         }
         resetActiveMenuClasses();
     }, [pathname]);
 };
+let currentSectionId = "";
 
 export const useScrollAnchors = (sections: { id: string }[]) => {
     const { setActiveSection } = useScrollContext();
@@ -20,7 +22,6 @@ export const useScrollAnchors = (sections: { id: string }[]) => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
-            let currentSectionId = "";
 
             sections.forEach(({ id }) => {
                 const section = document.getElementById(id);

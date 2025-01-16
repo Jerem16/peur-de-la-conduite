@@ -93,12 +93,12 @@ const Header: React.FC<NavProps> = () => {
 
         // Nettoyage lors du démontage
         return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    }, [setBigMenu, setOpenButton, setOpenMainButton, setTabletMain]);
 
     return (
         <div className="header">
             <Link
-                href="/"
+                href="/#slider"
                 aria-label="Retour à la page d'accueil : Peur de la conduite"
                 className="logo-link"
             >

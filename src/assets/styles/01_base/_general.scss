@@ -21,6 +21,10 @@ body {
     overflow-x: hidden;
     // overflow-y: hidden;
 }
+#top {
+    animation: none; /* Animation inactive par défaut */
+    border-top: 1px solid transparent;
+}
 p {
     max-width: 720px;
     margin: 0 auto;
@@ -34,14 +38,10 @@ button,
 select,
 textarea,
 option {
-    width: 100%;
-    font-size: 1rem;
-    font-family: inherit;
     background: transparent;
     outline: none;
     margin: 0;
     padding: 0;
-    color: inherit;
     border: none;
     appearance: none;
 }
@@ -59,24 +59,46 @@ ol {
     max-width: 1440px;
     width: auto;
 }
+@keyframes topToScroll {
+    0% {
+        border: 10px solid black;
+    }
+    100% {
+        border: 0px solid black;
+    }
+}
 
-@keyframes opacityAnimation {
+@keyframes opacityAnimationDelay {
     0% {
         opacity: 0;
-        // width: 0;
-        // text-transform: lowercase;
+        display: none;
+    }
+    50% {
+        display: inherit;
     }
     66% {
-        // width: 50%;
         opacity: 0;
-    }
-    90% {
-        // width: 100%;
     }
     100% {
         opacity: 1;
-
-        // width: 100%;
+    }
+}
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes shadowAnimation {
+    0% {
+        @include menuShadow(rgba(0, 0, 0, 0.5));
+    }
+    100% {
+        @include menuShadow(rgba(0, 0, 0, 0.25));
     }
 }
 @keyframes opacityWidthAnimationIn {

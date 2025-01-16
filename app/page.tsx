@@ -1,20 +1,15 @@
 import Contact from "../src/components/contact/Contact";
+import Slider from "../src/components/slider/Slider";
+import { SliderProvider } from "../src/utils/context/SliderContext";
 
 export default function Home() {
     return (
         <>
             {/* <title>Accueil | Peur de la conduite</title> */}
             <section className="section" id="slider">
-                <div className="fixed-menu"></div>
-                <h2>Main Page</h2>
-                <div className="s1">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Qui doloremque rerum quod aut ipsa consectetur quaerat
-                        cupiditate voluptate quae sapiente odit dolorum sit
-                        natus dicta molestias, ea error porro optio.
-                    </p>
-                </div>
+                <SliderProvider>
+                    <Slider />
+                </SliderProvider>
             </section>
             <section className="section" id="about">
                 <div className="fixed-menu"></div>

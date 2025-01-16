@@ -28,7 +28,7 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
         event: React.MouseEvent | React.KeyboardEvent
     ) => {
         event.preventDefault();
-        onNavigationClick(menuItem.path + menuItem.AnchorId);
+        onNavigationClick(menuItem.path);
         handleMenuClick(menuItem.id);
     };
     const hoverInteraction = (
@@ -51,11 +51,10 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
             onKeyDown={(e) => {
                 if (["Enter", " "].includes(e.key)) {
                     handleInteraction(e);
+                } else if (e.key === "Escape") {
+                    e.preventDefault(); // Empêcher le comportement par défaut
+                    setOpenSubMenu(null); // Fermer le menu si Escape est pressé
                 }
-                // else if (e.key === "Escape") {
-                //     e.preventDefault(); // Empêcher le comportement par défaut
-                //     setOpenSubMenu(null); // Fermer le menu si Escape est pressé
-                // }
             }}
             tabIndex={0}
             onMouseEnter={(e) => hoverInteraction(e, menuItem.id)}

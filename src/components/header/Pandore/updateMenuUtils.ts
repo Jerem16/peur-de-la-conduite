@@ -75,61 +75,103 @@ export const resetActiveMenuClasses = () => {
     });
 };
 
-/*
-export const useMenuBehavior = () => {
-    const navRef = useRef<HTMLElement | null>(null);
-    const { openSubMenu, setOpenSubMenu } = useNavigation();
-
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (navRef.current && !navRef.current.contains(e.target as Node)) {
-                setOpenSubMenu(null);
-            }
-        };
-
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [setOpenSubMenu]);
-
-    return { navRef, openSubMenu, setOpenSubMenu };
-};
-*/
 // /*
+
 export const useMenuBehavior = () => {
     const navRef = useRef<HTMLElement | null>(null);
+
     const { openSubMenu, setOpenSubMenu } = useNavigation();
 
     useEffect(() => {
-        // Gérer les clics en dehors du menu
+        // Fonction pour gérer le clic à l'extérieur du menu
         const handleClickOutside = (e: MouseEvent) => {
             if (navRef.current && !navRef.current.contains(e.target as Node)) {
                 setOpenSubMenu(null);
             }
         };
 
-        // Gérer la fermeture avec la touche "Escape"
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                e.preventDefault(); // Empêcher le comportement par défaut
-                setOpenSubMenu(null); // Fermer le menu
-            }
+        // Sélection des éléments de menu
+        const menuHome = document.querySelector<HTMLElement>(
+            ".group_link-submenu.menu-home"
+        );
+        const menuServices = document.querySelector<HTMLElement>(
+            ".group_link-submenu.menu-services"
+        );
+
+        // Réinitialiser les styles d'affichage des sous-menus
+        const resetDisplayStyles = () => {
+            [menuServices, menuHome].forEach((menu) => {
+                const openSubmenu = menu?.querySelector<HTMLElement>(
+                    ".submenu.open"
+                );
+                if (openSubmenu) {
+                    setOpenSubMenu(null);
+                }
+            });
         };
 
-        document.addEventListener("mousedown", handleClickOutside);
-        document.addEventListener("keydown", handleKeyDown);
+        // Masquer les sous-menus frères lors du survol
+        const hideSiblingSubmenusOnHover = (
+            menuElement: HTMLElement,
+            siblingMenuElement: HTMLElement
+        ) => {
+            menuElement.addEventListener("mouseover", () => {
+                const submenuSiblings = siblingMenuElement.querySelector<
+                    HTMLElement
+                >(".submenu.open");
+                if (submenuSiblings) setOpenSubMenu(null);
+            });
 
+            menuElement.addEventListener("click", resetDisplayStyles);
+        };
+
+        // Ajout des événements
+        if (menuHome && menuServices) {
+            hideSiblingSubmenusOnHover(menuHome, menuServices);
+            hideSiblingSubmenusOnHover(menuServices, menuHome);
+
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        // Nettoyage des événements lors du démontage
         return () => {
-            // Nettoyer les écouteurs d'événements
             document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("keydown", handleKeyDown);
+
+            menuHome?.removeEventListener("mouseover", resetDisplayStyles);
+            menuHome?.removeEventListener("click", resetDisplayStyles);
+
+            menuServices?.removeEventListener("mouseover", resetDisplayStyles);
+            menuServices?.removeEventListener("click", resetDisplayStyles);
         };
     }, [setOpenSubMenu]);
 
     return { navRef, openSubMenu, setOpenSubMenu };
 };
+
+// */
+/*
+
+export const useMenuBehavior = () => {
+    const navRef = useRef<HTMLElement | null>(null);
+    const { openSubMenu, setOpenSubMenu } = useNavigation();
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(e.target as Node)) {
+                setOpenSubMenu(null);
+            }
+        };
+
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [setOpenSubMenu]);
+
+    return { navRef, openSubMenu, setOpenSubMenu };
+};
+
 // */

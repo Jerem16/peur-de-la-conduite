@@ -21,6 +21,8 @@ export interface SliderContent {
     h2: string;
     h2bold: string;
     description: string;
+    index: string;
+    style: { animation: string };
 }
 
 // Type pour l'index des contenus

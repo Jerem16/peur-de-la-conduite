@@ -8,7 +8,7 @@ export const menuItems: MenuLinks = {
             title: "Accueil",
             class: "",
             path: "/",
-            AnchorId: "#top",
+            AnchorId: "#slider",
             svg: "Home",
             subItems: [
                 {
@@ -66,6 +66,7 @@ export const menuItems: MenuLinks = {
             title: "Blog",
             class: "",
             path: "/page-blog",
+            AnchorId: "#top",
             svg: "Blog",
         },
         {
@@ -73,6 +74,7 @@ export const menuItems: MenuLinks = {
             title: "Tarifs",
             class: "",
             path: "/page-tarifs",
+            AnchorId: "#top",
             svg: "Tarifs",
         },
         {
@@ -80,6 +82,7 @@ export const menuItems: MenuLinks = {
             title: "Contact",
             class: "",
             path: "/page-contact",
+            AnchorId: "#top",
             svg: "Contact",
         },
     ],
@@ -89,6 +92,7 @@ export const menuItems: MenuLinks = {
             title: "Réservation",
             class: "",
             path: "/page-reservation",
+            AnchorId: "#top",
             svg: "Reservation",
         },
     ],
@@ -98,6 +102,7 @@ export const menuItems: MenuLinks = {
             title: "Rechercher ...",
             class: "",
             path: "/page-search",
+            AnchorId: "#top",
             svg: "Search",
         },
     ],
@@ -107,6 +112,7 @@ export const menuItems: MenuLinks = {
             title: "Se connecter",
             class: "",
             path: "/page-reservation",
+            AnchorId: "#top",
             svg: "Connection",
         },
     ],

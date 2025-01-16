@@ -1,6 +1,7 @@
 @mixin smoothTransition($props...) {
     transition: $props 0.35s ease;
 }
+
 %interactive-link {
     display: inline-flex;
     justify-content: space-around;
@@ -13,182 +14,220 @@
 
     &:hover,
     &:focus {
+        transform: scale(1.05);
         @include menuShadow(rgba(0, 0, 0, 0.25));
     }
 }
+
 header {
     background: linear-gradient(
         180deg,
         rgba(245, 245, 245, 1) 0%,
-        rgba(245, 245, 245, 0) 95%,
-        rgba(245, 245, 245, 0) 100%
+        rgba(255, 255, 255, 0) 95%
     );
     width: 100vw;
     position: fixed;
-    top: -1px;
     z-index: 100;
-}
-.header {
-    padding: 1rem 2rem 1.5rem 2rem;
-    margin: 0 auto;
-    display: inline-flex;
-    gap: 2rem;
-    flex-flow: row;
-    box-sizing: border-box;
-    width: 100%;
-    height: 50px;
 
-    // ? @media
-    // padding: 1rem 2rem 1.5rem 1rem;
-    // gap: 1rem;
-}
-.head-flex {
-    margin-top: 1.5rem;
-    display: flex; /* Changement de inline-flex à flex */
-    flex: 1; /* Permet au conteneur de prendre tout l'espace disponible */
-    align-items: center;
-    gap: 2rem;
+    .header {
+        padding: 1rem 2rem 1.5rem 2rem;
+        margin: 0 auto;
+        display: inline-flex;
+        gap: 2rem;
+        flex-flow: row;
+        box-sizing: border-box;
+        width: 100%;
+        height: 50px;
 
-    // ? @media
-    // gap: 1rem;
+        .head-flex {
+            margin-top: 1.5rem;
+            display: flex;
+            flex: 1;
+            align-items: center;
+            gap: 2rem;
+
+            .main-nav,
+            .reservationId,
+            .search,
+            .connection {
+                @extend %interactive-link;
+            }
+
+            .main-nav {
+                padding: 1rem 1.5rem;
+                gap: 1.5rem;
+                &:hover,
+                &:focus {
+                    transform: scale(1);
+                }
+            }
+
+            .reservationId {
+                background: $primary-blue;
+                cursor: pointer;
+
+                .nav-link {
+                    color: #fff;
+                    text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.35);
+                }
+
+                &:hover,
+                &:focus {
+                    background: $primary-orange;
+
+                    .nav-link {
+                        color: $white !important;
+                    }
+
+                    .icon-color_secondary {
+                        fill: $secondary-orange;
+                    }
+                }
+
+                .head-link.active .nav-link {
+                    color: $white !important;
+                }
+
+                .head-link.active .nav-icon,
+                .main-link,
+                .nav-icon {
+                    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
+                }
+            }
+        }
+    }
+
+    .head-space {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0;
+    }
+
+    .reset-padding {
+        padding: 0 !important;
+    }
 }
-.reset-padding {
-    padding: 0 !important;
-}
-.head-space {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
-    // gap: 100px;
-}
+
 nav {
     animation: opacityAnimationDelay 0.9s ease-in-out forwards;
-}
-.main-nav,
-.reservationId,
-.search,
-.connection {
-    @extend %interactive-link;
-    // ? @media
-    // gap: 2rem;
-}
-.main-nav {
-    z-index: 1000;
-    padding: 1rem 1.5rem;
-    gap: 1.5rem;
-    .nav-circle {
-        padding: 0rem;
-    }
-    .nav-padding {
-        padding: 0rem;
-    }
-    &:hover,
-    &:focus {
-        transform: scale(1);
+
+    .group_link-submenu {
+        position: relative;
+        min-width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+
+        .nav-link {
+            &.hidden {
+                opacity: 0;
+                width: 0px;
+                margin: 0 !important;
+                visibility: hidden;
+                max-height: 0;
+                transform: translateY(-10px);
+                transition: all 0.3s ease-in-out;
+                animation: opacityWidthAnimationIn 0.3s ease-in-out backwards;
+            }
+
+            &.show-link {
+                opacity: 1;
+                visibility: visible;
+                max-height: 52px;
+                transform: translateY(0);
+                transition: all 0.3s ease-in-out;
+                animation: opacityWidthAnimationIn 0.3s ease-in-out forwards;
+            }
+
+            &.display-none {
+                display: none;
+            }
+        }
+
+        &:last-of-type .nav-link:last-of-type {
+            margin-right: 0.25rem;
+        }
     }
 }
 
 .nav-circle {
     padding: 1rem;
     gap: 2rem;
+
+    .main-nav & {
+        padding: 0rem;
+    }
 }
+
 .nav-padding {
     padding: 1rem 1.5rem;
     gap: 2rem;
-}
-.main-nav .icon-color_secondary {
-    fill: $secondary-blue;
-}
-.reservationId {
-    background: $primary-blue;
-    color: $white;
-    cursor: pointer;
-    .nav-link,
-    .icon-color {
-        fill: $white;
-        color: #fff;
-        text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.35);
-        filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.25));
-        transition: fill 0.3s ease, color 0.3s ease;
-    }
-    &:hover,
-    &:focus {
-        background: $primary-orange;
-        transform: scale(1.05);
-        @include menuShadow(rgba(0, 0, 0, 0.2));
-        .nav-link,
-        .icon-color {
-            fill: $white !important;
-            color: $white !important;
-        }
-        .icon-color_secondary {
-            fill: $secondary-orange;
-        }
-    }
-    .head-link.active .icon-color,
-    .head-link.active .nav-link {
-        fill: $white !important;
-        color: $white !important;
-    }
-    .head-link.active .nav-icon {
-        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
-    }
-    .main-link,
-    .nav-icon {
-        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
+
+    .main-nav & {
+        padding: 0rem;
     }
 }
+
 .search,
 .connection {
     cursor: pointer;
     width: auto;
+
     .nav-link,
     .icon-color {
         transition: fill 0.3s ease, color 0.3s ease;
     }
+
     &:hover,
     &:focus {
-        // transform: scale(1.05);
         @include menuShadow(rgba(0, 0, 0, 0.2));
+
         .nav-link,
         .icon-color {
             fill: $primary-blue !important;
             color: $primary-black !important;
         }
+
         button {
-            .nav-link,
             .icon-color {
                 fill: $primary-black !important;
-                color: $primary-black !important;
+
+                &:hover,
+                &:focus {
+                    fill: $primary-blue !important;
+                }
             }
         }
     }
 
-    .head-link.active .icon-color,
-    .head-link.active .nav-link {
-        fill: $primary-black !important;
-        color: $primary-black !important;
+    .head-link.active {
+        .icon-color,
+        .nav-link {
+            fill: $primary-black !important;
+            color: $primary-black !important;
+        }
     }
-}
-.search {
-    max-width: 223px;
-}
 
-.connection {
-    .nav-link {
-        width: 114px;
+    &.search {
+        max-width: 223px;
     }
-    &:hover,
-    &:focus {
-        // transform: scale(1.05);
-        // @include menuShadow(rgba(0, 0, 0, 0.2));
-        .nav-link,
-        .icon-color {
-            fill: $primary-blue !important;
-            color: $primary-blue !important;
+
+    &.connection {
+        .nav-link {
+            width: 114px;
+        }
+
+        &:hover,
+        &:focus {
+            .nav-link,
+            .icon-color {
+                fill: $primary-blue !important;
+                color: $primary-blue !important;
+            }
         }
     }
 }
+
 .reservationId,
 .search,
 .connection,
@@ -197,29 +236,23 @@ nav {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-nav .group_link-submenu {
-    position: relative;
-    min-width: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-}
 .head-link {
     min-height: 20px;
     min-width: 20px;
-    // width: auto;
     display: inline-flex;
     align-items: center;
-    // justify-content: center;
     margin: 0;
     padding: 0;
 }
+
 .show-button {
     width: 18px;
 }
+
 #search-input {
     max-height: 1.25rem;
 }
+
 .hidden {
     opacity: 0;
     visibility: hidden;
@@ -238,60 +271,30 @@ nav .group_link-submenu {
     transform-origin: left;
     opacity: 0;
     width: 100%;
-    // @media (max-width: 1440px) {
-    //     transition: all 0.4s ease-in-out;
-    //     // animation: opacityAnimation 0.5s ease-in-out forwards;
-    // }
+
+    input {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
-input.show-link {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    // animation: opacityAnimation 0.2s ease-in-out forwards;
-}
+
 .nav-link {
     @include navLink;
     margin-left: 10px;
 }
-nav .group_link-submenu:last-of-type .nav-link:last-of-type {
-    margin-right: 0.25rem;
-}
-.group_link-submenu .nav-link.hidden {
-    opacity: 0;
-    width: 0px;
-    margin: 0 !important;
-    visibility: hidden;
-    max-height: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease-in-out;
-}
 
-.group_link-submenu .nav-link.show-link {
-    opacity: 1;
-    visibility: visible;
-    max-height: 52px;
-    transform: translateY(0);
-    transition: all 0.3s ease-in-out;
-}
-.group_link-submenu .nav-link.hidden {
-    animation: opacityWidthAnimationIn 0.3s ease-in-out backwards;
-}
-
-.group_link-submenu .nav-link.show-link {
-    animation: opacityWidthAnimationIn 0.3s ease-in-out forwards;
-}
-.nav-link.display-none {
-    display: none;
-}
 .nav-icon {
     display: flex;
     cursor: pointer;
     width: 18px;
     height: 18px;
     margin: 1px;
+
     .close-search {
         .bg-color {
             fill: $primary-black;
         }
+
         .icon-color {
             stroke: $white;
         }
@@ -310,7 +313,7 @@ option.nav-link {
     height: auto;
     margin-left: 0.5rem;
     width: calc(100% + 3.5rem);
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     box-sizing: border-box;
     z-index: 10;
     transition: all 0.35s ease;
@@ -335,7 +338,7 @@ nav .nav-padding .submenu:not(.open) {
     padding: 1rem;
     display: flex;
     flex-flow: column;
-    @include menuShadowHover(rgba(0, 0, 0, 0.25));
+    @include menuShadow(rgba(0, 0, 0, 0.25));
 }
 .submenu_group .nav-link {
     position: relative; // Nécessaire pour positionner les pseudo-éléments
@@ -435,10 +438,10 @@ nav .nav-padding .submenu:not(.open) {
     position: relative;
     top: 0;
     z-index: 1;
-    @include menuShadow(rgba(0, 0, 0, 0.5));
+    @include menuShadow(rgba(0, 0, 0, 0.25));
     border-radius: 50%;
     background: $white;
-
+    border: 1px solid $secondary-blue;
     cursor: pointer;
     .mouth,
     .eyes {
@@ -458,7 +461,7 @@ nav .nav-padding .submenu:not(.open) {
         @include dropShadow(rgba(0, 0, 0, 0.25));
         .logo-bg {
             @include dropShadow(rgba(0, 0, 0, 0.05));
-            border-radius: 50% !important;
+            border-radius: 50%;
         }
         .logo-circle {
             display: none;
