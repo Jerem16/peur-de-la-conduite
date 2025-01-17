@@ -35,7 +35,7 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         if (stopTimerButton) return;
 
-        const intervalTime = 2000;
+        const intervalTime = 4000;
         const slideInterval = setInterval(() => {
             setCurrentSlide((prev) => {
                 if (prev < sliderContent.length - 1) {

@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <>
             {/* <title>Accueil | Peur de la conduite</title> */}
-            <section className="section" id="slider">
+            <section className="section slider-bg" id="slider">
                 <SliderProvider>
                     <Slider />
                 </SliderProvider>

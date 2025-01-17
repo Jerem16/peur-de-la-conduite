@@ -1,0 +1,19 @@
+@import "../../assets/styles//utils";
+
+.sld-bg {
+    z-index: 1;
+    .slider-bg::before {
+        position: relative;
+        z-index: 1;
+    }
+    .sld-sun {
+        width: 900px;
+        height: 630px;
+        float: right;
+        position: relative;
+        background: $sun;
+        border-bottom-left-radius: 450px;
+        border-bottom-right-radius: 450px;
+        z-index: 2;
+    }
+}

@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { MenuItem } from "./../../assets/data/menuItems";
-import { useNavigation } from "./../../utils/context/NavigationContext";
+import { MenuItem } from "../../../assets/data/menuItems";
+import { useNavigation } from "../../../utils/context/NavigationContext";
 
 interface SubMenuProps {
     menuItem: MenuItem;

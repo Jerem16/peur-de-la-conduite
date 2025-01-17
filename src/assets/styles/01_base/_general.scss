@@ -23,7 +23,7 @@ body {
 }
 #top {
     animation: none; /* Animation inactive par défaut */
-    border-top: 1px solid transparent;
+    border-top: 0.5px solid transparent;
 }
 p {
     max-width: 720px;
@@ -48,12 +48,15 @@ option {
 option {
     cursor: pointer;
 }
-
+*:focus {
+    outline: 2px solid $primary-blue;
+}
 /* Reset List Styles */
 ul,
 ol {
     list-style: none;
 }
+
 .content-wrapper {
     margin: 0 auto;
     max-width: 1440px;

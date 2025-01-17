@@ -16,6 +16,7 @@ const SliderNumber = ({ SlideClass }) => {
                 viewBox="0 0 1656 528.6"
                 width="1656"
                 height="528.6"
+                loading="lazy"
             >
                 <linearGradient
                     id="F"

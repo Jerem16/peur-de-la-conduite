@@ -1,0 +1,151 @@
+@import "../../assets/styles//utils";
+
+.slider {
+    top: 0;
+    z-index: 2;
+
+    .slide {
+        opacity: 0;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        &.active {
+            opacity: 1;
+            transform: translateX(0);
+            .sld-card_title {
+                transition: opacity 0.375s ease-in-out 0.25s,
+                    transform 0.375s ease-in-out 0.25s;
+                opacity: 1;
+                transform: translateY(0);
+                h2 {
+                    transition: opacity 0.5s ease-in-out,
+                        transform 0.5s ease-in-out;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .banner-description {
+                transition: opacity 0.75s ease-in-out 0.375s,
+                    transform 0.75s ease-in-out 0.375s;
+                opacity: 1;
+                transform: translateX(0);
+                p {
+                    transition: opacity 0.5s ease-in-out,
+                        transform 0.5s ease-in-out;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        &.next {
+            opacity: 0;
+            // transform: translateX(100%);
+            .sld-card_title {
+                transform: translateY(-160px);
+            }
+            .banner-description {
+                transform: translateX(-300%);
+            }
+        }
+        &.prev {
+            opacity: 0;
+            // transform: translateX(-100%);
+            .sld-card_title {
+                transform: translateY(-160px);
+            }
+            .banner-description {
+                transform: translateX(300%);
+            }
+        }
+    }
+    // .active {
+    //     .sld-card_title {
+    //         transition: opacity 0.375s ease-in-out 0.25s,
+    //             transform 0.375s ease-in-out 0.25s;
+    //         opacity: 1;
+    //         transform: translateY(0);
+    //         h2 {
+    //             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    //             opacity: 1;
+    //             transform: translateY(0);
+    //         }
+    //     }
+    //     .banner-description {
+    //         transition: opacity 0.75s ease-in-out 0.375s,
+    //             transform 0.75s ease-in-out 0.375s;
+    //         opacity: 1;
+    //         transform: translateX(0);
+    //         p {
+    //             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    //             opacity: 1;
+    //             transform: translateY(0);
+    //         }
+    //     }
+    // }
+
+    .sld-card_title {
+        opacity: 0;
+        transform: translateY(160px);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        h2 {
+            opacity: 0;
+            transform: translateY(-16px);
+            transition: opacity 0.25s ease-in-out 0.25s,
+                transform 0.25s ease-in-out 0.25s;
+        }
+    }
+    .banner-description {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out 0.25s,
+            transform 0.75s ease-in-out 0.25s;
+        p {
+            opacity: 0;
+            transform: translateY(-16px);
+            transition: opacity 0.25s 0.25s ease-in-out,
+                transform 0.25s 0.25s ease-in-out;
+        }
+    }
+    .slider-content {
+        position: absolute;
+        z-index: 10;
+        text-align: center;
+        width: 100%;
+
+        .sld-card_title {
+            // filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+
+            width: fit-content;
+            background: $sun;
+            height: 172px;
+            margin: 0 auto;
+            padding: 3rem 4rem 4rem 4rem;
+            border-radius: 4rem;
+            h2 {
+                height: 39px;
+                // animation: opacityAnimation 0.5s ease-in-out;
+                margin-top: 124px;
+                font-size: 2rem;
+                margin-bottom: 2rem;
+                @include bannerH2;
+                .bold {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .banner-description {
+            margin: auto;
+            margin-top: calc(398px);
+            padding: 0.562rem 3.95rem;
+            width: fit-content;
+            height: 50px;
+            border-radius: 90px;
+            background: $white;
+            filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        p {
+            max-height: 32px;
+            max-width: inherit;
+            @include bannerDescribe;
+        }
+    }
+}

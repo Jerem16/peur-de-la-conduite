@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../src/assets/styles/main.scss";
 import { SearchProvider } from "../src/utils/context/SearchContext";
-import { SliderProvider } from "../src/utils/context/SliderContext";
 import { Suspense } from "react";
 import HeaderProps from "./headerProps";
 
@@ -60,15 +59,15 @@ export const metadata: Metadata = {
         creator: "@JLem707",
     },
   icons: {
-        icon: "img/favicon/logo.svg",  
-        shortcut: "img/favicon/favicon-16x16.png",  
+        icon: [{ url: "img/favicon/logo.svg", type: "image/svg+xml" }, ], 
         apple: [
             { url: "img/favicon/apple-touch-icon.png" },  // 120x120
             { url: "img/favicon/logo.svg", sizes: "152x152", type: "image/png" },  // iPad
             { url: "img/favicon/logo.svg", sizes: "180x180", type: "image/png" },  // Retina
         ],
 
-        others : [
+        shortcut : [
+            { url: "img/favicon/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },  
             { url: "img/favicon/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },  
             { url: "img/favicon/icons/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },  
             { url: "img/favicon/icons/android-chrome-512x512.png", sizes: "512x512", type: "image/png" }, 
@@ -79,9 +78,9 @@ export const metadata: Metadata = {
             { url: "img/favicon/logo.svg", sizes: "152x152", type: "image/svg+xml"  },  
             { url: "img/favicon/logo.svg", sizes: "180x180", type: "image/svg+xml" }, 
         ],        
-        svg: [
-            { url: "img/favicon/logo.svg", type: "image/svg+xml" },  // Pour utiliser un SVG spécifique
-        ]
+        // svg: [
+        //     { url: "img/favicon/logo.svg", type: "image/svg+xml" },  // Pour utiliser un SVG spécifique
+        // ]
     },
     alternates: {
         canonical: "https://jeremy.lemaignent.com/",

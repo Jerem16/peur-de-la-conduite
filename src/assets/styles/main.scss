@@ -1,11 +1,16 @@
 /* Utils */
-@import "./00_utils/variables";
-@import "./00_utils/_functions";
-@import "./00_utils/_mixins";
-@import "./00_utils/_fonts";
+// @import "./00_utils/variables";
+// @import "./00_utils/_functions";
+// @import "./00_utils/_mixins";
+// @import "./00_utils/_fonts";
+
+@import "./utils";
 
 @import "./01_base/general";
 @import "./01_base/navToggler";
+
+
+
 
 @import "../../components/header/header.scss";
 // @import "./02_components/00_header/header.scss";

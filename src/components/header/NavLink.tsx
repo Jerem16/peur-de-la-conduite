@@ -2,7 +2,7 @@
 
 import React from "react";
 import { MenuItem } from "../../assets/data/menuItems";
-import SubMenu from "./SubMenu";
+import SubMenu from "./navLink/SubMenu";
 import { svgComponents } from "./svgComponents";
 
 interface NavLinkProps {

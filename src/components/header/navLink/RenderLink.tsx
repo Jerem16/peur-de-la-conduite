@@ -2,11 +2,11 @@
 
 import React from "react";
 
-import { MenuItem } from "./../../assets/data/menuItems";
-import { svgComponents } from "./svgComponents";
-import HiddenDelayComponent from "./HiddenDelayComponent";
-import { getShowClass } from "./menuUtils";
-import { useNavigation } from "./../../utils/context/NavigationContext";
+import { MenuItem } from "../../../assets/data/menuItems";
+import { svgComponents } from "../svgComponents";
+import HiddenDelayComponent from "../HiddenDelayComponent";
+import { getShowClass } from "../menuUtils";
+import { useNavigation } from "../../../utils/context/NavigationContext";
 interface NavLinkShowProps {
     menuItem: MenuItem;
     onNavigationClick: (path: string) => void;
@@ -23,7 +23,7 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
     openMenuId,
 }) => {
     const SvgIcon = svgComponents[menuItem.svg];
-    const { openSubMenu, setOpenSubMenu, setShowNavLinks } = useNavigation();
+    const { setOpenSubMenu } = useNavigation();
     const handleInteraction = (
         event: React.MouseEvent | React.KeyboardEvent
     ) => {
@@ -32,12 +32,12 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
         handleMenuClick(menuItem.id);
     };
     const hoverInteraction = (
-        event: React.MouseEvent | React.KeyboardEvent,
+        event: React.MouseEvent | React.KeyboardEvent | React.FocusEvent,
         menuItemId: string
     ) => {
         event.preventDefault();
 
-        if (openMenuId !== menuItem.id) {
+        if (openMenuId !== menuItemId) {
             return setOpenSubMenu(menuItemId);
         }
     };
@@ -52,10 +52,6 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
                 if (["Enter", " "].includes(e.key)) {
                     handleInteraction(e);
                 }
-                // else if (e.key === "Escape") {
-                //     e.preventDefault(); // Empêcher le comportement par défaut
-                //     setOpenSubMenu(null); // Fermer le menu si Escape est pressé
-                // }
             }}
             tabIndex={0}
             onMouseEnter={(e) => hoverInteraction(e, menuItem.id)}
