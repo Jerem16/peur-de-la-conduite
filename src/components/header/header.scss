@@ -4,7 +4,7 @@
 %interactive-link {
     display: inline-flex;
     justify-content: space-around;
-    gap: 2rem;
+    // gap: 2rem;
     width: auto;
     border-radius: 100px;
     background: $white;
@@ -33,10 +33,12 @@ header {
     margin: 0 auto;
     display: inline-flex;
     gap: 2rem;
+    gap: clamp(1rem, 2vw, 4rem);
     flex-flow: row;
     box-sizing: border-box;
     width: 100%;
     height: 50px;
+    flex-flow: nowrap;
 
     // ? @media
     // padding: 1rem 2rem 1.5rem 1rem;
@@ -94,7 +96,7 @@ nav {
 }
 .nav-padding {
     padding: 1rem 1.5rem;
-    gap: 2rem;
+    // gap: 2rem;
 }
 .main-nav .icon-color_secondary {
     fill: $secondary-blue;
@@ -106,7 +108,7 @@ nav {
     .nav-link,
     .icon-color {
         fill: $white;
-        color: #fff;
+        color: $white;
         text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.35);
         filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.25));
         transition: fill 0.3s ease, color 0.3s ease;
@@ -149,6 +151,7 @@ nav {
     &:hover,
     &:focus {
         // transform: scale(1.05);
+        // border: 1px solid #000;
         @include menuShadow(rgba(0, 0, 0, 0.2));
         .nav-link,
         .icon-color {
@@ -246,6 +249,9 @@ nav .group_link-submenu {
 input.show-link {
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 112px;
+    width: auto;
+    // border: 1px solid #000;
     // animation: opacityAnimation 0.2s ease-in-out forwards;
 }
 .nav-link {

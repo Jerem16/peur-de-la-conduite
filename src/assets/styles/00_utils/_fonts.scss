@@ -4,10 +4,10 @@
 
 @mixin navLink {
     font-family: $roboto;
-    font-size: 1.25rem;
+    font-size: 1.25rem; // 20px
     font-style: normal;
     font-weight: 400;
-    line-height: 1.375rem;
+    line-height: 1.375rem; // 22px
 }
 
 @mixin bannerH2 {
@@ -36,7 +36,7 @@
 @mixin bannerDescribeBold {
     font-family: $montserrat;
     color: $primary-black;
-    font-size: 1.75rem;
+    font-size: 1.75rem; // 28px
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -46,7 +46,7 @@
 @mixin h2Title {
     font-family: $montserrat;
     color: $black;
-    font-size: 2.5rem;
+    font-size: 2.5rem; // 40px
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -56,11 +56,10 @@
 @mixin paragraph {
     font-family: $montserrat;
     color: $primary-black;
-    font-size: 1.75rem;
+    font-size: 1.75rem; // 28px
     font-style: normal;
     font-weight: 500;
-    line-height: 2.0625rem;
-    line-height: 33px;
+    line-height: 2.0625rem; // 33px
 }
 
 @mixin serviceDescribeBold {
@@ -71,9 +70,9 @@
 @mixin buttonText {
     font-family: $nunito;
     color: $white;
-    font-size: 1.25rem;
+    font-size: 1.25rem; // 20px
     font-style: normal;
     font-weight: 700;
-    line-height: 1.25rem;
-    text-align: center;
+    line-height: 1.25rem; // 20px
+    text-align: center;color: $white;
 }

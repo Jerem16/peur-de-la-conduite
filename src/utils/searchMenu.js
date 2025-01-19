@@ -22,7 +22,11 @@ export default function searchQuery(jsonData, query) {
             // Prioriser `path` si disponible, sinon construire avec `AnchorId`
             const currentPath = item.path
                 ? item.path
-                : `${basePath}/${item.AnchorId || ""}`.replace(/\/+/g, "/");
+                : `${basePath}${
+                      item.AnchorId ? `/${item.AnchorId}` : ""
+                  }`.replace(/\/+/g, "/");
+
+            const sanitizedPath = currentPath.replace(/\/$/, ""); // Supprime le "/" final
 
             // Parcourir toutes les propriétés de l'item
             for (const key in item) {
@@ -36,9 +40,9 @@ export default function searchQuery(jsonData, query) {
                     typeof value === "string" &&
                     value.toLowerCase().includes(query.toLowerCase())
                 ) {
-                    const resultKey = `${currentPath}|||${value.trim()}`; // Utilisez une clé unique plus robuste
+                    const resultKey = `${sanitizedPath}|||${value.trim()}`; // Utilisez une clé unique plus robuste
                     if (!seenResults.has(resultKey)) {
-                        results.push({ path: currentPath, text: value });
+                        results.push({ path: sanitizedPath, text: value });
                         seenResults.add(resultKey); // Stockez la clé dans le Set
                     }
                 } else if (Array.isArray(value)) {
@@ -50,28 +54,28 @@ export default function searchQuery(jsonData, query) {
                                 .toLowerCase()
                                 .includes(query.toLowerCase())
                         ) {
-                            const resultKey = `${currentPath}|||${arrayItem.trim()}`;
+                            const resultKey = `${sanitizedPath}|||${arrayItem.trim()}`;
                             if (!seenResults.has(resultKey)) {
                                 results.push({
-                                    path: currentPath,
+                                    path: sanitizedPath,
                                     text: arrayItem,
                                 });
                                 seenResults.add(resultKey);
                             }
                         } else if (typeof arrayItem === "object") {
                             // Recherche dans les objets imbriqués
-                            searchInItems([arrayItem], currentPath);
+                            searchInItems([arrayItem], sanitizedPath);
                         }
                     });
                 } else if (typeof value === "object" && value !== null) {
                     // Rechercher dans les objets imbriqués
-                    searchInItems([value], currentPath);
+                    searchInItems([value], sanitizedPath);
                 }
             }
 
             // Rechercher dans les sous-éléments si présents
             if (item.subItems) {
-                searchInItems(item.subItems, currentPath);
+                searchInItems(item.subItems, sanitizedPath);
             }
         });
     }

@@ -17,8 +17,8 @@ export const sliderContent: SliderContent[] = [
         style: { animation: "opacityAnimation 0.5s ease-in-out" },
     },
     {
-        h2: "",
-        h2bold: "Conduite accompagnée ou supervisée",
+        h2: "Coaching",
+        h2bold: "Conduite Accompagnée / Supervisée",
         description: "Prends un bon départ, progresse en toute sérénité.",
         index: "sld3",
         style: { animation: "opacityAnimation 0.5s ease-in-out" },

@@ -7,9 +7,9 @@ export default function Home() {
         <>
             {/* <title>Accueil | Peur de la conduite</title> */}
             <section className="section slider-bg" id="slider">
-                <SliderProvider>
-                    <Slider />
-                </SliderProvider>
+                    <SliderProvider>
+                        <Slider />
+                    </SliderProvider>
             </section>
             <section className="section" id="about">
                 <div className="fixed-menu"></div>

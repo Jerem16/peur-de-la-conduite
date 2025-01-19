@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 
 export const updateUrl = (
     router: ReturnType<typeof useRouter>,
-    searchParams: URLSearchParams,
-    params: { query?: string; badKeyWord?: string }
+    searchParams: URLSearchParams | undefined,
+    params: { query?: string }
 ) => {
-    const newSearchParams = new URLSearchParams(searchParams.toString());
+    const newSearchParams = new URLSearchParams(searchParams?.toString() || "");
 
     if (params.query) {
         newSearchParams.set("query", params.query);
@@ -15,11 +15,11 @@ export const updateUrl = (
         newSearchParams.delete("query");
     }
 
-    if (params.badKeyWord) {
-        newSearchParams.set("badKeyWord", params.badKeyWord);
-    } else {
-        newSearchParams.delete("badKeyWord");
-    }
+    // if (params.badKeyWord) {
+    //     newSearchParams.set("badKeyWord", params.badKeyWord);
+    // } else {
+    //     newSearchParams.delete("badKeyWord");
+    // }
 
     router.replace(`?${newSearchParams.toString()}`);
 };

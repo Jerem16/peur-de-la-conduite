@@ -59,14 +59,15 @@ export const metadata: Metadata = {
         creator: "@JLem707",
     },
   icons: {
-        icon: [{ url: "img/favicon/logo.svg", type: "image/svg+xml" }, ], 
+        // icon: [{ url: "img/favicon/logo.svg", type: "image/svg+xml" }, ], 
         apple: [
             { url: "img/favicon/apple-touch-icon.png" },  // 120x120
             { url: "img/favicon/logo.svg", sizes: "152x152", type: "image/png" },  // iPad
             { url: "img/favicon/logo.svg", sizes: "180x180", type: "image/png" },  // Retina
         ],
 
-        shortcut : [
+        icon : [
+            { url: "img/favicon/logo.svg", type: "image/svg+xml" },
             { url: "img/favicon/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },  
             { url: "img/favicon/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },  
             { url: "img/favicon/icons/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },  
@@ -99,17 +100,14 @@ export default function RootLayout({
                 id="top"
             >
                 <SearchProvider>
-                    {/* <SliderProvider> */}
-
                         <Suspense fallback={<div>Chargement du header...</div>}>
                             <header>
                                 <div className="content-wrapper">
                                     <HeaderProps />
                                 </div>
                             </header>
+                            <main>{children}</main>
                         </Suspense>
-                        <main>{children}</main>
-                    {/* </SliderProvider> */}
                 </SearchProvider>
             </body>
         </html>

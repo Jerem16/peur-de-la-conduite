@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { useSearchParams } from "next/navigation";
 import { sliderContent } from "../../assets/data/content/slider";
 
 interface SliderContextType {
@@ -17,6 +18,22 @@ export const SliderContext = createContext<SliderContextType | undefined>(
 export const SliderProvider = ({ children }: { children: ReactNode }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [stopTimerButton, setStopTimerButton] = useState(false);
+    const searchParams = useSearchParams();
+
+    // Synchronise l'index courant avec l'URL
+    useEffect(() => {
+        const slide = searchParams.get("slide");
+        console.log("no slide =>", slide);
+        if (slide) {
+            const index = sliderContent.findIndex(
+                (item) => item.index === slide
+            );
+            console.log("slide =>", slide, index);
+            if (index !== -1) {
+                setCurrentSlide(index);
+            }
+        }
+    }, [searchParams]);
 
     const nextSlide = () => {
         setStopTimerButton(true);

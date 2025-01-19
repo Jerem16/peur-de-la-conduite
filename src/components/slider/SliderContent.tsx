@@ -1,15 +1,16 @@
 import React from "react";
-import "./sliderSlide.scss";
+import "./sliderContent.scss";
 import { sliderContent } from "../../assets/data/content/slider";
 import Space from "../../utils/Space";
+import SliderCTA from "./SliderCTA";
 import SliderArrow from "./SliderArrow";
 
-interface SliderSlideProps {
+interface SliderContentProps {
     getClass: (index: number) => string;
     nextSlide: (event?: React.MouseEvent | React.KeyboardEvent) => void;
     prevSlide: () => void;
 }
-const SliderSlide: React.FC<SliderSlideProps> = ({
+const SliderContent: React.FC<SliderContentProps> = ({
     nextSlide,
     prevSlide,
     getClass,
@@ -37,9 +38,10 @@ const SliderSlide: React.FC<SliderSlideProps> = ({
                     </div>
                 ))}
                 <SliderArrow prevSlide={prevSlide} nextSlide={nextSlide} />
+                <SliderCTA />
             </div>
         </div>
     );
 };
 
-export default SliderSlide;
+export default SliderContent;

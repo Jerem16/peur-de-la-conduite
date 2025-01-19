@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import "./slider.scss";
 import SunBG from "./SunBG";
 import SliderRoad from "./SliderRoad";
-import SliderSlide from "./SliderSlide";
+import SliderContent from "./SliderContent";
 import { SliderContext } from "../../utils/context/SliderContext";
 
 const Slider = () => {
@@ -20,7 +20,7 @@ const Slider = () => {
         <>
             <SunBG />
             <SliderRoad currentSlide={currentSlide} />
-            <SliderSlide
+            <SliderContent
                 nextSlide={nextSlide}
                 prevSlide={prevSlide}
                 getClass={getClass}

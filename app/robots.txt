@@ -1,0 +1,19 @@
+# robots.txt pour jerem16-peur-de-la-conduite.com
+
+# Autoriser tous les robots d'exploration
+User-agent: *
+Disallow: /amplify/       # Bloque l'accès au dossier amplify
+Disallow: /src/           # Bloque l'accès au dossier src
+Disallow: /utils/         # Bloque l'accès aux utilitaires
+Disallow: /app/fonts/     # Bloque l'accès aux fichiers de polices
+Disallow: /public/css/    # Bloque l'accès aux fichiers CSS
+
+# Exclure les pages d'erreur, de chargement ou autres éléments spécifiques
+Disallow: /*/error
+Disallow: /*/loading
+
+# Permettre l'accès à tous les autres répertoires et fichiers publics
+Allow: /
+
+# Fournir l'emplacement du sitemap
+Sitemap: https://jerem16-peur-de-la-conduite.com/sitemap.xml

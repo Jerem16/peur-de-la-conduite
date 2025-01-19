@@ -3,7 +3,6 @@ import "./sliderRoad.scss";
 import { sliderContent } from "../../assets/data/content/slider";
 import SliderNumber from "../svg_Icon/SliderNumber";
 
-
 interface SliderRoadProps {
     currentSlide: number;
 }

@@ -1,18 +1,13 @@
-"use client";
-
 import { useState, useCallback } from "react";
 import { useSearch } from "../../../utils/context/SearchContext";
 import searchQuery from "../../../utils/searchMenu";
-import {
-    filterSuggestions,
-    updateUrl,
-    SearchItem,
-} from "../../../utils/searchUtils";
+import { filterSuggestions, SearchItem } from "../../../utils/searchUtils";
 import { useRouter } from "next/navigation";
+import { useURLParams } from "../../../utils/useURLParams";
 
 const useSearchHandler = (
     router: ReturnType<typeof useRouter>,
-    searchParams: URLSearchParams
+    // searchParams: URLSearchParams
 ) => {
     const { menuData, setResults, query, setQuery } = useSearch(); // Utilisation du SearchProvider
     const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -22,6 +17,8 @@ const useSearchHandler = (
     const [filteredItems, setFilteredItems] = useState<SearchItem[]>([]);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [noResultsFound, setNoResultsFound] = useState(false);
+
+    const { setParam, deleteParam } = useURLParams(); // Utiliser le hook pour gérer les paramètres de l'URL
 
     const handleSearch = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,20 +61,21 @@ const useSearchHandler = (
                 const resultsForQuery = searchQuery(menuData, trimmedQuery);
                 setResults(resultsForQuery);
 
-                const urlParams =
-                    resultsForQuery.length === 0
-                        ? { badKeyWord: trimmedQuery }
-                        : { query: trimmedQuery };
 
-                updateUrl(router, searchParams, urlParams);
+                // Mise à jour de l'URL via setParam
+                if (resultsForQuery.length === 0) {
+                    setParam("badKeyWord", trimmedQuery);
+                } else {
+                    setParam("query", trimmedQuery);
+                }
                 router.push(
-                    `/page-search?query=${encodeURIComponent(trimmedQuery)}`
+                    `/search?query=${encodeURIComponent(trimmedQuery)}`
                 );
             }
 
             setSubResultOpen(false);
         },
-        [menuData, query, router, searchParams, setResults]
+        [menuData, query, router, setResults, setParam]
     );
 
     const handleSuggestionClick = (suggestion: string) => {
@@ -93,12 +91,10 @@ const useSearchHandler = (
 
             // Update URL based on the suggestion
             if (resultsForSuggestion.length === 0) {
-                updateUrl(router, searchParams, { badKeyWord: suggestion });
+                setParam("badKeyWord", suggestion);
             } else {
-                updateUrl(router, searchParams, { query: suggestion });
-                router.push(
-                    `/page-search?query=${encodeURIComponent(suggestion)}`
-                );
+                setParam("query", suggestion);
+                router.push(`/search?query=${encodeURIComponent(suggestion)}`);
             }
         }
     };
@@ -109,8 +105,9 @@ const useSearchHandler = (
         setSubResultOpen(false);
         setResults([]);
         setIsSubmitted(false);
-        updateUrl(router, searchParams, {}); // Reset URL parameters
-    }, [router, searchParams, setQuery, setResults]);
+        deleteParam("query"); // Réinitialiser le paramètre dans l'URL
+        deleteParam("badKeyWord"); // Réinitialiser également le paramètre badKeyWord
+    }, [setQuery, setResults, deleteParam]);
 
     return {
         query,
