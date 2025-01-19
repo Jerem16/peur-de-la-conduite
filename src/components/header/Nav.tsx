@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import { MenuItem } from "../../assets/data/menuItems";
 import { useMenuBehavior } from "../../utils/updateMenuUtils";

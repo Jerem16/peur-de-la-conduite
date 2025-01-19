@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { MenuItem } from "../../assets/data/menuItems";
 import SubMenu from "./navLink/SubMenu";

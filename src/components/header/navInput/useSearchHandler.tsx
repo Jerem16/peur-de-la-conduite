@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useURLParams } from "../../../utils/useURLParams";
 
 const useSearchHandler = (
-    router: ReturnType<typeof useRouter>,
+    router: ReturnType<typeof useRouter>
     // searchParams: URLSearchParams
 ) => {
     const { menuData, setResults, query, setQuery } = useSearch(); // Utilisation du SearchProvider
@@ -44,39 +44,37 @@ const useSearchHandler = (
         [menuData, setQuery]
     );
 
-    const handleSubmit = useCallback(
-        (
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            e?:
-                | React.FormEvent<HTMLFormElement>
-                | React.KeyboardEvent<HTMLInputElement>
-                | React.MouseEvent<HTMLButtonElement>
-        ) => {
-            const trimmedQuery = query.trim();
-            if (trimmedQuery.length < 1) return;
+    const handleSubmit = (
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        e?:
+            | React.FormEvent<HTMLFormElement>
+            | React.KeyboardEvent<HTMLInputElement>
+            | React.MouseEvent<HTMLButtonElement>
+    ) => {
+        const trimmedQuery = query.trim();
+        if (trimmedQuery.length < 1) return;
 
-            setIsSubmitted(true);
+        setIsSubmitted(true);
 
-            if (menuData) {
-                const resultsForQuery = searchQuery(menuData, trimmedQuery);
-                setResults(resultsForQuery);
+        if (menuData) {
+            const resultsForQuery = searchQuery(menuData, trimmedQuery);
+            setResults(resultsForQuery);
 
-
-                // Mise à jour de l'URL via setParam
-                if (resultsForQuery.length === 0) {
-                    setParam("badKeyWord", trimmedQuery);
-                } else {
-                    setParam("query", trimmedQuery);
-                }
+            // Mise à jour de l'URL via setParam
+            if (resultsForQuery.length === 0) {
+                router.push(
+                    `/search?badKeyWord=${encodeURIComponent(trimmedQuery)}`
+                );
+            } else {
                 router.push(
                     `/search?query=${encodeURIComponent(trimmedQuery)}`
                 );
             }
+        }
 
-            setSubResultOpen(false);
-        },
-        [menuData, query, router, setResults, setParam]
-    );
+        setSubResultOpen(false);
+    };
+    // [menuData, query, router, setResults, setParam];
 
     const handleSuggestionClick = (suggestion: string) => {
         if (menuData) {

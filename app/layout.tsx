@@ -59,7 +59,6 @@ export const metadata: Metadata = {
         creator: "@JLem707",
     },
   icons: {
-        // icon: [{ url: "img/favicon/logo.svg", type: "image/svg+xml" }, ], 
         apple: [
             { url: "img/favicon/apple-touch-icon.png" },  // 120x120
             { url: "img/favicon/logo.svg", sizes: "152x152", type: "image/png" },  // iPad
@@ -79,9 +78,6 @@ export const metadata: Metadata = {
             { url: "img/favicon/logo.svg", sizes: "152x152", type: "image/svg+xml"  },  
             { url: "img/favicon/logo.svg", sizes: "180x180", type: "image/svg+xml" }, 
         ],        
-        // svg: [
-        //     { url: "img/favicon/logo.svg", type: "image/svg+xml" },  // Pour utiliser un SVG spécifique
-        // ]
     },
     alternates: {
         canonical: "https://jeremy.lemaignent.com/",
