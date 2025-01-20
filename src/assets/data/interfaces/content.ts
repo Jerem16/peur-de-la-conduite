@@ -25,6 +25,13 @@ export interface SliderContent {
     go: string;
     slideRef: number;
 }
+export interface SliderInfo {
+    info: string;
+}
 
+export interface Slider {
+    sliderContent: SliderContent;
+    sliderInfo: SliderInfo;
+}
 // Type pour l'ref des contenus
-export type Content = SliderContent | AboutContent;
+export type Content = SliderContent | SliderInfo | AboutContent;

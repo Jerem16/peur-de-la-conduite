@@ -1,7 +1,7 @@
 import React from "react";
 import "./sliderRoad.scss";
 import { sliderContent } from "../../assets/data/content/slider";
-import SliderNumber from "../svg_Icon/SliderNumber";
+import SliderNumber from "./svg/SliderNumber";
 
 interface SliderRoadProps {
     currentSlide: number;

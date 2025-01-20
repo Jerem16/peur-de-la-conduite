@@ -4,7 +4,7 @@ import { sliderContent } from "../../assets/data/content/slider";
 import Space from "../../utils/Space";
 import SliderCTA from "./SliderCTA";
 import SliderArrow from "./SliderArrow";
-
+import SliderInfo from "./SliderInfo";
 interface SliderContentProps {
     getClass: (index: number) => string;
     nextSlide: (event?: React.MouseEvent | React.KeyboardEvent) => void;
@@ -39,6 +39,7 @@ const SliderContent: React.FC<SliderContentProps> = ({
                 ))}
                 <SliderArrow prevSlide={prevSlide} nextSlide={nextSlide} />
                 <SliderCTA />
+                <SliderInfo />
             </div>
         </div>
     );

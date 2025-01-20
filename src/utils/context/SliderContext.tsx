@@ -18,12 +18,12 @@ export const SliderContext = createContext<SliderContextType | undefined>(
 export const SliderProvider = ({ children }: { children: ReactNode }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [stopTimerButton, setStopTimerButton] = useState(false);
-    const [autoDefile, setAutoDefile] = useState(false);
+    // const [autoDefile, setAutoDefile] = useState(false);
     const { setParam, getParam } = useURLParams();
 
     useEffect(() => {
         const slideRefParam = getParam("slideRef");
-        if (!autoDefile) {
+        // if (!autoDefile) {
         // setParam("stopTime", String(nextValue));
         if (slideRefParam) {
             // Si slideRef est défini, on initialise currentSlide avec l'index correspondant et on arrête le défilement
@@ -34,7 +34,7 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
                 setCurrentSlide(index); // Mettre l'index trouvé dans currentSlide
                 setStopTimerButton(true); // Désactive le défilement automatique
             }
-            }
+            // }
         }
     }, [getParam]);
 
@@ -63,7 +63,7 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
 
         const intervalTime = 4000;
         const slideInterval = setInterval(() => {
-            setAutoDefile(true);
+            // setAutoDefile(true);
             setCurrentSlide((prev) => {
                 if (prev < sliderContent.length - 1) {
                     return prev + 1;
@@ -75,7 +75,7 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
 
         const stopTimeout = setTimeout(() => {
             clearInterval(slideInterval);
-            setAutoDefile(false);
+            // setAutoDefile(false);
         }, intervalTime * sliderContent.length);
 
         return () => {
@@ -84,14 +84,14 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
         };
     }, [stopTimerButton]);
 
-    useEffect(() => {
-        const currentParam = getParam("slideRef");
-        if (autoDefile) {
-            if (currentParam !== String(sliderContent[currentSlide].slideRef)) {
-                setParam("slideRef", String(currentSlide));
-            }
-        }
-    }, [currentSlide, setParam, getParam, setParam]);
+    // useEffect(() => {
+    //     const currentParam = getParam("slideRef");
+    //     if (autoDefile) {
+    //         if (currentParam !== String(sliderContent[currentSlide].slideRef)) {
+    //             setParam("slideRef", String(currentSlide));
+    //         }
+    //     }
+    // }, [currentSlide, setParam, getParam, setParam]);
     // Détermine la classe CSS à appliquer à chaque diapositive en fonction de sa position
     const getClass = (index: number) => {
         if (index === currentSlide) {

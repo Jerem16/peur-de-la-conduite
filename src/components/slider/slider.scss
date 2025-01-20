@@ -1,9 +1,9 @@
 @import "../../assets/styles/utils";
 
-
 .slider-arrow,
 .banner-arrow,
 .sld-CTA,
+.sld-info_ctn,
 .sld-card_title {
     display: flex;
     justify-content: center;
@@ -22,6 +22,7 @@
     position: absolute;
 }
 .sld-sun,
+.sld-info_ctn,
 .slide {
     width: 900px;
     float: right;

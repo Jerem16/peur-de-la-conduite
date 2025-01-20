@@ -42,17 +42,18 @@ const SliderNumber = ({ SlideClass }) => {
                     </text>
                 </g>
                 <g className="sld-numb2">
-                    <use href="#H" x="170.6" y="-90" className="P" />
+                    <use href="#H" x="125.6" y="-78" className="P" />
                     <use
                         href="#I"
-                        x="170.7"
-                        y="-90"
+                        x="125.7"
+                        y="-78"
                         fill="url(#F)"
                         className="Q"
                     />
-                    <use href="#J" x="170.7" y="-90" className="S" />
+                    <use href="#J" x="125.7" y="-78" className="S" />
                     <text
-                        transform="matrix(1.0616 0 0 1 803 186.5)"
+                        transform="matrix(1.0616 0 0 1 758
+                         198.5)"
                         className="T U"
                     >
                         2

@@ -9,5 +9,4 @@ const SunBG = () => {
         </div>
     );
 };
-
 export default SunBG;
