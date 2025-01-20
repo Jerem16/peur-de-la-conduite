@@ -42,7 +42,11 @@ export default function searchQuery(jsonData, query) {
                 ) {
                     const resultKey = `${sanitizedPath}|||${value.trim()}`; // Utilisez une clé unique plus robuste
                     if (!seenResults.has(resultKey)) {
-                        results.push({ path: sanitizedPath, text: value });
+                        results.push({
+                            path: sanitizedPath,
+                            text: value,
+                            go: item.go,
+                        });
                         seenResults.add(resultKey); // Stockez la clé dans le Set
                     }
                 } else if (Array.isArray(value)) {

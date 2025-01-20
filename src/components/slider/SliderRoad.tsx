@@ -17,7 +17,7 @@ const SliderRoad: React.FC<SliderRoadProps> = ({ currentSlide }) => {
                 width="1635"
                 height="528"
             />
-            <SliderNumber SlideClass={sliderContent[currentSlide].index} />
+            <SliderNumber SlideClass={sliderContent[currentSlide].ref} />
         </div>
     );
 };

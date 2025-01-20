@@ -24,16 +24,16 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const slideRefParam = getParam("slideRef");
         if (!autoDefile) {
-        // setParam("stopTime", String(nextValue));
-        if (slideRefParam) {
-            // Si slideRef est défini, on initialise currentSlide avec l'index correspondant et on arrête le défilement
-            const index = sliderContent.findIndex(
-                (item) => String(item.slideRef) === slideRefParam
-            );
-            if (index !== -1) {
-                setCurrentSlide(index); // Mettre l'index trouvé dans currentSlide
-                setStopTimerButton(true); // Désactive le défilement automatique
-            }
+            // setParam("stopTime", String(nextValue));
+            if (slideRefParam) {
+                // Si slideRef est défini, on initialise currentSlide avec l'index correspondant et on arrête le défilement
+                const index = sliderContent.findIndex(
+                    (item) => String(item.slideRef) === slideRefParam
+                );
+                if (index !== -1) {
+                    setCurrentSlide(index); // Mettre l'index trouvé dans currentSlide
+                    setStopTimerButton(true); // Désactive le défilement automatique
+                }
             }
         }
     }, [getParam]);
@@ -82,16 +82,16 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
             clearInterval(slideInterval);
             clearTimeout(stopTimeout);
         };
-    }, [stopTimerButton]);
+    }, [stopTimerButton, setAutoDefile]);
 
     useEffect(() => {
-        const currentParam = getParam("slideRef");
         if (autoDefile) {
-            if (currentParam !== String(sliderContent[currentSlide].slideRef)) {
-                setParam("slideRef", String(currentSlide));
-            }
+            setParam("slideRef", String(currentSlide));
+        } else {
         }
-    }, [currentSlide, setParam, getParam, setParam]);
+        // if (currentSlide !== null) {
+        // }
+    }, [currentSlide, setParam]);
     // Détermine la classe CSS à appliquer à chaque diapositive en fonction de sa position
     const getClass = (index: number) => {
         if (index === currentSlide) {

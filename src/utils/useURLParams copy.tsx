@@ -7,6 +7,9 @@ export const useURLParams = () => {
     const searchParams = useSearchParams();
     const getParams = (key: string): string | null => searchParams.get(key);
     const getParam = (key: string): string | null => {
+        if (typeof window === "undefined") {
+            return null; // Retourner null si le code s'exécute côté serveur
+        }
         const { search, hash } = window.location; // Récupère `search` et `hash`
 
         // Combine `search` et les paramètres après `#` (s'il y en a)
@@ -17,8 +20,8 @@ export const useURLParams = () => {
         }
 
         // Utilise URLSearchParams pour récupérer la valeur
-        const params = new URLSearchParams(queryString);
-        return params.get(key);
+        const params = searchParams.get(queryString);
+        return params;
     };
 
     const setParam = (key: string, value: string): void => {

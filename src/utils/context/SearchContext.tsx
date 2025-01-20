@@ -15,6 +15,7 @@ import { MenuLinks } from "../../assets/data/interfaces/menu";
 interface Result {
     path: string;
     text: string;
+    go: string;
 }
 
 interface SearchContextType {

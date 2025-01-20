@@ -10,11 +10,11 @@ export default function SearchPageContent() {
     const router = useRouter();
     const { results, setResults, menuData, setQuery } = useSearch();
     const [validQuery, setValidQuery] = useState<string>("");
-    const { getParams } = useURLParams();
-    const badKeyWord = getParams("badKeyWord");
+    const { getParam } = useURLParams();
+    const badKeyWord = getParam("badKeyWord");
 
     useEffect(() => {
-        const queryFromUrl = getParams("query");
+        const queryFromUrl = getParam("query");
 
         const newValidQuery = queryFromUrl || "";
         if (newValidQuery !== validQuery) {
@@ -34,7 +34,7 @@ export default function SearchPageContent() {
             }
         }
     }, [
-        getParams,
+        getParam,
         menuData,
         validQuery,
         badKeyWord,
@@ -75,32 +75,15 @@ export default function SearchPageContent() {
                         <div key={`${result.path}-${result.text}`}>
                             <button
                                 className="result-link"
-                                onClick={() => {
-                                    // Vérifier si result.go est défini
-                                    if (result.go) {
-                                        router.push(
-                                            `${result.path}${result.go}`
-                                        );
-                                    } else {
-                                        router.push(result.path);
-                                    }
-                                }}
+                                onClick={() => router.push(result.path)}
                             >
                                 {result.text}
                             </button>
                         </div>
                     ))
                 ) : (
-                    <p>
-                        {badKeyWord ? `Aucun résultat à afficher.` : badKeyWord}
-                    </p>
+                    <p>{badKeyWord ? `Aucun résultat à afficher.` : "${badKeyWord}"}</p>
                 )}
-                <button
-                    className="result-link"
-                    onClick={() => router.push("/#slider?slideRef=1")}
-                >
-                    TEST
-                </button>
             </div>
         </section>
     );
