@@ -1,3 +1,8 @@
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Nos Tarifs",
+};
+
 export default function Page() {
     return (
         <>

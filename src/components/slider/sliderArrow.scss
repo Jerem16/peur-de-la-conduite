@@ -32,8 +32,12 @@
             height: 2rem;
             filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
         }
+        &.right-arrow,
         &.left-arrow {
-            left: 0px;
+        }
+        &.left-arrow {
+            left: -15px;
+            top: -3.5rem;
             transform: rotate(180deg);
             filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
             &:hover,
@@ -46,7 +50,8 @@
         }
 
         &.right-arrow {
-            right: 0px;
+            right: -15px;
+            top: -3.5rem;
             &:hover,
             &:focus-visible {
                 filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));

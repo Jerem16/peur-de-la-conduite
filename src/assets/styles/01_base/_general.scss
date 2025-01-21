@@ -9,6 +9,7 @@ body {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    // background: $primary-black;
     * {
         margin: 0;
         padding: 0;
@@ -25,6 +26,19 @@ body {
     animation: none; /* Animation inactive par défaut */
     border-top: 0.5px solid transparent;
 }
+
+// body {
+//     background-image: url("../../../../public/img/about/Accueil.jpg");
+//     background-size: 1920px 6500px;
+//     background-position: top center;
+//     background-repeat: no-repeat;
+// }
+
+// main {
+//     opacity: 0.5;
+//     color: blue !important;
+// }
+
 p {
     max-width: 720px;
     margin: 0 auto;
@@ -61,6 +75,17 @@ ol {
     margin: 0 auto;
     max-width: 1440px;
     width: auto;
+}
+.about,
+.ab-card_header,
+.slider-arrow,
+.banner-arrow,
+.sld-CTA,
+.sld-info_ctn,
+.sld-card_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes opacityAnimationDelay {

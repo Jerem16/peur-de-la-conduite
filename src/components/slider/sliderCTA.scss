@@ -2,18 +2,19 @@
 
 .sld-CTA {
     // width: calc(302px - 8rem);
-    width: 300px;
+    width: 270px;
     height: 180px;
     border-radius: 24px;
     background: $white;
     position: absolute;
     z-index: 1000;
-    margin: 200px 0 0 114px;
+    margin: 168px 0 0 90px;
     // border: 1px solid #000;
     flex-flow: wrap;
     padding: 24px 0 21px 0;
+    // background: red;
     // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     p {
         width: 175px;
         @include bannerDescribeBold;

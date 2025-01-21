@@ -1,4 +1,7 @@
-export default function Page() {
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Blog",
+};export default function Page() {
     return (
         <>
             <section className="section" id="s1">
