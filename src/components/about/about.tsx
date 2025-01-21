@@ -7,11 +7,10 @@ const About = () => {
         <div className="about content-wrapper">
             <div className="ab-img_info">
                 <img
-                    // className="ab-img_info"
                     src="/img/about/INFO.svg"
-                    alt="Slider Road Background"
-                    width="1635"
-                    height="528"
+                    alt="Info Icon"
+                    width="540"
+                    height="540"
                 />
             </div>
             <div className="ab-card_bg"></div>
@@ -20,14 +19,14 @@ const About = () => {
                     <h3>
                         Mounir <span>Bouakkaz</span>
                     </h3>
-
                     <Image
                         className="ab-img_head"
                         src="/img/about/avatar.webp"
-                        alt="Slider Road Background"
-                        width="225"
-                        height="225"
+                        alt="Avatar de Mounir"
+                        width={225}
+                        height={225}
                         loading="lazy"
+                        priority={false}
                     />
                     <p>Enseignant de la conduite</p>
                 </div>

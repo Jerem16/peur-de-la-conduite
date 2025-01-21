@@ -1,0 +1,65 @@
+@import "../../assets/styles/utils";
+.btn-style_blue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px; // Harmonisation des coins arrondis
+    padding: 0.75rem 2rem;
+    height: 44px;
+    background: $primary-blue;
+    color: $white;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transform: scale(1);
+    transition: all 300ms ease;
+
+    @include buttonText;
+
+    a {
+        @include buttonText;
+        color: $white;
+        text-decoration: none;
+
+        &:hover {
+            @include after_Before;
+            color: $white;
+        }
+    }
+
+    &:hover {
+        background: $dark-blue;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.35);
+    }
+    &:active {
+        transform: scale(1.05);
+
+        background: linear-gradient(
+            -180deg,
+            $primary-blue -25%,
+            $dark-blue 50%,
+            $primary-blue 125%
+        );
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    &:visited {
+        color: $white;
+    }
+
+    &::after {
+        background: $dark-blue;
+        border-radius: 9px;
+        @include after_Before;
+        z-index: -1;
+        opacity: 0;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+        transition: opacity 225ms ease, transform 450ms ease;
+        transform: scale(1.03);
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+}

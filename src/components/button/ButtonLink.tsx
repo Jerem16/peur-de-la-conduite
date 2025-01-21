@@ -10,7 +10,7 @@ const ButtonLink = ({
     href: string;
 }>) => {
     return (
-        <Link className="bt-style_blue" href={href}>
+        <Link className="btn-style_blue" href={href}>
             {children}
         </Link>
     );
