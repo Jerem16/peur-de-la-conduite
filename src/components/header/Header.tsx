@@ -8,15 +8,9 @@ import Logo from "../svg_Icon/Logo";
 import { useScrollContext } from "../../utils/context/ScrollContext";
 import { useNavigation } from "../../utils/context/NavigationContext";
 import { MenuItem, menuItems } from "../../assets/data/menuItems";
-// import { sections } from "../../assets/data/sections";
 import { updateMenuClasses } from "../../utils/updateMenuUtils";
-import {
-    handleNavClick,
-    handleScrollClick,
-    // useScrollAnchors,
-    useInitialScroll,
-} from "../../utils/scrollUtils";
-
+import { handleScrollClick, useInitialScroll } from "../../utils/scrollUtils";
+import { handleNavClick } from "../../utils/fnScrollUtils";
 interface NavProps {
     menuItems: MenuItem[];
     onNavigationClick: (path: string) => void;

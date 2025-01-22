@@ -3,7 +3,7 @@
 import { NavigationProvider } from "../src/utils/context/NavigationContext";
 import Header from "../src/components/header/Header";
 import { menuItems } from "../src/assets/data/menuItems";
-import { handleNavClick } from "../src/utils/scrollUtils";
+import { handleNavClick } from "../src/utils/fnScrollUtils";
 
 const HeaderProps = () => {
     return (

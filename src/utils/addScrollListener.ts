@@ -6,7 +6,6 @@ export const addScrollListener = (handler: ScrollHandler, on?: boolean) => {
     };
 
     if (!on) {
-        console.log("on", on);
         window.addEventListener("scroll", onScroll);
     }
 
