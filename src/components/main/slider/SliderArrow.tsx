@@ -1,6 +1,6 @@
 import React from "react";
 import "./sliderArrow.scss";
-import Arrow from "../svg_Icon/Arrow";
+import Arrow from "../../svg_Icon/Arrow";
 
 interface SliderArrowProps {
     nextSlide: (event?: React.MouseEvent | React.KeyboardEvent) => void;
@@ -18,19 +18,19 @@ const SliderArrow: React.FC<SliderArrowProps> = ({ nextSlide, prevSlide }) => {
 
     return (
         <span
-            className="banner-arrow"
+            className="banner-arrow flx-c"
             tabIndex={0} // Rendre focusable
             onKeyDown={handleKeyDown}
             role="region"
             aria-label="Controlle des fleches navigation slider"
         >
             <Arrow
-                className="slider-arrow left-arrow"
+                className="slider-arrow left-arrow flx-c"
                 ariaLabel="Aller à la diapositive précédente"
                 onClick={prevSlide}
             />
             <Arrow
-                className="slider-arrow right-arrow"
+                className="slider-arrow right-arrow flx-c"
                 ariaLabel="Aller à la diapositive suivante"
                 onClick={nextSlide}
             />

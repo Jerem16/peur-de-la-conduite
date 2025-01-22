@@ -9,7 +9,7 @@ body {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    // background: $primary-black;
+    background: $primary-black;
     * {
         margin: 0;
         padding: 0;
@@ -23,13 +23,18 @@ body {
     // overflow-y: hidden;
 }
 #top {
-    animation: none; /* Animation inactive par défaut */
     border-top: 0.5px solid transparent;
 }
-
+.search {
+    // min-width: 223px !important;
+    max-width: 223px !important;
+    .nav-padding {
+        padding: 1rem 1.5rem !important;
+    }
+}
 // body {
-//     background-image: url("../../../../public/img/about/Accueil.jpg");
-//     background-size: 1920px 6500px;
+//     background-image: url("../../../../public/img/2.png");
+//     background-size: 1425px 879px;
 //     background-position: top center;
 //     background-repeat: no-repeat;
 // }
@@ -75,19 +80,55 @@ ol {
     margin: 0 auto;
     max-width: 1440px;
     width: auto;
+    position: relative;
 }
 
-.slider-arrow,
-.banner-arrow,
-.sld-CTA,
-.sld-info_ctn,
-.sld-card_title,
-.about,
-.ab-card_header,
-.btn-style_blue {
+.flx-c {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.segment {
+    width: 1314px;
+    height: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: calc(42px);
+    position: relative;
+    margin: 0 0 0 42px;
+    // background: #90f107;
+    // border-radius: 45px 90px 45px 45px;;
+    .card_header {
+        width: calc(360px + 84px);
+        height: auto;
+        flex-flow: column nowrap;
+        padding: 40px 42px;
+
+        padding: 40px 42px 42px 42px;
+
+        display: flex;
+        // background: #90f107;
+        border-radius: 45px;
+    }
+    .card_content {
+        display: flex;
+        flex-flow: column nowrap;
+        align-content: space-between;
+        justify-content: space-between;
+        // width: 850px;
+        padding: 40px 66px 40px 42px;
+
+        padding: 40px 66px 42px 42px;
+
+        border-radius: 45px 90px 45px 45px;
+        // background: #90f107;
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+    }
 }
 
 @keyframes opacityAnimationDelay {

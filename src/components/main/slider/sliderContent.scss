@@ -1,4 +1,4 @@
-@import "../../assets/styles/utils";
+@import "../../../assets/styles/utils";
 
 .slider {
     top: 0;
@@ -35,11 +35,16 @@
             margin: auto;
             margin-top: calc(387px);
             padding: 0.562rem 3.95rem;
+            padding: 6px 3.95rem 8px 3.95rem;
             width: fit-content;
-            height: 50px;
-            border-radius: 90px;
             background: $white;
+            border-radius: 90px;
             filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+            p {
+                max-height: 37.5px;
+                max-width: inherit;
+                @include bannerDescribe;
+            }
         }
         p {
             max-height: 32px;
@@ -100,30 +105,6 @@
             }
         }
     }
-    // .active {
-    //     .sld-card_title {
-    //         transition: opacity 0.375s ease-in-out 0.25s,
-    //             transform 0.375s ease-in-out 0.25s;
-    //         opacity: 1;
-    //         transform: translateY(0);
-    //         h2 {
-    //             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    //             opacity: 1;
-    //             transform: translateY(0);
-    //         }
-    //     }
-    //     .banner-description {
-    //         transition: opacity 0.75s ease-in-out 0.375s,
-    //             transform 0.75s ease-in-out 0.375s;
-    //         opacity: 1;
-    //         transform: translateX(0);
-    //         p {
-    //             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    //             opacity: 1;
-    //             transform: translateY(0);
-    //         }
-    //     }
-    // }
 
     .sld-card_title {
         opacity: 0;

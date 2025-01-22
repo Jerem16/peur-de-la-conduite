@@ -46,8 +46,8 @@ header {
 }
 .head-flex {
     margin-top: 1.5rem;
-    display: flex; /* Changement de inline-flex à flex */
-    flex: 1; /* Permet au conteneur de prendre tout l'espace disponible */
+    display: flex;
+    flex: 1;
     align-items: center;
     gap: 2rem;
 
@@ -99,7 +99,7 @@ nav {
     // gap: 2rem;
 }
 .main-nav .icon-color_secondary {
-    fill: $secondary-blue;
+    fill: $light-blue;
 }
 .reservationId {
     background: $primary-blue;

@@ -5,7 +5,7 @@ import "./slider.scss";
 import SunBG from "./SunBG";
 import SliderRoad from "./SliderRoad";
 import SliderContent from "./SliderContent";
-import { SliderContext } from "../../utils/context/SliderContext";
+import { SliderContext } from "../../../utils/context/SliderContext";
 
 
 const Slider = () => {

@@ -95,12 +95,6 @@ export default function SearchPageContent() {
                         {badKeyWord ? `Aucun résultat à afficher.` : badKeyWord}
                     </p>
                 )}
-                <button
-                    className="result-link"
-                    onClick={() => router.push("/#slider?slideRef=1")}
-                >
-                    TEST
-                </button>
             </div>
         </section>
     );

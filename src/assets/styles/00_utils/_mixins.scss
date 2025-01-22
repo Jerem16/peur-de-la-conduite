@@ -54,7 +54,7 @@
     border-radius: 10px;
     background-color: $color-primary;
     background-color: lightness-shift($color-primary);
-    color: white;
+    color: $white;
 }
 
 @mixin row_R {

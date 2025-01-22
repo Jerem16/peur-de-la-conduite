@@ -31,11 +31,17 @@ const SliderNumber = ({ SlideClass }) => {
                 </linearGradient>
 
                 <g className="sld-numb1">
-                    <use href="#H" y="105" className="P" />
-                    <use href="#I" y="105" fill="url(#F)" className="Q" />
-                    <use href="#J" y="105" className="S" />
+                    <use href="#H" x="12" y="105" className="P" />
+                    <use
+                        href="#I"
+                        x="12"
+                        y="105"
+                        fill="url(#F)"
+                        className="Q"
+                    />
+                    <use href="#J" x="12" y="105" className="S" />
                     <text
-                        transform="matrix(1.0616 0 0 1 632 382)"
+                        transform="matrix(1.0616 0 0 1 644 382)"
                         className="T U"
                     >
                         1
@@ -94,17 +100,17 @@ const SliderNumber = ({ SlideClass }) => {
                     </text>
                 </g>
                 <g className="sld-numb5">
-                    <use href="#H" x="632" y="127" className="P" />
+                    <use href="#H" x="637" y="127" className="P" />
                     <use
                         href="#I"
-                        x="632"
+                        x="637"
                         y="127"
                         fill="url(#F)"
                         className="Q"
                     />
-                    <use href="#J" x="632" y="127" className="S" />
+                    <use href="#J" x="637" y="127" className="S" />
                     <text
-                        transform="matrix(1.0616 0 0 1 1265 404)"
+                        transform="matrix(1.0616 0 0 1 1270 404)"
                         className="T U"
                     >
                         5

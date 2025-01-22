@@ -1,0 +1,83 @@
+@import "../../../assets/styles/utils";
+
+.about-bg {
+    &.active-section {
+        .fixed-menu {
+            // height: calc(90px + 2rem);
+            transition: all 125ms ease-in-out;
+        }
+    }
+}
+
+.about {
+    position: relative;
+    height: 360px;
+    height: 396px;
+    justify-content: inherit;
+
+    .ab-card_bg {
+        position: absolute;
+        z-index: -2;
+        // left: -125px;
+        // width: 1475px;
+
+        left: -78px;
+        width: 1434px;
+
+        height: 390px;
+        border-radius: 48px 90px 45px 45px;
+        background: $white;
+    }
+    .ab-img_info {
+        background: $secondary-blue;
+        position: absolute;
+        z-index: -1;
+        top: -229px;
+        left: -78px;
+        border-radius: 50%;
+        img {
+            filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.15));
+            width: 540px;
+            height: 540px;
+        }
+    }
+    .segment {
+        .card_header {
+            position: relative;
+            z-index: 2;
+            height: 392px;
+
+            h3 {
+                @include bannerH2Bold;
+                color: $white;
+                text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                font-weight: 900;
+                height: 39px;
+                span {
+                    font-weight: 500;
+                }
+            }
+            p {
+                @include bannerDescribeBold;
+                position: relative;
+                color: $primary-blue;
+                text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                width: 360px;
+                height: 34px;
+            }
+            img.ab-img_head {
+                margin: 6px;
+                border-radius: 48px;
+                width: 225px;
+                height: 225px;
+            }
+        }
+        .card_content {
+            height: 392px;
+            p {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+}

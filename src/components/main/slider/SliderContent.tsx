@@ -1,7 +1,7 @@
 import React from "react";
 import "./sliderContent.scss";
-import { sliderContent } from "../../assets/data/content/slider";
-import Space from "../../utils/Space";
+import { sliderContent } from "../../../assets/data/content/slider";
+import Space from "../../../utils/Space";
 import SliderCTA from "./SliderCTA";
 import SliderArrow from "./SliderArrow";
 import SliderInfo from "./SliderInfo";
@@ -24,7 +24,7 @@ const SliderContent: React.FC<SliderContentProps> = ({
                         className={`slide ${getClass(index)}`}
                     >
                         <div className="slider-content">
-                            <div className="sld-card_title">
+                            <div className="sld-card_title flx-c">
                                 <h2>
                                     {slide.h2}
                                     <Space />

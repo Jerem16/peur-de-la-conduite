@@ -4,23 +4,27 @@ import "../src/assets/styles/main.scss";
 import { SearchProvider } from "../src/utils/context/SearchContext";
 import { Suspense } from "react";
 import HeaderProps from "./headerProps";
+import { ScrollProvider } from "../src/utils/context/ScrollContext";
 
 export const RobotoFlex = localFont({
     src: "/fonts/RobotoFlex.woff2",
     variable: "--RobotoFlex",
     weight: "100 900",
+    display: "swap", 
 });
 
 const Montserrat = localFont({
     src: "./fonts/Montserrat.woff2",
     variable: "--montserrat",
     weight: "100 900",
+    display: "swap", 
 });
 
 const Nunito = localFont({
     src: "./fonts/Nunito.woff2",
     variable: "--nunito",
     weight: "100 900",
+    display: "swap", 
 });
 
 export const metadata: Metadata = {
@@ -95,16 +99,18 @@ export default function RootLayout({
                 className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`}
                 id="top"
             >
+            <ScrollProvider>
                 <SearchProvider>
-                        <Suspense fallback={<div>Chargement du header...</div>}>
-                            <header>
-                                <div className="content-wrapper">
-                                    <HeaderProps />
-                                </div>
-                            </header>
-                            <main>{children}</main>
-                        </Suspense>
+                    <Suspense fallback={<div>Chargement du header...</div>}>
+                        <header>
+                            <div className="content-wrapper">
+                                <HeaderProps />
+                            </div>
+                        </header>
+                        <main>{children}</main>
+                    </Suspense>
                 </SearchProvider>
+            </ScrollProvider>
             </body>
         </html>
     );

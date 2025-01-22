@@ -1,0 +1,49 @@
+@import "../../../assets/styles/utils";
+
+// #about {
+//     min-height: calc(810px - 92px);
+// }
+
+.services {
+    position: relative;
+    height: 360px;
+    // height: 396px;
+    justify-content: inherit;
+    background: yellowgreen;
+    .srv-card_bg {
+        position: absolute;
+        left: 13px;
+        width: 100%;
+        width: 1428px;
+        width: 1313px;
+        height: 100%;
+        border-radius: 48px 90px 45px 45px;
+        background: $white;
+    }
+
+    .segment {
+        .card_header {
+            border: 1px solid #000;
+            img.srv-img_typo {
+                width: 360px;
+                height: 83px;
+                border: 1px solid #000;
+            }
+            img.srv-img_lesson {
+                margin-top: 12px;
+                width: 288px;
+                height: 265px;
+                border: 1px solid #000;
+            }
+        }
+        .card_content {
+            height: calc(360px + 4em);
+            p {
+                // border: 1px solid #000;
+                // padding: 0;
+                // margin: 0;
+                // background: green;
+            }
+        }
+    }
+}

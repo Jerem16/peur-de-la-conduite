@@ -1,21 +1,24 @@
 //_variables.scss
 
-// $primary-blue: #1a6de5;
 $primary-blue: rgba(26, 109, 229, 1);
+$light-blue: rgba(0, 158, 226, 1);
+$secondary-blue: rgb(13, 132, 227);
 $dark-blue: rgb(1, 82, 195);
-// $secondary-blue: #009ee2;
-$secondary-blue: rgba(0, 158, 226, 1);
-$sun: #ffb121;
+
+$sun: rgb(255, 177, 33);
 
 $primary-orange: rgb(209, 73, 5);
 $primary-orange: rgb(209, 73, 5);
 $secondary-orange: rgba(255, 97, 29, 1);
 
-$primary-black: #1e1e1e;
-$black: #000;
-$white: white;
+$green: #063;
+// $green: #004421;
 
+$primary-black: #1e1e1e;
 $bg-black-900-dark: #151515;
+$black: #000;
+
+$white: #fff;
 
 $shadow-rgba: rgba(48, 46, 77, 0.15);
 

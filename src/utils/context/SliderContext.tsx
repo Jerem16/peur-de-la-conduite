@@ -1,8 +1,15 @@
 "use client";
 
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, {
+    createContext,
+    useState,
+    useEffect,
+    ReactNode,
+    useMemo,
+} from "react";
 import { sliderContent } from "../../assets/data/content/slider";
 import { useURLParams } from "../useURLParams";
+import { addScrollListener } from "../addScrollListener";
 
 interface SliderContextType {
     currentSlide: number;
@@ -18,25 +25,7 @@ export const SliderContext = createContext<SliderContextType | undefined>(
 export const SliderProvider = ({ children }: { children: ReactNode }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [stopTimerButton, setStopTimerButton] = useState(false);
-    // const [autoDefile, setAutoDefile] = useState(false);
     const { setParam, getParam } = useURLParams();
-
-    useEffect(() => {
-        const slideRefParam = getParam("slideRef");
-        // if (!autoDefile) {
-        // setParam("stopTime", String(nextValue));
-        if (slideRefParam) {
-            // Si slideRef est défini, on initialise currentSlide avec l'index correspondant et on arrête le défilement
-            const index = sliderContent.findIndex(
-                (item) => String(item.slideRef) === slideRefParam
-            );
-            if (index !== -1) {
-                setCurrentSlide(index); // Mettre l'index trouvé dans currentSlide
-                setStopTimerButton(true); // Désactive le défilement automatique
-            }
-            // }
-        }
-    }, [getParam]);
 
     // Calcul des valeurs de la prochaine et précédente diapositive
     const nextValue = (currentSlide + 1) % sliderContent.length;
@@ -44,72 +33,123 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
         (currentSlide - 1 + sliderContent.length) % sliderContent.length;
 
     const nextSlide = () => {
-        // Met à jour l'URL avec la valeur correcte
         setParam("slideRef", String(nextValue));
         setStopTimerButton(true); // Arrête le timer si nécessaire
         setCurrentSlide(nextValue); // Met à jour le slide actuel
     };
 
     const prevSlide = () => {
-        // Met à jour l'URL avec la valeur correcte
         setParam("slideRef", String(prevValue));
         setStopTimerButton(true); // Arrête le timer si nécessaire
         setCurrentSlide(prevValue); // Met à jour le slide actuel
     };
 
-    // Gestion de l'intervalle automatique
     useEffect(() => {
-        if (stopTimerButton) return;
+        const removeListener = addScrollListener(({ scrollY }) => {
+            setStopTimerButton(scrollY > 5);
+        }, stopTimerButton);
+        
+        const slideRefParam = getParam("slideRef");
+        handleSlideRefParam(
+            slideRefParam,
+            sliderContent.map((item) => ({
+                ...item,
+                slideRef: String(item.slideRef),
+            })),
+            setCurrentSlide,
+            setStopTimerButton
+        );
 
-        const intervalTime = 4000;
-        const slideInterval = setInterval(() => {
-            // setAutoDefile(true);
-            setCurrentSlide((prev) => {
-                if (prev < sliderContent.length - 1) {
-                    return prev + 1;
-                }
-                clearInterval(slideInterval);
-                return prev;
-            });
-        }, intervalTime);
-
-        const stopTimeout = setTimeout(() => {
-            clearInterval(slideInterval);
-            // setAutoDefile(false);
-        }, intervalTime * sliderContent.length);
+        const cleanupAutoSlide = manageAutoSlide(
+            stopTimerButton,
+            setStopTimerButton,
+            setCurrentSlide,
+            sliderContent.length
+        );
 
         return () => {
-            clearInterval(slideInterval);
-            clearTimeout(stopTimeout);
+            cleanupAutoSlide();
+            removeListener();
         };
-    }, [stopTimerButton]);
+    }, [getParam, stopTimerButton]);
 
-    // useEffect(() => {
-    //     const currentParam = getParam("slideRef");
-    //     if (autoDefile) {
-    //         if (currentParam !== String(sliderContent[currentSlide].slideRef)) {
-    //             setParam("slideRef", String(currentSlide));
-    //         }
-    //     }
-    // }, [currentSlide, setParam, getParam, setParam]);
-    // Détermine la classe CSS à appliquer à chaque diapositive en fonction de sa position
-    const getClass = (index: number) => {
-        if (index === currentSlide) {
-            return "active";
-        } else if (index === prevValue) {
-            return "prev";
-        } else if (index === nextValue) {
-            return "next";
-        } else {
-            return "";
-        }
-    };
-
+    const contextValue = useMemo(
+        () => ({
+            currentSlide,
+            nextSlide,
+            prevSlide,
+            getClass: (index: number) =>
+                classGetter(index, currentSlide, prevValue, nextValue),
+        }),
+        [currentSlide, prevValue, nextValue] // Dépendances: on ne mémorise que lorsque ces valeurs changent
+    );
     return (
-        <SliderContext.Provider
-            value={{ currentSlide, nextSlide, prevSlide, getClass }}
-        >
+        <SliderContext.Provider value={contextValue}>
             {children}
         </SliderContext.Provider>
     );
+};
+export const classGetter = (
+    index: number,
+    currentSlide: number,
+    prevValue: number,
+    nextValue: number
+): string => {
+    if (index === currentSlide) {
+        return "active";
+    } else if (index === prevValue) {
+        return "prev";
+    } else if (index === nextValue) {
+        return "next";
+    } else {
+        return "";
+    }
+};
+
+const handleSlideRefParam = (
+    slideRefParam: string | null,
+    sliderContent: { slideRef: string | number }[],
+    setCurrentSlide: React.Dispatch<React.SetStateAction<number>>,
+    setStopTimerButton: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+    if (slideRefParam) {
+        setStopTimerButton(true);
+        const index = sliderContent.findIndex(
+            (item) => String(item.slideRef) === slideRefParam
+        );
+        if (index !== -1) {
+            setCurrentSlide(index);
+        }
+    }
+};
+const manageAutoSlide = (
+    stopTimerButton: boolean,
+    setStopTimerButton: React.Dispatch<React.SetStateAction<boolean>>,
+    setCurrentSlide: React.Dispatch<React.SetStateAction<number>>,
+    sliderContentLength: number,
+    intervalTime: number = 4000
+) => {
+    if (stopTimerButton) {
+        return () => {};
+    }
+
+    const slideInterval = setInterval(() => {
+        setCurrentSlide((prev) => {
+            if (prev < sliderContentLength - 1) {
+                return prev + 1;
+            }
+            clearInterval(slideInterval);
+            return prev;
+        });
+    }, intervalTime);
+
+    const stopTimeout = setTimeout(() => {
+        clearInterval(slideInterval);
+        setStopTimerButton(true);
+    }, intervalTime * sliderContentLength);
+
+    return () => {
+        clearInterval(slideInterval);
+        clearTimeout(stopTimeout);
+    };
 };

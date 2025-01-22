@@ -3,9 +3,8 @@ import { MenuItem } from "../../../assets/data/menuItems";
 import SubResult from "./SubResult";
 import useSearchHandler from "./useSearchHandler";
 import { useRouter } from "next/navigation";
-import RenderInputButton from "./RenderInputButton";
-import HiddenDelayComponent from "../HiddenDelayComponent";
-import { getShowGroupClass, getShowClass } from "../menuUtils";
+import { getShowGroupClass } from "../menuUtils";
+import RenderInput from "./RenderInput";
 
 interface NavInputProps {
     menuItem: MenuItem;
@@ -41,6 +40,24 @@ const NavInput: React.FC<NavInputProps> = ({
         handleSuggestionClick,
     } = useSearchHandler(router);
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (["Enter", " "].includes(e.key)) {
+            e.preventDefault();
+            onMenuToggle(menuItem.id, e);
+        }
+    };
+
+    const renderSubResult = () =>
+        showNavLinks &&
+        isSubResultOpen &&
+        query && (
+            <SubResult
+                suggestions={suggestions}
+                isOpen={isOpen}
+                onSuggestionClick={handleSuggestionClick}
+            />
+        );
+
     return (
         <div
             className={getShowGroupClass(menuItem.id, showNavLinks)}
@@ -48,14 +65,9 @@ const NavInput: React.FC<NavInputProps> = ({
             aria-label={`ouvrir le menu ${menuItem.title}`}
             tabIndex={0}
             onClick={(e) => onMenuToggle(menuItem.id, e)}
-            onKeyDown={(e) => {
-                if (["Enter", " "].includes(e.key)) {
-                    e.preventDefault();
-                    onMenuToggle(menuItem.id, e);
-                }
-            }}
-            onMouseEnter={onMouseEnter} // Passer l'événement onMouseEnter
-            onFocus={onFocus} // Passer l'événement onFocus
+            onKeyDown={handleKeyDown}
+            onMouseEnter={onMouseEnter}
+            onFocus={onFocus}
         >
             <form
                 aria-label={`Page ${menuItem.title}`}
@@ -65,47 +77,19 @@ const NavInput: React.FC<NavInputProps> = ({
                     handleSubmit();
                 }}
             >
-                <RenderInputButton
-                    isSubmitted={isSubmitted}
-                    showNavLinks={showNavLinks}
+                <RenderInput
+                    query={query}
                     menuItem={menuItem}
+                    placeholder={placeholder}
+                    showNavLinks={showNavLinks}
+                    onFocus={onFocus}
+                    handleSearch={handleSearch}
                     handleSubmit={handleSubmit}
-                    handleReset={handleReset}
+                    isSubmitted={isSubmitted} // Ajouter cette prop
+                    handleReset={handleReset} // Ajouter cette prop
                 />
-                <HiddenDelayComponent isVisible={showNavLinks} delay={450}>
-                    {(isHidden) => {
-                        return isHidden ? null : (
-                            <input
-                                id="search-input"
-                                type="text"
-                                value={query}
-                                placeholder={placeholder}
-                                onChange={handleSearch}
-                                onFocus={onFocus}
-                                onKeyDown={(e) => {
-                                    if (e.key === "Enter") {
-                                        handleSubmit(
-                                            (e as unknown) as React.FormEvent<
-                                                HTMLFormElement
-                                            >
-                                        );
-                                    }
-                                }}
-                                className={`nav-link ${getShowClass(
-                                    showNavLinks
-                                )} ${isHidden ? "display-none" : ""}`}
-                            />
-                        );
-                    }}
-                </HiddenDelayComponent>
             </form>
-            {showNavLinks && isSubResultOpen && query && (
-                <SubResult
-                    suggestions={suggestions}
-                    isOpen={isOpen}
-                    onSuggestionClick={handleSuggestionClick}
-                />
-            )}
+            {renderSubResult()}
         </div>
     );
 };

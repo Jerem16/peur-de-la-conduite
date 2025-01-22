@@ -5,7 +5,7 @@ export const sliderContent: SliderContent[] = [
     {
         h2: "Coaching",
         h2bold: "Anti-stress avant examen",
-        description: "Libérez-toi du stress, en route vers le succès !",
+        description: "Libère-toi du stress en route vers le succès !",
         ref: "sld1",
         go: "?slideRef=0",
         slideRef: 0,

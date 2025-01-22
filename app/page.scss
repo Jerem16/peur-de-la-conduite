@@ -3,12 +3,17 @@
     // height: 100vh;
     &:first-child {
         div {
-            
         }
     }
     .fixed-menu {
         height: calc(60px + 2rem);
         width: 100vw;
+        transform-origin: top;
+        transform: scaleY(1);
+        // transform: translateY(0);
+        transition: all 375ms ease-in-out;
+        // transition: transform 500ms ease-in-out;
+        // background: $green;
     }
     h2 {
         // height: 90px;

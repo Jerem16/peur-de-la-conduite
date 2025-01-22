@@ -1,4 +1,4 @@
-@import "../../assets/styles/utils";
+@import "../../../assets/styles/utils";
 
 .sld-container {
     height: calc(100vh);
@@ -12,44 +12,32 @@
     overflow: hidden;
 
     .sld-road,
+    .sld-flag,
     .slider-number {
         top: -10px;
         padding: 0 35px 0 0;
         max-width: 1656px;
-        width: auto;
+        // width: 1635px;
+        // width: 1635px;
         height: auto;
         position: absolute;
         z-index: 2;
         margin: 0 auto;
-        object-fit: contain;
+        // object-fit: contain;
         filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
     }
-    .sld-fl_end {
-        top: 43px;
-        right: -650px;
-        // padding: 0 35px 0 0;
-        // max-width: 1656px;
-        width: 72px;
+    .sld-flag {
+        max-width: inherit;
+        width: 1685px;
+        // padding: 0 28px 0 0;
+        top: -24px;
+        
+        // top: -0px;
+        // width: 1635px;
         height: auto;
-        position: relative;
-        z-index: 2;
-        // margin: 0 auto;
-        object-fit: contain;
-        // filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
     }
-    .sld-fl_start {
-        top:100px;
-        right: 275px;
-        // padding: 0 35px 0 0;
-        // max-width: 1656px;
-        width: 84px;
-        height: auto;
-        position: relative;
-        z-index: 2;
-        // margin: 0 auto;
-        object-fit: contain;
-        // filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-    }
+
     .slider-number {
         top: 15px;
         position: absolute;
