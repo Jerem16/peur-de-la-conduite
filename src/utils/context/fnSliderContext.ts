@@ -15,6 +15,8 @@ export const classGetter = (
     }
 };
 
+/*-------------------------------------------------------*/
+
 export const handleSlideRefParam = (
     slideRefParam: string | null,
     sliderContent: { slideRef: string | number }[],
@@ -31,6 +33,34 @@ export const handleSlideRefParam = (
         }
     }
 };
+
+/*-------------------------------------------------------*/
+
+const startSlideInterval = (
+    sliderContentLength: number,
+    intervalTime: number,
+    setCurrentSlide: React.Dispatch<React.SetStateAction<number>>
+) => {
+    return setInterval(() => {
+        setCurrentSlide((prev) => {
+            if (prev < sliderContentLength - 1) {
+                return prev + 1;
+            }
+            return prev;
+        });
+    }, intervalTime);
+};
+const startStopTimeout = (
+    slideInterval: NodeJS.Timeout,
+    intervalTime: number,
+    sliderContentLength: number,
+    setStopTimerButton: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+    return setTimeout(() => {
+        clearInterval(slideInterval);
+        setStopTimerButton(true);
+    }, intervalTime * sliderContentLength);
+};
 export const manageAutoSlide = (
     stopTimerButton: boolean,
     setStopTimerButton: React.Dispatch<React.SetStateAction<boolean>>,
@@ -41,24 +71,21 @@ export const manageAutoSlide = (
     if (stopTimerButton) {
         return () => {};
     }
-
-    const slideInterval = setInterval(() => {
-        setCurrentSlide((prev) => {
-            if (prev < sliderContentLength - 1) {
-                return prev + 1;
-            }
-            clearInterval(slideInterval);
-            return prev;
-        });
-    }, intervalTime);
-
-    const stopTimeout = setTimeout(() => {
-        clearInterval(slideInterval);
-        setStopTimerButton(true);
-    }, intervalTime * sliderContentLength);
-
+    const slideInterval = startSlideInterval(
+        sliderContentLength,
+        intervalTime,
+        setCurrentSlide
+    );
+    const stopTimeout = startStopTimeout(
+        slideInterval,
+        intervalTime,
+        sliderContentLength,
+        setStopTimerButton
+    );
     return () => {
         clearInterval(slideInterval);
         clearTimeout(stopTimeout);
     };
 };
+
+/*-------------------------------------------------------*/

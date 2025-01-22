@@ -1,11 +1,11 @@
 "use client";
-
 import React, {
     createContext,
     useState,
     useEffect,
     ReactNode,
     useMemo,
+    useCallback,
 } from "react";
 import { sliderContent } from "../../assets/data/content/slider";
 import { useURLParams } from "../useURLParams";
@@ -15,39 +15,38 @@ import {
     manageAutoSlide,
     classGetter,
 } from "./fnSliderContext";
-
 interface SliderContextType {
     currentSlide: number;
     nextSlide: () => void;
     prevSlide: () => void;
     getClass: (index: number) => string;
 }
-
 export const SliderContext = createContext<SliderContextType | undefined>(
     undefined
 );
-
 export const SliderProvider = ({ children }: { children: ReactNode }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [stopTimerButton, setStopTimerButton] = useState(false);
     const { setParam, getParam } = useURLParams();
 
-    // Calcul des valeurs de la prochaine et précédente diapositive
     const nextValue = (currentSlide + 1) % sliderContent.length;
     const prevValue =
         (currentSlide - 1 + sliderContent.length) % sliderContent.length;
 
-    const nextSlide = () => {
+    const nextSlide = useCallback(() => {
+        const nextValue = (currentSlide + 1) % sliderContent.length;
         setParam("slideRef", String(nextValue));
-        setStopTimerButton(true); // Arrête le timer si nécessaire
-        setCurrentSlide(nextValue); // Met à jour le slide actuel
-    };
+        setStopTimerButton(true);
+        setCurrentSlide(nextValue);
+    }, [currentSlide, setParam, setStopTimerButton, setCurrentSlide]);
 
-    const prevSlide = () => {
+    const prevSlide = useCallback(() => {
+        const prevValue =
+            (currentSlide - 1 + sliderContent.length) % sliderContent.length;
         setParam("slideRef", String(prevValue));
-        setStopTimerButton(true); // Arrête le timer si nécessaire
-        setCurrentSlide(prevValue); // Met à jour le slide actuel
-    };
+        setStopTimerButton(true);
+        setCurrentSlide(prevValue);
+    }, [currentSlide, setParam, setStopTimerButton, setCurrentSlide]);
 
     useEffect(() => {
         const removeListener = addScrollListener(({ scrollY }) => {
@@ -55,6 +54,7 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
         }, stopTimerButton);
 
         const slideRefParam = getParam("slideRef");
+
         handleSlideRefParam(
             slideRefParam,
             sliderContent.map((item) => ({
@@ -71,7 +71,7 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
             setCurrentSlide,
             sliderContent.length
         );
-
+        
         return () => {
             cleanupAutoSlide();
             removeListener();
@@ -86,8 +86,9 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
             getClass: (index: number) =>
                 classGetter(index, currentSlide, prevValue, nextValue),
         }),
-        [currentSlide, prevValue, nextValue] // Dépendances: on ne mémorise que lorsque ces valeurs changent
+        [currentSlide, nextSlide, prevSlide, prevValue, nextValue]
     );
+
     return (
         <SliderContext.Provider value={contextValue}>
             {children}
