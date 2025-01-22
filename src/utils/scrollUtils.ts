@@ -6,7 +6,8 @@ import {
     addNewUrl,
     updateSectionClasses,
     scrollInView,
-    scrollTimeEvent,
+    currentSectionId,
+    handleScrollClick,
 } from "./fnScrollUtils";
 /*-------------------------------------------------------*/
 export const useInitialScroll = (pathname: string) => {
@@ -21,7 +22,6 @@ export const useInitialScroll = (pathname: string) => {
 
 /*-------------------------------------------------------*/
 
-let currentSectionId = "";
 export const useScrollAnchors = (sections: { id: string }[]) => {
     const { setActiveSection } = useScrollContext();
     useEffect(() => {
@@ -35,18 +35,4 @@ export const useScrollAnchors = (sections: { id: string }[]) => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, [sections, setActiveSection]);
-};
-
-/*-------------------------------------------------------*/
-
-export const handleScrollClick = (targetId: string) => {
-    const element = document.getElementById(targetId);
-    if (!element) return;
-    const start = window.scrollY;
-    const end = element.getBoundingClientRect().top + window.scrollY;
-    const duration = 750;
-    const startTime = performance.now();
-    window.requestAnimationFrame((currentTime) => {
-        scrollTimeEvent(currentTime, start, end, duration, startTime);
-    });
 };

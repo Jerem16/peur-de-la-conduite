@@ -1,5 +1,39 @@
 /*-------------------------------------------------------*/
 
+function scrollTimeEvent(
+    currentTime: number,
+    start: number,
+    end: number,
+    duration: number,
+    startTime: number
+) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeInOutCubic =
+        progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 4) / 2;
+    window.scrollTo(0, start + (end - start) * easeInOutCubic);
+    if (progress < 1) {
+        window.requestAnimationFrame((newTime) =>
+            scrollTimeEvent(newTime, start, end, duration, startTime)
+        );
+    }
+}
+export const handleScrollClick = (targetId: string) => {
+    const element = document.getElementById(targetId);
+    if (!element) return;
+    const start = window.scrollY;
+    const end = element.getBoundingClientRect().top + window.scrollY;
+    const duration = 750;
+    const startTime = performance.now();
+    window.requestAnimationFrame((currentTime) => {
+        scrollTimeEvent(currentTime, start, end, duration, startTime);
+    });
+};
+
+/*-------------------------------------------------------*/
+
 interface NavParams {
     currentPath: string;
     targetPath: string;
@@ -83,7 +117,7 @@ function elseNav({
 
 /*-------------------------------------------------------*/
 
-let currentSectionId = "";
+export let currentSectionId = "";
 export function scrollInView(sections: { id: string }[]) {
     const scrollPosition = window.scrollY;
     sections.forEach(({ id }) => {
@@ -122,28 +156,5 @@ export function addNewUrl(currentSectionId: string) {
         if (window.location.hash !== newUrl) {
             window.history.replaceState(null, "", newUrl);
         }
-    }
-}
-
-/*-------------------------------------------------------*/
-
-export function scrollTimeEvent(
-    currentTime: number,
-    start: number,
-    end: number,
-    duration: number,
-    startTime: number
-) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easeInOutCubic =
-        progress < 0.5
-            ? 4 * progress * progress * progress
-            : 1 - Math.pow(-2 * progress + 2, 4) / 2;
-    window.scrollTo(0, start + (end - start) * easeInOutCubic);
-    if (progress < 1) {
-        window.requestAnimationFrame((newTime) =>
-            scrollTimeEvent(newTime, start, end, duration, startTime)
-        );
     }
 }

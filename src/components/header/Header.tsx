@@ -9,8 +9,10 @@ import { useScrollContext } from "../../utils/context/ScrollContext";
 import { useNavigation } from "../../utils/context/NavigationContext";
 import { MenuItem, menuItems } from "../../assets/data/menuItems";
 import { updateMenuClasses } from "../../utils/updateMenuUtils";
-import { handleScrollClick, useInitialScroll } from "../../utils/scrollUtils";
-import { handleNavClick } from "../../utils/fnScrollUtils";
+import { handleScrollClick, handleNavClick } from "../../utils/fnScrollUtils";
+import { useInitialScroll } from "../../utils/scrollUtils";
+
+
 interface NavProps {
     menuItems: MenuItem[];
     onNavigationClick: (path: string) => void;
