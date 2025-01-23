@@ -5,18 +5,22 @@ const SearchClose = () => {
         <div className="close-search">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="19"
-                height="19"
+                width="18"
+                height="18"
                 viewBox="0 0 18 18"
                 fill="none"
             >
-                <circle cx="8.5" cy="8.5" r="8.5" className="bg-color" />
-                <path
-                    d="M11 11L8.5 8.5M8.5 8.5L6 6M8.5 8.5L11 6M8.5 8.5L6 11"
+                <circle cx="9" cy="9" r="9" className="bg-color" />
+                <g
+                    fill="none"
                     className="icon-color"
+                    strokeWidth="1"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                />
+                >
+                    <path d="M11.8 11.8L6.2 6.2" />
+                    <path d="M6.2 11.8l5.6-5.6" />
+                </g>
             </svg>
         </div>
     );

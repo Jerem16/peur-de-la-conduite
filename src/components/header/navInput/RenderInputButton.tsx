@@ -26,7 +26,7 @@ const RenderInputButton: React.FC<RenderButtonProps> = ({
     return (
         <button
             type={isSubmitted ? "button" : "submit"}
-            className="nav-icon"
+            className="nav-icon flx-c"
             onClick={handleClick}
             aria-label={
                 isSubmitted

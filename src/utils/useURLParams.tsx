@@ -1,49 +1,72 @@
-"use client";
+// useURLParams.tsx
 
+"use client";
 import { useSearchParams, useRouter } from "next/navigation";
+
+const getParamsFromSearch = (
+    searchParams: URLSearchParams,
+    key: string
+): string | null => {
+    return searchParams.get(key);
+};
+
+const getWordURL = (): Location => {
+    return window.location;
+};
+
+const getURLHash = (): string => {
+    const hash = getWordURL().hash.split("?")[0];
+    return hash || "";
+};
+
+const getParamFromHash = (key: string): string | null => {
+    const { search, hash } = getWordURL();
+    let queryString = search;
+    const hashIndex = hash.indexOf("?");
+    if (hashIndex !== -1) {
+        queryString += hash.slice(hashIndex);
+    }
+    const params = new URLSearchParams(queryString);
+    return params.get(key);
+};
+
+const setURLParam = (
+    router: ReturnType<typeof useRouter>,
+    searchParams: URLSearchParams,
+    key: string,
+    value: string
+): void => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set(key, value);
+    const currentHash = getURLHash();
+    const newUrl = `${currentHash}?${params.toString()}`;
+    router.push(newUrl);
+};
+
+const deleteURLParam = (
+    router: ReturnType<typeof useRouter>,
+    searchParams: URLSearchParams,
+    key: string
+): void => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete(key);
+    const currentHash = getURLHash();
+    const newUrl = params.toString()
+        ? `${currentHash}?${params.toString()}`
+        : currentHash;
+    router.push(newUrl);
+};
 
 export const useURLParams = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const getParams = (key: string): string | null => searchParams.get(key);
-    const getParam = (key: string): string | null => {
-        const { search, hash } = window.location; // Récupère `search` et `hash`
-
-        // Combine `search` et les paramètres après `#` (s'il y en a)
-        let queryString = search; // Ex : "?badKeyWord=ssssssss"
-        const hashIndex = hash.indexOf("?");
-        if (hashIndex !== -1) {
-            queryString += hash.slice(hashIndex); // Ajoute les paramètres du `hash`
-        }
-
-        // Utilise URLSearchParams pour récupérer la valeur
-        const params = new URLSearchParams(queryString);
-        return params.get(key);
-    };
-
-    const setParam = (key: string, value: string): void => {
-        const params = new URLSearchParams(searchParams.toString());
-        params.set(key, value); // Met à jour ou ajoute le paramètre
-
-        const currentHash = window.location.hash.split("?")[0]; // Récupère l'ancre sans les paramètres
-        const newUrl = `${currentHash}?${params.toString()}`; // Construit la nouvelle URL proprement
-
-        router.push(newUrl); // Mets à jour l'URL avec Next.js
-    };
-
-    const deleteParam = (key: string): void => {
-        const params = new URLSearchParams(searchParams.toString());
-        params.delete(key);
-
-        // Récupère l'ID d'ancre actuel
-        const currentHash = window.location.hash || "";
-
-        // Met à jour l'URL tout en conservant l'ancre
-        const newUrl = params.toString()
-            ? `${currentHash}?${params.toString()}`
-            : currentHash; // Si aucun paramètre restant, garde uniquement l'ancre
-        router.push(newUrl);
-    };
-
+    const getParams = (key: string) => getParamsFromSearch(searchParams, key);
+    const getParam = (key: string) => getParamFromHash(key);
+    const setParam = (key: string, value: string) =>
+        setURLParam(router, searchParams, key, value);
+    const deleteParam = (key: string) =>
+        deleteURLParam(router, searchParams, key);
+    
+    // Retourne bien la fonction deleteParam pour l'utiliser dans un autre fichier
     return { getParam, getParams, setParam, deleteParam };
 };

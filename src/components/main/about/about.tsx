@@ -28,8 +28,8 @@ const About = () => {
                             alt={`Avatar de ${content.cardIdentity.firstName}`}
                             width={225}
                             height={225}
-                            loading="lazy"
-                            priority={false}
+                            // loading="lazy"
+                            priority={true}
                         />
                         <p>{content.cardIdentity.profession}</p>
                     </div>

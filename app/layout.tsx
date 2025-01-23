@@ -5,6 +5,7 @@ import { SearchProvider } from "../src/utils/context/SearchContext";
 import { Suspense } from "react";
 import HeaderProps from "./headerProps";
 import { ScrollProvider } from "../src/utils/context/ScrollContext";
+import ScrollSectionsWrapper from "./ScrollSectionsWrapper";
 
 export const RobotoFlex = localFont({
     src: "/fonts/RobotoFlex.woff2",
@@ -96,21 +97,23 @@ export default function RootLayout({
     return (
         <html lang="fr-FR">
             <body
-                className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`}
-                id="top"
+                className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`} id="top"
             >
-            <ScrollProvider>
-                <SearchProvider>
-                    <Suspense fallback={<div>Chargement du header...</div>}>
-                        <header>
-                            <div className="content-wrapper">
-                                <HeaderProps />
-                            </div>
-                        </header>
-                        <main>{children}</main>
-                    </Suspense>
-                </SearchProvider>
-            </ScrollProvider>
+                <ScrollProvider>
+                    <ScrollSectionsWrapper>
+                        <SearchProvider>
+                            <Suspense fallback={<div>Chargement du header...</div>}>
+                                <div id="top"></div>
+                                <header>
+                                    <div className="content-wrapper">
+                                        <HeaderProps />
+                                    </div>
+                                </header>
+                                <main>{children}</main>
+                            </Suspense>
+                        </SearchProvider>
+                    </ScrollSectionsWrapper>
+                </ScrollProvider>
             </body>
         </html>
     );

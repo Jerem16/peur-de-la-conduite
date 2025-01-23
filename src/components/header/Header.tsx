@@ -30,7 +30,7 @@ const Header: React.FC<NavProps> = () => {
     const { currentRoute, updateRoute } = useNavigation();
     const { activeSection } = useScrollContext();
 
-    // useScrollAnchors(sections);
+
     useInitialScroll(pathname);
 
     // États pour la gestion des différentes tailles d'écran
@@ -104,7 +104,6 @@ const Header: React.FC<NavProps> = () => {
                 menuItems={updatedMenuItems}
                 onNavigationClick={handleNavigationClick}
                 tabletMain={tabletMain} // Gestion de la vue tablette
-                // setTabletMain={setTabletMain}
                 openMainButton={openMainButton} // Gestion de la vue Desktop
                 setOpenMainButton={setOpenMainButton}
                 openButton={openButton}

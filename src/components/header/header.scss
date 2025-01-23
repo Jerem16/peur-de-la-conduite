@@ -140,7 +140,7 @@ nav {
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
     }
 }
-.search,
+.research,
 .connection {
     cursor: pointer;
     width: auto;
@@ -173,8 +173,11 @@ nav {
         color: $primary-black !important;
     }
 }
-.search {
-    max-width: 223px;
+.research {
+    &:hover,
+    &:focus {
+        transform: scale(1);
+    }
 }
 
 .connection {
@@ -183,7 +186,7 @@ nav {
     }
     &:hover,
     &:focus {
-        // transform: scale(1.05);
+        transform: scale(1.05);
         // @include menuShadow(rgba(0, 0, 0, 0.2));
         .nav-link,
         .icon-color {
@@ -220,9 +223,7 @@ nav .group_link-submenu {
 .show-button {
     width: 18px;
 }
-#search-input {
-    max-height: 1.25rem;
-}
+
 .hidden {
     opacity: 0;
     visibility: hidden;
