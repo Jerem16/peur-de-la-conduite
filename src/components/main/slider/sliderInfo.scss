@@ -36,7 +36,7 @@
 
         p {
             margin: 0 0 0 100px;
-            width: 720px;
+            width: $width-card_content;
             @include bannerDescribeBold;
         }
 

@@ -79,7 +79,7 @@ body svg {
     image-rendering: auto;
 }
 p {
-    max-width: 720px;
+    max-width: $width-card_content;
     margin: 0 auto;
     color: #1e1e1e;
     font-size: 1.75rem;

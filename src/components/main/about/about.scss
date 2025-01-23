@@ -11,21 +11,16 @@
 
 .about {
     position: relative;
-    height: 360px;
     height: 396px;
     justify-content: inherit;
 
     .ab-card_bg {
         position: absolute;
         z-index: -2;
-        // left: -125px;
-        // width: 1475px;
-
         left: -78px;
         width: 1434px;
-
         height: 390px;
-        border-radius: 48px 90px 45px 45px;
+        border-radius: 45px 90px 45px 45px;
         background: $white;
     }
     .ab-img_info {
@@ -62,7 +57,7 @@
                 position: relative;
                 color: $primary-blue;
                 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                width: 360px;
+                width: $width-card_header;
                 height: 34px;
             }
             img.ab-img_head {

@@ -5,9 +5,10 @@ import "./services.scss";
 const Services = () => {
     return (
         <div className="services content-wrapper">
-            <h2>Nos Services</h2>
-            <div className="srv-card_bg"></div>
+            <div className="card_bg"></div>
             <div className="segment">
+                <div className="card_empty"></div>
+                <h2 className="card_title">Nos Services</h2>
                 <div className="card_header flx-c">
                     <Image
                         className="srv-img_typo"
