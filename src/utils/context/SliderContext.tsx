@@ -50,7 +50,7 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const removeListener = addScrollListener(({ scrollY }) => {
-            setStopTimerButton(scrollY > 5);
+            setStopTimerButton(scrollY > 10);
         }, stopTimerButton);
 
         const slideRefParam = getParam("slideRef");
@@ -71,7 +71,7 @@ export const SliderProvider = ({ children }: { children: ReactNode }) => {
             setCurrentSlide,
             sliderContent.length
         );
-        
+
         return () => {
             cleanupAutoSlide();
             removeListener();

@@ -2,6 +2,8 @@
 
 yarn run build
 
+Augmenter la mémoire : npx --node-arg=--max-old-space-size=4096 next dev
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ```bash

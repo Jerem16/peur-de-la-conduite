@@ -23,8 +23,8 @@ export const handleSlideRefParam = (
     setCurrentSlide: React.Dispatch<React.SetStateAction<number>>,
     setStopTimerButton: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-    setStopTimerButton(true);
     if (slideRefParam) {
+        setStopTimerButton(true);
         const index = sliderContent.findIndex(
             (item) => String(item.slideRef) === slideRefParam
         );
