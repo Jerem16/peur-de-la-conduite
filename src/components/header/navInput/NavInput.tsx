@@ -3,7 +3,7 @@ import { MenuItem } from "../../../assets/data/menuItems";
 import SubResult from "./SubResult";
 import useSearchHandler from "./useSearchHandler";
 import { useRouter } from "next/navigation";
-import { getShowGroupClass } from "../menuUtils";
+import { getShowGroupClass } from "../utils/menuUtils";
 import RenderInput from "./RenderInput";
 
 interface NavInputProps {

@@ -111,7 +111,7 @@ ol {
 
     .card_header,
     .card_empty {
-        width: calc($width-card_header + 84px);
+        width: calc($width-card_header + 42px + 42px);
         flex-flow: column nowrap;
         padding: 40px 42px;
         padding: 40px 42px 42px 42px;
@@ -123,6 +123,7 @@ ol {
     }
     .card_content {
         display: flex;
+        width: calc($width-card_content + 60px + 42px);
         flex-flow: column nowrap;
         align-content: space-between;
         justify-content: space-between;
@@ -141,7 +142,6 @@ ol {
     padding: 40px 66px 42px 42px;
     border-radius: 45px 82px 0px 0px;
     background: $white;
-
 }
 
 @keyframes opacityAnimationDelay {

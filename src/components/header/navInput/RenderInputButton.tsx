@@ -1,4 +1,3 @@
-
 import React from "react";
 import { svgComponents } from "../svgComponents";
 import SearchClose from "../../svg_Icon/SearchClose";

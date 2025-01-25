@@ -1,7 +1,6 @@
 import React from "react";
-import "./about.scss";
 import Image from "next/image";
-import { aboutContent } from "../../../assets/data/content/about";
+import { aboutContent } from "../../assets/data/content/about";
 
 const About = () => {
     return (

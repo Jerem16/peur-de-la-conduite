@@ -60,13 +60,27 @@ const deleteURLParam = (
 export const useURLParams = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const getParams = (key: string) => getParamsFromSearch(searchParams, key);
+
+    const getParams = (key: string) => {
+        if (searchParams) {
+            return getParamsFromSearch(searchParams, key);
+        }
+        return null;
+    };
+
     const getParam = (key: string) => getParamFromHash(key);
-    const setParam = (key: string, value: string) =>
-        setURLParam(router, searchParams, key, value);
-    const deleteParam = (key: string) =>
-        deleteURLParam(router, searchParams, key);
-    
-    // Retourne bien la fonction deleteParam pour l'utiliser dans un autre fichier
-    return { getParam, getParams, setParam, deleteParam };
+
+    const setParam = (key: string, value: string) => {
+        if (searchParams) {
+            setURLParam(router, searchParams, key, value);
+        }
+    };
+
+    const deleteParam = (key: string) => {
+        if (searchParams) {
+            deleteURLParam(router, searchParams, key);
+        }
+    };
+
+    return { getParams, getParam, setParam, deleteParam };
 };

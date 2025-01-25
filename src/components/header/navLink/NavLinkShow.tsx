@@ -4,7 +4,7 @@ import React from "react";
 import { MenuItem } from "../../../assets/data/menuItems";
 import SubMenu from "./SubMenu";
 import RenderLink from "./RenderLink";
-import { getShowGroupClass } from "../menuUtils";
+import { getShowGroupClass } from "../utils/menuUtils";
 interface NavLinkShowProps {
     menuItem: MenuItem;
     onNavigationClick: (path: string) => void;
@@ -34,14 +34,15 @@ const NavLinkShow: React.FC<NavLinkShowProps> = ({
     onFocus,
 }) => {
     const mainNav = !openMainButton && showNavLinks && !openButton;
-    const renderSubMenu = () =>
-        menuItem.subItems?.length > 0 ? (
+    const renderSubMenu = () => {
+        return menuItem.subItems && menuItem.subItems.length > 0 ? (
             <SubMenu
                 menuItem={menuItem}
                 isOpen={isOpen}
                 onSubItemClick={onNavigationClick}
             />
         ) : null;
+    };
     const handleInteraction = (
         event: React.MouseEvent | React.KeyboardEvent
     ) => {

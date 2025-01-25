@@ -71,7 +71,7 @@ const Nav: React.FC<NavProps> = ({
     const renderMenu = (menuItems: MenuItem[] | undefined) =>
         menuItems?.map((menuItem) => (
             <NavLinkShow
-                openMainButton={null}
+                openMainButton={false}
                 key={menuItem.id}
                 menuItem={menuItem}
                 onNavigationClick={onNavigationClick}

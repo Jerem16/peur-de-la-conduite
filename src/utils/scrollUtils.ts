@@ -10,7 +10,7 @@ import {
     handleScrollClick,
 } from "./fnScrollUtils";
 /*-------------------------------------------------------*/
-export const useInitialScroll = (pathname: string) => {
+export const useInitialScroll = (pathname: string | null) => {
     useEffect(() => {
         if (window.location.hash) {
             window.scrollTo({ top: 0 });

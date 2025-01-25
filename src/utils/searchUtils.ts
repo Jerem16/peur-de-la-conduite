@@ -25,7 +25,7 @@ export const filterSuggestions = (
                         .map(normalizeWord)
                         .find((word) => word.startsWith(normalizedQuery))
                 )
-                .filter(Boolean)
+                .filter((word): word is string => Boolean(word)) // Filtrer les valeurs `undefined`
         )
     );
 };

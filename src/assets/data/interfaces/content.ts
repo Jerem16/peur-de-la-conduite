@@ -33,5 +33,30 @@ export interface Slider {
     sliderContent: SliderContent;
     sliderInfo: SliderInfo;
 }
+// Interface pour le contenu "Service"
+export interface ServiceContent {
+    description: string;
+}
+
+export interface ServiceOption {
+    id: string;
+    label: string;
+    value: string;
+    condition: boolean;
+}
+
+export interface ServiceForm {
+    id: string;
+    question: string;
+    name: string;
+    options: ServiceOption[];
+    state?: boolean | null;
+    onOptionChange?: (value: boolean) => void;
+}
+
 // Type pour l'ref des contenus
-export type Content = SliderContent | SliderInfo | AboutContent;
+export type Content =
+    | SliderContent
+    | SliderInfo
+    | AboutContent
+    | ServiceContent;

@@ -4,8 +4,8 @@ import React from "react";
 
 import { MenuItem } from "../../../assets/data/menuItems";
 import { svgComponents } from "../svgComponents";
-import HiddenDelayComponent from "../HiddenDelayComponent";
-import { getShowClass } from "../menuUtils";
+import HiddenDelayComponent from "../utils/HiddenDelayComponent";
+import { getShowClass } from "../utils/menuUtils";
 import { useNavigation } from "../../../utils/context/NavigationContext";
 interface NavLinkShowProps {
     menuItem: MenuItem;
@@ -43,7 +43,7 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
     };
     return (
         <a
-            role={!showNavLinks ? "menuitem" : ""}
+            role={!showNavLinks ? "menuitem" : "link"}
             aria-label={`Page ${menuItem.title}`}
             className={`head-link ${menuItem.class}`}
             href={menuItem.path}

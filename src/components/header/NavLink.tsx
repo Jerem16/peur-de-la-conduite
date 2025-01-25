@@ -35,7 +35,7 @@ const NavLink: React.FC<NavLinkProps> = ({
                 <span className="nav-link">{menuItem.title}</span>
             </a>
 
-            {menuItem.subItems?.length > 0 && (
+            {menuItem.subItems && menuItem.subItems.length > 0 && (
                 <SubMenu
                     menuItem={menuItem}
                     isOpen={isOpen}

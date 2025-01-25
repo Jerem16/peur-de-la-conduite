@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Nav from "./Nav";
@@ -11,7 +9,7 @@ import { MenuItem, menuItems } from "../../assets/data/menuItems";
 import { updateMenuClasses } from "../../utils/updateMenuUtils";
 import { handleScrollClick, handleNavClick } from "../../utils/fnScrollUtils";
 import { useInitialScroll } from "../../utils/scrollUtils";
-
+import useResize from "./utils/useResize";
 
 interface NavProps {
     menuItems: MenuItem[];
@@ -30,14 +28,14 @@ const Header: React.FC<NavProps> = () => {
     const { currentRoute, updateRoute } = useNavigation();
     const { activeSection } = useScrollContext();
 
-
     useInitialScroll(pathname);
 
-    // États pour la gestion des différentes tailles d'écran
-    const [openMainButton, setOpenMainButton] = useState(false);
     const [tabletMain, setTabletMain] = useState(false);
+    const [openMainButton, setOpenMainButton] = useState(false);
     const [openButton, setOpenButton] = useState(false);
     const [bigMenu, setBigMenu] = useState(false);
+
+    useResize(setTabletMain, setOpenMainButton, setOpenButton, setBigMenu);
 
     // Wrapper pour adapter `handleNavClick`
     const handleNavigationClick = (path: string) => {
@@ -54,42 +52,42 @@ const Header: React.FC<NavProps> = () => {
     );
 
     // Gestion des changements de largeur d'écran
-    useEffect(() => {
-        const handleResize = () => {
-            const width = window.innerWidth;
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         const width = window.innerWidth;
 
-            if (width < 1024) {
-                setTabletMain(false);
-                setOpenMainButton(false);
-                setOpenButton(false);
-                setBigMenu(false);
-            } else if (width < 1170) {
-                setBigMenu(false);
-                setTabletMain(true);
-                setOpenMainButton(true);
-                setOpenButton(false);
-            } else if (width < 1440) {
-                setTabletMain(true);
-                setOpenMainButton(true);
-                setOpenButton(false);
-                setBigMenu(true);
-            } else {
-                setTabletMain(true);
-                setTabletMain(true);
-                setOpenMainButton(true);
-                setOpenButton(true);
-            }
-        };
+    //         if (width < 1024) {
+    //             setTabletMain(false);
+    //             setOpenMainButton(false);
+    //             setOpenButton(false);
+    //             setBigMenu(false);
+    //         } else if (width < 1170) {
+    //             setBigMenu(false);
+    //             setTabletMain(true);
+    //             setOpenMainButton(true);
+    //             setOpenButton(false);
+    //         } else if (width < 1440) {
+    //             setTabletMain(true);
+    //             setOpenMainButton(true);
+    //             setOpenButton(false);
+    //             setBigMenu(true);
+    //         } else {
+    //             setTabletMain(true);
+    //             setTabletMain(true);
+    //             setOpenMainButton(true);
+    //             setOpenButton(true);
+    //         }
+    //     };
 
-        // Initialisation lors du montage
-        handleResize();
+    //     // Initialisation lors du montage
+    //     handleResize();
 
-        // Ajout d'un écouteur sur les changements de taille d'écran
-        window.addEventListener("resize", handleResize);
+    //     // Ajout d'un écouteur sur les changements de taille d'écran
+    //     window.addEventListener("resize", handleResize);
 
-        // Nettoyage lors du démontage
-        return () => window.removeEventListener("resize", handleResize);
-    }, [setBigMenu, setOpenButton, setOpenMainButton, setTabletMain]);
+    //     // Nettoyage lors du démontage
+    //     return () => window.removeEventListener("resize", handleResize);
+    // }, [setBigMenu, setOpenButton, setOpenMainButton, setTabletMain]);
 
     return (
         <div className="header">

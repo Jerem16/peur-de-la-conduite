@@ -1,6 +1,5 @@
 import React from "react";
-import "./sliderInfo.scss";
-import { sliderInfo } from "../../../assets/data/content/info";
+import { sliderInfo } from "../../assets/data/content/info";
 
 const SliderInfo = () => {
     return (

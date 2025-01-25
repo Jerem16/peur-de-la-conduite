@@ -52,10 +52,14 @@ export const updateMenuClasses = (
     activeSection = "",
     currentRoute = ""
 ) => ({
-    mainLink: updateMenuItems(mainLink, activeSection, currentRoute),
-    reservation: updateMenuItems(reservation, activeSection, currentRoute),
-    search: updateMenuItems(search, activeSection, currentRoute),
-    connection: updateMenuItems(connection, activeSection, currentRoute),
+    mainLink: updateMenuItems(mainLink || [], activeSection, currentRoute),
+    reservation: updateMenuItems(
+        reservation || [],
+        activeSection,
+        currentRoute
+    ),
+    search: updateMenuItems(search || [], activeSection, currentRoute),
+    connection: updateMenuItems(connection || [], activeSection, currentRoute),
 });
 
 /*-------------------------------------------------------*/
@@ -83,7 +87,7 @@ export const resetActiveMenuClasses = () => {
 const handleClickOutside = (
     e: MouseEvent,
     navRef: React.RefObject<HTMLElement>,
-    setOpenSubMenu: React.Dispatch<React.SetStateAction<string>>
+    setOpenSubMenu: React.Dispatch<React.SetStateAction<string | null>>
 ) => {
     if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenSubMenu(null);
@@ -91,7 +95,7 @@ const handleClickOutside = (
 };
 const handleKeyDown = (
     e: KeyboardEvent,
-    setOpenSubMenu: React.Dispatch<React.SetStateAction<string>>
+    setOpenSubMenu: React.Dispatch<React.SetStateAction<string | null>>
 ) => {
     if (e.key === "Escape") {
         e.preventDefault();

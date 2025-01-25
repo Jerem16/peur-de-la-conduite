@@ -1,5 +1,4 @@
 import React from "react";
-import "./sunBG.scss";
 const SunBG = () => {
     return (
         <div className="sld-bg">

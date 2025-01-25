@@ -1,7 +1,7 @@
 import Contact from "../src/components/contact/Contact";
-import Slider from "../src/components/main/slider/Slider";
-import About from "../src/components/main/about/about";
-import Services from "../src/components/main/service/services";
+import Slider from "../src/home/slider/Slider";
+import About from "../src/home/about/about";
+import Services from "../src/home/service/services";
 import { SliderProvider } from "../src/utils/context/SliderContext";
 import { Metadata } from "next";
 import ScrollSectionsWrapper from "./ScrollSectionsWrapper";

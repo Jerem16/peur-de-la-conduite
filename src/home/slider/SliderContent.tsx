@@ -1,7 +1,6 @@
 import React from "react";
-import "./sliderContent.scss";
-import { sliderContent } from "../../../assets/data/content/slider";
-import Space from "../../../utils/Space";
+import { sliderContent } from "../../assets/data/content/slider";
+import Space from "../../utils/Space";
 import SliderCTA from "./SliderCTA";
 import SliderArrow from "./SliderArrow";
 import SliderInfo from "./SliderInfo";
