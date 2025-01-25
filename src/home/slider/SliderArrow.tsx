@@ -1,5 +1,5 @@
 import React from "react";
-import Arrow from "../../components/svg_Icon/Arrow";
+import Arrow from "../../components/svg_Icon/utils/Arrow";
 
 interface SliderArrowProps {
     nextSlide: (event?: React.MouseEvent | React.KeyboardEvent) => void;

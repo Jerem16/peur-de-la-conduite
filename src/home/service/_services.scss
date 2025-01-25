@@ -1,0 +1,62 @@
+@import "../../home/service/questionaire";
+@import "../../home/service/confirmed/confirmed";
+@import "../../home/service/beginner/beginner";
+.services {
+    .card_bg {
+    }
+    h2.card_title {
+        justify-content: flex-start;
+    }
+    .segment {
+        .card_header {
+            height: auto;
+            img.srv-img_typo {
+                width: $width-card_header;
+                height: 83px;
+            }
+            img.srv-img_lesson {
+                margin-top: 12px;
+                width: 288px;
+                height: 265px;
+            }
+        }
+        .card_content {
+            height: calc(360px + 82px);
+            p {
+                padding-bottom: 14px;
+                // border: 1px solid #000;
+            }
+            p.srv-ask {
+                padding-top: 24px;
+                // border: 1px solid #000;
+            }
+        }
+        .accompanist-bg {
+            position: relative;
+            top: -42px;
+            background: $white;
+            height: calc(121px + 50px);
+            // padding: 0px 0px 0px 42px;
+            width: $width-card_bg;
+            margin: 0;
+            border-radius: 0px 0px 45px 45px;
+            .card_content {
+                max-height: calc(121px);
+            }
+            .isAccompanist {
+                // padding: 0 0 42px 0;
+                padding-top: 0px;
+                .form {
+                }
+                p {
+                    padding-top: 0;
+                }
+                // position: absolute;
+                // top: 0;
+                // background: $white;
+                //
+            }
+            // height: calc(121px + 82px);
+        }
+    }
+}
