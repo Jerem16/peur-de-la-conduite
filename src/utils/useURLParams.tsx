@@ -1,7 +1,7 @@
 // useURLParams.tsx
 
 "use client";
-import { useCallback } from "react";
+// import { useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
 const getParamsFromSearch = (
