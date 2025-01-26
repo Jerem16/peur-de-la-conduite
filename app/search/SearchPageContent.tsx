@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSearch } from "../../src/utils/context/SearchContext";
 import searchQuery from "../../src/utils/searchMenu";
@@ -13,6 +13,16 @@ export default function SearchPageContent() {
     const badKeyWord = searchParams.get("badKeyWord");
     const queryFromUrl = searchParams.get("query");
 
+    // Crée une chaîne de requête avec le paramètre slideRef
+    const createQueryString = useCallback(
+        (name: string, value: string) => {
+            const params = new URLSearchParams(searchParams.toString());
+            params.set(name, value); // Définit ou met à jour le paramètre
+            return params.toString(); // Retourne les paramètres sous forme de chaîne
+        },
+        [searchParams]
+    );
+
     useEffect(() => {
         if (queryFromUrl && queryFromUrl !== validQuery) {
             setValidQuery(queryFromUrl);
@@ -20,7 +30,6 @@ export default function SearchPageContent() {
 
             if (Array.isArray(menuData) && menuData.length > 0) {
                 const searchResults = searchQuery(menuData, queryFromUrl);
-
                 setResults(searchResults);
             }
         }
@@ -56,13 +65,15 @@ export default function SearchPageContent() {
                             <button
                                 className="result-link"
                                 onClick={() => {
-                                    if (result.go) {
-                                        router.push(
-                                            `${result.path}${result.go}`
-                                        );
-                                    } else {
-                                        router.push(result.path);
-                                    }
+                                    // Construire l'URL avec le paramètre slideRef
+                                    const queryString = createQueryString(
+                                        "slideRef",
+                                        result.go.split("=")[1] // On extrait la valeur de `slideRef`
+                                    );
+                                    // Naviguer vers la page avec le paramètre mis à jour
+                                    router.push(
+                                        `${result.path}?${queryString}`
+                                    );
                                 }}
                             >
                                 {result.text}

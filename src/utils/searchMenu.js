@@ -46,6 +46,7 @@ export default function searchQuery(jsonData, query) {
                             path: sanitizedPath,
                             text: value,
                             go: item.go,
+                            slideRef: item.slideRef,
                         });
                         seenResults.add(resultKey); // Stockez la clé dans le Set
                     }

@@ -1,6 +1,7 @@
 // useURLParams.tsx
 
 "use client";
+import { useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
 const getParamsFromSearch = (
@@ -42,7 +43,19 @@ const setURLParam = (
     const newUrl = `${currentHash}?${params.toString()}`;
     router.push(newUrl);
 };
-
+// const setURLParam = useCallback(
+//     (
+//         router: ReturnType<typeof useRouter>,
+//         searchParams: URLSearchParams,
+//         key: string,
+//         value: stringg
+//     ) => {
+//         const params = new URLSearchParams(searchParams.toString());
+//         params.set(key, value); // Définit ou met à jour le paramètre
+//         return params.toString(); // Retourne les paramètres sous forme de chaîne
+//     },
+//     [searchParams]
+// );
 const deleteURLParam = (
     router: ReturnType<typeof useRouter>,
     searchParams: URLSearchParams,
