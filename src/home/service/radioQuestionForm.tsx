@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CheckedIcon from "../../components/svg_Icon/utils/CheckedIcon";
 
 interface Option {
@@ -22,13 +22,10 @@ const RadioQuestionForm: React.FC<RadioQuestionFormProps> = ({
     onOptionChange,
 }) => {
     const handleInputClick = (condition: boolean) => {
-        console.log("État actuel :", state, "Condition cliquée :", condition);
         if (state === condition) {
-            console.log("Désélectionner l'option :", condition);
-            onOptionChange(null); // Désélectionner
+            onOptionChange(null);
         } else {
-            console.log("Sélectionner l'option :", condition);
-            onOptionChange(condition); // Nouvelle sélection
+            onOptionChange(condition); 
         }
     };
 
@@ -50,8 +47,8 @@ const RadioQuestionForm: React.FC<RadioQuestionFormProps> = ({
                             className={
                                 state === option.condition ? "checked" : ""
                             }
-                            onClick={() => handleInputClick(option.condition)} // Capte tous les clics
-                            readOnly // Empêche le comportement natif
+                            onClick={() => handleInputClick(option.condition)} 
+                            readOnly
                         />
                         <span
                             className={`flx-c ${
