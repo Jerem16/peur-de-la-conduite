@@ -1,5 +1,6 @@
 form.srv-form {
     justify-content: flex-start;
+    // background: #000;
     input[type="radio"] {
         margin: 0 9px 0 25px;
         appearance: none;
@@ -12,17 +13,25 @@ form.srv-form {
         box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25) inset;
         &:checked {
             background: $light-blue;
+            background: transparent;
             box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
         }
     }
-    input[type="radio"]:checked ~ span.checked {
+    input[type="radio"]:checked {
+        background: transparent;
         z-index: 1;
+    }
+    input[type="radio"]:checked ~ span.checked {
+        z-index: 0;
     }
     input[type="radio"]:disabled {
         cursor: not-allowed;
     }
     span {
+        // display: none;
+        border-radius: 6px;
         position: relative;
+        background: $light-blue;
         left: -33px;
         z-index: -1;
         width: 24px;

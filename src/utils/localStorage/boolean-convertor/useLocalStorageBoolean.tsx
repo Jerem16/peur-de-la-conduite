@@ -41,6 +41,7 @@ const useSetLocalStorageState = (
         if (isBrowser) {
             // Si `value` est null ou undefined, ne rien faire
             if (value === null || value === undefined) {
+                localStorage.removeItem(key);
                 return;
             }
             // Vérification que la valeur est bien de type boolean

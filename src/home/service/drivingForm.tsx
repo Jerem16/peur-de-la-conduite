@@ -4,8 +4,8 @@ import RadioQuestionForm from "./radioQuestionForm";
 interface DrivingFormProps {
     hasPermit: boolean | null;
     supervisedDriving: boolean | null;
-    onPermitChange: (value: boolean) => void;
-    onSupervisedChange: (value: boolean) => void;
+    onPermitChange: (condition: boolean | null) => void;
+    onSupervisedChange: (condition: boolean | null) => void;
 }
 
 const DrivingForm: React.FC<DrivingFormProps> = ({
@@ -46,13 +46,13 @@ const DrivingForm: React.FC<DrivingFormProps> = ({
 
     return (
         <>
-            {serviceForm.map((question) => (
+            {serviceForm.map((form) => (
                 <RadioQuestionForm
-                    key={question.id}
-                    question={question.question}
-                    options={question.options}
-                    state={question.state}
-                    onOptionChange={question.onOptionChange}
+                    key={form.id}
+                    question={form.question}
+                    options={form.options}
+                    state={form.state}
+                    onOptionChange={form.onOptionChange}
                 />
             ))}
         </>
