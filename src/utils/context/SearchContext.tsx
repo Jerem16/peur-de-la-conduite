@@ -16,6 +16,7 @@ interface Result {
     path: string;
     text: string;
     go: string;
+    slideRef: number;
 }
 
 interface SearchContextType {

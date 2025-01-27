@@ -4,21 +4,26 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSearch } from "../../src/utils/context/SearchContext";
 import searchQuery from "../../src/utils/searchMenu";
+import useSessionStorage from "../../src/utils/sessionStorage/useSessionStorage";
 
 export default function SearchPageContent() {
     const router = useRouter();
     const { results, setResults, menuData, setQuery } = useSearch();
     const [validQuery, setValidQuery] = useState<string>("");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [storedSlideRef, setStoredSlideRef] = useSessionStorage<number>(
+        "slideRef",
+        0
+    );
     const searchParams = useSearchParams();
     const badKeyWord = searchParams.get("badKeyWord");
     const queryFromUrl = searchParams.get("query");
 
-    // Crée une chaîne de requête avec le paramètre slideRef
     const createQueryString = useCallback(
         (name: string, value: string) => {
             const params = new URLSearchParams(searchParams.toString());
-            params.set(name, value); // Définit ou met à jour le paramètre
-            return params.toString(); // Retourne les paramètres sous forme de chaîne
+            params.set(name, value);
+            return params.toString();
         },
         [searchParams]
     );
@@ -27,7 +32,6 @@ export default function SearchPageContent() {
         if (queryFromUrl && queryFromUrl !== validQuery) {
             setValidQuery(queryFromUrl);
             setQuery(queryFromUrl);
-
             if (Array.isArray(menuData) && menuData.length > 0) {
                 const searchResults = searchQuery(menuData, queryFromUrl);
                 setResults(searchResults);
@@ -65,15 +69,21 @@ export default function SearchPageContent() {
                             <button
                                 className="result-link"
                                 onClick={() => {
-                                    // Construire l'URL avec le paramètre slideRef
-                                    const queryString = createQueryString(
-                                        "slideRef",
-                                        result.go.split("=")[1] // On extrait la valeur de `slideRef`
-                                    );
-                                    // Naviguer vers la page avec le paramètre mis à jour
-                                    router.push(
-                                        `${result.path}?${queryString}`
-                                    );
+                                    if (result.go) {
+                                        const slideRef = result.go.split(
+                                            "="
+                                        )[1]; // Extraction de `slideRef`
+                                        setStoredSlideRef(result.slideRef); // Stockage dans le localStorage
+                                        const queryString = createQueryString(
+                                            "slideRef",
+                                            slideRef
+                                        );
+                                        router.push(
+                                            `${result.path}?${queryString}`
+                                        ); // Navigation
+                                    } else {
+                                        router.push(result.path);
+                                    }
                                 }}
                             >
                                 {result.text}

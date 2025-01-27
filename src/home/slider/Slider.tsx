@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import SunBG from "./SunBG";
 import SliderRoad from "./SliderRoad";
 import SliderContent from "./SliderContent";
-import { SliderContext } from "../../utils/context/SliderContext";
+import { SliderContext } from "../../utils/context/slider/SliderContext";
 
 const Slider = () => {
     const sliderContext = useContext(SliderContext);

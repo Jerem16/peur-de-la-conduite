@@ -17,20 +17,13 @@ export const classGetter = (
 
 /*-------------------------------------------------------*/
 
-export const handleSlideRefParam = (
-    slideRefParam: string | null,
-    sliderContent: { slideRef: string | number }[],
-    setCurrentSlide: React.Dispatch<React.SetStateAction<number>>,
-    setStopTimerButton: React.Dispatch<React.SetStateAction<boolean>>
+export const sessionSlideRef = (
+    setCurrentSlide: React.Dispatch<React.SetStateAction<number>>
 ) => {
-    if (slideRefParam) {
-        setStopTimerButton(true);
-        const index = sliderContent.findIndex(
-            (item) => String(item.slideRef) === slideRefParam
-        );
-        if (index !== -1) {
-            setCurrentSlide(index);
-        }
+    const savedSlideRef = sessionStorage.getItem("slideRef");
+    if (savedSlideRef !== null && !isNaN(Number(savedSlideRef))) {
+        const slideRefNumber = Number(savedSlideRef);
+        setCurrentSlide(slideRefNumber);
     }
 };
 
@@ -68,7 +61,11 @@ export const manageAutoSlide = (
     sliderContentLength: number,
     intervalTime: number = 4000
 ) => {
-    if (stopTimerButton) {
+    const savedSlideRef = sessionStorage.getItem("slideRef");
+    if (
+        stopTimerButton ||
+        (savedSlideRef !== null && !isNaN(Number(savedSlideRef)))
+    ) {
         return () => {};
     }
     const slideInterval = startSlideInterval(
@@ -87,5 +84,4 @@ export const manageAutoSlide = (
         clearTimeout(stopTimeout);
     };
 };
-
 /*-------------------------------------------------------*/
