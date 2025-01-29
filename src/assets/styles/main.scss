@@ -10,18 +10,16 @@
 @import "./01_base/navToggler";
 
 @import "../../components/header/header";
+@import "../../components/button/button";
 
 // @import "../../pages/home/about/about";
 // @import "../../pages/home/service/services";
 // @import "../../pages/home/slider/slider";
 
+@import "../../home/slider/slider";
 @import "../../home/about/about";
 @import "../../home/service/services";
-@import "../../home/slider/slider";
-
-@import "../../components/button/button";
-
-
+@import "../../home/contact-section/contact";
 
 // @import "./03_responsive/02_1440px-1080px";
 // // @import "./03_responsive/03_tablet";

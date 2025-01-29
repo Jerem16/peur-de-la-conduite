@@ -1,10 +1,10 @@
-import Contact from "../src/components/contact/Contact";
 import Slider from "../src/home/slider/Slider";
 import About from "../src/home/about/about";
 import Services from "../src/home/service/services";
 import { SliderProvider } from "../src/utils/context/slider/SliderContext";
 import { Metadata } from "next";
 import ScrollSectionsWrapper from "./ScrollSectionsWrapper";
+import ContactHome from "../src/home/contact-section";
 export const metadata: Metadata = {
     title: "Accueil | Peur de la conduite",
 };
@@ -26,7 +26,8 @@ export default function Home() {
                 <Services />
             </section>
             <section className="section" id="contact">
-                <Contact />
+                <div className="fixed-menu"></div>
+                <ContactHome />
             </section>
         </ScrollSectionsWrapper>
     );

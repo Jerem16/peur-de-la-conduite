@@ -1,6 +1,6 @@
 // form.srv-form {
 //     justify-content: flex-start;
-//     input[type="radio"] {
+//     input[type="checkbox"] {
 //         margin: 0 9px 0 25px;
 //         appearance: none;
 //         width: 24px;
@@ -15,7 +15,7 @@
 //             box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
 //         }
 //     }
-//     input[type="radio"]:checked ~ span.checked {
+//     input[type="checkbox"]:checked ~ span.checked {
 //         z-index: 1;
 //     }
 //     span {

@@ -3,20 +3,11 @@ import React from "react";
 const SliderNumber = ({ SlideClass }) => {
     return (
         <div className={`slider-number ${SlideClass}`}>
-            <style>{`
-                .P { fill: #F1F1F0; }
-                .Q { opacity: 0.25; }
-                .R { opacity: 0.54; }
-                .S { fill: #FDF8FB; }
-                .T { font-family: 'Roboto Flex', sans-serif; }
-                .U { font-size: 24px; }
-            `}</style>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 1656 528.6"
                 width="1656"
                 height="528.6"
-                loading="lazy"
             >
                 <linearGradient
                     id="F"

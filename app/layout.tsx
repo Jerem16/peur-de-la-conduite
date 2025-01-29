@@ -103,7 +103,6 @@ export default function RootLayout({
                     <ScrollSectionsWrapper>
                         <SearchProvider>
                             <Suspense fallback={<div>Chargement du header...</div>}>
-                                <div id="top"></div>
                                 <header>
                                     <div className="content-wrapper">
                                         <HeaderProps />

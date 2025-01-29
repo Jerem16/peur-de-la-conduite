@@ -1,5 +1,5 @@
 // src/assets/data/interfaces/content.ts
-
+import { socialSvgComponents } from "../../../home/contact-section/socialSvgComponents";
 // Interface pour le contenu "About"
 export interface AboutCardIdentity {
     firstName: string;
@@ -54,9 +54,35 @@ export interface ServiceForm {
     onOptionChange?: (value: boolean) => void;
 }
 
-// Type pour l'ref des contenus
+// Type pour le contenus contact
+
+export interface ContactContent {
+    contactAnnouncement: ContactAnnouncement;
+    contactDetail: ContactDetail;
+    socialLink: SocialLink;
+}
+
+export interface ContactAnnouncement {
+    message: string;
+}
+
+export interface ContactDetail {
+    svg: string;
+    text: string;
+    link?: string;
+    alt: string;
+}
+
+export interface SocialLink {
+    svg: keyof typeof socialSvgComponents;
+    link: string;
+}
+
 export type Content =
     | SliderContent
     | SliderInfo
     | AboutContent
-    | ServiceContent;
+    | ServiceContent
+    | ContactAnnouncement
+    | ContactDetail
+    | SocialLink;

@@ -9,7 +9,7 @@ body {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    background: $primary-black;
+    // background: $primary-black;
     * {
         margin: 0;
         padding: 0;
@@ -82,6 +82,7 @@ ol {
     max-width: 1440px;
     width: auto;
     position: relative;
+    // background: #333;
 }
 
 .flx-c {
@@ -89,6 +90,18 @@ ol {
     justify-content: center;
     align-items: center;
 }
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 //? Card
 .card_bg {
     position: absolute;
@@ -121,7 +134,8 @@ ol {
     .card_empty {
         background: none;
     }
-    .card_content {
+    .card_content,
+    .srv-description {
         display: flex;
         width: calc($width-card_content + 60px + 42px);
         flex-flow: column nowrap;

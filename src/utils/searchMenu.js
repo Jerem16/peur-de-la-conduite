@@ -3,7 +3,16 @@ export default function searchQuery(jsonData, query) {
     const seenResults = new Set(); // Pour stocker les résultats uniques
 
     // Clés à ignorer dans la recherche
-    const ignoredKeys = ["id", "AnchorId", "class", "svg", "path"];
+    const ignoredKeys = [
+        "id",
+        "AnchorId",
+        "class",
+        "svg",
+        "path",
+        "link",
+        "alt",
+        "icon",
+    ];
 
     // Vérification de la validité de `jsonData`
     if (!jsonData || typeof jsonData !== "object") {

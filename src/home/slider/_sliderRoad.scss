@@ -1,4 +1,21 @@
-
+.P {
+    fill: #f1f1f0;
+}
+.Q {
+    opacity: 0.25;
+}
+.R {
+    opacity: 0.54;
+}
+.S {
+    fill: #fdf8fb;
+}
+.T {
+    font-family: "Roboto Flex", sans-serif;
+}
+.U {
+    font-size: 24px;
+}
 .sld-container {
     height: calc(100vh);
     max-height: 630px;
@@ -30,7 +47,7 @@
         width: 1685px;
         // padding: 0 28px 0 0;
         top: -24px;
-        
+
         // top: -0px;
         // width: 1635px;
         height: auto;

@@ -1,15 +1,12 @@
 "use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import DrivingForm from "./drivingForm";
 import Beginner from "./beginner/beginner";
 import Confirmed from "./confirmed/confirmed";
 import Accompanist from "./accompanist";
 import useLocalStorageState from "../../utils/localStorage/boolean-convertor/useLocalStorageBoolean";
-import useIsBrowser from "../../utils/useIsBrowser";
 const Services: React.FC = () => {
-    const isBrowser = useIsBrowser();
     const [hasPermit, setHasPermit] = useLocalStorageState(
         "Permis de conduire :",
         null
@@ -26,13 +23,6 @@ const Services: React.FC = () => {
     const onAccompanistChange = (value: boolean) => {
         setIsAccompanist(value);
     };
-
-    // // Sauvegarde de hasPermit dans le localStorage
-    useEffect(() => {
-        if (isBrowser && hasPermit && supervisedDriving === null) {
-            setSupervisedDriving(false);
-        }
-    }, [isBrowser, hasPermit, supervisedDriving, setSupervisedDriving]);
 
     return (
         <>
