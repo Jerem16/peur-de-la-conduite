@@ -1,0 +1,47 @@
+.boolean-checkbox {
+    input[type="checkbox"] {
+        appearance: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        position: relative;
+        background-color: $grey;
+        cursor: pointer;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+        &:checked {
+            background: $light-blue;
+            background: transparent;
+            box-shadow: inherit;
+            border: none;
+            outline: none;
+            z-index: 1;
+        }
+    }
+
+    input[type="checkbox"]:checked ~ span.checked {
+        z-index: 0;
+    }
+    input[type="checkbox"]:disabled {
+        cursor: not-allowed;
+    }
+    span {
+        border-radius: 6px;
+        position: relative;
+        background: $light-blue;
+        z-index: -1;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+
+        svg {
+            width: 14px;
+            height: 10px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+        }
+    }
+
+    label {
+        cursor: pointer;
+    }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import RadioQuestionForm from "./radioQuestionForm";
+import RadioQuestionForm from "../mapQuestions";
 
 interface DrivingFormProps {
     hasPermit: boolean | null;
@@ -8,7 +8,7 @@ interface DrivingFormProps {
     onSupervisedChange: (condition: boolean | null) => void;
 }
 
-const DrivingForm: React.FC<DrivingFormProps> = ({
+const DrivingData: React.FC<DrivingFormProps> = ({
     hasPermit,
     supervisedDriving,
     onPermitChange,
@@ -59,4 +59,4 @@ const DrivingForm: React.FC<DrivingFormProps> = ({
     );
 };
 
-export default DrivingForm;
+export default DrivingData;

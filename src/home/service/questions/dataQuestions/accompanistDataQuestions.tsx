@@ -1,12 +1,12 @@
 import React from "react";
-import RadioQuestionForm from "./radioQuestionForm";
+import RadioQuestionForm from "../mapQuestions";
 
 interface DrivingFormProps {
     isAccompanist: boolean | null;
     onAccompanistChange: (value: boolean) => void;
 }
 
-const Accompanist: React.FC<DrivingFormProps> = ({
+const AccompanistData: React.FC<DrivingFormProps> = ({
     isAccompanist,
     onAccompanistChange,
 }) => {
@@ -47,4 +47,4 @@ const Accompanist: React.FC<DrivingFormProps> = ({
     );
 };
 
-export default Accompanist;
+export default AccompanistData;

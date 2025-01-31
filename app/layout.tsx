@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../src/assets/styles/main.scss";
+import { DrivingProvider } from "../src/utils/context/DrivingContext";
 import { SearchProvider } from "../src/utils/context/SearchContext";
 import { Suspense } from "react";
 import HeaderProps from "./headerProps";
@@ -102,14 +103,16 @@ export default function RootLayout({
                 <ScrollProvider>
                     <ScrollSectionsWrapper>
                         <SearchProvider>
-                            <Suspense fallback={<div>Chargement du header...</div>}>
-                                <header>
-                                    <div className="content-wrapper">
-                                        <HeaderProps />
-                                    </div>
-                                </header>
-                                <main>{children}</main>
-                            </Suspense>
+                            <DrivingProvider>
+                                <Suspense fallback={<div>Chargement du header...</div>}>
+                                    <header>
+                                        <div className="content-wrapper">
+                                            <HeaderProps />
+                                        </div>
+                                    </header>
+                                    <main>{children}</main>
+                                </Suspense>
+                            </DrivingProvider>
                         </SearchProvider>
                     </ScrollSectionsWrapper>
                 </ScrollProvider>

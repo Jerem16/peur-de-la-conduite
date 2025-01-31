@@ -1,5 +1,5 @@
 import React from "react";
-import RadioOption from "../../components/checkbox/RadioOption";
+import BooleanCheckbox from "../../../../components/checkbox/inputCheckbox";
 interface Option {
     id: string;
     label: string;
@@ -7,14 +7,14 @@ interface Option {
     condition: boolean;
 }
 
-interface RadioQuestionFormProps {
+interface MapServicesQuestionsProps {
     question: string;
     options: Option[] | [];
     state: boolean | null;
     onOptionChange: (condition: boolean | null) => void;
 }
 
-const RadioQuestionForm: React.FC<RadioQuestionFormProps> = ({
+const MapServicesQuestions: React.FC<MapServicesQuestionsProps> = ({
     question,
     options,
     state,
@@ -31,9 +31,9 @@ const RadioQuestionForm: React.FC<RadioQuestionFormProps> = ({
     return (
         <div className="form">
             <p className="srv-ask">{question}</p>
-            <form method="get" className="srv-form flx-c">
+            <form method="get" className="srv-form boolean-checkbox flx-c">
                 {options.map((option) => (
-                    <RadioOption
+                    <BooleanCheckbox
                         key={option.id}
                         option={option}
                         state={state}
@@ -46,4 +46,4 @@ const RadioQuestionForm: React.FC<RadioQuestionFormProps> = ({
     );
 };
 
-export default RadioQuestionForm;
+export default MapServicesQuestions;

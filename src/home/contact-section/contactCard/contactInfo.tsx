@@ -1,8 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { contactDetails, socialLinks } from "../../assets/data/content/contact";
-import { socialSvgComponents } from "./socialSvgComponents";
+import {
+    contactDetails,
+    socialLinks,
+} from "../../../assets/data/content/contact";
+import { socialSvgComponents } from "../socialSvgComponents";
 
 const ContactInfo = () => {
     return (

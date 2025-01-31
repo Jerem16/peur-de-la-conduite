@@ -1,66 +1,14 @@
 form.srv-form {
     justify-content: flex-start;
-    // background: #000;
     input[type="checkbox"] {
         margin: 0 9px 0 25px;
-        appearance: none;
-        width: 24px;
-        height: 24px;
-        border-radius: 6px;
-        position: relative;
-        background-color: $grey;
-        cursor: pointer;
-        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25) inset;
-        &:checked {
-            background: $light-blue;
-            background: transparent;
-            box-shadow: inherit;
-            border: none;
-            outline: none;
-        }
-    }
-    input[type="checkbox"]:checked {
-        background: transparent;
-        z-index: 1;
-    }
-    input[type="checkbox"]:checked ~ span.checked {
-        z-index: 0;
-    }
-    input[type="checkbox"]:disabled {
-        cursor: not-allowed;
     }
     span {
-        // display: none;
-        border-radius: 6px;
         position: relative;
-        background: $light-blue;
         left: -32px;
-        z-index: -1;
-        width: 24px;
-        height: 24px;
-        cursor: pointer;
-        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
-
-        svg {
-            width: 14px;
-            height: 10px;
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
-        }
-    }
-
-    &.checked {
-        background-color: red;
-    }
-
-    &.disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
     }
     label {
         @include paragraph;
-        // margin-left: 8px;
-        cursor: pointer;
-        // border: 1px solid #000;
         height: 50px;
     }
 }

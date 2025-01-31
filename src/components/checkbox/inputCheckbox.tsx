@@ -1,7 +1,7 @@
 import React from "react";
-import CheckedIcon from "../../components/svg_Icon/utils/CheckedIcon";
+import CheckedIcon from "../svg_Icon/utils/CheckedIcon";
 
-interface RadioOptionProps {
+interface BooleanCheckboxProps {
     option: {
         id: string;
         label: string;
@@ -13,7 +13,7 @@ interface RadioOptionProps {
     question: string;
 }
 
-const RadioOption: React.FC<RadioOptionProps> = ({
+const BooleanCheckbox: React.FC<BooleanCheckboxProps> = ({
     option,
     state,
     handleInputClick,
@@ -44,4 +44,4 @@ const RadioOption: React.FC<RadioOptionProps> = ({
     );
 };
 
-export default RadioOption;
+export default BooleanCheckbox;

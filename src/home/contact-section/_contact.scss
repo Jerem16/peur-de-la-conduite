@@ -142,15 +142,81 @@
                             &:active .icon-color {
                                 fill: none;
                             }
-                            // &:active {
-                            //     svg {
-                            //         .bg-color {
-                            //             fill: none;
-                            //         }
-                            //     }
-                            // }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+.ctc-layout {
+    .ctc-form {
+        position: relative;
+        left: -42px;
+        width: 1350px;
+        width: calc(100% + 84px);
+        height: 630px;
+        background: $white;
+        padding: 45px 42px;
+        display: flex;
+        flex-flow: column wrap;
+        gap: 42px;
+        .form-title {
+            width: 610px;
+            height: 50px;
+            gap: 30px;
+            justify-content: flex-start;
+            h2 {
+                width: fit-content;
+                justify-content: flex-start;
+                padding: 0;
+                margin: 0;
+            }
+            .flx-c {
+                width: 37px;
+                height: 32px;
+            }
+        }
+        .form-questions {
+            width: 610px;
+            flex-flow: wrap;
+            gap: 20px;
+            // background: #e0fc45;
+            .questions {
+                width: 610px;
+                align-self: start;
+                display: inline-flex;
+                justify-content: space-between;
+                // flex-flow: row nowrap;
+                // align-items: flex-start;
+                // justify-content: flex-start;
+                // max-width: 0;
+                // padding: 0;
+                // border: 1px solid #000;
+            }
+            p,
+            label {
+                margin: 0;
+                text-align: left;
+                @include navLink;
+                // border: 1px solid #000;
+                // width: fit-content;
+            }
+            .response {
+                display: inline-flex;
+                justify-content: flex-end;
+                height: 24px;
+                input[type="checkbox"] {
+                    position: relative;
+                    margin: 0 2px;
+                    left: 14px;
+                    &:last-of-type {
+                        // margin: 0 0 0 1rem;
+                    }
+                }
+                span {
+                    // position: absolute;
+                    left: -12px;
                 }
             }
         }

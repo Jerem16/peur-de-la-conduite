@@ -1,29 +1,12 @@
+// Services.tsx
 "use client";
 import React from "react";
 import Image from "next/image";
-import DrivingForm from "./drivingForm";
-import Beginner from "./beginner/beginner";
-import Confirmed from "./confirmed/confirmed";
-import Accompanist from "./accompanist";
-import useLocalStorageState from "../../utils/localStorage/boolean-convertor/useLocalStorageBoolean";
+import DriveQuestions from "./questions/driveQuestions";
+import AccQuestions from "./questions/accompanistQuestions";
+import PermitStatus from "./permitStatus";
+
 const Services: React.FC = () => {
-    const [hasPermit, setHasPermit] = useLocalStorageState(
-        "Permis de conduire :",
-        null
-    );
-    const [supervisedDriving, setSupervisedDriving] = useLocalStorageState(
-        "Conduite accompagnée ou supervisée :",
-        null
-    );
-    const [isAccompanist, setIsAccompanist] = useLocalStorageState(
-        "Accompagnateur :",
-        null
-    );
-
-    const onAccompanistChange = (value: boolean) => {
-        setIsAccompanist(value);
-    };
-
     return (
         <>
             <div className="services content-wrapper">
@@ -57,23 +40,20 @@ const Services: React.FC = () => {
                             spécialement pour répondre aux besoins des
                             conducteurs débutants et confirmés :
                         </p>
-                        <DrivingForm
-                            hasPermit={hasPermit}
-                            supervisedDriving={supervisedDriving}
-                            onPermitChange={setHasPermit}
-                            onSupervisedChange={setSupervisedDriving}
-                        />
+                        <DriveQuestions />
                     </div>
-                    {hasPermit === true && supervisedDriving === true && (
-                        <Accompanist
-                            isAccompanist={isAccompanist}
-                            onAccompanistChange={onAccompanistChange}
-                        />
-                    )}
+                    {/**
+                     * //! if hasPermit === true && supervisedDriving === true
+                     * //! return <AccQuestions/>
+                     */}
+                    <AccQuestions />
                 </div>
             </div>
-            {hasPermit === true && <Confirmed />}
-            {hasPermit === false && <Beginner />}
+            {/**
+             * //! if hasPermit === true  => <Confirmed />
+             * //! if hasPermit === false => <Beginner />
+             */}
+            <PermitStatus />
         </>
     );
 };

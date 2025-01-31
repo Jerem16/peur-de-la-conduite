@@ -1,23 +1,18 @@
 import React from "react";
-import Image from "next/image";
+import ContactBackGround from "./contactBackGround";
+import ContactCard from "./contactCard";
 import ContactForm from "./contactForm";
 
-const ContactHome = () => {
+const ContactHome: React.FC = () => {
     return (
         <div className="contact content-wrapper">
-            {/* Background Section */}
-            <div className="contact-bg">
-                <Image
-                    className="contact-bg"
-                    src="/img/contact/bg-contact.svg"
-                    alt="Decorative background for contact section"
-                    width={1440}
-                    height={1587}
-                    loading="lazy"
-                    // style={{ objectFit: "cover" }}
-                />
+            <ContactBackGround />
+            <div className="ctc-content">
+                <div className="ctc-layout">
+                    <ContactCard />
+                    <ContactForm />
+                </div>
             </div>
-            <ContactForm />
         </div>
     );
 };
