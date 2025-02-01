@@ -3,6 +3,10 @@ import React, { createContext, useContext, useMemo } from "react";
 import useLocalStorageBoolean from "../localStorage/boolean-convertor/useLocalStorageBoolean";
 // Définition du type du contexte
 interface DrivingContextType {
+    cguState: boolean | null;
+    setCguChange: (condition: boolean | null) => void;
+    newEvent: boolean | null;
+    setNewEventChange: (condition: boolean | null) => void;
     locationState: boolean | null;
     setLocationState: (condition: boolean | null) => void;
     hasPermit: boolean | null;
@@ -36,8 +40,20 @@ export const DrivingProvider: React.FC<{ children: React.ReactNode }> = ({
         "Accompagnateur",
         null
     );
+    const [cguState, setCguChange] = useLocalStorageBoolean(
+        "J'ai lu et accepté les conditions d'utilisation",
+        null
+    );
+    const [newEvent, setNewEventChange] = useLocalStorageBoolean(
+        "Je souhaite être informé des prochains évènements.",
+        null
+    );
     const contextValue: DrivingContextType = useMemo(
         () => ({
+            cguState,
+            setCguChange,
+            newEvent,
+            setNewEventChange,
             isAccompanist,
             setIsAccompanist,
             locationState,
@@ -48,6 +64,10 @@ export const DrivingProvider: React.FC<{ children: React.ReactNode }> = ({
             setSupervisedDriving,
         }),
         [
+            cguState,
+            setCguChange,
+            newEvent,
+            setNewEventChange,
             isAccompanist,
             setIsAccompanist,
             hasPermit,

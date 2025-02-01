@@ -1,82 +1,118 @@
 .services.content-srv {
-    margin-top: 72px;
+    margin-top: 93px;
     .segment {
+        .card_title {
+            background: transparent;
+            width: calc($width-card_header + 84px + 42px);
+        }
         .card_empty {
             height: 0;
             background: $white;
             border-radius: 45px 45px 0px 0px;
             width: calc($width-card_header + 84px + 42px);
+            // margin-top: 21px;
+            position: relative;
+            top: -19px;
+            // justify-content: flex-start;
+            align-items: flex-start;
             .card_title {
+                position: relative;
+                top: 10.5px;
                 border-radius: 0;
                 text-align: center;
                 width: calc($width-card_header);
                 padding: 0;
                 @include bannerH2Bold;
                 letter-spacing: -1.76px;
+                // border: 1px solid #000;
             }
         }
-        .card_title {
-            background: transparent;
-            width: calc($width-card_header + 84px + 42px);
+
+        .card_header {
+            border-radius: 45px 45px 0px 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            p, a {
+                width: $width-card_header;
+                height: 160px;
+            }
+            .aside-bg {
+                width: $width-card_header;
+                background: linear-gradient(
+                    90deg,
+                    #f5f5f5 0%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+                border-radius: 0px 0 0 16px;
+                position: relative;
+                flex-grow: 1; /* L'image occupe tout l'espace restant */
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    object-fit: cover;
+                    object-position: top, a left;
+                }
+            }
         }
         .card_content {
-            height: 1122px;
-
             border-radius: 0px 90px 45px 45px;
             padding: 0px 0 42px 0;
-            display: flex;
+            width: 828px;
             .srv-description {
                 height: 180px;
                 border-radius: 0;
                 flex-flow: row nowrap;
                 padding: 0 42px;
-                // flex-flow: row-reverse nowrap;
+                cursor: pointer;
+                width: 828px;
 
-                p {
+                p, a {
                     @include bannerDescribeBold;
                     margin: 0 20px;
                     padding: 0 20px;
-                    // color: $white;
-                    width: 448px;
+                    width: 488px;
                     letter-spacing: 0px;
-                    // padding: 0;
-                    // border: 1px solid #000;
+                    position: relative;
+                    z-index: 2;
                 }
                 .icon-description {
+                    position: relative;
                     width: 137px;
                     height: 137px;
                     border-radius: 50%;
                     background: $white;
-                    // border: 1px solid red;
+                    // z-index: 100;
                     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-
-                    // background: #000;
                     img {
-                        border-radius: 50%;
-                        width: 129px;
-                        height: 129px;
+                        position: absolute;
+                        z-index: 100;
+                        // border-radius: 50%;
+                        width: 134px;
+                        height: 134px;
                     }
                 }
             }
             .srv-description:nth-of-type(odd) {
                 align-self: self-end;
+                width: 828px;
                 justify-content: right;
-
-                p {
-                    @include bannerDescribeBold;
+                .icon-description {
+                    left: 1px;
+                    z-index: 100;
+                }
+                p, a {
                     margin: 0 0 0;
-                    // color: $white;
-                    // width: 444px;
-                    letter-spacing: 0px;
-                    // padding: 0;
+                    width: 444px;
                 }
                 &.o1 {
                     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                    border-radius: 0px 90px 45px 24px;
+                    border-radius: 0px 90px 90px 24px;
                     background: #7f9d2a;
-                    p {
+                    p, a {
                         @include h2Title;
-                        margin: 0 0 0 20px;
                         width: 100%;
                         color: $white;
                         padding: 0;
@@ -85,6 +121,7 @@
                     .icon-description {
                         background: transparent;
                         border: none;
+                        height: 137px;
                         img {
                             border-radius: 0;
                             width: 80px;
@@ -96,38 +133,89 @@
 
             .srv-description:nth-of-type(even) {
                 flex-flow: row-reverse nowrap;
+                // background: #bdbaba;
                 justify-content: flex-end;
                 align-self: self-start;
+                .icon-description {
+                    left: -1px;
+                    top: 1px;
+                    // z-index: 11;
+                }
             }
         }
-        .card_header {
-            border-radius: 45px 45px 0px 0px;
+    }
+    .card_bg {
+        border-radius: 0 90px 0 45px;
+    }
+    img.road-confirmed {
+        position: absolute;
+        z-index: 1;
+        filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+}
+#beginner {
+    .segment {
+        .card_content {
             height: 1122px;
-            display: flex;
-            justify-content: space-between;
-            p {
+        }
+        .card_header {
+            height: 1122px;
+            height: calc(1122px - 21px);
+            p, a {
                 width: $width-card_header;
                 height: 160px;
+                position: relative;
+                top: -11px;
             }
             .aside-bg {
-                width: $width-card_header;
-                height: 860px;
-                background: linear-gradient(
-                    90deg,
-                    #f5f5f5 0%,
-                    rgba(255, 255, 255, 0) 100%
-                );
-                border-radius: 0px 0 0 16px;
-                img.aside-bg {
-                    width: $width-card_header;
-                    height: auto;
+                top: -11px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    object-fit: cover;
+                    object-position: top, a left;
                 }
             }
         }
     }
     .card_bg {
         height: 1122px;
-        border-radius: 0 90px 0 45px;
-        // background: transparent;
+        height: calc(1120px - 21px);
+    }
+    img.road-confirmed {
+        width: 1706.7px;
+        height: 2957.4px;
+        left: calc(-133.35px - 40px);
+        top: -21.15px;
+    }
+}
+#confirmed {
+    .segment {
+        .card_content {
+            padding: 0 0 21px 0;
+            height: calc(762px - 21px);
+            .srv-description:nth-of-type(odd) {
+                .icon-description {
+                    left: 2px;
+                }
+            }
+        }
+        .card_header {
+            height: calc(762px - 21px);
+
+            p, a {
+                margin-bottom: 40px; /* Pour espacer le texte de l'image */
+            }
+        }
+    }
+    .card_bg {
+        height: calc(762px - 21px);
+    }
+    img.road-confirmed {
+        width: 1706.7px;
+        height: 2597px;
+        left: calc(-133.35px);
+        top: 61.75px;
     }
 }

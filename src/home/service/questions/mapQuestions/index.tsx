@@ -1,5 +1,5 @@
 import React from "react";
-import BooleanCheckbox from "../../../../components/checkbox/inputCheckbox";
+import InputCheckbox from "../../../../components/checkbox/inputCheckbox";
 interface Option {
     id: string;
     label: string;
@@ -20,7 +20,7 @@ const MapServicesQuestions: React.FC<MapServicesQuestionsProps> = ({
     state,
     onOptionChange,
 }) => {
-    const handleInputClick = (condition: boolean) => {
+    const handleInputClick = (condition: boolean | null) => {
         if (state === condition) {
             onOptionChange(null);
         } else {
@@ -33,7 +33,7 @@ const MapServicesQuestions: React.FC<MapServicesQuestionsProps> = ({
             <p className="srv-ask">{question}</p>
             <form method="get" className="srv-form boolean-checkbox flx-c">
                 {options.map((option) => (
-                    <BooleanCheckbox
+                    <InputCheckbox
                         key={option.id}
                         option={option}
                         state={state}

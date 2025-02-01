@@ -4,8 +4,18 @@ import Image from "next/image";
 
 const Beginner = () => {
     return (
-        <div className="services content-wrapper content-srv">
-            <div className="card_bg"></div>
+        <div className="services content-wrapper content-srv" id="beginner">
+            <div className="card_bg">
+                <Image
+                    className="road-confirmed"
+                    src="/img/services/road-beginner.svg"
+                    alt={`Logo background`}
+                    width={1706.7} //1706.7 2596.4
+                    height={2957.4}
+                    loading="lazy"
+                    priority={false}
+                />
+            </div>
             <div className="segment">
                 <div className="card_empty flx-c">
                     <h2 className="card_title">Conducteurs novice</h2>
@@ -49,7 +59,13 @@ const Beginner = () => {
                     </div>
 
                     <div className="flx-c srv-description">
-                        <p>Gestion du stress avant examen</p>
+                        <a
+                            href="./services#top"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Gestion du stress avant examen
+                        </a>
                         <div className="flx-c icon-description">
                             <Image
                                 className="srv-aside-bg"
@@ -63,7 +79,13 @@ const Beginner = () => {
                         </div>
                     </div>
                     <div className="flx-c srv-description">
-                        <p>Gestion des situations de conduite difficiles</p>
+                        <a
+                            href="./services#top"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Gestion des situations de conduite difficiles
+                        </a>
                         <div className="flx-c icon-description">
                             <Image
                                 className="srv-aside-bg"
@@ -77,7 +99,13 @@ const Beginner = () => {
                         </div>
                     </div>
                     <div className="flx-c srv-description">
-                        <p>Conduites accompagnée ou supervisée</p>
+                        <a
+                            href="./services#top"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Conduites accompagnée ou supervisée
+                        </a>
                         <div className="flx-c icon-description">
                             <Image
                                 className="srv-aside-bg"
@@ -91,7 +119,13 @@ const Beginner = () => {
                         </div>
                     </div>
                     <div className="flx-c srv-description">
-                        <p>Coaching Concentration</p>
+                        <a
+                            href="./services#top"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Coaching Concentration
+                        </a>
                         <div className="flx-c icon-description">
                             <Image
                                 className="srv-aside-bg"
@@ -105,7 +139,13 @@ const Beginner = () => {
                         </div>
                     </div>
                     <div className="flx-c srv-description">
-                        <p>Maîtrise de la trajectoire</p>
+                        <a
+                            href="./services#top"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Maîtrise de la trajectoire
+                        </a>
                         <div className="flx-c icon-description">
                             <Image
                                 className="srv-aside-bg"

@@ -1,0 +1,131 @@
+.ctc-layout {
+    .ctc-form {
+        // ! A SUPPRIMER
+        // position: relative;
+        // left: -42px;
+        // width: 1350px;
+        // width: calc(100% + 84px);
+        // height: 630px;
+        // background: $white;
+        // padding: 45px 42px;
+        // display: flex;
+        // flex-flow: column wrap;
+        gap: 40px !important;
+
+        // ! NOUVEAU SUP LE HAUT
+
+        .form {
+            display: flex;
+            flex-flow: column wrap;
+            gap: 12px;
+            width: 607px;
+            label {
+                @include navLink;
+                color: #1d1d1b;
+                text-align: justify;
+                height: 20px;
+                display: inline flex;
+                justify-content: space-between;
+                // align-items: baseline;
+                align-items: center;
+                // border: 1px solid #000;
+            }
+            input,
+            textarea {
+                @include navLink;
+                padding: 0.5rem 1rem;
+                height: 60px;
+                border-radius: 8px;
+                border: 1px solid #c4c4c4;
+                background: #fff;
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+            }
+            textarea {
+                height: 236px;
+            }
+            .error-message {
+                text-align: right;
+                @include navLink;
+                margin: 0;
+                padding: 0;
+                color: red;
+                font-size: 1rem;
+                margin-top: 5px;
+            }
+        }
+
+        .endOF {
+            height: 1px;
+            width: 607px;
+            button[type="submit"] {
+                position: relative;
+                top: -22px;
+                margin: 0 auto;
+            }
+        }
+
+        .form-questions:nth-child(5) {
+            position: relative;
+            top: -10px;
+            .questions {
+                justify-content: flex-start;
+            }
+
+            label {
+                display: none;
+            }
+            .response {
+                input[type="checkbox"] {
+                    margin: 0;
+                    padding: 0;
+                    left: 0;
+                }
+                span {
+                    left: -24px;
+                }
+            }
+        }
+
+        .valid-message {
+            p {
+                @include navLink;
+                // padding: 2.5rem 2rem 1rem 2rem;
+                text-align: center;
+                width: 417px;
+                // height: calc(82px);
+            }
+            // display: inline-flex;
+            flex-flow: column;
+            gap: 0.5rem;
+            // width: 481px;
+            padding: 2rem;
+            width: calc(417px + 4rem);
+            height: calc(82px + 4rem);
+            // height: auto;
+
+            position: absolute;
+            left: calc(50% - 481px / 2);
+            top: calc(50% - 146px / 2);
+            border-radius: 18px;
+            background: $grey-light;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+            animation: fadeOut 4s ease-in-out forwards;
+
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                80% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0.95);
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+}

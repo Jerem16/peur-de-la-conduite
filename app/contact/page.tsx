@@ -6,6 +6,7 @@ export const metadata: Metadata = {
 export default function Page() {
     return (
         <section className="section">
+            <div className="fixed-menu"></div>
             <ContactHome />
         </section>
     );
