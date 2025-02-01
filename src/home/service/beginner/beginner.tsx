@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-// import Space from "../../../utils/Space";
+import "../../../../public/img/services/road-Beginner.svg";
 
 const Beginner = () => {
     return (
@@ -8,7 +8,7 @@ const Beginner = () => {
             <div className="card_bg">
                 <Image
                     className="road-confirmed"
-                    src="/img/services/road-beginner.svg"
+                    src="/img/services/road-Beginner.svg"
                     alt={`Logo background`}
                     width={1706.7} //1706.7 2596.4
                     height={2957.4}
