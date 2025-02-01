@@ -1,6 +1,6 @@
 "use client";
 import { useState, ChangeEvent, FormEvent } from "react";
-import { useForm, ValidationError } from "@formspree/react";
+import { useForm } from "@formspree/react";
 import ContactFormTitle from "./contactFormTitle";
 import ContactQuestions from "./contactQuestions";
 import ContactCGU from "./contactCGU";
@@ -36,7 +36,7 @@ const ContactForm = () => {
         message: "",
     });
     const validateFields = (): boolean => {
-        let newErrors: Errors = {
+        const newErrors: Errors = {
             prenom: validateName(formData.prenom),
             nom: validateName(formData.nom),
             email: formData.email ? validateEmail(formData.email) : "",
