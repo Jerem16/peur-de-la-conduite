@@ -50,7 +50,7 @@ const ContactForm = () => {
 
         // Filtrer les erreurs vides
         newErrors = Object.fromEntries(
-            Object.entries(newErrors).filter(([_, value]) => value)
+            Object.entries(newErrors).filter(([, value]) => Boolean(value))
         ) as Errors;
 
         setErrors(newErrors);
