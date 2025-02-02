@@ -1,15 +1,19 @@
 import Image from "next/image";
 import React from "react";
-import SocialLinks from "./SocialLinks";
-import { contactDetails } from "../../../assets/data/content/contact";
 import Link from "next/link";
+import {
+    contactDetails,
+    socialLinks,
+} from "../../../assets/data/content/contact";
+import { socialSvgComponents } from "../socialSvgComponents";
+
 const ContactInfo = () => {
     return (
         <div className="ctc-info flx-c">
             {contactDetails.map((item, index) => (
                 <React.Fragment key={index + "ctc-info"}>
                     {item.link ? (
-                        <Link
+                        <a
                             className="ctc-card"
                             href={item.link}
                             target="_blank"
@@ -25,7 +29,7 @@ const ContactInfo = () => {
                                 />
                             </span>
                             <p>{item.text}</p>
-                        </Link>
+                        </a>
                     ) : (
                         <div className="ctc-card">
                             <span className="flx-c">
@@ -44,7 +48,23 @@ const ContactInfo = () => {
             ))}
             <div className="ctc-social_card">
                 <p>Nous suivre</p>
-                <SocialLinks />
+                <div className="social-icons">
+                    {socialLinks.map(({ svg, link }, index) => {
+                        const IconComponent = socialSvgComponents[svg];
+                        return (
+                            <Link
+                                key={index + "social-icons"}
+                                rel="nofollow noreferrer"
+                                href={link}
+                                target="_blank"
+                                className="flx-c social-icon"
+                            >
+                                {IconComponent && <IconComponent />}
+                                <span className="visually-hidden">{link}</span>
+                            </Link>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

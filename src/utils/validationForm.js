@@ -12,9 +12,8 @@ export const validateName = (name) => {
 
 // Validation de l'adresse email
 export const validateEmail = (email) => {
-    if (!email) return "";
     const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegExp.test(email)) {
+    if (!email || !emailRegExp.test(email)) {
         return "Veuillez entrer une adresse e-mail valide.";
     }
     return "";

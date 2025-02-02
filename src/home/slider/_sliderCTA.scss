@@ -1,4 +1,3 @@
-
 .sld-CTA {
     width: 270px;
     height: 180px;
@@ -6,26 +5,22 @@
     cursor: pointer;
     background: $white;
     position: absolute;
-    z-index: 1000;
+    z-index: 100;
     margin: 0 0 0 90px;
     display: flex;
     flex-direction: column;
     padding: 24px 0 21px 0;
     top: 168px;
     transform: scale(1);
-    transition: transform 0.25s ease-out; // Transition optimisée pour transform
-    will-change: transform; // Permet au navigateur de préparer la gestion GPU
-
+    transition: transform 0.25s ease-out;
+    will-change: transform;
     &:hover,
     &:focus-visible {
-        transform: scale(1.05); // Animé avec le GPU
-        // box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+        transform: scale(1.05);
     }
-
     p {
         width: 175px;
         @include bannerDescribeBold;
-
         &.p1 {
             height: 34px;
         }

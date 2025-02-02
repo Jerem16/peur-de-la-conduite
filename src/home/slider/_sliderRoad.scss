@@ -26,39 +26,32 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
-
     .sld-road,
     .sld-flag,
     .slider-number {
         top: -10px;
         padding: 0 35px 0 0;
         max-width: 1656px;
-        // width: 1635px;
-        // width: 1635px;
         height: auto;
         position: absolute;
         z-index: 2;
         margin: 0 auto;
-        // object-fit: contain;
         filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
     }
     .sld-flag {
         max-width: inherit;
         width: 1685px;
-        // padding: 0 28px 0 0;
-        top: -24px;
-
-        // top: -0px;
-        // width: 1635px;
-        height: auto;
+        padding-right: 45px;
+        // max-height: 630px;
+        top: -20px;
+        // height: auto;
+        // object-fit: cover;
         filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
     }
-
     .slider-number {
         top: 15px;
         position: absolute;
         max-width: 1640px;
-
         .sld-numb1,
         .sld-numb2,
         .sld-numb3,
@@ -68,34 +61,24 @@
             display: none;
         }
         &.sld5 {
-            // .sld-numb1,
-            // .sld-numb2,
-            // .sld-numb3,
-            // .sld-numb4,
             .sld-numb5 {
                 display: block;
                 animation: opacityAnimation 0.5s ease-in-out;
             }
         }
         &.sld4 {
-            // .sld-numb1,
-            // .sld-numb2,
-            // .sld-numb3,
             .sld-numb4 {
                 display: block;
                 animation: opacityAnimation 0.5s ease-in-out;
             }
         }
         &.sld3 {
-            // .sld-numb1,
-            // .sld-numb2,
             .sld-numb3 {
                 display: block;
                 animation: opacityAnimation 0.5s ease-in-out;
             }
         }
         &.sld2 {
-            // .sld-numb1,
             .sld-numb2 {
                 display: block;
                 animation: opacityAnimation 0.5s ease-in-out;

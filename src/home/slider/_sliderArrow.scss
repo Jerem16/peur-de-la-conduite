@@ -1,7 +1,6 @@
-
 .banner-arrow {
     width: 100%;
-    max-width: 900px;
+    max-width: calc(900px + 2rem);
     height: 630px;
     position: relative;
     z-index: 10;
@@ -10,10 +9,9 @@
     float: right;
     transition: all 0.5s ease;
     margin-right: 90px;
-
     .slider-arrow {
-        background: rgba(0, 0, 0, 0); /* Fond transparent par défaut */
-        color: transparent; /* Couleur invisible par défaut */
+        background: rgba(0, 0, 0, 0);
+        color: transparent;
         border: none;
         width: 3rem;
         height: 3rem;
@@ -31,12 +29,11 @@
         }
         &.right-arrow,
         &.left-arrow {
+            left: 1rem;
+            top: -4rem;
         }
         &.left-arrow {
-            left: -15px;
-            top: -3.5rem;
             transform: rotate(180deg);
-            filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
             &:hover,
             &:focus-visible {
                 filter: drop-shadow(-4px -4px 4px rgba(0, 0, 0, 0.25));
@@ -45,10 +42,7 @@
                 }
             }
         }
-
         &.right-arrow {
-            right: -15px;
-            top: -3.5rem;
             &:hover,
             &:focus-visible {
                 filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
@@ -57,24 +51,22 @@
                 }
             }
         }
-
         &:hover,
         &:focus ~ .slider-arrow,
         &.right-arrow:focus ~ .left-arrow,
         &:focus-visible {
-            background: rgba(0, 0, 0, 0.5); 
-            color: $white; 
+            background: rgba(0, 0, 0, 0.5);
+            color: $white;
         }
         &:focus-visible {
             border: 2px solid $primary-blue !important;
         }
     }
-
     &:hover,
     &:focus {
         .slider-arrow {
-            background: rgba(0, 0, 0, 0.5); 
-            color: $white; 
+            background: rgba(0, 0, 0, 0.5);
+            color: $white;
         }
     }
 }

@@ -30,40 +30,44 @@ const Nunito = localFont({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://peur-de-la-conduite.lemaignent.com/"),
+    metadataBase: new URL("https://www.peur-de-la-conduite.fr/"),
     title: {
         template: '%s | Peur de la conduite',
         default: 'Peur de la conduite',
-      },
+    },
     description:
-        "Jérémy Lemaignent, Développeur front-end certifié, je crée des sites interactifs et réactifs transformant des idées en expériences web exceptionnelles avec HTML, CSS, JS et React JS.",
-    authors: [{ name: "Jérémy Lemaignent" }],
+        "Coaching personnalisé pour surmonter la peur de la conduite et gagner en confiance au volant. Que vous soyez conducteur novice ou confirmé, notre accompagnement sur mesure vous aide à gérer le stress, perfectionner votre conduite et maîtriser chaque situation sur la route. Bénéficiez d’un coaching adapté pour vaincre l’amaxophobie, réussir votre examen de conduite, améliorer votre trajectoire et conduire en toute sérénité.",
+    authors: [{ name: "Mounir Bouakkaz" }],
     robots: {
         index: true,
         follow: true,
     },
     openGraph: {
         title: "Peur de la conduite",
-        description:
-            "Jérémy Lemaignent, Développeur web front-end certifié, je crée des expériences web exceptionnelles avec HTML, CSS, JavaScript et React JS.",
-        url: "https://jeremy.lemaignent.com/",
-        siteName: "Jérémy Lemaignent",
+        description: `
+            Mounir Bouakkaz, enseignant de la conduite, vous accompagne avec un coaching personnalisé 
+            pour vaincre l’amaxophobie, gérer le stress avant examen et améliorer votre maîtrise au volant.
+        `,
+        url: "https://www.peur-de-la-conduite.fr/",
+        siteName: "Peur de la conduite",
         locale: "fr_FR",
         type: "website",
         images: [
             {
-                url: "./profile-4k.webp",
-                width: 1200,
-                height: 630,
-                alt: "Image de profil de Jérémy Lemaignent",
+                url: "/img/about/avatar.svg",
+                width: 225,
+                height: 225,
+                alt: "Photo de Mounir Bouakkaz sur Facebook",
+            },
+            {
+                url: "https://www.facebook.com/photo/?fbid=122107253852575347&set=a.122098521692575347",
+                width: 284,
+                height: 267,
+                alt: "Logo Peur de la Conduite sur Facebook",
             },
         ],
     },
-    twitter: {
-        card: "summary",
-        site: "@JLem707",
-        creator: "@JLem707",
-    },
+    
   icons: {
         apple: [
             { url: "img/favicon/apple-touch-icon.png" },  // 120x120

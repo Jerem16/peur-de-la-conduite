@@ -19,7 +19,7 @@ body {
     svg {
         image-rendering: auto;
     }
-    // overflow-x: hidden;
+    overflow-x: hidden;
     // overflow-y: hidden;
 }
 
@@ -27,24 +27,11 @@ body {
     border-top: 0.5px solid transparent;
 }
 .search {
-    // min-width: 223px !important;
     max-width: 223px !important;
     .nav-padding {
         padding: 1rem 1.5rem !important;
     }
 }
-// body {
-//     background-image: url("../../../../public/img/2.png");
-//     background-size: 1425px 879px;
-//     background-position: top center;
-//     background-repeat: no-repeat;
-// }
-
-// main {
-//     opacity: 0.5;
-//     color: blue !important;
-// }
-
 p {
     max-width: $width-card_content;
     margin: 0 auto;
@@ -82,7 +69,6 @@ ol {
     max-width: 1440px;
     width: auto;
     position: relative;
-    // background: #333;
 }
 
 .flx-c {

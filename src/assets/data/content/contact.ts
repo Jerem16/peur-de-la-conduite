@@ -42,7 +42,11 @@ export const contactDetails: ContactDetail[] = [
 export const socialLinks: SocialLink[] = [
     { svg: "Youtube", link: "http://www.youtube.com/@MounirBouakkaz-r4i" },
     { svg: "WhatsApp", link: "https://wa.me/33674259181" },
-    { svg: "Twitter", link: "https://twitter.com/JLem707" },
+    {
+        svg: "Twitter",
+        link:
+            "https://www.tiktok.com/@peur.de.la.condui?_t=ZN-8taHCRDnmnH&_r=1",
+    },
     {
         svg: "Instagram",
         link: "https://www.instagram.com/peurdelaconduite.fr/",
@@ -50,7 +54,11 @@ export const socialLinks: SocialLink[] = [
     {
         svg: "Facebook",
         link:
-            "https://www.facebook.com/groups/1378448995703442/user/1476755001",
+            "https://www.facebook.com/profile.php?id=61567260421073&mibextid=LQQJ4d&rdid=QuSBUDcJheDerFqF&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1D3HEm7Z4G%2F%3Fmibextid%3DLQQJ4d",
     },
-    { svg: "Linkedin", link: "https://twitter.com/JLem707" },
+    {
+        svg: "Linkedin",
+        link:
+            "https://www.tiktok.com/@peur.de.la.condui?_t=ZN-8taHCRDnmnH&_r=1",
+    },
 ];

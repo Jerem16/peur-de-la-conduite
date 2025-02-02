@@ -1,27 +1,13 @@
-// @import "../../../pages/home/slider/sunBG";
-// @import "../../../pages/home/slider/sliderRoad";
-// @import "../../../pages/home/slider/sliderContent";
-// @import "../../../pages/home/slider/sliderArrow";
-// @import "../../../pages/home/slider/sliderCTA";
-// @import "../../../pages/home/slider/sliderInfo";
-
-
 @import "../../home/slider/sliderRoad";
 @import "../../home/slider/sliderContent";
 @import "../../home/slider/sliderArrow";
 @import "../../home/slider/sliderCTA";
 @import "../../home/slider/sliderInfo";
 @import "../../home/slider/sunBG";
-
-
-
 .slider-bg {
     position: relative;
-
     margin: 0 auto;
-
     z-index: 0;
-
     max-height: fit-content;
 }
 .sld-bg,
@@ -35,8 +21,10 @@
 }
 .sld-sun,
 .sld-info_ctn,
+.slider-content,
 .slide {
     width: 900px;
+    max-width: 900px;
     float: right;
     margin-right: 90px;
 }

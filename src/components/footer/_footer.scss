@@ -1,0 +1,111 @@
+.footer {
+    text-align: center;
+    font-size: 1rem;
+    background: $bg-black-900-dark;
+    // background: red;
+    height: 176px;
+    .container {
+        padding: 42px 84px;
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        // flex-direction: column;
+        justify-content: space-between;
+        // align-items: center;
+        gap: 10px;
+    }
+    .ft_p-1 {
+        // background: #9f5454;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 90px;
+        nav {
+            display: flex;
+            gap: 20px;
+
+            a {
+                @include navLink;
+                color: var(--Light-Yellow-BG, #f1e7d1);
+                font-size: 24px;
+                line-height: normal;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: rgb(26, 109, 229);
+                }
+            }
+        }
+        p {
+            margin: 0;
+            @include navLink;
+            color: var(--oranged, #f60);
+            width: 448px;
+        }
+    }
+    .ft_p-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 90px;
+        width: 544px;
+        // border: 1px solid #000;
+        .social-icons {
+            margin-top: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 90px;
+            .social-icon {
+                // width: 64px;
+                // height: 64px;
+                width: 62px;
+                height: 62px;
+                background: $white;
+                border-radius: 6px;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border: 1px solid #000;
+                position: relative;
+
+                svg {
+                    position: absolute;
+                    width: 64px;
+                    height: 64px;
+                    max-width: 64px;
+                    max-height: 64px;
+                    object-fit: cover;
+                    border-radius: 8.5px;
+                    overflow: hidden;
+
+                    .bg-color {
+                        fill: $primary-blue;
+                    }
+
+                    .icon-color {
+                        fill: $white;
+                        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35));
+                    }
+                }
+
+                &:hover,
+                &:active {
+                    svg {
+                        filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.35));
+
+                        .bg-color {
+                            fill: $secondary-orange;
+                        }
+                    }
+                }
+
+                &:active .icon-color {
+                    fill: none;
+                }
+            }
+        }
+    }
+}
