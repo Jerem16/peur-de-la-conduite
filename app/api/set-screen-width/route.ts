@@ -11,15 +11,7 @@ export async function POST(req: NextRequest) {
 
         console.log("✅ Largeur reçue via Header :", screenWidth);
 
-        const response = NextResponse.json({ message: "OK" });
-
-        // 🔹 Définir un cookie accessible par tous les sous-domaines
-        response.headers.set(
-            "Set-Cookie",
-            `screenWidth=${screenWidth}; Path=/; Domain=.lemaignent.com; Secure; HttpOnly; SameSite=None`
-        );
-
-        return response;
+        return NextResponse.json({ message: "OK" });
     } catch (error) {
         console.error("Erreur API :", error);
         return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
