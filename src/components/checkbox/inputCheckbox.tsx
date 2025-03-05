@@ -6,6 +6,7 @@ interface InputCheckboxProps {
         id: string;
         label: string;
         value: string;
+        name?: string;
         condition: boolean;
     };
     state: boolean | null;
@@ -26,6 +27,7 @@ const InputCheckbox: React.FC<InputCheckboxProps> = ({
             </label>
             <input
                 type="checkbox"
+                aria-label={question}
                 name={question}
                 value={option.value}
                 id={option.id}

@@ -26,7 +26,7 @@ interface FormData {
 type Errors = Partial<Record<keyof FormData, string>>;
 
 const ContactForm = () => {
-    const [state, handleSubmitFormspree] = useForm("xvojloaj");
+    const [state, handleSubmitFormspree] = useForm("xjkgrarq");
     const [errors, setErrors] = useState<Errors>({});
     const [formData, setFormData] = useState<FormData>({
         prenom: "",
@@ -90,7 +90,7 @@ const ContactForm = () => {
     };
 
     return (
-        <form className="ctc-form" onSubmit={handleSubmit}>
+        <form className="ctc-form" method="POST" onSubmit={handleSubmit}>
             <ContactFormTitle />
             <ContactQuestions />
             <Form

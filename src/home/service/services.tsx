@@ -11,9 +11,11 @@ const Services: React.FC = () => {
         <>
             <div className="services content-wrapper">
                 <div className="card_bg"></div>
-                <div className="segment">
+                <div className="segment segment-title">
                     <div className="card_empty"></div>
                     <h2 className="card_title">Nos Services</h2>
+                </div>
+                <div className="segment">
                     <div className="card_header flx-c">
                         <Image
                             className="srv-img_typo"

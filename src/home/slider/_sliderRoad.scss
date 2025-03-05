@@ -28,6 +28,7 @@
     overflow: hidden;
     .sld-road,
     .sld-flag,
+    .sld-road-med,
     .slider-number {
         top: -10px;
         padding: 0 35px 0 0;
@@ -37,6 +38,9 @@
         z-index: 2;
         margin: 0 auto;
         filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+    .sld-road-med {
+        display: none;
     }
     .sld-flag {
         max-width: inherit;

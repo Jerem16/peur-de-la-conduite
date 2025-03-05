@@ -1,5 +1,4 @@
-
-.slider-bg {
+#slider {
     position: relative;
 
     &.active-section {
@@ -9,7 +8,6 @@
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
     }
-
     .sld-info_ctn {
         transform: translateX(100%);
         opacity: 0;
@@ -27,31 +25,42 @@
         left: calc(1440px - 972px);
         z-index: 1;
         bottom: 0px;
+        // border: 1px solid #000;
 
         &::after {
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
 
         p {
-            margin: 0 0 0 100px;
+            margin: 0 0 0 84px;
+            width: 720px;
             width: $width-card_content;
             @include bannerDescribeBold;
         }
 
         .icon-position {
             width: 135px;
+            width: 119px;
             height: 135px;
-            position: relative;
-            right: 0;
+            position: absolute;
+            right: -16px;
             align-self: flex-end;
             z-index: 1000;
-
+            // display: none;
             img {
                 position: absolute;
                 width: 135px;
+                width: 119px;
                 height: 135px;
                 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
             }
+        }
+    }
+}
+@media (max-width: 1440px) {
+    #slider {
+        .sld-info_ctn {
+            left: calc(100vw - 972px + 16px);
         }
     }
 }

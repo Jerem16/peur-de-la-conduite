@@ -1,4 +1,3 @@
-
 .about-bg {
     &.active-section {
         .fixed-menu {
@@ -71,6 +70,42 @@
             p {
                 padding: 0;
                 margin: 0;
+            }
+        }
+    }
+}
+@media (max-width: 1390px) {
+    .about {
+        height: auto;
+        .ab-card_bg {
+            height: 100%;
+        }
+        .ab-img_info {
+            top: -72px;
+            left: 0px;
+            border-radius: 0  50% 50% 0;
+            img {
+                height: 384px;
+                width: 384px;
+            }
+        }
+        .segment {
+            flex-flow: row nowrap;
+            .card_header {
+                padding: 0;
+                align-self: flex-start;
+            }
+            .card_content {
+                height: auto;
+                gap: 24px;
+                width: 100%;
+                padding: 42px 0 0 0;
+                p {
+                    max-width: inherit;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                }
             }
         }
     }

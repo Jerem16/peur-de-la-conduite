@@ -109,3 +109,29 @@
         }
     }
 }
+@media (max-width: 1390px) {
+    .footer {
+        height: fit-content;
+        .container {
+            justify-content: flex-start;
+            flex-flow: wrap;
+            gap: 2rem;
+        }
+        .ft_p-1 {
+            align-items: center;
+            height: fit-content;
+            gap: 2rem;
+            width: 100%;
+            nav {
+                gap: 2rem;
+                justify-content: space-between;
+                width: 544px;
+            }
+        }
+        .ft_p-2 {
+            height: 70px;
+
+            margin: 0 auto;
+        }
+    }
+}

@@ -3,60 +3,164 @@
 @import "../../home/service/beginner/beginner";
 .services {
     .card_bg {
+        // Ajoute du style ici si nécessaire
     }
+
     h2.card_title {
         justify-content: flex-start;
     }
+
     .segment {
         .card_header {
             height: auto;
+
             img.srv-img_typo {
                 width: $width-card_header;
                 height: 83px;
             }
+
             img.srv-img_lesson {
                 margin-top: 12px;
                 width: 288px;
                 height: 265px;
             }
         }
+
         .card_content {
             height: calc(360px + 82px);
+
             p {
                 padding-bottom: 14px;
-                // border: 1px solid #000;
             }
+
             p.srv-ask {
                 padding-top: 24px;
-                // border: 1px solid #000;
             }
         }
+
         .accompanist-bg {
             position: relative;
             top: -42px;
             background: $white;
             height: calc(121px + 50px);
-            // padding: 0px 0px 0px 42px;
             width: $width-card_bg;
             margin: 0;
-            border-radius: 0px 0px 45px 45px;
+            border-radius: 0 0 45px 45px;
+
             .card_content {
-                max-height: calc(121px);
+                max-height: 121px;
             }
+
             .isAccompanist {
-                // padding: 0 0 42px 0;
-                padding-top: 0px;
+                padding-top: 0;
+
                 .form {
+                    // Ajoute du style si nécessaire
                 }
+
                 p {
                     padding-top: 0;
                 }
-                // position: absolute;
-                // top: 0;
-                // background: $white;
-                //
             }
-            // height: calc(121px + 82px);
+        }
+    }
+}
+@media (max-width: 1390px) {
+    .services,
+    #confirmed,
+    #beginner {
+        height: auto;
+        .ab-card_bg {
+            height: 100%;
+        }
+        .accompanist-bg {
+            display: none;
+        }
+        .segment {
+            flex-flow: row nowrap;
+            width: calc(100% - 64px);
+            &-title {
+                flex-flow: row nowrap;
+                height: 82px;
+                .card_empty {
+                    min-width: 360px;
+                    padding: 0;
+                }
+            }
+            .card_header {
+                padding: 0;
+                align-self: flex-start;
+            }
+            .card_content {
+                min-height: 360px;
+                height: auto;
+                width: auto;
+                gap: 0;
+                p {
+                    max-width: inherit;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                }
+                .form {
+                    form {
+                    }
+                }
+            }
+        }
+    }
+    #confirmed,
+    #beginner {
+        .card_bg {
+            left: 0;
+            width: 100%;
+        }
+        img.road-confirmed {
+            left: calc(50vw - 1706.7px / 2 - 221px);
+            position: relative;
+            top: 76px;
+            margin: 0 auto;
+        }
+        .aside-bg {
+            display: none;
+        }
+        .segment {
+            flex-flow: column nowrap;
+            width: calc(100% - 64px);
+
+            &-title {
+                flex-flow: row nowrap;
+            }
+            .card_header {
+                height: auto;
+                max-height: 98px;
+                padding: 0;
+                width: 100%;
+                align-self: flex-start;
+                p {
+                    width: 100%;
+                    height: auto;
+                    max-width: inherit;
+                    span {
+                        width: 100%;
+                        display: block;
+                        margin-bottom: 32px;
+                    }
+                }
+            }
+            .card_content {
+                img {
+                    display: initial;
+                }
+            }
+        }
+    }
+    #confirmed {
+        img.road-confirmed {
+            position: absolute;
+            top: 159px;
+            padding-right: 1px;
+            // display: none;
         }
     }
 }

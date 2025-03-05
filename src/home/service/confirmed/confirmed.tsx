@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Space from "../../../utils/Space";
 
 const Confirmed = () => {
     return (
@@ -14,15 +15,20 @@ const Confirmed = () => {
                 priority={false}
             />
             <div className="card_bg"></div>
-            <div className="segment">
+            <div className="segment segment-title">
                 <div className="card_empty flx-c">
                     <h2 className="card_title">Conducteurs confirmés</h2>
                 </div>
                 <div className="card_title"></div>
+            </div>
+            <div className="segment">
                 <div className="card_header flx-c">
                     <p>
-                        Prenez la route en toute sérénité, boostez votre
-                        confiance et renforcez votre maîtrise au volant !
+                        Prenez la route en toute sérénité !
+                        <Space />
+                        <span>
+                            Boostez votre confiance et renforcez votre maîtrise du volant !
+                        </span>
                     </p>
                     <div className="aside-bg">
                         <Image

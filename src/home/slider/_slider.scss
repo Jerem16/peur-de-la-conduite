@@ -28,3 +28,170 @@
     float: right;
     margin-right: 90px;
 }
+@media (max-width: 1390px) {
+    .sld-container {
+        .sld-road-med {
+            display: block;
+        }
+        .sld-road,
+        .slider-number,
+        .sld-flag {
+            display: none;
+        }
+    }
+    .sld-sun,
+    .sld-info_ctn,
+    .slider-content,
+    .banner-arrow,
+    .slide {
+        float: none !important;
+        margin: 0 auto;
+    }
+    .slider {
+        .slider-content {
+            .sld-card_title {
+                h2 {
+                    display: block;
+                    width: 100%;
+                    .bold {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    #slider {
+        min-height: 822px;
+        .sld-info_ctn {
+            margin-top: 6rem;
+            opacity: 1;
+            position: inherit;
+            transform: translateX(0);
+        }
+        .sld-CTA {
+            width: auto;
+            height: auto;
+            padding: 0;
+            gap: 16px;
+            flex-flow: row wrap;
+            margin: 0;
+            left: calc(50vw - 457px / 2);
+            top: 643px;
+            background: transparent;
+            div {
+                height: 44px;
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+                gap: 12px;
+
+                p {
+                    width: fit-content;
+                    margin: 0 !important;
+                    padding: 1px 0 0 0;
+                    &.p2 {
+                        padding: 0;
+                    }
+                    //
+                }
+            }
+            a {
+                margin: 0;
+            }
+        }
+    }
+    .banner-arrow {
+        .slider-arrow {
+            &.right-arrow,
+            &.left-arrow {
+                left: 0rem;
+                top: -4rem;
+            }
+            order: 2px solid $primary-blue !important;
+        }
+    }
+}
+@media (max-width: 900px) {
+    .sld-container {
+        .sld-road-med {
+            width: calc(100% + 551.25px);
+            top: 45px;
+        }
+        .sld-road,
+        .slider-number,
+        .sld-flag {
+            display: none;
+        }
+    }
+    .sld-sun,
+    .sld-info_ctn,
+    .slider-content,
+    .banner-arrow,
+    .slide {
+        float: none !important;
+        margin: 0 auto;
+    }
+    .slider {
+        .slider-content {
+            .sld-card_title {
+                h2 {
+                    display: block;
+                    width: 100%;
+                    .bold {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    #slider {
+        min-height: 822px;
+        .sld-info_ctn {
+            margin-top: 6rem;
+            opacity: 1;
+            position: inherit;
+            transform: translateX(0);
+        }
+        .sld-CTA {
+            width: auto;
+            height: auto;
+            padding: 0;
+            gap: 16px;
+            flex-flow: row wrap;
+            margin: 0;
+            left: calc(50vw - 457px / 2);
+            top: 643px;
+            background: transparent;
+            div {
+                height: 44px;
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+                gap: 12px;
+
+                p {
+                    width: fit-content;
+                    margin: 0 !important;
+                    padding: 1px 0 0 0;
+                    &.p2 {
+                        padding: 0;
+                    }
+                    //
+                }
+            }
+            a {
+                margin: 0;
+            }
+        }
+    }
+    .banner-arrow {
+        .slider-arrow {
+            &.right-arrow,
+            &.left-arrow {
+                left: 0rem;
+                top: -4rem;
+            }
+            order: 2px solid $primary-blue !important;
+        }
+    }
+}

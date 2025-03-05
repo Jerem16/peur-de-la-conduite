@@ -1,0 +1,18 @@
+# robots.txt pour peur-de-la-conduite.lemaignent.com
+
+# Autoriser tous les robots d'exploration
+User-agent: *
+Disallow: /amplify/
+Disallow: /src/
+Disallow: /utils/
+Disallow: /app/fonts/
+Disallow: /public/css/
+Disallow: /*/error
+Disallow: /*/loading
+
+# Permettre l'accès à tous les autres répertoires et fichiers publics
+Allow: /
+
+# Fournir l'emplacement du sitemap
+Sitemap: https://peur-de-la-conduite.lemaignent.com/sitemap.xml
+Sitemap: https://m-peur-de-la-conduite.lemaignent.com/sitemap.xml

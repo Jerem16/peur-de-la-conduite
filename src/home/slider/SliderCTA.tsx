@@ -6,8 +6,10 @@ import { sliderInfo } from "../../assets/data/content/info";
 const SliderCTA = () => {
     return (
         <div className="sld-CTA flx-c">
-            <p className="p1">{sliderInfo[1].info}</p>
-            <p className="p2">{sliderInfo[2].info}</p>
+            <div>
+                <p className="p1">{sliderInfo[1].info}</p>
+                <p className="p2">{sliderInfo[2].info}</p>
+            </div>
             {menuItems.reservation?.[0] && (
                 <ButtonLink href={menuItems.reservation[0].path}>
                     {sliderInfo[3].info}

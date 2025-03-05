@@ -1,14 +1,29 @@
-@media (max-width: 1440px) {
-
-
+@media (max-width: 1390px) {
+    body {
+        background: $white;
+    }
+    .segment {
+        width: $width-card_bg;
+        height: auto;
+        flex-flow: column;
+        justify-content: flex-start;
+        margin: 0 32px;
+        padding: 0;
+        .card_content,
+        .card_title {
+            height: auto;
+            gap: 24px;
+            width: 100%;
+            padding: 0;
+        }
+        .accompanist-bg {
+            display: none;
+        }
+    }
 }
 
 @media (max-width: 1170px) {
-
-    
 }
 
 @media (max-width: 1024px) {
-
-    
 }

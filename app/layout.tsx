@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import HeaderProps from "./headerProps";
 import { ScrollProvider } from "../src/utils/context/ScrollContext";
 import ScrollSectionsWrapper from "./ScrollSectionsWrapper";
+import Footer from "../src/components/footer/footer"
 
 export const RobotoFlex = localFont({
     src: "/fonts/RobotoFlex.woff2",
@@ -30,7 +31,7 @@ const Nunito = localFont({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://www.peur-de-la-conduite.fr/"),
+    metadataBase: new URL("https://www.peur-de-la-conduite.lemaignent.com/"),
     title: {
         template: '%s | Peur de la conduite',
         default: 'Peur de la conduite',
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
             Mounir Bouakkaz, enseignant de la conduite, vous accompagne avec un coaching personnalisé 
             pour vaincre l’amaxophobie, gérer le stress avant examen et améliorer votre maîtrise au volant.
         `,
-        url: "https://www.peur-de-la-conduite.fr/",
+        url: "https://www.peur-de-la-conduite.lemaignent.com/",
         siteName: "Peur de la conduite",
         locale: "fr_FR",
         type: "website",
@@ -90,7 +91,10 @@ export const metadata: Metadata = {
         ],        
     },
     alternates: {
-        canonical: "https://jeremy.lemaignent.com/",
+        canonical: "https://peur-de-la-conduite.lemaignent.com/",
+        media: {
+            "only screen and (max-width: 640px)": "https://m-peur-de-la-conduite.lemaignent.com/",
+        },
     },
 };
 
@@ -101,6 +105,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="fr-FR">
+            <head>
+                <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m-peur-de-la-conduite.lemaignent.com/"/>
+            </head>
             <body
                 className={`${RobotoFlex.variable} ${Montserrat.variable} ${Nunito.variable}`} id="top"
             >
@@ -115,6 +122,7 @@ export default function RootLayout({
                                         </div>
                                     </header>
                                     <main>{children}</main>
+                                    <Footer />
                                 </Suspense>
                             </DrivingProvider>
                         </SearchProvider>

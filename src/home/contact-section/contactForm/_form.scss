@@ -1,19 +1,7 @@
 .ctc-layout {
     .ctc-form {
-        // ! A SUPPRIMER
-        // position: relative;
-        // left: -42px;
-        // width: 1350px;
-        // width: calc(100% + 84px);
-        // height: 630px;
-        // background: $white;
-        // padding: 45px 42px;
-        // display: flex;
-        // flex-flow: column wrap;
+        position: relative;
         gap: 40px !important;
-
-        // ! NOUVEAU SUP LE HAUT
-
         .form {
             display: flex;
             flex-flow: column wrap;
@@ -26,9 +14,7 @@
                 height: 20px;
                 display: inline flex;
                 justify-content: space-between;
-                // align-items: baseline;
                 align-items: center;
-                // border: 1px solid #000;
             }
             input,
             textarea {
@@ -53,7 +39,6 @@
                 margin-top: 5px;
             }
         }
-
         .endOF {
             height: 1px;
             width: 607px;
@@ -63,14 +48,12 @@
                 margin: 0 auto;
             }
         }
-
         .form-questions:nth-child(5) {
             position: relative;
             top: -10px;
             .questions {
                 justify-content: flex-start;
             }
-
             label {
                 display: none;
             }
@@ -85,33 +68,25 @@
                 }
             }
         }
-
         .valid-message {
             p {
                 @include navLink;
-                // padding: 2.5rem 2rem 1rem 2rem;
                 text-align: center;
                 width: 417px;
-                // height: calc(82px);
             }
-            // display: inline-flex;
             flex-flow: column;
             gap: 0.5rem;
-            // width: 481px;
             padding: 2rem;
             width: calc(417px + 4rem);
             height: calc(82px + 4rem);
-            // height: auto;
-
             position: absolute;
-            left: calc(50% - 481px / 2);
-            top: calc(50% - 146px / 2);
+            z-index: 1000;
+            left: calc(50% - (417px + 4rem) / 2);
+            top: calc(50% - (82px + 4rem) / 2);
             border-radius: 18px;
             background: $grey-light;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
             animation: fadeOut 4s ease-in-out forwards;
-
             @keyframes fadeOut {
                 0% {
                     opacity: 1;

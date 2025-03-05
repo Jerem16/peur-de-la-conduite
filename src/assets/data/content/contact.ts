@@ -43,7 +43,7 @@ export const socialLinks: SocialLink[] = [
     { svg: "Youtube", link: "http://www.youtube.com/@MounirBouakkaz-r4i" },
     { svg: "WhatsApp", link: "https://wa.me/33674259181" },
     {
-        svg: "Twitter",
+        svg: "TikTok",
         link:
             "https://www.tiktok.com/@peur.de.la.condui?_t=ZN-8taHCRDnmnH&_r=1",
     },

@@ -136,7 +136,8 @@ ol {
         }
     }
 }
-.card_title {
+.card_title,
+.card_empty {
     height: 82px;
     width: calc($width-card_content + 66px + 42px);
     padding: 40px 66px 42px 42px;

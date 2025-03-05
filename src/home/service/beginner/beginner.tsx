@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Space from "../../../utils/Space";
 
 const Beginner = () => {
     return (
@@ -15,15 +16,20 @@ const Beginner = () => {
                     priority={false}
                 />
             </div>
-            <div className="segment">
+            <div className="segment segment-title">
                 <div className="card_empty flx-c">
                     <h2 className="card_title">Conducteurs novice</h2>
                 </div>
                 <div className="card_title"></div>
+            </div>
+            <div className="segment">
                 <div className="card_header flx-c">
                     <p>
-                        Mets toutes les chances de ton côté ! Réussis ton examen
-                        et conduis en toute confiance !
+                        Mets toutes les chances de ton côté !
+                        <Space />
+                        <span>
+                            Réussis ton examen et conduis en toute confiance !
+                        </span>
                     </p>
                     <div className="aside-bg">
                         <Image
