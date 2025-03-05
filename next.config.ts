@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
         // your project has type errors.
         // !! WARN !!
         // ignoreBuildErrors: true,
-      },
+    },
 };
-
 export default nextConfig;
